@@ -1,2 +1,2 @@
 # DEV7
-DEV7 is a Game Engine made by I.C.E Development for Coktel Vision
+DEV7 is very well documented on the ScummVM Wiki see [here] (https://wiki.scummvm.org/index.php?title=DEV7_Information). 
