@@ -6,3 +6,7 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 2. Adi 5
 3. Adibou'chou
 4. Adibou presente series
+
+# Tools
+LOADER7VC checks which Version of DEV7 your LOADER7.EXE is.
+OBC-CONV converts the Text of the OBC Scripts into TXT File Format for further analysis.
