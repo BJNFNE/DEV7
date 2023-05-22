@@ -20,5 +20,13 @@ Console.WriteLine("\n");
     String text = "Description: " + myFileVersionInfo.FileDescription + '\n' +
     "Version: " + myFileVersionInfo.FileVersion;
     Console.WriteLine(text);
-    Console.WriteLine("Thanks for using LOADER7VC");
+        Console.WriteLine("\n");
+        Console.WriteLine("Thanks for using LOADER7VC!");
+    
+    // This exits LOADER7VC
+    
+   Console.WriteLine("\nPress any key to exit LOADER7VC");
+
+    Console.ReadKey();
 }
+
