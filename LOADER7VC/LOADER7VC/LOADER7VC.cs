@@ -3,11 +3,11 @@ using System.Reflection;
 
 
 Console.WriteLine("Welcome to LOADER7VC, This program shows you which version your LOADER7.EXE / Dev7VM.EXE is.");
-Console.WriteLine("");
-Console.WriteLine("LOADER7VC was designed for Adibou 3 & Adi 5");
-Console.WriteLine("");
+Console.WriteLine("\n");
+Console.WriteLine("LOADER7VC was designed for DEV7 Games.");
+Console.WriteLine("\n");
 Console.WriteLine("Copyright: CrystalBen (Benjamin Funke) & DerCodeDev (Samir Ademi)");
-Console.WriteLine("");
+Console.WriteLine("\n");
 
 
 
