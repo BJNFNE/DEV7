@@ -14,7 +14,7 @@ Console.WriteLine("\n");
 
 {
     // Gets the FileVersion of LOADER7.EXE / Dev7VM.EXE.
-    Console.WriteLine("Please insert here your Path to your LOADER7.EXE");
+    Console.WriteLine("Please insert here your Path to your LOADER7.EXE / Dev7VM.EXE");
     string UserInput = Console.ReadLine();
 
     FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(fileName: UserInput);
