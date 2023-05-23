@@ -9,4 +9,4 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 
 # Tools
 1. LOADER7VC checks which Version of DEV7 your LOADER7.EXE is.
-2. OBC-CONV converts the Text of the OBC Scripts into TXT File Format for further analysis.
+2. DecompOBC shows the Text of the OBC Scripts for further analysis.
