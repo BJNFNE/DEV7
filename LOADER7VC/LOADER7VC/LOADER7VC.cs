@@ -3,6 +3,12 @@ using System.Net.Sockets;
 using System.Reflection;
 string dir = AppDomain.CurrentDomain.BaseDirectory;
 
+Console.WriteLine("Welcome to LOADER7VC ver 1.4, This program shows you which version your LOADER7.EXE / Dev7VM.EXE is.");
+Console.WriteLine("\b");
+Console.WriteLine("LOADER7VC was designed for DEV7 Games.");
+Console.WriteLine("\b");
+Console.WriteLine("Developed by: BJNFNE (Benjamin Funke)");
+Console.WriteLine("\b");
 
 // Gets the FileVersion of LOADER7.EXE / Dev7VM.EXE.
     Console.WriteLine("Please insert here your Path to your LOADER7.EXE / Dev7VM.EXE (Without Quotes)");
@@ -45,4 +51,3 @@ string dir = AppDomain.CurrentDomain.BaseDirectory;
     Console.WriteLine("\nPress any key to exit LOADER7VC");
 
     Console.ReadKey();
-}
