@@ -8,7 +8,7 @@ Console.WriteLine("Welcome to LOADER7VC, This program shows you which version yo
 Console.WriteLine("\n");
 Console.WriteLine("LOADER7VC was designed for DEV7 Games.");
 Console.WriteLine("\n");
-Console.WriteLine("Copyright: CrystalBen (Benjamin Funke) & DerCodeDev (Samir Ademi)");
+Console.WriteLine("Copyright: BJNFNE (Benjamin Funke) & DerCodeDev (Samir Ademi)");
 Console.WriteLine("\n");
 
 
