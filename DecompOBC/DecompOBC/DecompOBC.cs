@@ -16,11 +16,11 @@ string ext = Path.GetExtension(myFilePath);
 string OBC_OUTPUT = Console.ReadLine();
 
 // Creates OBC Output File
-FileStream filestream = new FileStream("obc_output.txt", FileMode.Create);
-var streamwriter = new StreamWriter(filestream);
-streamwriter.AutoFlush = true;
-Console.SetOut(streamwriter);
-Console.SetError(streamwriter);
+FileStream obc_output_text = new FileStream("obc_output.txt", FileMode.Create);
+var obc_decompiler = new StreamWriter(obc_output_text);
+obc_decompiler.AutoFlush = true;
+Console.SetOut(obc_decompiler);
+Console.SetError(obc_decompiler);
 
 {
     Console.WriteLine("\n");
