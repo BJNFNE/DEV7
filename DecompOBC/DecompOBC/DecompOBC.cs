@@ -9,9 +9,6 @@ Console.WriteLine("Made by BJNFNE");
 Console.WriteLine("\b");
 Console.WriteLine("Enter here the Path to the OBC Script, after that obc_output.txt gets created that contains the decompiled code.");
 
-// only allows ".obc"
-string myFilePath = @".obc";
-string ext = Path.GetExtension(myFilePath);
 string OBC_OUTPUT = Console.ReadLine();
 
 // Creates OBC Output File
