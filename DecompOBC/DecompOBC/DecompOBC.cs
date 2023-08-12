@@ -7,7 +7,7 @@ Console.Title = "DecompOBC 1.2";
 
 Console.WriteLine("Made by BJNFNE");
 Console.WriteLine("\b");
-Console.WriteLine("Write here the Path to the OBC File, after that a obc_output.txt gets created that contains the decompiled code.");
+Console.WriteLine("Enter here the Path to the OBC Script, after that obc_output.txt gets created that contains the decompiled code.");
 
 // only allows ".obc"
 string myFilePath = @".obc";
