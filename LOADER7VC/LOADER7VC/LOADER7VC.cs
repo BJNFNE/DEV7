@@ -7,7 +7,7 @@ Console.WriteLine("Welcome to LOADER7VC ver 1.4, This program shows you which ve
 Console.WriteLine("\b");
 Console.WriteLine("LOADER7VC was designed for DEV7 Games.");
 Console.WriteLine("\b");
-Console.WriteLine("Developed by: BJNFNE (Benjamin Funke)");
+Console.WriteLine("Developed by: BJNFNE");
 Console.WriteLine("\b");
 
 // Gets the FileVersion of LOADER7.EXE / Dev7VM.EXE.
