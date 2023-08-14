@@ -5,10 +5,22 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Platforms>x64;x86</Platforms>
+    <Configurations>Debug;Release</Configurations>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Copyright>BJNFNE</Copyright>
+    <Description></Description>
+    <Product>LOADER7 Version Checker</Product>
+    <Version>1.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>
