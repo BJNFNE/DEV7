@@ -5,11 +5,9 @@ using System.Text;
 
 Console.Title = "DecompOBC 1.2";
 
-Console.WriteLine("Made by BJNFNE");
-Console.WriteLine("\f");
+Console.WriteLine("Made by BJNFNE\f");
 Console.WriteLine("Enter here the Path to the OBC Script, after that obc_output.txt gets created that contains the decompiled code.");
-Console.WriteLine("\b");
-Console.WriteLine("The Path to the OBC Scripts can also be inserted via Drag & Drop into the Decompiler. (without Quotes)");
+Console.WriteLine("The Path to the OBC Scripts can also be inserted via Drag & Drop into the Decompiler. (without Quotes)\b");
 Console.WriteLine("\b");
 
 string OBC_OUTPUT = Console.ReadLine();
