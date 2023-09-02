@@ -9,6 +9,8 @@ Console.WriteLine("Made by BJNFNE\f");
 Console.WriteLine("Enter here the Path to the OBC Script, after that obc_output.txt gets created that contains the decompiled code.");
 Console.WriteLine("The Path to the OBC Scripts can also be inserted via Drag & Drop into the Decompiler. (without Quotes)\b");
 Console.WriteLine("\b");
+Console.WriteLine("WIP - the decompiled Scripts can eventually display non printable Characters");
+Console.WriteLine("\b");
 
 string OBC_OUTPUT = Console.ReadLine();
 
