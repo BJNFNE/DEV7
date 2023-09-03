@@ -14,3 +14,6 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 
 # Linux
 DEV7 Tools can be compiled in Rider.
+
+# Compatibility
+* LOADER7VC runs under Linux but displays not any infos about the executable.
