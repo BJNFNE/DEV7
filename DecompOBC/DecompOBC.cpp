@@ -4,6 +4,8 @@ int main()
 {
     char ch, inputOBC[20], outputOBC[20];
     FILE *fs, *ft;
+    cout<<"Developed by BJNFNE\n";
+    cout<<"WIP - the decompiled Scripts can eventually display non printable Characters\n";
     cout<<"Enter the Name of the OBC Script: ";
     cin>>inputOBC;
     fs = fopen(inputOBC, "r");
