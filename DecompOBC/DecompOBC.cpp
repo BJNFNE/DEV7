@@ -9,7 +9,7 @@ int main()
     cout<<"Enter the Name of the OBC Script that should be decompiled: ";
     cin>>inputOBC;
     fs = fopen(inputOBC, "r");
-    if(fs == NULL)
+    if(fs == nullptr)
     {
         cout<<"\nOBC Script not found!\n";
 
@@ -19,7 +19,7 @@ int main()
     cout<<"\nEnter here your output filename including extension (TXT): ";
     cin>>outputOBC;
     ft = fopen(outputOBC, "w");
-    if(ft == NULL)
+    if(ft == nullptr)
     {
         cout<<"\nError Occurred, by creating the output file!\n";
         return 0;
