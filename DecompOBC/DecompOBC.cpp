@@ -1,38 +1,47 @@
 #include <iostream>
-using namespace std;
-int main()
-{
-    char ch, inputOBC[20], outputOBC[20];
-    FILE *robc, *wobc;
-    cout<<"Developed by BJNFNE\n";
-    cout<<"WIP - the decompiled Scripts can eventually display non printable Characters.\n";
-    cout<<"Enter the Name of the OBC Script that should be decompiled: ";
-    cin>>inputOBC;
-    robc = fopen(inputOBC, "r"); // robc stands for ReadOBC &  wobc stands for WriteOBC
-    if(robc == nullptr)
-    {
-        cout<<"\nOBC Script not found!\n";
+#include <fstream>
+#include <string>
 
-        return 0;
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <example_script.obc> <output.txt>" << std::endl;
+        std::cout  << "Navigate for the input of the OBC Script to the Full Path including Scriptname.obc\n";
+        return 1;
     }
-    cout<<"\nOBC Script was found!\n";
-    cout<<"\nEnter here your output filename including extension (TXT): ";
-    cin>>outputOBC;
-    wobc = fopen(outputOBC, "w");
-    if(wobc == nullptr)
-    {
-        cout<<"\nError Occurred, by creating the output file!\n";
-        return 0;
+
+    std::string inputOBC = argv[1];
+    std::string outputOBC = argv[2];
+
+    // Use the OBC Script for Input
+    std::ifstream OBCInput(inputOBC);
+
+    if (!OBCInput) {
+        std::cerr << "Error: Unable to open OBC Script." << std::endl;
+        return 1;
     }
-    ch = fgetc(robc);
-    while(ch != EOF)
-    {
-        fputc(ch, wobc);
-        ch = fgetc(robc);
+
+
+    // Open the output file for the OBC Script
+    std::ofstream OBCOutput(outputOBC);
+
+    if (!OBCOutput) {
+        std::cerr << "Error: Unable to open output of OBC Script." << std::endl;
+        return 1;
     }
-    cout<<"\nOBC Script is decompiled successfully.";
-    fclose(robc);
-    fclose(wobc);
-    cout<<endl;
+
+    // Read from input and write to output
+    char c;
+    while (OBCInput.get(c)) {
+        if (std::isprint(static_cast<unsigned char>(c))) {
+            OBCOutput.put(c);
+        }
+    }
+
+    // Close input & output for OBC Script
+    OBCInput.close();
+    OBCOutput.close();
+
+    std::cout << "OBC Script has been decompiled and saved to " << outputOBC << "." << std::endl;
+
     return 0;
 }
