@@ -4,4 +4,4 @@
 # ToDo (General)
 
 # Done
-1. DecompOBC is now fixed. prints now correctly the output of the script
+1. OBCViewer is now fixed. prints now correctly the output of the script
