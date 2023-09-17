@@ -1,3 +1,0 @@
-/home/bjnfne/CLionProjects/DecompOBC/cmake-build-debug/CMakeFiles/DecompOBC.dir
-/home/bjnfne/CLionProjects/DecompOBC/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/bjnfne/CLionProjects/DecompOBC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
