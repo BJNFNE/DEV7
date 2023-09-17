@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
         printf(" * Le Pays des pierres magiques\n");
         printf("\n");
         printf("<script.obc>\n\t .obc script to view\n\n");
-        printf("<output.txt>\n\tprints OBC Script in viewable for into the text file\n\n");
+        printf("<output.txt>\n\tlocate where OBCViewer should store the viewable text of the OBC Script\n\n");
         return 1;
     }
 
