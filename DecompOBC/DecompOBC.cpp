@@ -3,8 +3,16 @@
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <example_script.obc> <output.txt>" << std::endl;
-        std::cout  << "Navigate for the input of the OBC Script to the Full Path including Scriptname.obc\n";
+        std::cerr << "Usage: " << argv[0] << " <script.obc> <output.txt>\n" << std::endl;
+        printf("Supported games:\n");
+        printf(" * Adibou 3\n");
+        printf(" * Adi 5\n");
+        printf(" * Adibou presente series\n");
+        printf(" * Adiboud'chou series\n");
+        printf(" * Le Pays des pierres magiques\n");
+        printf("\n");
+        printf("<script.obc>\n\t .obc script to decompile\n\n");
+        printf("<output.txt>\n\tprints the decompiled script into seperate text file\n\n");
         return 1;
     }
 
@@ -15,16 +23,15 @@ int main(int argc, char* argv[]) {
     std::ifstream OBCInput(inputOBC);
 
     if (!OBCInput) {
-        std::cerr << "Error: Unable to open OBC Script." << std::endl;
+        std::cerr << "Error: Unable to find OBC Script." << std::endl;
         return 1;
     }
-
 
     // Open the output file for the OBC Script
     std::ofstream OBCOutput(outputOBC);
 
     if (!OBCOutput) {
-        std::cerr << "Error: Unable to open output of OBC Script." << std::endl;
+        std::cerr << "Error: Unable to create text output of OBC Script." << std::endl;
         return 1;
     }
 
@@ -40,7 +47,7 @@ int main(int argc, char* argv[]) {
     OBCInput.close();
     OBCOutput.close();
 
-    std::cout << "OBC Script has been decompiled and saved to " << outputOBC << "." << std::endl;
+    std::cout << "OBC Script (" << argv[1] << ") is decompiled and saved output to " << outputOBC  << "" <<std::endl;
 
     return 0;
 }
