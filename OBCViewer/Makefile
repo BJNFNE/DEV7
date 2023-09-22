@@ -1,8 +1,8 @@
 # Makefile for OBCViewer
 # Works on Linux & MacOS
 
-# CPP file & object files 
-OBCViewer: 
+# CPP file & object files
+OBCViewer:
 	g++ -o OBCViewer OBCViewer.cpp
 
 installdeps_apt: # for APT users (Ubuntu & Debian based distros)
@@ -15,12 +15,12 @@ installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
 # Start OBCViewer over make command
 start:
 	./OBCViewer
-	
+
 # Delete all Object files (if there exists)
-clean: 
+clean:
 	rm *.o
 
-# Clean all Objects (OBC) from the Directory
+# Clean all Objects from the Directory
 clean_obc:
 	rm *.obc
 
