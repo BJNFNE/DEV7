@@ -1,4 +1,5 @@
 # Makefile for OBCViewer
+# Developed for Linux can be ran by just make
 
 # CPP file & object files 
 OBCViewer: OBCViewer.o 
