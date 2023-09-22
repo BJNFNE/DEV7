@@ -1,4 +1,3 @@
-  GNU nano 6.2                        Makefile                                  
 # Makefile for OBCViewer
 # Developed for Linux can be ran by just make
 
