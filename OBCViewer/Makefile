@@ -1,5 +1,5 @@
 # Makefile for OBCViewer
-# Developed for Linux
+# Works on Linux & MacOS
 
 # CPP file & object files 
 OBCViewer: 
@@ -16,6 +16,14 @@ installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
 start:
 	./OBCViewer
 	
-# Delete all Objects files
+# Delete all Object files (if there exists)
 clean: 
 	rm *.o
+
+# Clean all Objects from the Directory
+clean_obc:
+	rm *.obc
+
+# Clean all TXT files created by OBCViewer
+clean_txt:
+	rm *.txt
