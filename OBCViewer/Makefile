@@ -1,14 +1,21 @@
 # Makefile for OBCViewer
-# Developed for Linux can be ran by just make
+# Developed for Linux
 
 # CPP file & object files 
-OBCViewer: OBCViewer.o 
-        g++ -c OBCViewer.cpp
+OBCViewer: 
+	g++ -o OBCViewer OBCViewer.cpp
 
-# Start OBCViewer with make command
+installdeps_apt: # for APT users (Ubuntu & Debian based distros)
+	sudo apt update # (for avoiding any errors)
+	sudo apt install build-essential make
+
+installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
+	yum install gcc gcc-c++ kernel-devel make
+
+# Start OBCViewer over make command
 start:
-        ./OBCViewer
-
-# Delete all Object files
+	./OBCViewer
+	
+# Delete all Objects files
 clean: 
-        rm *.o
+	rm *.o
