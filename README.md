@@ -13,7 +13,7 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 3. CTRKTextLoader loads the the Text of the CTRK files. (CTRK files are used for the rotation)
 
 # Linux
-DEV7 Tools can be compiled in Rider (C#). for C++ use CLion
+DEV7 Tools can be compiled in Rider (C#). for C++ use CLion or use Makefile (Available for some DEV7 Tools)
 
 # Windows
 DEV7 Tools can be compiled over MSVC (2022)
