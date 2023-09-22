@@ -20,7 +20,7 @@ start:
 clean:
 	rm *.o
 
-# Clean all Objects from the Directory
+# Clean all Objects (OBC) from the Directory
 clean_obc:
 	rm *.obc
 
