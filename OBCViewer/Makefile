@@ -1,5 +1,7 @@
-# Makefile for OBCViewer
-# Works on Linux & MacOS
+#######################################################################
+# Makefile for OBCViewer	                                      #
+# Works on Linux & MacOS					      #
+#######################################################################
 
 # CPP file & object files
 OBCViewer:
@@ -31,3 +33,8 @@ clean_obc:
 # Clean all TXT files created by OBCViewer
 clean_txt:
 	rm *.txt
+
+credits:
+	@echo "Credits:\n"
+	@echo "BJNFNE (Main developer)"
+	@echo "rzil (BLooperZ) (Thanks for helping out)"
