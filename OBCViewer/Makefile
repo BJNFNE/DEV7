@@ -12,6 +12,10 @@ installdeps_apt: # for APT users (Ubuntu & Debian based distros)
 installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
 	sudo yum install gcc gcc-c++ kernel-devel make -y
 
+installdeps_brew: # for BREW users (MacOS Homebrew)
+	sudo brew install gcc
+	sudo brew install make
+
 # Start OBCViewer over make command
 start:
 	./OBCViewer
