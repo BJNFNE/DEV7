@@ -18,5 +18,8 @@ DEV7 Tools can be compiled in Rider (C#). for C++ use CLion or use Makefile (Ava
 # Windows
 DEV7 Tools can be compiled over MSVC (2022)
 
+# MacOS
+DEV7 Tools can be compiled over the Terminal via the Makefile (Available for some DEV7 Tools)
+
 # Compatibility
 * LOADER7VC runs under Linux but displays not any infos about the executable.
