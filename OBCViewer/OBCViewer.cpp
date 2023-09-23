@@ -13,6 +13,9 @@ int main(int argc, char* argv[]) {
         printf("\n");
         printf("<script.obc>\n\t .obc script to view\n\n");
         printf("<output.txt>\n\tlocate where OBCViewer should store the viewable text of the OBC Script\n\n");
+        printf("Credits:\n");
+        printf("BJNFNE (main Developer)\n");
+        printf("rzil (BLooperZ) (Thanks for helping out)\n");
         return 1;
     }
 
