@@ -10,7 +10,7 @@ installdeps_apt: # for APT users (Ubuntu & Debian based distros)
 	sudo apt install build-essential make
 
 installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
-	yum install gcc gcc-c++ kernel-devel make
+	sudo yum install gcc gcc-c++ kernel-devel make
 
 # Start OBCViewer over make command
 start:
