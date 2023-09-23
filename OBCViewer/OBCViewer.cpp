@@ -9,8 +9,7 @@ int main(int argc, char* argv[]) {
         printf(" * Adi 5\n");
         printf(" * Adibou presente series\n");
         printf(" * Adiboud'chou series\n");
-        printf(" * Le Pays des pierres magiques\n");
-        printf("\n");
+        printf(" * Le Pays des pierres magiques\n\n");
         printf("<script.obc>\n\t .obc script to view\n\n");
         printf("<output.txt>\n\tlocate where OBCViewer should store the viewable text of the OBC Script\n\n");
         printf("Credits:\n");
