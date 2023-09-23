@@ -7,10 +7,10 @@ OBCViewer:
 
 installdeps_apt: # for APT users (Ubuntu & Debian based distros)
 	sudo apt update # (for avoiding any errors)
-	sudo apt install build-essential make
+	sudo apt install build-essential make -y
 
 installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
-	sudo yum install gcc gcc-c++ kernel-devel make
+	sudo yum install gcc gcc-c++ kernel-devel make -y
 
 # Start OBCViewer over make command
 start:
