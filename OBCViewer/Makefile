@@ -5,7 +5,7 @@
 
 # CPP file & object files
 OBCViewer:
-	g++ -o OBCViewer OBCViewer.cpp
+	g++ -o OBCViewer OBCViewer.cpp -O2 -g -Wall -pipe
 
 installdeps_apt: # for APT users (Ubuntu & Debian based distros)
 	sudo apt update # (for avoiding any errors)
