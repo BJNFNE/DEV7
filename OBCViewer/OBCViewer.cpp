@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -20,6 +21,13 @@ int main(int argc, char* argv[]) {
 
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
+
+       // Check if the input file is an OBC Script.
+    std::filesystem::path inputFile(inputOBC);
+    if (inputFile.extension() != ".obc") {
+        std::cerr << "Error: This is not an OBC Script! Please try with an other Script\n" << std::endl;
+        return 1;
+    }
 
     // Use the OBC Script for Input
     std::ifstream OBCInput(inputOBC);
