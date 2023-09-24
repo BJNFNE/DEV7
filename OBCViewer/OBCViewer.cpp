@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <filesystem>
 
 int main(int argc, char* argv[]) {
@@ -23,39 +22,19 @@ int main(int argc, char* argv[]) {
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
 
-    // Check if the input file is an OBC Script.
+       // Check if the input file is an OBC Script.
     std::filesystem::path inputFile(inputOBC);
     if (inputFile.extension() != ".obc") {
         std::cerr << "Error: This File is not an OBC Script!\n" << std::endl;
         return 1;
     }
 
-// Use the OBC Script for Input
+    // Use the OBC Script for Input
     std::ifstream OBCInput(inputOBC);
 
     if (!OBCInput) {
         std::cerr << "Error: Unable to find OBC Script." << std::endl;
         return 1;
-    }
-
-    std::string searchEntrypoint = "OBC Copyright 1999";
-    std::string line;
-
-    // Search for the Entrypoint in the Script
-    bool found = false;
-    while (std::getline(OBCInput, line)) {
-        if (line.find(searchEntrypoint) != std::string::npos) {
-            found = true;
-            break;
-        }
-    }
-
-    // Close input for OBC Script
-    OBCInput.close();
-
-    if (!found) {
-        std::cout << "The Entrypoint \"" << searchEntrypoint << "\" was not found in the Script." << std::endl;
-        return 0;
     }
 
     // Open the output file for the OBC Script
