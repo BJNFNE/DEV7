@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
     std::string searchEntrypoint = "OBC Copyright 1999";
     std::string line;
 
-    // Search for the string in the file
+    // Search for the Entrypoint in the Script
     bool found = false;
     while (std::getline(OBCInput, line)) {
         if (line.find(searchEntrypoint) != std::string::npos) {
