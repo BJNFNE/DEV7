@@ -12,3 +12,6 @@
 # Executables
 *.exe
 *.out
+
+#Ignore Jetbrains CLion IDE files
+.idea
