@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
        // Check if the input file is an OBC Script.
     std::filesystem::path inputFile(inputOBC);
     if (inputFile.extension() != ".obc") {
-        std::cerr << "Error: This is not an OBC Script! Please try with an other Script\n" << std::endl;
+        std::cerr << "Error: This File is not an OBC Script!\n" << std::endl;
         return 1;
     }
 
