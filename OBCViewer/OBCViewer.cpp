@@ -22,8 +22,6 @@ int main(int argc, char* argv[]) {
 
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
-    std::string searchEntrypoint = "OBC Copyright MDO 1999";
-    std::string line;
 
     // Check if the input file is an OBC Script.
     std::filesystem::path inputFile(inputOBC);
@@ -40,14 +38,21 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Search for the Entrypoint in the OBC Script
-    bool foundEntrypoint = false;
-    while (std::getline(OBCInput, line)) {
-        if (line.find(searchEntrypoint) != std::string::npos) {
-            foundEntrypoint = true;
-            break;
-        }
+    // Read the first 25 characters (adjust as needed) from the input file
+    std::string firstChars;
+    char c;
+    for (int i = 0; i < 25 && OBCInput.get(c); ++i) {
+        firstChars += c;
     }
+
+    // Check if the read text starts with the specified text
+    if (firstChars.find("OBC Copyright MDO 1999") != 0) {
+        std::cerr << "Error: The OBC Script does not start with the correct Entrypoint.\n" << std::endl;
+        return 1;
+    }
+
+    // Rewind the input file back to the beginning
+    OBCInput.seekg(0);
 
     // Open the output file for the OBC Script
     std::ofstream OBCOutput(outputOBC);
@@ -58,7 +63,6 @@ int main(int argc, char* argv[]) {
     }
 
     // Read from input and write to output
-    char c;
     while (OBCInput.get(c)) {
         if (std::isprint(static_cast<unsigned char>(c))) {
             OBCOutput.put(c);
@@ -68,13 +72,6 @@ int main(int argc, char* argv[]) {
     // Close input & output for OBC Script
     OBCInput.close();
     OBCOutput.close();
-
-    if (foundEntrypoint) {
-        std::cout << "The Entrypoint \"" << searchEntrypoint << "\" was found in OBC Script." << std::endl; // prints message if Entrypoint was found
-    } else {
-        std::cout << "The Entrypoint \"" << searchEntrypoint << "\" was not found in OBC Script." << std::endl; //prints message if Entrypoint was not found
-        return 1;
-    }
 
     std::cout << "OBC Script (" << argv[1] << ") is viewable and saved output to " << outputOBC  << "" <<std::endl;
 
