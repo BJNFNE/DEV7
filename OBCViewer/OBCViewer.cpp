@@ -37,21 +37,20 @@ int main(int argc, char* argv[]) {
         std::cerr << "Error: Unable to find OBC Script." << std::endl;
         return 1;
     }
-
-    // Read the first 25 characters (adjust as needed) from the input file
+    
     std::string firstChars;
     char c;
     for (int i = 0; i < 25 && OBCInput.get(c); ++i) {
         firstChars += c;
     }
 
-    // Check if the read text starts with the specified text
+    // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
     if (firstChars.find("OBC Copyright MDO 1999") != 0) {
         std::cerr << "Error: The OBC Script does not start with the correct Entrypoint.\n" << std::endl;
         return 1;
     }
 
-    // Rewind the input file back to the beginning
+    // Rewind the OBC Script back to the beginning
     OBCInput.seekg(0);
 
     // Open the output file for the OBC Script
