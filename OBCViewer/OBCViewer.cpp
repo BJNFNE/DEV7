@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Search for the string in the file
+    // Search for the Entrypoint in the OBC Script
     bool foundEntrypoint = false;
     while (std::getline(OBCInput, line)) {
         if (line.find(searchEntrypoint) != std::string::npos) {
