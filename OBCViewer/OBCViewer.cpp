@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 
     // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
     if (firstChars.find("OBC Copyright MDO 1999") != 0) {
-        std::cerr << "Error: The OBC Script does not start with the correct Entrypoint.\n" << std::endl;
+        std::cerr << "Error: The Entrypoint in the OBC Script was not found!\n" << std::endl;
         std::cerr << "Maybe you have an new version of OBC? Then please contact BJNFNE on Discord.\n" << std::endl;
         return 1;
     }
