@@ -38,14 +38,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    std::string firstChars;
+    std::string checkEntrypointOBC;
     char c;
     for (int i = 0; i < 25 && OBCInput.get(c); ++i) {
-        firstChars += c;
+        checkEntrypointOBC += c;
     }
 
     // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
-    if (firstChars.find("OBC Copyright MDO 1999") != 0) {
+    if (checkEntrypointOBC.find("OBC Copyright MDO 1999") != 0) {
         std::cerr << "Error: The Entrypoint in the OBC Script was not found!\n" << std::endl;
         std::cerr << "Maybe you have an new version of OBC? Then please contact BJNFNE on Discord.\n" << std::endl;
         return 1;
