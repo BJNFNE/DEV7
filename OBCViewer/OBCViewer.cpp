@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
     OBCInput.close();
     OBCOutput.close();
 
-    std::cout << "OBC Script (" << argv[1] << ") is viewable and saved output to " << outputOBC  << "" <<std::endl;
+    std::cout << "OBC Script (" << argv[1] << ") is now displayable and saved output to " << outputOBC << "" << std::endl;
 
     return 0;
 }
