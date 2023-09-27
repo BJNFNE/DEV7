@@ -5,6 +5,9 @@
 
 # CPP file & object files
 OBCViewer:
+	g++ -o OBCViewer OBCViewer.cpp -O2 -g -Wall -Wextra -pipe -std=c++20
+
+verbose:
 	g++ -o OBCViewer OBCViewer.cpp -O2 -g -Wall -Wextra -pipe -std=c++20 -v
 
 installdeps_apt: # for APT users (Ubuntu & Debian based distros)
