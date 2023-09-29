@@ -10,7 +10,7 @@ def identify_img(file_path, img_check):
 
 img_file = input("Enter the name of the IMG file (with .IMG extension): ")
 
-if img_file.endswith(".img"):
+if img_file.lower().endswith((".img", ".IMG")):
     if identify_img(img_file, "TRUEVISION-XFILE"):
         print("It's a TGA file")
     elif identify_img(img_file, "IMG1.0.1"):
