@@ -24,6 +24,7 @@ if img_file.lower().endswith((".img", ".IMG")):
         print("\b")
     else:
         print("IMG format not recognized")
-        print("Maybe your IMG uses an different format / newer or older version, Then please contact BJNFNE on Discord\n")
+        print("Maybe your IMG uses an different format / newer or older version, "
+              "Please contact BJNFNE on Discord\n")
 else:
     print("Invalid IMG file extension. Please provide a file with .img extension.")
