@@ -1,8 +1,8 @@
-def identify_img(file_path, img_check):
+def identify_img(img_path, img_check):
     try:
-        with open(file_path, 'rb') as file:
-            file_contents = file.read()
-            if img_check.encode() in file_contents:
+        with open(img_path, 'rb') as file:
+            img_contents = file.read()
+            if img_check.encode() in img_contents:
                 return True
     except FileNotFoundError:
         pass
@@ -23,8 +23,11 @@ if img_file.lower().endswith((".img", ".IMG")):
         print("IMG using version 1.0.1")
         print("\b")
     else:
+        print("\b")
         print("IMG format not recognized")
-        print("Maybe your IMG uses an different format / newer or older version, "
-              "Please contact BJNFNE on Discord\n")
+        print("\b")
+        print("Maybe this IMG uses an different format / newer or older version, "
+              "Please contact BJNFNE on Discord")
+        print("\b")
 else:
-    print("Invalid IMG file extension. Please provide a file with .img extension.")
+    print("Invalid IMG file extension. Please add the .img extension aswell")
