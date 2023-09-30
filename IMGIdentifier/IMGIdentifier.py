@@ -13,8 +13,11 @@ img_file = input("Enter the name of the IMG file (with .IMG extension): ")
 if img_file.lower().endswith((".img", ".IMG")):
     if identify_img(img_file, "TRUEVISION-XFILE"):
         print("It's a TGA file")
+    elif identify_img(img_file, "IMG10"):
+        print("Its an IMG file (version 1.0)")
     elif identify_img(img_file, "IMG1.0.1"):
         print("It's an IMG file (version 1.0.1)")
+    
     else:
         print("IMG format not recognized")
         print("Maybe your IMG uses an different format, Then please contact BJNFNE on Discord\n")
