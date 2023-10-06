@@ -62,6 +62,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+        // Add Text at the beginning before Entrypoint with "Output of (OBC Script name) was created at then the date (including time)"
+    time_t current_time = time(nullptr);
+    char obc_timedate[100];
+    strftime(obc_timedate, sizeof(obc_timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
+    OBCOutput << "Output of " << argv[1] << " was created at " << obc_timedate << std::endl;
+    OBCOutput << "\b" << std::endl;
+
     // Read from input and write to output
     while (OBCInput.get(c)) {
         if (std::isprint(static_cast<unsigned char>(c))) {
