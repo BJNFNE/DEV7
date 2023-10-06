@@ -82,5 +82,14 @@ int main(int argc, char* argv[]) {
 
     std::cout << "OBC Script (" << argv[1] << ") is now displayable and saved output to " << outputOBC << "" << std::endl;
 
+    // Display the full path of the output file of the OBC Script
+    std::cout << "\b" << std::endl;
+    printf("Output file created at: %s\n", std::filesystem::absolute(outputOBC).c_str());
+
+    // Exit message for OBCViewer
+    std::cout << "\b" << std::endl;
+    std::cout << "OBCViewer is exiting." << std::endl;
+    std::cout << "\b" << std::endl;
+
     return 0;
 }
