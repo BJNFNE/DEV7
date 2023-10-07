@@ -94,6 +94,5 @@ int main(int argc, char* argv[]) {
     std::cout << "\b" << std::endl;
     std::cout << "Press Enter to exit OBCViewer" << std::endl;
     getchar();
-    std::cout << "\b" << std::endl;
     exit(0);
 }
