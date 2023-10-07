@@ -3,9 +3,13 @@
 #include <filesystem>
 #include <string>
 
+// Set here the versionNumber
+const std::string versionNumber = "1.4.0";
+
 int main(int argc, char* argv[]) {
     if (argc != 3) {
         std::cerr << "Usage: " << argv[0] << " <script.obc> <output.txt>\n" << std::endl;
+        std::cerr << "Version: " << versionNumber << "\n" << std::endl;
         printf("Supported games:\n");
         printf(" * Adibou 3\n");
         printf(" * Adi 5\n");
