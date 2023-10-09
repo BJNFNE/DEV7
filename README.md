@@ -12,6 +12,7 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 2. OBCViewer shows the Text of the OBC Scripts for further analysis.
 3. CTRKTextLoader loads the the Text of the CTRK files. (CTRK files are used for the rotation)
 4. IMGIdentifier shows you which version your IMG is using.
+5. ModelPathDumper dumps out of the EXO files the Path of the Models (Folders)
 # Linux
 DEV7 Tools can be compiled in Rider (C#). for C++ use CLion or use Makefile (Available for some DEV7 Tools)
 
