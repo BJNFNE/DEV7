@@ -23,7 +23,11 @@ void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile
             std::string line;
             while (std::getline(file, line)) {
                 if (line.find("Path=C:\\") != std::string::npos || line.find("Path=Y:\\") != std::string::npos) {
-                    output << entry.path().string() << ": " << line << std::endl;
+                    // Extract only the part of the line after "Path=" and write it to the output file
+                    size_t pos = line.find("Path=");
+                    if (pos != std::string::npos) {
+                        output << entry.path().string() << ": " << line.substr(pos + 5) << std::endl;
+                    }
                 }
             }
             fileCount++;
