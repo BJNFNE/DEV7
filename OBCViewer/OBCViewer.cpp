@@ -4,7 +4,7 @@
 #include <string>
 
 // Set here the versionNumber
-const std::string versionNumber = "1.4.0";
+const std::string versionNumber = "1.4.2";
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -26,6 +26,13 @@ int main(int argc, char* argv[]) {
 
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
+    std::string clearCommand;
+
+    #ifdef _WIN32
+        clearCommand = "cls"; // Command to clear the console on Windows
+    #else
+        clearCommand = "clear"; // Command to clear the console on MacOS/Linux
+    #endif
 
     // Check if the input file is an OBC Script.
     std::filesystem::path inputScript(inputOBC);
@@ -92,7 +99,8 @@ int main(int argc, char* argv[]) {
 
     // Exit message for OBCViewer
     std::cout << "\b" << std::endl;
-    std::cout << "Press Enter to exit OBCViewer" << std::endl;
+    std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
     getchar();
+    system(clearCommand.c_str());
     exit(0);
 }
