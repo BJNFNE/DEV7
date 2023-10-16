@@ -2,6 +2,7 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <unistd.h>
 
 // Set here the versionNumber
 const std::string versionNumber = "1.4.2";
@@ -27,6 +28,7 @@ int main(int argc, char* argv[]) {
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
     std::string clearConsole;
+    std::string username = getlogin();
 
     #ifdef _WIN32
         clearConsole = "cls"; // Command to clear the console on Windows
@@ -73,11 +75,15 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    // Debug Infos for Outputfile
+    OBCOutput << "Debug Infos:\n" << std::endl;
+    OBCOutput << "Test" << std::endl;
+
         // Add Text at the beginning before Entrypoint with "Output of (OBC Script name) was created at then the date (including time)"
     time_t current_time = time(nullptr);
     char obc_timedate[100];
     strftime(obc_timedate, sizeof(obc_timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
-    OBCOutput << "Output of " << argv[1] << " was created at " << obc_timedate << std::endl;
+    OBCOutput << "Output of " << argv[1] << " was created by " << username << " at " << obc_timedate << std::endl;
     OBCOutput << "\b" << std::endl;
 
     // Read from input and write to output
