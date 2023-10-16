@@ -26,12 +26,12 @@ int main(int argc, char* argv[]) {
 
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
-    std::string clearCommand;
+    std::string clearConsole;
 
     #ifdef _WIN32
-        clearCommand = "cls"; // Command to clear the console on Windows
+        clearConsole = "cls"; // Command to clear the console on Windows
     #else
-        clearCommand = "clear"; // Command to clear the console on MacOS/Linux
+        clearConsole = "clear"; // Command to clear the console on MacOS/Linux
     #endif
 
     // Check if the input file is an OBC Script.
@@ -101,6 +101,6 @@ int main(int argc, char* argv[]) {
     std::cout << "\b" << std::endl;
     std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
     getchar();
-    system(clearCommand.c_str());
+    system(clearConsole.c_str());
     exit(0);
 }
