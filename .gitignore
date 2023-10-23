@@ -13,5 +13,13 @@
 *.exe
 *.out
 
-#Ignore Jetbrains CLion IDE files
+# Ignore Jetbrains CLion IDE files
 .idea
+
+# VSCode files
+/.vs
+/.vscode
+
+# Debug/Release Folders
+Debug/
+Release/
