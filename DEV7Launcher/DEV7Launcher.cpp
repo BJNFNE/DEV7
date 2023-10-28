@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
     int choice;
 
     if (isDev7Running()) {
-        std::cout << "A DEV7 client is already running; cannot handle more than one DEV7 client." << std::endl;
+        std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client." << std::endl;
         return 1;
     }
 
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
     } else {
-        std::cout << "Neither loader7.exe nor Dev7VM.EXE is found in the current directory. Cannot start the program." << std::endl;
+        std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
         return 1;
     }
 
