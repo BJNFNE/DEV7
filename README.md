@@ -13,6 +13,8 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 3. CTRKTextLoader loads the the Text of the CTRK files. (CTRK files are used for the rotation)
 4. IMGIdentifier shows you which version your IMG is using.
 5. ModelPathDumper dumps out of the EXO files the Path of the Models (Folders)
+6. DEV7Launcher allows you to run Dev7VM.EXE or loader7.exe over an Launcher instead of the command.
+
 # Linux
 DEV7 Tools can be compiled in Rider (C#). for C++ use CLion or use Makefile (Available for some DEV7 Tools)
 
