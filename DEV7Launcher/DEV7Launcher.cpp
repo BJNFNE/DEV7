@@ -61,33 +61,51 @@ int main(int argc, char* argv[]) {
     int choice;
 
     if (isDev7Running()) {
-        std::cout << "A DEV7 client is already running, can not handle more than one DEV7 client." << std::endl;
+        std::cout << "A DEV7 client is already running; cannot handle more than one DEV7 client." << std::endl;
         return 1;
     }
 
-    std::string dev7VMDebugCommand = "Dev7VM.exe -break";
-    std::string dev7VMNormalCommand = "Dev7VM.exe";
-    std::string loaderDebugCommand = "loader7.exe -break";
-    std::string loaderNormalCommand = "loader7.exe";
+    bool loader7Exists = fileExists("loader7.exe");
+    bool dev7VMExists = fileExists("Dev7VM.EXE");
 
-    std::cout << "Choose an option:\n";
-    std::cout << "1. Start Dev7VM with Debug Menu\n";
-    std::cout << "2. Start Dev7VM Normal\n";
-    std::cout << "3. Start loader7 with Debug Menu\n";
-    std::cout << "4. Start loader7 Normal\n";
+    if (loader7Exists && dev7VMExists) {
+        std::cout << "Choose an option:\n";
+        std::cout << "1. Start Dev7VM with Debug Menu\n";
+        std::cout << "2. Start Dev7VM Normal\n";
+        std::cout << "3. Start loader7 with Debug Menu\n";
+        std::cout << "4. Start loader7 Normal\n";
+    } else if (loader7Exists) {
+        std::cout << "Choose an option:\n";
+        std::cout << "1. Start loader7 with Debug Menu\n";
+        std::cout << "2. Start loader7 Normal\n";
+    } else if (dev7VMExists) {
+        std::cout << "Choose an option:\n";
+        std::cout << "1. Start Dev7VM with Debug Menu\n";
+        std::cout << "2. Start Dev7VM Normal\n";
+    } else {
+        std::cout << "Neither loader7.exe nor Dev7VM.EXE is found in the current directory. Cannot start the program." << std::endl;
+        return 1;
+    }
+
     std::cin >> choice;
     std::cout << "\n";
 
-    if (choice == 1) {
-        launchCommand(dev7VMDebugCommand);
-    } else if (choice == 2) {
-        launchCommand(dev7VMNormalCommand);
-    } else if (choice == 3) {
-        launchCommand(loaderDebugCommand);
-    } else if (choice == 4) {
-        launchCommand(loaderNormalCommand);
-    } else {
-        std::cout << "Invalid choice. Please choose 1, 2, 3, or 4." << std::endl;
+    if (loader7Exists) {
+        if (choice == 1) {
+            launchCommand("loader7.exe -break");
+        } else if (choice == 2) {
+            launchCommand("loader7.exe");
+        } else {
+            std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+        }
+    } else if (dev7VMExists) {
+        if (choice == 1) {
+            launchCommand("Dev7VM.exe -break");
+        } else if (choice == 2) {
+            launchCommand("Dev7VM.exe");
+        } else {
+            std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+        }
     }
 
     return 0;
