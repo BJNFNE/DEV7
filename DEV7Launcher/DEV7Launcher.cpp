@@ -84,6 +84,8 @@ int main(int argc, char* argv[]) {
         std::cout << "2. Start Dev7VM Normal\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
+        std::cout << "Press Enter to exit." << std::endl;
+        getchar();
         return 1;
     }
 
