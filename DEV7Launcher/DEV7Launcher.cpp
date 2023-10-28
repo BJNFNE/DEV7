@@ -6,11 +6,15 @@
 #include <windows.h>
 #include <io.h>
 #define SLEEP_COMMAND "ping -n 2 127.0.0.1 > nul"
+#define DEV7_MUTEX_NAME "DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
 #include <cstdlib>
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/file.h>
 #define SLEEP_COMMAND "sleep 2"
+#define DEV7_MUTEX_NAME "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
 bool fileExists(const std::string& filename) {
@@ -20,6 +24,26 @@ bool fileExists(const std::string& filename) {
     struct stat buffer;
     return stat(filename.c_str(), &buffer) == 0;
 #endif
+}
+
+bool isDev7Running() {
+#ifdef _WIN32
+    HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_NAME);
+    if (mutex && GetLastError() == ERROR_ALREADY_EXISTS) {
+        CloseHandle(mutex);
+        return true;
+    }
+#else
+    int fd = open(DEV7_MUTEX_NAME, O_CREAT | O_RDWR, 0666);
+    if (fd == -1) {
+        return true;
+    }
+    if (flock(fd, LOCK_EX | LOCK_NB) == -1) {
+        close(fd);
+        return true;
+    }
+#endif
+    return false;
 }
 
 void launchCommand(const std::string& command) {
@@ -35,6 +59,11 @@ void launchCommand(const std::string& command) {
 
 int main(int argc, char* argv[]) {
     int choice;
+
+    if (isDev7Running()) {
+        std::cout << "A DEV7 client is already running, can not handle more than one DEV7 client." << std::endl;
+        return 1;
+    }
 
     std::string dev7VMDebugCommand = "Dev7VM.exe -break";
     std::string dev7VMNormalCommand = "Dev7VM.exe";
