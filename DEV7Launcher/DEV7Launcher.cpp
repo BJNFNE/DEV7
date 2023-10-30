@@ -75,8 +75,8 @@ void showTraceTXT() {
     system("notepad Trace.txt");
 #else
     // On Linux, we always try running the command with Wine
-    std::string modifyMDOIni = "nano Trace.txt";
-    system(modifyMDOIni.c_str());
+    std::string showTraceTXT = "nano --view Trace.txt";
+    system(showTraceTXT.c_str());
 #endif
 
 }
