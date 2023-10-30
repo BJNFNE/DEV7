@@ -57,6 +57,19 @@ void launchCommand(const std::string& command) {
     system(SLEEP_COMMAND);
 }
 
+void modifyMDOIni() {
+     system("nano mdo.ini"); // On Linux
+     
+     #ifdef _WIN32
+    system("notepad mdo.ini");
+#else
+    // On Linux, we always try running the command with Wine
+    std::string modifyMDOIni = "nano mdo.ini";
+    system(modifyMDOIni.c_str());
+#endif
+
+}
+
 int main(int argc, char* argv[]) {
     int choice;
 
@@ -74,14 +87,17 @@ int main(int argc, char* argv[]) {
         std::cout << "2. Start Dev7VM Normal\n";
         std::cout << "3. Start loader7 with Debug Menu\n";
         std::cout << "4. Start loader7 Normal\n";
+        std::cout << "5. Modify mdo.ini\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
         std::cout << "2. Start loader7 Normal\n";
+        std::cout << "3. Modify mdo.ini\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
+        std::cout << "3. Modify mdo.ini\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -97,6 +113,8 @@ int main(int argc, char* argv[]) {
             launchCommand("loader7.exe -break");
         } else if (choice == 2) {
             launchCommand("loader7.exe");
+        } else if (choice == 3) {
+            modifyMDOIni(); // Call the function to modify mdo.ini
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -105,6 +123,8 @@ int main(int argc, char* argv[]) {
             launchCommand("Dev7VM.exe -break");
         } else if (choice == 2) {
             launchCommand("Dev7VM.exe");
+        } else if (choice == 3) {
+            modifyMDOIni(); // Call the function to modify mdo.ini
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
