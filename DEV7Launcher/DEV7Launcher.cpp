@@ -58,8 +58,7 @@ void launchCommand(const std::string& command) {
 }
 
 void modifyMDOIni() {
-
-     #ifdef _WIN32
+#ifdef _WIN32
     system("notepad mdo.ini");
 #else
     // On Linux, we always try running the command with Wine
