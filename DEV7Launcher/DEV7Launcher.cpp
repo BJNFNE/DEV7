@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -68,6 +70,17 @@ void modifyMDOIni() {
 
 }
 
+void showTraceTXT() {
+#ifdef _WIN32
+    system("notepad Trace.txt");
+#else
+    // On Linux, we always try running the command with Wine
+    std::string modifyMDOIni = "nano Trace.txt";
+    system(modifyMDOIni.c_str());
+#endif
+
+}
+
 int main(int argc, char* argv[]) {
     int choice;
 
@@ -76,7 +89,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    bool loader7Exists = fileExists("loader7.exe");
+    bool loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good());
     bool dev7VMExists = fileExists("Dev7VM.EXE");
 
     if (loader7Exists && dev7VMExists) {
@@ -86,16 +99,19 @@ int main(int argc, char* argv[]) {
         std::cout << "3. Start loader7 with Debug Menu\n";
         std::cout << "4. Start loader7 Normal\n";
         std::cout << "5. Modify mdo.ini\n";
+        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
         std::cout << "2. Start loader7 Normal\n";
         std::cout << "3. Modify mdo.ini\n";
+        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
         std::cout << "3. Modify mdo.ini\n";
+        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -113,6 +129,8 @@ int main(int argc, char* argv[]) {
             launchCommand("loader7.exe");
         } else if (choice == 3) {
             modifyMDOIni(); // Call the function to modify mdo.ini
+        } else if (choice == 4) {
+            showTraceTXT(); // Call the function to show Trace.txt
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -123,6 +141,8 @@ int main(int argc, char* argv[]) {
             launchCommand("Dev7VM.exe");
         } else if (choice == 3) {
             modifyMDOIni(); // Call the function to modify mdo.ini
+        } else if (choice == 4) {
+            showTraceTXT(); // Call the function to show Trace.txt
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
