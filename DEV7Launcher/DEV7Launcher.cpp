@@ -70,6 +70,17 @@ void modifyMDOIni() {
 
 }
 
+void modifyMDODbg() {
+#ifdef _WIN32
+    system("notepad MDO.DBG");
+#else
+    // On Linux, we always try running the command with Wine
+    std::string modifyMDODbg = "nano MDO.DBG";
+    system(modifyMDODbg.c_str());
+#endif
+
+}
+
 void showTraceTXT() {
 #ifdef _WIN32
     system("notepad Trace.txt");
@@ -99,19 +110,22 @@ int main(int argc, char* argv[]) {
         std::cout << "3. Start loader7 with Debug Menu\n";
         std::cout << "4. Start loader7 Normal\n";
         std::cout << "5. Modify mdo.ini\n";
-        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
+        std::cout << "6. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
+        std::cout << "5. Modify mdo.dbg\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
         std::cout << "2. Start loader7 Normal\n";
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
+        std::cout << "5. Modify mdo.dbg\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
+        std::cout << "5. Modify mdo.dbg\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -131,6 +145,8 @@ int main(int argc, char* argv[]) {
             modifyMDOIni(); // Call the function to modify mdo.ini
         } else if (choice == 4) {
             showTraceTXT(); // Call the function to show Trace.txt
+        } else if (choice == 5) {
+            modifyMDODbg(); // Call the function to modify mdo.dbg
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -143,6 +159,8 @@ int main(int argc, char* argv[]) {
             modifyMDOIni(); // Call the function to modify mdo.ini
         } else if (choice == 4) {
             showTraceTXT(); // Call the function to show Trace.txt
+        } else if (choice == 5) {
+            modifyMDODbg(); // Call the function to modify mdo.dbg
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
