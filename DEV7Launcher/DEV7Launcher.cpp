@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <io.h>
 #define SLEEP_COMMAND "ping -n 2 127.0.0.1 > nul"
-#define DEV7_MUTEX_NAME "DEV7_INSTANCE_MUTEX"
+#define DEV7_MUTEX_LAUNCH "DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
 #include <cstdlib>
@@ -16,7 +16,7 @@
 #include <sys/types.h>
 #include <sys/file.h>
 #define SLEEP_COMMAND "sleep 2"
-#define DEV7_MUTEX_NAME "/tmp/DEV7_INSTANCE_MUTEX"
+#define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
 bool fileExists(const std::string& filename) {
@@ -30,13 +30,13 @@ bool fileExists(const std::string& filename) {
 
 bool isDev7Running() {
 #ifdef _WIN32
-    HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_NAME);
+    HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_LAUNCH);
     if (mutex && GetLastError() == ERROR_ALREADY_EXISTS) {
         CloseHandle(mutex);
         return true;
     }
 #else
-    int fd = open(DEV7_MUTEX_NAME, O_CREAT | O_RDWR, 0666);
+    int fd = open(DEV7_MUTEX_LAUNCH, O_CREAT | O_RDWR, 0666);
     if (fd == -1) {
         return true;
     }
