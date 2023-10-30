@@ -58,8 +58,7 @@ void launchCommand(const std::string& command) {
 }
 
 void modifyMDOIni() {
-     system("nano mdo.ini"); // On Linux
-     
+
      #ifdef _WIN32
     system("notepad mdo.ini");
 #else
