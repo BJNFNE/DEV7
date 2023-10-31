@@ -112,6 +112,7 @@ int main(int argc, char* argv[]) {
         std::cout << "5. Modify mdo.ini\n";
         std::cout << "6. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
+        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -119,6 +120,7 @@ int main(int argc, char* argv[]) {
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
+        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -126,6 +128,7 @@ int main(int argc, char* argv[]) {
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
+        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in this Directory. Program halted." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -147,6 +150,8 @@ int main(int argc, char* argv[]) {
             showTraceTXT(); // Call the function to show Trace.txt
         } else if (choice == 5) {
             modifyMDODbg(); // Call the function to modify mdo.dbg
+        } else if (choice == 6) {
+            launchCommand("loader7.exe -obc='B3_ParentLaunch'");
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -161,6 +166,8 @@ int main(int argc, char* argv[]) {
             showTraceTXT(); // Call the function to show Trace.txt
         } else if (choice == 5) {
             modifyMDODbg(); // Call the function to modify mdo.dbg
+        } else if (choice == 6) {
+            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");    
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
