@@ -11,7 +11,8 @@ Requirements:
 #include <windows.h>
 #include <string>
 
-   int main() {
+	int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+
 
     // Create the ADI5_LAUNCH_MUTEX
     HANDLE mutex = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
@@ -24,5 +25,4 @@ Requirements:
 
     return 0;
 }
-
 
