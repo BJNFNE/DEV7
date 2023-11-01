@@ -14,12 +14,12 @@ Requirements:
    int main() {
 
     // Create the ADI5_LAUNCH_MUTEX
-    HANDLE event = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
+    HANDLE mutex = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
 
-    if (event != NULL) {
+    if (mutex != NULL) {
         std::string command = "Loader7.exe";
         system(command.c_str());
-        CloseHandle(event);
+        CloseHandle(mutex);
     }
 
     return 0;
