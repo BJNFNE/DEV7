@@ -6,6 +6,11 @@ This is just an attempt to recreate that EXE in C++ as it was developed.
 It was originally developed for ADI 5 version 5.00 in the Year 2000
 Requirements:
 -  Compile under MSVC 6.0
+Compiling:
+- Compile in Release mode to get near the filesize of the original exe.
+TODO:
+- Try to match the original filesize (24kb)
+- Try to strip out the Console window completely
 */
 
 #include <windows.h>
