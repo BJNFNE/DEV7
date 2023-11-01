@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Erstellungsprotokoll</h1>
+<h3>
+--------------------Konfiguration: LoaderMDO - Win32 Debug--------------------
+</h3>
+<h3>Befehlszeilen</h3>
+Erstellen der temporären Datei  "C:\DOKUME~1\ADIBOO~1\LOKALE~1\Temp\RSP3A.tmp" mit Inhalten
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/LoaderMDO.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"Z:\LoaderMDO.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\ADIBOO~1\LOKALE~1\Temp\RSP3A.tmp" 
+Erstellen der temporären Datei  "C:\DOKUME~1\ADIBOO~1\LOKALE~1\Temp\RSP3B.tmp" mit Inhalten
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/LoaderMDO.pdb" /debug /machine:I386 /out:"Debug/LoaderMDO.exe" /pdbtype:sept 
+.\Debug\LoaderMDO.obj
+]
+Erstellen der Befehlzeile "link.exe @C:\DOKUME~1\ADIBOO~1\LOKALE~1\Temp\RSP3B.tmp"
+<h3>Ausgabefenster</h3>
+Kompilierung läuft...
+LoaderMDO.cpp
+Linker-Vorgang läuft...
+
+
+
+<h3>Ergebnisse</h3>
+LoaderMDO.exe - 0 Fehler, 0 Warnung(en)
+</pre>
+</body>
+</html>
