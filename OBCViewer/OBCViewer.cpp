@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
 
-    // for clearing the Consokle after the Program closed.
+    // for clearing the Console after the Program closed.
     std::string clearConsole;
 
     // List here everything for the Debug Infos.
