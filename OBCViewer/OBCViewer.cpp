@@ -127,7 +127,6 @@ int main(int argc, char* argv[]) {
     std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
     getchar();
     system(clearConsole.c_str());
-    exit(0);
-
+    
     return 0;
 }
