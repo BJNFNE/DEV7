@@ -42,3 +42,6 @@ credits:
 
 delete:
 	rm OBCViewer
+
+recompile:
+	make delete && make
