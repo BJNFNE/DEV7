@@ -94,10 +94,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Display the offset in the OBC Script in hexadecimal format within Debug Infos
-    OBCOutput << "Offset in the OBC Script: 0x" << std::hex << offset << " bytes" << std::dec << std::endl;
-    OBCOutput << "\b" << std::endl; // Add an extra line for better separation
-
     // Close input & output for OBC Script
     OBCInput.close();
     OBCOutput.close();
@@ -127,6 +123,6 @@ int main(int argc, char* argv[]) {
     std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
     getchar();
     system(clearConsole.c_str());
-    
+
     return 0;
 }
