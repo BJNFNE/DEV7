@@ -8,8 +8,8 @@
 const std::string versionNumber = "1.4.2";
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <script.obc> <output.txt>\n" << std::endl;
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <script.obc>\n" << std::endl;
         std::cerr << "Version - " << versionNumber << "\n" << std::endl;
         printf("Supported games:\n");
         printf(" * Adibou 3\n");
@@ -18,7 +18,6 @@ int main(int argc, char* argv[]) {
         printf(" * Adiboud'chou series\n");
         printf(" * Le Pays des pierres magiques\n\n");
         printf("<script.obc>\n\t .obc script to view\n\n");
-        printf("<output.txt>\n\tlocate where OBCViewer should store the viewable text of the OBC Script\n\n");
         printf("Credits:\n");
         printf("BJNFNE (main Developer)\n");
         printf("rzil (BLooperZ) (Thanks for helping out)\n\n");
@@ -27,7 +26,6 @@ int main(int argc, char* argv[]) {
 
     // Here are listed the strings for OBC itself.
     std::string inputOBC = argv[1];
-    std::string outputOBC = argv[2];
 
     // for clearing the Console after the Program closed.
     std::string clearConsole;
@@ -73,7 +71,7 @@ int main(int argc, char* argv[]) {
     OBCInput.seekg(0);
 
     // Open the output file for the OBC Script
-    std::ofstream OBCOutput(outputOBC);
+    std::ofstream OBCOutput(inputScript.stem().string() + ".txt");
 
     if (!OBCOutput) {
         std::cerr << "Error: Unable to create a text output of the OBC Script." << std::endl;
@@ -112,11 +110,11 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Offset in the OBC Script: 0x" << std::hex << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
-    std::cout << "OBC Script (" << argv[1] << ") is now displayable and saved output to " << outputOBC << "" << std::endl;
+    std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << "_output.txt" << std::endl;
 
     // Display the full path of the output file of the OBC Script
     std::cout << "\b" << std::endl;
-    printf("Output file created at: %s\n", std::filesystem::absolute(outputOBC).c_str());
+    printf("Output file created at: %s\n", std::filesystem::absolute(inputScript.stem().string() + "_output.txt").c_str());
 
     // Exit message for OBCViewer
     std::cout << "\b" << std::endl;
