@@ -25,9 +25,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    // Here are listed the strings for OBC itself.
     std::string inputOBC = argv[1];
     std::string outputOBC = argv[2];
+
+    // for clearing the Consokle after the Program closed.
     std::string clearConsole;
+
+    // List here everything for the Debug Infos.
     std::string username = getlogin();
 
     #ifdef _WIN32
