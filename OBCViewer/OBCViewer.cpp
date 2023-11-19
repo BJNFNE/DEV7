@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
     // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
     if (checkEntrypointOBC.find("OBC Copyright MDO 1999") != 0) {
         std::cerr << "Error: The Entrypoint in the OBC Script was not found!\n" << std::endl;
-        std::cerr << "Maybe you have an new version of OBC? Then please contact BJNFNE on Discord.\n" << std::endl;
+        std::cerr << "Maybe you have a new version of OBC? Then please contact BJNFNE on Discord.\n" << std::endl;
         return 1;
     }
 
@@ -76,31 +76,45 @@ int main(int argc, char* argv[]) {
     std::ofstream OBCOutput(outputOBC);
 
     if (!OBCOutput) {
-        std::cerr << "Error: Unable to create text output of OBC Script." << std::endl;
+        std::cerr << "Error: Unable to create a text output of the OBC Script." << std::endl;
         return 1;
     }
 
-    // Adds the Date when Outputfile was created to the Outputfile"
+    // Adds the Date when Output file was created to the Output file
     time_t current_time = time(nullptr);
     char obc_timedate[100];
     strftime(obc_timedate, sizeof(obc_timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
 
-    // Debug Infos for Outputfile
-    OBCOutput << "Debug Infos:" << std::endl;
-    OBCOutput << "Output of " << argv[1] << " created at " << obc_timedate << std::endl;
-    OBCOutput << "Created by "<< username << std::endl;
-    OBCOutput << "\b" << std::endl;
-
-    // Read from input and write to output
+    // Read from input and write to output, keeping track of the offset
+    std::streampos offset = OBCInput.tellg();
     while (OBCInput.get(c)) {
         if (std::isprint(static_cast<unsigned char>(c))) {
             OBCOutput.put(c);
+            offset = OBCInput.tellg(); // Update the offset after each character is processed
         }
     }
+
+    // Display the offset in the OBC Script in hexadecimal format within Debug Infos
+    OBCOutput << "Offset in the OBC Script: 0x" << std::hex << offset << " bytes" << std::dec << std::endl;
+    OBCOutput << "\b" << std::endl; // Add an extra line for better separation
 
     // Close input & output for OBC Script
     OBCInput.close();
     OBCOutput.close();
+
+    // Create a separate file for Debug Infos
+    std::ofstream DebugInfoOutput(inputScript.stem().string() + "_debuginfo.txt");
+    if (!DebugInfoOutput) {
+        std::cerr << "Error: Unable to create Debug Infos file." << std::endl;
+        return 1;
+    }
+
+    // Write Debug Infos to the separate file
+    DebugInfoOutput << "Debug Infos:" << std::endl;
+    DebugInfoOutput << "Output of " << inputScript.stem().string() << " created at " << obc_timedate << std::endl;
+    DebugInfoOutput << "Created by " << username << std::endl;
+    DebugInfoOutput << "Offset in the OBC Script: 0x" << std::hex << offset << " bytes" << std::dec << std::endl;
+    DebugInfoOutput.close();
 
     std::cout << "OBC Script (" << argv[1] << ") is now displayable and saved output to " << outputOBC << "" << std::endl;
 
@@ -114,4 +128,6 @@ int main(int argc, char* argv[]) {
     getchar();
     system(clearConsole.c_str());
     exit(0);
+
+    return 0;
 }
