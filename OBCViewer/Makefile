@@ -1,7 +1,5 @@
-#######################################################################
-# Makefile for OBCViewer	                                      #
-# Works on Linux & MacOS					      #
-#######################################################################
+# Makefile for OBCViewer
+# Works on Linux & MacOS
 
 # CPP file & object files
 OBCViewer:
@@ -12,12 +10,12 @@ verbose:
 
 installdeps_apt: # for APT users (Ubuntu & Debian based distros)
 	sudo apt update # (for avoiding any errors)
-	sudo apt install build-essential make -y
+	sudo apt install build-essential make
 
 installdeps_yum: # for YUM users (Fedora & RHEL & CentOS based distros)
-	sudo yum install gcc gcc-c++ kernel-devel make -y
+	sudo yum install gcc gcc-c++ kernel-devel make
 
-installdeps_brew: # for BREW users (MacOS Homebrew)
+installdeps_brew: # for BREW users (MacOS)
 	sudo brew install gcc
 	sudo brew install make
 
@@ -41,3 +39,6 @@ credits:
 	@echo "Credits:\n"
 	@echo "BJNFNE (Main developer)"
 	@echo "rzil (BLooperZ) (Thanks for helping out)"
+
+delete:
+	rm OBCViewer
