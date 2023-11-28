@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // Set here the versionNumber
-const std::string versionNumber = "1.4.2";
+const std::string versionNumber = "1.5.0";
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -107,7 +107,8 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Debug Infos:" << std::endl;
     DebugInfoOutput << "Output of " << inputScript.stem().string() << " created at " << obc_timedate << std::endl;
     DebugInfoOutput << "Created by " << username << std::endl;
-    DebugInfoOutput << "Offset in the OBC Script: 0x" << std::hex << offset << " bytes" << std::dec << std::endl;
+    DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
+    DebugInfoOutput << "Offset (bytes): " << std::scanf << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
     std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << "_output.txt" << std::endl;
