@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
 
     // Write Debug Infos to the separate file
     DebugInfoOutput << "Debug Infos:" << std::endl;
-    DebugInfoOutput << "Output of " << inputScript.stem().string() << " created at " << obc_timedate << std::endl;
+    DebugInfoOutput << "Output of " << inputScript.stem().string() << ".obc" << " created at " << obc_timedate << std::endl;
     DebugInfoOutput << "Created by " << username << std::endl;
     DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
     DebugInfoOutput << "Offset (bytes): " << std::scanf << offset << " bytes" << std::dec << std::endl;
