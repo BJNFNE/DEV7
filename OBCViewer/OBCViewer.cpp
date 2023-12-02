@@ -111,11 +111,11 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Offset (bytes): " << std::scanf << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
-    std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << "_output.txt" << std::endl;
+    std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << ".txt" << std::endl;
 
     // Display the full path of the output file of the OBC Script
     std::cout << "\b" << std::endl;
-    printf("Output file created at: %s\n", std::filesystem::absolute(inputScript.stem().string() + "_output.txt").c_str());
+    printf("Output file created at: %s\n", std::filesystem::absolute(inputScript.stem().string() + ".txt").c_str());
 
     // Exit message for OBCViewer
     std::cout << "\b" << std::endl;
