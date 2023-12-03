@@ -1,33 +1,34 @@
 from PIL import Image
 import os
-print(f"\b")
-print(f"Currently IMGConverter only can convert IMG's that are based on TGA.\f")
 
-# Prompt the user for the input image file path
-img_input = input("Enter the path of the input image file: ")
+def convert_to_tga(input_path, output_path, resolution):
+    image = Image.open(input_path)
+    # Resize the image to the chosen resolution
+    image = image.resize(resolution, Image.ANTIALIAS)
+    image.save(output_path, format="TGA")
 
-# Define the valid output formats
-valid_formats = ['PNG', 'JPG', 'TGA']
+def main():
+    # Input path from user input
+    input_image_path = input("Enter the path to the input image: ")
 
-# Prompt the user for the desired output format
-while True:
-    output_format = input("Enter the desired output format (PNG, JPG, or TGA): ").upper()
-    if output_format in valid_formats:
-        break
-    else:
-        print("Invalid format. Please enter a valid format.")
+    # Extract the input filename and extension
+    input_filename, input_extension = os.path.splitext(os.path.basename(input_image_path))
 
-# Extract the file name (without extension) from the input path
-input_filename, _ = os.path.splitext(os.path.basename(img_input))
+    # Choose screen resolution
+    resolution_choice = input("Choose screen resolution (e.g., 1920x1080): ")
+    width, height = map(int, resolution_choice.split('x'))
+    resolution = (width, height)
 
-# Generate the output file path using the input file name and chosen format
-output_image = f"{input_filename}.{output_format}"
+    # Convert to TGA (temporary format)
+    temp_output_path = f"{input_filename}_temp.tga"
+    convert_to_tga(input_image_path, temp_output_path, resolution)
+    print(f"Image converted to TGA with resolution {resolution}: {temp_output_path}")
 
-# Open the image in its original format (IMG)
-original_image = Image.open(img_input)
+    # Choose the output filename for IMG
+    img_output_filename = input("Enter the desired output filename for IMG (without extension): ")
+    img_output_path = f"{img_output_filename}.img"
+    os.rename(temp_output_path, img_output_path)
+    print(f"TGA renamed to IMG: {img_output_path}")
 
-# Save the image in the specified format
-original_image.save(output_image)
-
-print(f"Image converted from {img_input} to {output_image} successfully.")
-
+if __name__ == "__main__":
+    main()
