@@ -13,8 +13,9 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 2. OBCViewer shows the Text of the OBC Scripts for further analysis.
 3. CTRKTextLoader loads the the Text of the CTRK files. (CTRK files are used for the rotation)
 4. IMGIdentifier shows you which version your IMG is using.
-5. ModelPathDumper dumps out of the EXO files the Path of the Models (Folders)
-6. DEV7Launcher allows you to run Dev7VM.EXE or loader7.exe over an Launcher instead of the command.
+5. IMGConverter converts Pictures to IMG file format, that then can be be used in Game.
+6. ModelPathDumper dumps out of the EXO files the Path of the Models (Folders)
+7. DEV7Launcher allows you to run Dev7VM.EXE or loader7.exe over an Launcher instead of the command.
 
 # Rewritten original Software
 1. LoaderMDO starts LOADER7.EXE, it was known as Adibou3.EXE / ADI5.EXE. for more Information see [here](https://github.com/BJNFNE/DEV7/blob/tools/LoaderMDO/LoaderMDO.cpp)
