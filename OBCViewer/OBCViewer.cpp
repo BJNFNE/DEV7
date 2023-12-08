@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // Set here the versionNumber
-const std::string versionNumber = "1.5.0";
+const std::string versionNumber = "1.5.1";
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
