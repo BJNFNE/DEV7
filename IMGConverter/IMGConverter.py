@@ -8,6 +8,13 @@ def convert_to_tga(input_path, output_path, resolution):
     image = image.resize(resolution, Image.ANTIALIAS)
     image.save(output_path, format="TGA")
 
+def is_resolution_valid(resolution):
+    max_width = 800
+    max_height = 600
+
+    width, height = resolution
+    assert width <= max_width and height <= max_height, f"Resolution exceeds maximum allowed ({max_width}x{max_height})"
+
 def main():
     try:
         # Input path from user input
@@ -28,6 +35,9 @@ def main():
             width, height = map(int, resolution_choice.split('x'))
             resolution = (width, height)
 
+            # Check if the resolution is valid
+            is_resolution_valid(resolution)
+
             # Convert to TGA (temporary format)
             temp_output_path = f"{input_filename}_temp.tga"
             convert_to_tga(input_image_path, temp_output_path, resolution)
@@ -41,11 +51,11 @@ def main():
             if os.path.exists(img_output_path):
                 overwrite = input("Warning: Output file already exists. Do you want to overwrite? (y/n): ")
                 if overwrite.lower() != 'y':
-                    print("Program terminted - Outputfile won't get overwritten.")
+                    print("Program terminated - Output file won't get overwritten.")
                     sys.exit(0)
 
             os.rename(temp_output_path, img_output_path)
-            print(f"Converted sucessfully to {img_output_path}")
+            print(f"Converted successfully to {img_output_path}")
         else:
             print("Please enter a valid resolution.")
     except KeyboardInterrupt:
@@ -53,6 +63,9 @@ def main():
         sys.exit(1)
     except FileNotFoundError:
         print(f"Error: File not found")
+        sys.exit(1)
+    except AssertionError as e:
+        print(f"Error: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
