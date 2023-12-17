@@ -13,6 +13,11 @@ def main():
         # Input path from user input
         input_image_path = input("Enter the path to the input image: ")
 
+        # Check if the input file exists
+        if not os.path.exists(input_image_path):
+            print(f"Error: Input file not found")
+            sys.exit(1)
+
         # Extract the input filename and extension
         input_filename, input_extension = os.path.splitext(os.path.basename(input_image_path))
 
@@ -31,13 +36,24 @@ def main():
             # Choose the output filename for IMG
             img_output_filename = input("Enter the desired output filename for IMG (without extension): ")
             img_output_path = f"{img_output_filename}.img"
+
+            # Check if the output file already exists
+            if os.path.exists(img_output_path):
+                overwrite = input("Warning: Output file already exists. Do you want to overwrite? (y/n): ")
+                if overwrite.lower() != 'y':
+                    print("Program terminted - Outputfile won't get overwritten.")
+                    sys.exit(0)
+
             os.rename(temp_output_path, img_output_path)
-            print(f"TGA renamed to IMG: {img_output_path}")
+            print(f"Converted sucessfully to {img_output_path}")
         else:
             print("Please enter a valid resolution.")
     except KeyboardInterrupt:
         print("\nProgram terminated by the user.")
-        sys.exit(1)  # Exit with a non-zero code to indicate an interruption
+        sys.exit(1)
+    except FileNotFoundError:
+        print(f"Error: File not found")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
