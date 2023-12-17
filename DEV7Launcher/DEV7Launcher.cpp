@@ -70,6 +70,13 @@ void modifyMDOIni() {
 }
 
 void modifyMDODbg() {
+    std::string mdo_dbg = "MDO.DBG";
+
+    if (!fileExists(mdo_dbg)) {
+        std::cout << "Error: " << mdo_dbg << " not found in the directory." << std::endl;
+        return;
+    }
+
 #ifdef _WIN32
     system("notepad MDO.DBG");
 #else
@@ -77,7 +84,6 @@ void modifyMDODbg() {
     std::string modifyMDODbg = "nano MDO.DBG";
     system(modifyMDODbg.c_str());
 #endif
-
 }
 
 void showTraceTXT() {
@@ -171,6 +177,8 @@ int main(int argc, char* argv[]) {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
     }
+
+   // std::cin.get();
 
     return 0;
 }
