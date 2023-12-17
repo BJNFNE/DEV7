@@ -13,8 +13,8 @@ def is_resolution_valid(resolution):
     max_height = 600
 
     width, height = resolution
-    assert width <= max_width and height <= max_height, f"Resolution exceeds maximum allowed ({max_width}x{max_height})"
-
+    assert width <= max_width and height <= max_height, f"The maximum resolution is {max_width}x{max_height}"
+    
 def main():
     try:
         # Input path from user input
