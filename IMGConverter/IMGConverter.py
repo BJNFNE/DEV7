@@ -24,7 +24,7 @@ def main():
         # Convert to TGA (temporary format)
         temp_output_path = f"{input_filename}_temp.tga"
         convert_to_tga(input_image_path, temp_output_path, resolution)
-        print(f"Image converted to TGA with resolution {resolution}: {temp_output_path}")
+        print(f"Image converted to TGA with resolution {resolution[0]}x{resolution[1]}: {temp_output_path}")
 
         # Choose the output filename for IMG
         img_output_filename = input("Enter the desired output filename for IMG (without extension): ")
