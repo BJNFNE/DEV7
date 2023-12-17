@@ -1,0 +1,5 @@
+# OBC Script
+*.obc
+
+# Text output file
+*.txt
