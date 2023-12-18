@@ -12,7 +12,12 @@ def convert_to_tga(input_path, output_path, resolution):
     image = Image.open(input_path)
     # Resize the image to the chosen resolution
     image = image.resize(resolution, Image.ANTIALIAS)
+    
+    # Calculate bits per pixel based on the image mode
+    bpp = len(image.getbands()) * 8
+    
     image.save(output_path, format="TGA")
+    return bpp
 
 def is_resolution_valid(resolution):
     max_width = 800
@@ -51,8 +56,7 @@ def main():
 
             # Convert to TGA (temporary format)
             temp_output_path = f"{input_filename}_temp.tga"
-            convert_to_tga(input_image_path, temp_output_path, resolution)
-            print(f"Image converted to TGA with resolution {resolution[0]}x{resolution[1]}: {temp_output_path}")
+            bpp = convert_to_tga(input_image_path, temp_output_path, resolution)
 
             # Choose the output filename for IMG
             img_output_filename = input("Enter the desired output filename for IMG (without extension): ")
@@ -66,8 +70,10 @@ def main():
                     sys.exit(0)
 
             os.rename(temp_output_path, img_output_path)
-            print(f"Image converted sucessfully - {img_output_path}")
+            print(f"\b")
+            print(f"Image converted successfully - {img_output_path}")
             print(f"Resolution: {resolution[0]}x{resolution[1]}")
+            print(f"Bits per pixel (BPP): {bpp}")
         else:
             print("Please enter a valid resolution.")
     except KeyboardInterrupt:
