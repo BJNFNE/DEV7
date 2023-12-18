@@ -66,7 +66,8 @@ def main():
                     sys.exit(0)
 
             os.rename(temp_output_path, img_output_path)
-            print(f"Converted successfully to {img_output_path}")
+            print(f"Image converted sucessfully - {img_output_path}")
+            print(f"Resolution: {resolution[0]}x{resolution[1]}")
         else:
             print("Please enter a valid resolution.")
     except KeyboardInterrupt:
