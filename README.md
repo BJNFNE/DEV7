@@ -20,6 +20,9 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 # Rewritten original Software
 1. LoaderMDO starts LOADER7.EXE, it was known as Adibou3.EXE / ADI5.EXE. for more Information see [here](https://github.com/BJNFNE/DEV7/blob/tools/LoaderMDO/LoaderMDO.cpp)
 
+# Discovered Code Software
+1. CLEANER code were discovered in readable form in UNINST.EXE its an BATCH file.
+
 # Linux
 DEV7 Tools can be compiled in Rider (C#). for C++ use CLion or use Makefile (Available for some DEV7 Tools)
 
