@@ -14,7 +14,7 @@ def convert_to_tga(input_path, output_path, resolution):
     image = image.resize(resolution, Image.ANTIALIAS)
     
     # Calculate bits per pixel based on the image mode
-    bpp = len(image.getbands()) * 8
+    bpp = image.bits if hasattr(image, 'bits') else len(image.getbands()) * 8
     
     image.save(output_path, format="TGA")
     return bpp
@@ -44,8 +44,15 @@ def main():
         # Extract the input filename and extension
         input_filename, input_extension = os.path.splitext(os.path.basename(input_image_path))
 
+        # Get the original resolution and BPP
+        image = Image.open(input_image_path)
+        resolution_original = image.size
+        bpp_original = image.bits if hasattr(image, 'bits') else len(image.getbands()) * 8
+        print(f"Original Resolution: {resolution_original[0]}x{resolution_original[1]}")
+        print(f"Bits per pixel (BPP): {bpp_original}")
+
         # Choose screen resolution
-        resolution_choice = input("Choose screen resolution: ")
+        resolution_choice = input("Choose screen resolution (max 800x600): ")
 
         if resolution_choice:
             width, height = map(int, resolution_choice.split('x'))
