@@ -33,12 +33,12 @@ def main():
 
         # Check if the input file exists
         if not os.path.exists(input_image_path):
-            print(f"Error: Input file not found")
+            print(f"Error: Input file not found\b")
             sys.exit(1)
 
         # Check if the input file has an allowed extension
         if not is_valid_image_file(input_image_path):
-            print(f"Error: Unsupported file format.")
+            print(f"Error: Unsupported file format.\b")
             sys.exit(1)
 
         # Extract the input filename and extension
@@ -49,7 +49,7 @@ def main():
         resolution_original = image.size
         bpp_original = image.bits if hasattr(image, 'bits') else len(image.getbands()) * 8
         print(f"Original Resolution: {resolution_original[0]}x{resolution_original[1]}")
-        print(f"Bits per pixel (BPP): {bpp_original}")
+        print(f"Bits per pixel (BPP): {bpp_original}\b")
 
         # Choose screen resolution
         resolution_choice = input("Choose screen resolution (max 800x600): ")
@@ -73,24 +73,24 @@ def main():
             if os.path.exists(img_output_path):
                 overwrite = input("Warning: Output file already exists. Do you want to overwrite? (y/n): ")
                 if overwrite.lower() != 'y':
-                    print("Program terminated - Output file won't get overwritten.")
+                    print("Program terminated - Output file won't get overwritten.\b")
                     sys.exit(0)
 
             os.rename(temp_output_path, img_output_path)
             print(f"\b")
             print(f"Image converted successfully - {img_output_path}")
             print(f"Resolution: {resolution[0]}x{resolution[1]}")
-            print(f"Bits per pixel (BPP): {bpp}")
+            print(f"Bits per pixel (BPP): {bpp}\b")
         else:
-            print("Please enter a valid resolution.")
+            print("Please enter a valid resolution.\b")
     except KeyboardInterrupt:
-        print("\nProgram terminated by the user.")
+        print("\nProgram terminated by the user.\b")
         sys.exit(1)
     except FileNotFoundError:
-        print(f"Error: File not found")
+        print(f"Error: File not found\b")
         sys.exit(1)
     except AssertionError as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}\b")
         sys.exit(1)
 
 if __name__ == "__main__":
