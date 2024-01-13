@@ -177,8 +177,6 @@ int main(int argc, char* argv[]) {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
     }
-
-   // std::cin.get();
-
+    
     return 0;
 }
