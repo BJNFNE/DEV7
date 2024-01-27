@@ -94,7 +94,14 @@ void showTraceTXT() {
     std::string showTraceTXT = "nano --view Trace.txt";
     system(showTraceTXT.c_str());
 #endif
+}
 
+void modifyAdibou3Ini() {
+#ifdef _WIN32
+    system("notepad Adibou3.ini") || system("notepad ADIBOU3.ini");
+#else
+    printf("Currently unsupported on Linux\n");
+#endif
 }
 
 int main(int argc, char* argv[]) {
@@ -115,9 +122,10 @@ int main(int argc, char* argv[]) {
         std::cout << "3. Start loader7 with Debug Menu\n";
         std::cout << "4. Start loader7 Normal\n";
         std::cout << "5. Modify mdo.ini\n";
-        std::cout << "6. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
-        std::cout << "5. Modify mdo.dbg\n";
-        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
+        std::cout << "7. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
+        std::cout << "8. Modify mdo.dbg\n";
+        std::cout << "9. Launch Parentsection (Adibou 3 only)\n";
+        std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -126,6 +134,7 @@ int main(int argc, char* argv[]) {
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
+        std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -134,6 +143,7 @@ int main(int argc, char* argv[]) {
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
+        std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -157,6 +167,8 @@ int main(int argc, char* argv[]) {
             modifyMDODbg(); // Call the function to modify mdo.dbg
         } else if (choice == 6) {
             launchCommand("loader7.exe -obc='B3_ParentLaunch'");
+        } else if (choice == 7) {
+            modifyAdibou3Ini(); // Call the function to modify adibou3.ini  
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -172,11 +184,12 @@ int main(int argc, char* argv[]) {
         } else if (choice == 5) {
             modifyMDODbg(); // Call the function to modify mdo.dbg
         } else if (choice == 6) {
-            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");    
+            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
+        } else if (choice == 7) {
+            modifyAdibou3Ini(); // Call the function to modify adibou3.ini    
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
     }
-    
     return 0;
 }
