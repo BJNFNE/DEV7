@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
         std::cout << "8. Modify mdo.dbg\n";
         std::cout << "9. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
+        std::cout << "11. Run Uninstaller (UNINST.EXE)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
