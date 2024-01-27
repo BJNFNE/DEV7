@@ -31,3 +31,4 @@ if img_file.lower().endswith((".img", ".IMG")):
         print("\b")
 else:
     print("Invalid IMG file extension. Please add the .img extension aswell")
+input("Press enter to close IMGIdentifier")
