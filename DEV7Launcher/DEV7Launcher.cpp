@@ -98,7 +98,7 @@ void showTraceTXT() {
 
 void modifyAdibou3Ini() {
 #ifdef _WIN32
-    system("notepad Adibou3.ini") || system("notepad ADIBOU3.ini");
+    system("notepad Adibou3.ini");
 #else
     printf("Currently unsupported on Linux\n");
 #endif
