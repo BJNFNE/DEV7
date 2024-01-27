@@ -94,7 +94,6 @@ void showTraceTXT() {
 #endif
 }
 
-
 void modifyAdibou3Ini() {
 #ifdef _WIN32
     system("notepad Adibou3.ini");
@@ -104,11 +103,17 @@ void modifyAdibou3Ini() {
 #endif
 }
 
-void modifyDemoIni() {
+void runUNINST() {
+    std::string uninst = "UNINST.EXE";
+
+    if (!fileExists(uninst)) {
+        std::cout << "Error: " << uninst << " not found in directory." << std::endl;
+        return;
+    }
 #ifdef _WIN32
-    system("notepad demo.ini");
+    system("UNINST.EXE");
 #else
-    if (system("gedit Demo.ini") != 0) {
+    if (system("wine UNINST.EXE") != 0) {
     }
 #endif
 }
@@ -135,7 +140,7 @@ int main(int argc, char* argv[]) {
         std::cout << "8. Modify mdo.dbg\n";
         std::cout << "9. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "11. Modify Demo.ini\n";
+        std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -145,7 +150,7 @@ int main(int argc, char* argv[]) {
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "8. Modify Demo.ini\n";
+        std::cout << "8. Run Uninstaller\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -155,7 +160,7 @@ int main(int argc, char* argv[]) {
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "8. Modify Demo.ini\n";
+        std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -182,7 +187,9 @@ int main(int argc, char* argv[]) {
         } else if (choice == 7) {
             modifyAdibou3Ini(); // Call the function to modify adibou3.ini
         } else if (choice == 8) {
-            modifyAdibou3Ini(); // Call the function to modify Demo.ini   
+            modifyAdibou3Ini(); // Call the function to modify Demo.ini
+        } else if (choice == 9) {
+            runUNINST(); // Call the function to run the Uninstaller 
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -202,7 +209,7 @@ int main(int argc, char* argv[]) {
         } else if (choice == 7) {
             modifyAdibou3Ini(); // Call the function to modify adibou3.ini
         } else if (choice == 8) {
-            modifyDemoIni(); // Call the function to modify Demo.ini    
+            runUNINST(); // Call the function to run the Uninstaller 
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
