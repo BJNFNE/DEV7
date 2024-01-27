@@ -187,8 +187,6 @@ int main(int argc, char* argv[]) {
         } else if (choice == 7) {
             modifyAdibou3Ini(); // Call the function to modify adibou3.ini
         } else if (choice == 8) {
-            modifyAdibou3Ini(); // Call the function to modify Demo.ini
-        } else if (choice == 9) {
             runUNINST(); // Call the function to run the Uninstaller 
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
