@@ -96,11 +96,13 @@ void showTraceTXT() {
 #endif
 }
 
+
 void modifyAdibou3Ini() {
 #ifdef _WIN32
     system("notepad Adibou3.ini");
 #else
-    printf("Currently unsupported on Linux\n");
+    if (system("gedit Adibou3.ini") != 0) {
+    }
 #endif
 }
 
