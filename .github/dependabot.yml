@@ -1,18 +1,7 @@
 version: 2
 updates:
-  - package-ecosystem: npm   # Replace with the appropriate package manager (npm, bundler, pip, etc.)
-    directory: "."          # Specify the directory where your dependencies are located
+  - package-ecosystem: npm
+    directory: "/"
     schedule:
-      interval: "daily"     # Set the update frequency (options: daily, weekly)
-    open-pull-requests-limit: 10  # Limit the number of open pull requests created by Dependabot
-
- - package-ecosystem: bundler
-   directory: "/"
-   schedule:
-     interval: "daily"
-
- Example for Python (pip):
- - package-ecosystem: pip
-   directory: "/"
-   schedule:
-     interval: "daily"
+      interval: "daily"
+    open-pull-requests-limit: 10
