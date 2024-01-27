@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -10,7 +9,6 @@
 #define DEV7_MUTEX_LAUNCH "DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
-#include <cstdlib>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/file.h>
@@ -106,6 +104,15 @@ void modifyAdibou3Ini() {
 #endif
 }
 
+void modifyDemoIni() {
+#ifdef _WIN32
+    system("notepad demo.ini");
+#else
+    if (system("gedit Demo.ini") != 0) {
+    }
+#endif
+}
+
 int main(int argc, char* argv[]) {
     int choice;
 
@@ -128,6 +135,7 @@ int main(int argc, char* argv[]) {
         std::cout << "8. Modify mdo.dbg\n";
         std::cout << "9. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
+        std::cout << "11. Modify Demo.ini\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -137,6 +145,7 @@ int main(int argc, char* argv[]) {
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
+        std::cout << "8. Modify Demo.ini\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -146,6 +155,7 @@ int main(int argc, char* argv[]) {
         std::cout << "5. Modify mdo.dbg\n";
         std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
+        std::cout << "8. Modify Demo.ini\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -170,7 +180,9 @@ int main(int argc, char* argv[]) {
         } else if (choice == 6) {
             launchCommand("loader7.exe -obc='B3_ParentLaunch'");
         } else if (choice == 7) {
-            modifyAdibou3Ini(); // Call the function to modify adibou3.ini  
+            modifyAdibou3Ini(); // Call the function to modify adibou3.ini
+        } else if (choice == 8) {
+            modifyAdibou3Ini(); // Call the function to modify Demo.ini   
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -188,7 +200,9 @@ int main(int argc, char* argv[]) {
         } else if (choice == 6) {
             launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
         } else if (choice == 7) {
-            modifyAdibou3Ini(); // Call the function to modify adibou3.ini    
+            modifyAdibou3Ini(); // Call the function to modify adibou3.ini
+        } else if (choice == 8) {
+            modifyDemoIni(); // Call the function to modify Demo.ini    
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
