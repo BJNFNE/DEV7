@@ -1,47 +1,56 @@
-﻿using System.Diagnostics;
+using System;
+using System.Diagnostics;
 using System.IO;
-using System.Net.Sockets;
-using System.Reflection;
-string dir = AppDomain.CurrentDomain.BaseDirectory;
 
-Console.WriteLine("Welcome to LOADER7VC ver 1.4, This program shows you which version your LOADER7.EXE / Dev7VM.EXE is.\f");
-Console.WriteLine("LOADER7VC was designed for DEV7 Games.\n");
-Console.WriteLine("Developed by: BJNFNE\n");
+class Program
+{
+    static void Main(string[] args)
+    {
+        string dir = AppDomain.CurrentDomain.BaseDirectory;
+        string EXEInput;
 
-// Gets the FileVersion of LOADER7.EXE / Dev7VM.EXE.
-Console.WriteLine("Please insert here your Path to your LOADER7.EXE / Dev7VM.EXE (without Quotes)");
-Console.WriteLine("\f");
-string EXEInput = Console.ReadLine();
+        // Check if there is a command line argument
+        if (args.Length > 0)
+        {
+            // Use the provided command line argument as the file path
+            EXEInput = args[0];
+        }
+        else
+        {
+            // Check if LOADER7.EXE or Dev7VM.EXE exists in the current directory
+            string loader7Path = Path.Combine(dir, "LOADER7.EXE");
+            string dev7VMPath = Path.Combine(dir, "Dev7VM.EXE");
 
-FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(fileName: EXEInput);
+            if (File.Exists(loader7Path))
+            {
+                EXEInput = loader7Path;
+            }
+            else if (File.Exists(dev7VMPath))
+            {
+                EXEInput = dev7VMPath;
+            }
+            else
+            {
+                Console.WriteLine("LOADER7.EXE or Dev7VM.EXE not found in the current directory.");
+                return;
+            }
+        }
 
-// Print General Infos about LOADER7.EXE / Dev7VM.EXE
-Console.Write("\n");
-Console.WriteLine("General Infos: \n");
-string OriginalFileName = "Original Filename: " + myFileVersionInfo.OriginalFilename;
-Console.WriteLine(OriginalFileName);
+        // Continue with the rest of the code...
+        FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
 
-string Description = "Description: " + myFileVersionInfo.FileDescription;
-Console.WriteLine(Description);
+        Console.WriteLine("\nGeneral Infos: \n");
+        Console.WriteLine("Original Filename: " + myFileVersionInfo.OriginalFilename);
+        Console.WriteLine("Description: " + myFileVersionInfo.FileDescription);
+        Console.WriteLine("Version: " + myFileVersionInfo.FileVersion);
+        Console.WriteLine("Productname: " + myFileVersionInfo.ProductName);
+        Console.WriteLine("Internalname: " + myFileVersionInfo.InternalName);
+        Console.WriteLine("Copyright: " + myFileVersionInfo.LegalCopyright);
 
-string Version = "Version: " + myFileVersionInfo.FileVersion;
-Console.WriteLine(Version);
+        Console.WriteLine("\b");
+        Console.WriteLine("Thanks for using LOADER7VC!");
 
-string ProductName = "Productname: " + myFileVersionInfo.ProductName;
-Console.WriteLine(ProductName);
-
-string InternalName = "Internalname: " + myFileVersionInfo.InternalName;
-Console.WriteLine(InternalName);
-
-string Copyright = "Copyright: " + myFileVersionInfo.LegalCopyright;
-Console.WriteLine(Copyright);
-
-// executes Thank message
-Console.WriteLine("\b");
-Console.WriteLine("Thanks for using LOADER7VC!");
-
-// This exits LOADER7VC
-
-Console.WriteLine("\nPress any key to exit LOADER7VC");
-
-Console.ReadKey();
+        Console.WriteLine("\nPress any key to exit LOADER7VC");
+        Console.ReadKey();
+    }
+}
