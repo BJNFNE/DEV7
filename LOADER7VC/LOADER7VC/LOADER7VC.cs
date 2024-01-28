@@ -47,7 +47,6 @@ class Program
 
         // Calculate and display MD5 checksum
         string md5Sum = CalculateMD5(EXEInput);
-        Console.WriteLine("MD5 Checksum: " + md5Sum);
 
         FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
 
