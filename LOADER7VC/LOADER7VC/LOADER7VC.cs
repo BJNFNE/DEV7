@@ -48,6 +48,9 @@ class Program
         // Calculate and display MD5 checksum
         string md5Sum = CalculateMD5(EXEInput);
 
+        // Get file size
+        long fileSize = new FileInfo(EXEInput).Length;
+
         FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
 
         Console.WriteLine("\nGeneral Infos: \n");
@@ -58,6 +61,7 @@ class Program
         Console.WriteLine("Internalname: " + myFileVersionInfo.InternalName);
         Console.WriteLine("Copyright: " + myFileVersionInfo.LegalCopyright);
         Console.WriteLine("MD5 Checksum: " + md5Sum);
+        Console.WriteLine($"File Size: {fileSize} Bytes");
 
         Console.WriteLine("\nPress any key to exit LOADER7VC");
         Console.ReadKey();
