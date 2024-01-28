@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 class Program
 {
@@ -43,7 +45,10 @@ class Program
             }
         }
 
-        // Continue with the rest of the code...
+        // Calculate and display MD5 checksum
+        string md5Sum = CalculateMD5(EXEInput);
+        Console.WriteLine("MD5 Checksum: " + md5Sum);
+
         FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
 
         Console.WriteLine("\nGeneral Infos: \n");
@@ -53,8 +58,21 @@ class Program
         Console.WriteLine("Productname: " + myFileVersionInfo.ProductName);
         Console.WriteLine("Internalname: " + myFileVersionInfo.InternalName);
         Console.WriteLine("Copyright: " + myFileVersionInfo.LegalCopyright);
+        Console.WriteLine("MD5 Checksum: " + md5Sum);
 
         Console.WriteLine("\nPress any key to exit LOADER7VC");
         Console.ReadKey();
+    }
+
+    static string CalculateMD5(string filePath)
+    {
+        using (var md5 = MD5.Create())
+        {
+            using (var stream = File.OpenRead(filePath))
+            {
+                byte[] hash = md5.ComputeHash(stream);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+        }
     }
 }
