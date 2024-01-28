@@ -41,6 +41,8 @@ class Program
             else
             {
                 Console.WriteLine("LOADER7.EXE or Dev7VM.EXE not found in the current directory.");
+                Console.WriteLine("Press enter to exit");
+                Console.ReadKey();
                 return;
             }
         }
