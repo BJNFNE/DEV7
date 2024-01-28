@@ -54,9 +54,6 @@ class Program
         Console.WriteLine("Internalname: " + myFileVersionInfo.InternalName);
         Console.WriteLine("Copyright: " + myFileVersionInfo.LegalCopyright);
 
-        Console.WriteLine("\b");
-        Console.WriteLine("Thanks for using LOADER7VC!");
-
         Console.WriteLine("\nPress any key to exit LOADER7VC");
         Console.ReadKey();
     }
