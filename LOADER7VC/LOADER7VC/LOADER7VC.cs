@@ -52,8 +52,9 @@ class Program
         long fileSize = new FileInfo(EXEInput).Length;
 
         FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
+        string EXEFilename = Path.GetFileName(EXEInput);
 
-        Console.WriteLine("\nGeneral Infos: \n");
+        Console.WriteLine("\nInfos about " + EXEFilename + ":\n");
         Console.WriteLine("Original Filename: " + myFileVersionInfo.OriginalFilename);
         Console.WriteLine("Description: " + myFileVersionInfo.FileDescription);
         Console.WriteLine("Version: " + myFileVersionInfo.FileVersion);
