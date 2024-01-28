@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
+#include <filesystem>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -96,10 +98,15 @@ void showTraceTXT() {
 
 void modifyAdibou3Ini() {
 #ifdef _WIN32
-    system("notepad Adibou3.ini");
+  if (!std::filesystem::exists("Adibou3.ini")) {
+    system("ren ADIBOU3.INI Adibou3.ini");
+  }
+  system("notepad ADIBOU3.INI");
 #else
-    if (system("gedit Adibou3.ini") != 0) {
-    }
+  if (!std::filesystem::exists("Adibou3.ini")) {
+    system("mv ADIBOU3.INI Adibou3.ini");
+  }
+  system("nano Adibou3.ini");
 #endif
 }
 
