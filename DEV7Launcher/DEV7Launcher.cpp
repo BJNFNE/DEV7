@@ -97,11 +97,13 @@ void showTraceTXT() {
 }
 
 void modifyAdibou3Ini() {
+    // This an Workaround for this Function to load Adibou3.ini into the Editors
+    // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
 #ifdef _WIN32
   if (!std::filesystem::exists("Adibou3.ini")) {
     system("ren ADIBOU3.INI Adibou3.ini");
   }
-  system("notepad ADIBOU3.INI");
+  system("notepad Adibou3.ini");
 #else
   if (!std::filesystem::exists("Adibou3.ini")) {
     system("mv ADIBOU3.INI Adibou3.ini");
