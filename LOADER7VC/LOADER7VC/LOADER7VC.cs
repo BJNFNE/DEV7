@@ -13,6 +13,14 @@ class Program
         {
             // Use the provided command line argument as the file path
             EXEInput = args[0];
+
+            // Check if the provided file ends with "LOADER7.EXE" or "Dev7VM.EXE"
+            if (!EXEInput.EndsWith("LOADER7.EXE", StringComparison.OrdinalIgnoreCase) &&
+                !EXEInput.EndsWith("Dev7VM.EXE", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Please make sure you use the Tool on either LOADER7.EXE or Dev7VM.EXE!");
+                return;
+            }
         }
         else
         {
