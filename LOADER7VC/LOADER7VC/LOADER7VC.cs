@@ -6,7 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        string dir = AppDomain.CurrentDomain.BaseDirectory;
         string EXEInput;
 
         // Check if there is a command line argument
@@ -18,8 +17,8 @@ class Program
         else
         {
             // Check if LOADER7.EXE or Dev7VM.EXE exists in the current directory
-            string loader7Path = Path.Combine(dir, "LOADER7.EXE");
-            string dev7VMPath = Path.Combine(dir, "Dev7VM.EXE");
+            string loader7Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LOADER7.EXE");
+            string dev7VMPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dev7VM.EXE");
 
             if (File.Exists(loader7Path))
             {
