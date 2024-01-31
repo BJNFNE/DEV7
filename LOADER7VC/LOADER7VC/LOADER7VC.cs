@@ -77,8 +77,8 @@ class Program
         {
             // Print everything after "NB10" to display the PDB File Path
             string afterNB10 = exeContent.Substring(nb10Index + 4);
-            Console.WriteLine("PDB File:" + afterNB10);
-
+            string pdbFilePath = GetPrintableString(afterNB10);
+            Console.WriteLine("PDB File: " + pdbFilePath);
         }
         else
         {
@@ -99,5 +99,25 @@ class Program
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
             }
         }
+    }
+
+    static string GetPrintableString(string input)
+    {
+        // Remove non-printable characters from the input string
+        StringBuilder printableString = new StringBuilder();
+
+        foreach (char c in input)
+        {
+            if (Char.IsControl(c) && !Char.IsWhiteSpace(c))
+            {
+                // Skip non-printable characters
+            }
+            else
+            {
+                printableString.Append(c);
+            }
+        }
+
+        return printableString.ToString();
     }
 }
