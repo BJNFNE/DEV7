@@ -66,6 +66,24 @@ class Program
         Console.WriteLine("MD5 Checksum: " + md5Sum);
         Console.WriteLine($"File Size: {fileSize} Bytes");
 
+        // Read the content of the EXE file
+        string exeContent = File.ReadAllText(EXEInput);
+
+        // Find the index of "NB10" in the content
+        int nb10Index = exeContent.IndexOf("NB10");
+
+        // Check if "NB10" is found in the content
+        if (nb10Index != -1)
+        {
+            // Print everything after "NB10" to display the PDB File Path
+            string afterNB10 = exeContent.Substring(nb10Index + 4);
+            Console.WriteLine("\nPDB File:\n" + afterNB10);
+        }
+        else
+        {
+            Console.WriteLine("PDB File reference not found in " + EXEFilename);
+        }
+
         Console.WriteLine("\nPress any key to exit LOADER7VC");
         Console.ReadKey();
     }
