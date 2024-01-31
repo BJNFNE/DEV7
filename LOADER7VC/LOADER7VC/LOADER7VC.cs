@@ -77,7 +77,8 @@ class Program
         {
             // Print everything after "NB10" to display the PDB File Path
             string afterNB10 = exeContent.Substring(nb10Index + 4);
-            Console.WriteLine("\nPDB File:\n" + afterNB10);
+            Console.WriteLine("PDB File:" + afterNB10);
+
         }
         else
         {
