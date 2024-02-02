@@ -58,12 +58,12 @@ class Program
 
         Console.WriteLine("\nInfos about " + EXEFilename + ":\n");
 
-        PrintIfNotEmpty("Original Filename", myFileVersionInfo.OriginalFilename);
-        PrintIfNotEmpty("Description", myFileVersionInfo.FileDescription);
-        PrintIfNotEmpty("Version", myFileVersionInfo.FileVersion);
-        PrintIfNotEmpty("Productname", myFileVersionInfo.ProductName);
-        PrintIfNotEmpty("Internalname", myFileVersionInfo.InternalName);
-        PrintIfNotEmpty("Copyright", myFileVersionInfo.LegalCopyright);
+        PrintIfNoInfos("Original Filename", myFileVersionInfo.OriginalFilename);
+        PrintIfNoInfos("Description", myFileVersionInfo.FileDescription);
+        PrintIfNoInfos("Version", myFileVersionInfo.FileVersion);
+        PrintIfNoInfos("Productname", myFileVersionInfo.ProductName);
+        PrintIfNoInfos("Internalname", myFileVersionInfo.InternalName);
+        PrintIfNoInfos("Copyright", myFileVersionInfo.LegalCopyright);
 
         Console.WriteLine("MD5 Checksum: " + md5Sum);
         Console.WriteLine($"File Size: {fileSize} Bytes");
@@ -80,7 +80,7 @@ class Program
             // Print everything after "NB10" to display the PDB File Path
             string afterNB10 = exeContent.Substring(nb10Index + 4);
             string pdbFilePath = GetPrintableString(afterNB10);
-            PrintIfNotEmpty("PDB File", pdbFilePath);
+            PrintIfNoInfos("PDB File", pdbFilePath);
         }
         else
         {
@@ -91,7 +91,7 @@ class Program
         Console.ReadKey();
     }
 
-    static void PrintIfNotEmpty(string label, string value)
+    static void PrintIfNoInfos(string label, string value)
     {
         if (!string.IsNullOrEmpty(value))
         {
