@@ -57,12 +57,14 @@ class Program
         string EXEFilename = Path.GetFileName(EXEInput);
 
         Console.WriteLine("\nInfos about " + EXEFilename + ":\n");
-        Console.WriteLine("Original Filename: " + myFileVersionInfo.OriginalFilename);
-        Console.WriteLine("Description: " + myFileVersionInfo.FileDescription);
-        Console.WriteLine("Version: " + myFileVersionInfo.FileVersion);
-        Console.WriteLine("Productname: " + myFileVersionInfo.ProductName);
-        Console.WriteLine("Internalname: " + myFileVersionInfo.InternalName);
-        Console.WriteLine("Copyright: " + myFileVersionInfo.LegalCopyright);
+
+        PrintIfNotEmpty("Original Filename", myFileVersionInfo.OriginalFilename);
+        PrintIfNotEmpty("Description", myFileVersionInfo.FileDescription);
+        PrintIfNotEmpty("Version", myFileVersionInfo.FileVersion);
+        PrintIfNotEmpty("Productname", myFileVersionInfo.ProductName);
+        PrintIfNotEmpty("Internalname", myFileVersionInfo.InternalName);
+        PrintIfNotEmpty("Copyright", myFileVersionInfo.LegalCopyright);
+
         Console.WriteLine("MD5 Checksum: " + md5Sum);
         Console.WriteLine($"File Size: {fileSize} Bytes");
 
@@ -78,7 +80,7 @@ class Program
             // Print everything after "NB10" to display the PDB File Path
             string afterNB10 = exeContent.Substring(nb10Index + 4);
             string pdbFilePath = GetPrintableString(afterNB10);
-            Console.WriteLine("PDB File: " + pdbFilePath);
+            PrintIfNotEmpty("PDB File", pdbFilePath);
         }
         else
         {
@@ -88,6 +90,18 @@ class Program
         Console.WriteLine("\nPress any key to exit LOADER7VC");
         Console.ReadKey();
     }
+
+    static void PrintIfNotEmpty(string label, string value)
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            Console.WriteLine($"{label}: {value}");
+        }
+        else
+        {
+            Console.WriteLine($"{label}: Not available in LOADER7.EXE/Dev7VM.EXE.");
+         }
+       }
 
     static string CalculateMD5(string filePath)
     {
