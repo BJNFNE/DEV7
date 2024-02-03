@@ -4,6 +4,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
+// TODO:
+// add interactive/noninteractive mode, if Program gets executed over an Command Line, then do not print "Press any Key to exit" but altough the Program gets executed via an Double-Click then print "Press any Key to exit"
+
 class Program
 {
     static void Main(string[] args)
