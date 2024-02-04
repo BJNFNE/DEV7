@@ -1,4 +1,4 @@
-# Makefile for DEV7 Tools
+# Makefile for compiling programs in different directories
 
 # Compiler for C
 CC = gcc
@@ -10,26 +10,26 @@ CXX = g++
 CFLAGS = -Wall -Werror
 CXXFLAGS = -O2 -g -Wall -Wextra -pipe -std=c++20
 
-# Directories containing source files
-SRC_DIRS = BCD1Creator DEV7Launcher ModelPathDumper OBCViewer
+# Directory containing source files
+SRC_DIR = tools
 
-# Source files
-SRCS_C = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
-SRCS_CPP = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.cpp))
+# Source files (excluding LoaderMDO)
+SRCS_C = $(filter-out $(SRC_DIR)/LoaderMDO/%.c, $(shell find $(SRC_DIR) -name '*.c'))
+SRCS_CPP = $(filter-out $(SRC_DIR)/LoaderMDO/%.cpp, $(shell find $(SRC_DIR) -name '*.cpp'))
 
 # Object files
 OBJS_C = $(SRCS_C:.c=.o)
 OBJS_CPP = $(SRCS_CPP:.cpp=.o)
 
 # Executables
-TARGETS = $(patsubst %,%_program,$(SRC_DIRS))
+TARGETS = $(patsubst %.c,%,$(SRCS_C)) $(patsubst %.cpp,%,$(SRCS_CPP))
 
 # Default rule
-all: clean_programs $(TARGETS)
+all: $(TARGETS)
 
 # Rule to build each program
-$(TARGETS): %_program : $(wildcard %/*.c) $(wildcard %/*.cpp)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(TARGETS): % : %.o
+	$(CXX) $(CXXFLAGS) -o $@ $<
 
 # Rule to compile C source files to object files
 %.o: %.c
@@ -39,14 +39,6 @@ $(TARGETS): %_program : $(wildcard %/*.c) $(wildcard %/*.cpp)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Rule to clean existing programs
-clean_programs:
-	rm -f $(TARGETS)
-
 # Clean rule
 clean:
 	rm -f $(TARGETS) $(OBJS_C) $(OBJS_CPP)
-
-# Rule to compile a specific program
-%: $(wildcard %/*.c) $(wildcard %/*.cpp)
-	$(CXX) $(CXXFLAGS) -o $@ $^
