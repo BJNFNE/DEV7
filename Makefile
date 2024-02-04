@@ -1,4 +1,4 @@
-# Makefile for compiling programs in different directories
+# Makefile for DEV7 Tools
 
 # Compiler for C
 CC = gcc
