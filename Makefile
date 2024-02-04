@@ -8,7 +8,7 @@ CXX = g++
 
 # Compiler flags
 CFLAGS = -Wall -Werror
-CXXFLAGS = -O2 -g -Wall -Wextra -pipe -std=c++20
+CXXFLAGS = -O2 -g -pipe -std=c++20
 
 # Directory containing source files
 SRC_DIR = tools
