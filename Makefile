@@ -8,7 +8,7 @@ CXX = g++
 
 # Compiler flags
 CFLAGS = -Wall -Werror
-CXXFLAGS = -Wall -Werror
+CXXFLAGS = -O2 -g -Wall -Wextra -pipe -std=c++20
 
 # Directories containing source files
 SRC_DIRS = BCD1Creator DEV7Launcher ModelPathDumper OBCViewer
