@@ -13,8 +13,7 @@ CXXFLAGS = -O2 -g -pipe -std=c++20
 # Directory containing source files
 SRC_DIR = tools
 
-# Source files (excluding LoaderMDO)
-SRCS_C = $(filter-out $(SRC_DIR)/LoaderMDO/%.c, $(shell find $(SRC_DIR) -name '*.c'))
+# Source files (which should be not compiled)
 SRCS_CPP = $(filter-out $(SRC_DIR)/LoaderMDO/%.cpp, $(shell find $(SRC_DIR) -name '*.cpp'))
 
 # Object files
