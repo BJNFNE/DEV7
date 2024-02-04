@@ -10,12 +10,29 @@ def is_valid_image_file(file_path):
 
 def convert_to_tga(input_path, output_path, resolution):
     image = Image.open(input_path)
-    # Resize the image to the chosen resolution
-    image = image.resize(resolution, Image.ANTIALIAS)
-    
+
+    # Check if input image resolution is larger than output resolution
+    if image.size[0] > resolution[0] or image.size[1] > resolution[1]:
+        # Print warning to infrom the user that the input picture is using an larger resolsution instead of the output picture.
+        print("Warning: Input image resolution is larger than the output resolution. Resizing to fit within the resolution.\n")
+        # Calculate the aspect ratio of the original image
+        aspect_ratio = image.size[0] / image.size[1]
+
+        # Calculate the new dimensions to fit within the specified resolution
+        new_width = min(resolution[0], int(resolution[1] * aspect_ratio))
+        new_height = min(resolution[1], int(resolution[0] / aspect_ratio))
+
+        # Resize the image while maintaining the aspect ratio
+        image = image.resize((new_width, new_height), Image.ANTIALIAS)
+
+    else:
+        print("Resizing image to fit within the specified resolution.\n")
+        # Resize the image to the chosen resolution
+        image = image.resize(resolution, Image.ANTIALIAS)
+
     # Calculate bits per pixel based on the image mode
     bpp = image.bits if hasattr(image, 'bits') else len(image.getbands()) * 8
-    
+
     image.save(output_path, format="TGA")
     return bpp
 
