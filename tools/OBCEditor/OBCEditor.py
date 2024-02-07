@@ -31,7 +31,7 @@ def main():
     print(f"File size: {len(content)} bytes\n")
 
     while True:
-        print("\nEnter 'modify' to display/edit the file content.")
+        print("\nEnter 'modify' to display/edit the OBC Script.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'quit' to exit without saving.")
 
