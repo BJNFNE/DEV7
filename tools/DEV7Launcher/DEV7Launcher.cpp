@@ -112,6 +112,8 @@ void modifyAdibou3Ini() {
 #endif
 }
 
+// TODO: add the same function as modifyAdibou3Ini for ADI5.INI
+
 void runUNINST() {
     std::string uninst = "UNINST.EXE";
 
