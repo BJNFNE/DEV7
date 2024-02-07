@@ -112,7 +112,15 @@ void modifyAdibou3Ini() {
 #endif
 }
 
-// TODO: add the same function as modifyAdibou3Ini for ADI5.INI
+void modifyAdi5Ini() {
+#ifdef _WIN32
+    system("notepad Data/ADI5.ini");
+#else
+    // On Linux, we always try running the command with Wine
+    std::string modifyAdi5Ini = "nano Data/ADI5.ini";
+    system(modifyAdi5Ini.c_str());
+#endif
+}
 
 void runUNINST() {
     std::string uninst = "UNINST.EXE";
@@ -169,6 +177,7 @@ int main(int argc, char* argv[]) {
         std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
         std::cout << "11. Run Uninstaller (UNINST.EXE)\n";
         std::cout << "12. Start Le pays des Pierres magiques Intro\n";
+        std::cout << "13. Modify Adi5.ini (Adi 5 only)\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -180,6 +189,7 @@ int main(int argc, char* argv[]) {
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
         std::cout << "8. Run Uninstaller\n";
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
+        std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -191,6 +201,7 @@ int main(int argc, char* argv[]) {
         std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
         std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
+        std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -220,6 +231,8 @@ int main(int argc, char* argv[]) {
             runUNINST(); // Call the function to run the Uninstaller 
         } else if (choice == 9) {
             Ed4Intro(); // Call the function to run the Intro of Le pays de Pierres Magiques
+        } else if (choice == 10) {
+            modifyAdi5Ini(); // Call the function to modify Data/Adi5.ini
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
@@ -241,7 +254,9 @@ int main(int argc, char* argv[]) {
         } else if (choice == 8) {
             runUNINST(); // Call the function to run the Uninstaller
         } else if (choice == 9) {
-            Ed4Intro(); // Call the function to run the Intro of Le pays de Pierres Magiques 
+            Ed4Intro(); // Call the function to run the Intro of Le pays de Pierres Magiques
+        } else if (choice == 10) {
+            modifyAdi5Ini(); // Call the function to modify Data/Adi5.ini
         } else {
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
         }
