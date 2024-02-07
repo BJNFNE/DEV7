@@ -23,3 +23,9 @@
 # Debug/Release Folders
 Debug/
 Release/
+
+# Compiled Tools
+/tools/DEV7Launcher/DEV7Launcher
+/tools/BCD1Creator/BCD1Creator
+/tools/OBCViewer/OBCViewer
+/tools/ModelPathDumper/ModelPathDumper
