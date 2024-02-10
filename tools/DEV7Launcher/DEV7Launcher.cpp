@@ -212,54 +212,51 @@ int main(int argc, char* argv[]) {
     std::cin >> choice;
     std::cout << "\n";
 
-    if (loader7Exists) {
-        if (choice == 1) {
-            launchCommand("loader7.exe -break");
-        } else if (choice == 2) {
-            launchCommand("loader7.exe");
-        } else if (choice == 3) {
-            modifyMDOIni(); // Call the function to modify mdo.ini
-        } else if (choice == 4) {
-            showTraceTXT(); // Call the function to show Trace.txt
-        } else if (choice == 5) {
-            modifyMDODbg(); // Call the function to modify mdo.dbg
-        } else if (choice == 6) {
-            launchCommand("loader7.exe -obc='B3_ParentLaunch'");
-        } else if (choice == 7) {
-            modifyAdibou3Ini(); // Call the function to modify adibou3.ini
-        } else if (choice == 8) {
-            runUNINST(); // Call the function to run the Uninstaller 
-        } else if (choice == 9) {
-            Ed4Intro(); // Call the function to run the Intro of Le pays de Pierres Magiques
-        } else if (choice == 10) {
-            modifyAdi5Ini(); // Call the function to modify Data/Adi5.ini
-        } else {
+    switch(choice) {
+        case 1:
+            if (loader7Exists)
+                launchCommand("loader7.exe -break");
+            else if (dev7VMExists)
+                launchCommand("Dev7VM.exe -break");
+            break;
+        case 2:
+            if (loader7Exists)
+                launchCommand("loader7.exe");
+            else if (dev7VMExists)
+                launchCommand("Dev7VM.exe");
+            break;
+        case 3:
+            modifyMDOIni();
+            break;
+        case 4:
+            showTraceTXT();
+            break;
+        case 5:
+            modifyMDODbg();
+            break;
+        case 6:
+            if (loader7Exists)
+                launchCommand("loader7.exe -obc='B3_ParentLaunch'");
+            else if (dev7VMExists)
+                launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
+            break;
+        case 7:
+            modifyAdibou3Ini();
+            break;
+        case 8:
+            runUNINST();
+            break;
+        case 9:
+            Ed4Intro();
+            break;
+        case 10:
+            modifyAdi5Ini();
+            break;
+        default:
             std::cout << "Invalid choice. Please choose a valid option." << std::endl;
-        }
-    } else if (dev7VMExists) {
-        if (choice == 1) {
-            launchCommand("Dev7VM.exe -break");
-        } else if (choice == 2) {
-            launchCommand("Dev7VM.exe");
-        } else if (choice == 3) {
-            modifyMDOIni(); // Call the function to modify mdo.ini
-        } else if (choice == 4) {
-            showTraceTXT(); // Call the function to show Trace.txt
-        } else if (choice == 5) {
-            modifyMDODbg(); // Call the function to modify mdo.dbg
-        } else if (choice == 6) {
-            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
-        } else if (choice == 7) {
-            modifyAdibou3Ini(); // Call the function to modify adibou3.ini
-        } else if (choice == 8) {
-            runUNINST(); // Call the function to run the Uninstaller
-        } else if (choice == 9) {
-            Ed4Intro(); // Call the function to run the Intro of Le pays de Pierres Magiques
-        } else if (choice == 10) {
-            modifyAdi5Ini(); // Call the function to modify Data/Adi5.ini
-        } else {
-            std::cout << "Invalid choice. Please choose a valid option." << std::endl;
-        }
+            break;
     }
+
     return 0;
 }
+
