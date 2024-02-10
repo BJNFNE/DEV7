@@ -1,9 +1,8 @@
-// Add here the temp TODO's
-// add an timer that counts how long the Game was played and display the playtime when the Launcher exits the Game and returns back to Terminal.
-
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <chrono>
+#include <iomanip>
 #include <cstring>
 #include <filesystem>
 
@@ -157,6 +156,8 @@ void Ed4Intro() {
 }
 
 int main(int argc, char* argv[]) {
+    auto start = std::chrono::steady_clock::now(); // Record the start time
+    
     int choice;
 
     if (isDev7Running()) {
@@ -260,6 +261,10 @@ int main(int argc, char* argv[]) {
             break;
     }
 
+    auto end = std::chrono::steady_clock::now(); // Record the end time
+    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
+
+    std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
+
     return 0;
 }
-
