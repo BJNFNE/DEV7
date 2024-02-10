@@ -263,10 +263,11 @@ int main(int argc, char* argv[]) {
 
     auto end = std::chrono::steady_clock::now(); // Record the end time
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
-    
+
     std::cout << std::endl;
     std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
     std::cout << std::endl;
 
     return 0;
 }
+
