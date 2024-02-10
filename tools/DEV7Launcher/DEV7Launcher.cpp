@@ -1,3 +1,6 @@
+// Add here the temp TODO's
+// add an timer that counts how long the Game was played and display the playtime when the Launcher exits the Game and returns back to Terminal.
+
 #include <iostream>
 #include <fstream>
 #include <string>
