@@ -29,7 +29,7 @@ bool fileExists(const std::string& filename) {
 #endif
 }
 
-bool isDev7Running() {
+bool isDEV7Running() {
 #ifdef _WIN32
     HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_LAUNCH);
     if (mutex && GetLastError() == ERROR_ALREADY_EXISTS) {
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
     
     int choice;
 
-    if (isDev7Running()) {
+    if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client." << std::endl;
         return 1;
     }
