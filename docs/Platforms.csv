@@ -1,0 +1,6 @@
+Platform,Status
+Windows 10/11,"Fully supported"
+Windows 7,"Partially supported"
+macOS,"Not yet tested"
+ReactOS,"Planned to be supported."
+Linux,"Fully supported except C# programs"
