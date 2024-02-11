@@ -20,33 +20,10 @@ fi
 echo "Extracting zlib source code..."
 tar -xf ${ZLIB_TAR}
 
-# Navigate into zlib directory
-cd ${ZLIB_DIR}
-
-# Run configure
-echo "Running configure for zlib..."
-./configure
-
-# Check if configure was successful
-if [ $? -ne 0 ]; then
-    echo "Failed to configure zlib."
-    exit 1
-fi
-
-# Run make
-echo "Compiling zlib..."
-make
-
-# Check if make was successful
-if [ $? -ne 0 ]; then
-    echo "Failed to compile zlib."
-    exit 1
-fi
+# Display the folder name
+echo "The folder name after extraction is: ${ZLIB_DIR}"
 
 # Clean up
 echo "Cleaning up..."
-cd ..
 rm ${ZLIB_TAR}
-
-echo "zlib ${ZLIB_VERSION} has been successfully compiled."
 
