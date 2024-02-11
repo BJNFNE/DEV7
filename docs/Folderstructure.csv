@@ -1,5 +1,5 @@
 Folderstructure,Comments
-/,tools,Compilable for all Platforms.
-/,tools-win,Compilable only for Windows.
-/,Root directory contains other required Files.
-/,3rdParty Contains all 3rdParty LIBS/TOOLS.
+/,"Compilable for all Platforms."
+/tools,"Compilable only for Windows."
+/,"Root directory contains other required Files."
+/3rdParty,"Contains all 3rdParty LIBS/TOOLS."
