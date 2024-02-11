@@ -1,4 +1,4 @@
-Folderstructure,,Comments
-./tools,,Compilable for all Platforms
-./tools-win,,Compilable only for Windows
+Folderstructure,Comments
+./tools,Compilable for all Platforms
+./tools-win,Compilable only for Windows
 Test,Testing
