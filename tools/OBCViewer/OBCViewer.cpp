@@ -18,9 +18,6 @@ int main(int argc, char* argv[]) {
         printf(" * Adiboud'chou series\n");
         printf(" * Le Pays des pierres magiques\n\n");
         printf("<script.obc>\n\t .obc script to view\n\n");
-        printf("Credits:\n");
-        printf("BJNFNE (main Developer)\n");
-        printf("rzil (BLooperZ) (Thanks for helping out)\n\n");
         return 1;
     }
 
