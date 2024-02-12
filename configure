@@ -15,14 +15,11 @@ check_command() {
 
 echo "Configuring your system..."
 
-# Log system information
-log_debug_info "System information:"
-log_debug_info "$(uname -a)"
-
 # Log compiler information
 log_debug_info "Compiler information:"
 log_debug_info "$(gcc --version | head -n 1)"
 log_debug_info "$(g++ --version | head -n 1)"
+log_debug_info "$(python3 --version | head -n 1)"
 
 # Check for the presence of essential commands
 check_command gcc "C compiler (gcc)"
@@ -31,4 +28,3 @@ check_command make "Make utility"
 check_command python3 "Python 3"
 
 echo "Configuration complete."
-
