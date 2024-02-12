@@ -25,11 +25,10 @@ Debug/
 Release/
 
 # Compiled Tools
-/tools/DEV7Launcher/DEV7Launcher
-/tools/BCD1Creator/BCD1Creator
-/tools/OBCViewer/OBCViewer
-/tools/ModelPathDumper/ModelPathDumper
+/binaries/DEV7Launcher
+/binaries/BCD1Creator
+/binaries/OBCViewer
+/binaries/ModelPathDumper
 
 # Additional Tools stuff
-/tools/OBCViewer/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/CMakeCXXCompilerId
-configure_debug.log
+binaries/CMakeCXXCompilerId
