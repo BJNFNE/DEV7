@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Function to log debug info to console
-log_debug_info() {
+print_debug_info() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
@@ -9,17 +9,17 @@ log_debug_info() {
 check_command() {
     local cmd=$1
     local desc=$2
-    command -v "$cmd" >/dev/null 2>&1 || { log_debug_info "$desc is required but not found."; return 1; }
-    log_debug_info "$desc found at $(command -v "$cmd")"
+    command -v "$cmd" >/dev/null 2>&1 || { print_debug_info "$desc is required but not found."; return 1; }
+    print_debug_info "$desc found at $(command -v "$cmd")"
 }
 
 echo "Configuring your system..."
 
 # Log compiler information
-log_debug_info "Compiler information:"
-log_debug_info "$(gcc --version | head -n 1)"
-log_debug_info "$(g++ --version | head -n 1)"
-log_debug_info "$(python3 --version | head -n 1)"
+print_debug_info "Compiler information:"
+print_debug_info "$(gcc --version | head -n 1)"
+print_debug_info "$(g++ --version | head -n 1)"
+print_debug_info "$(python3 --version | head -n 1)"
 
 # Check for the presence of essential commands
 check_command gcc "C compiler (gcc)"
