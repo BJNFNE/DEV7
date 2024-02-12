@@ -27,4 +27,4 @@ check_command g++ "C++ compiler (g++)"
 check_command make "Make utility"
 check_command python3 "Python 3"
 
-echo "Configuration complete."
+echo "Configuration complete. Now you can compile DEV7 Tools via make"
