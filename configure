@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Output file for debug info
-DEBUG_FILE="configure_debug.log"
-
-# Function to log debug info
+# Function to log debug info to console
 log_debug_info() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$DEBUG_FILE"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
 # Check for the presence of required commands or utilities
@@ -17,9 +14,6 @@ check_command() {
 }
 
 echo "Configuring your system..."
-
-# Clear debug file
-> "$DEBUG_FILE"
 
 # Log system information
 log_debug_info "System information:"
@@ -37,6 +31,4 @@ check_command make "Make utility"
 check_command python3 "Python 3"
 
 echo "Configuration complete."
-
-echo "Debug information has been saved to: $DEBUG_FILE"
 
