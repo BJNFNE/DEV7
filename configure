@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Output file for debug info
+DEBUG_FILE="configure_debug.log"
+
+# Function to log debug info
+log_debug_info() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$DEBUG_FILE"
+}
+
+# Check for the presence of required commands or utilities
+check_command() {
+    local cmd=$1
+    local desc=$2
+    command -v "$cmd" >/dev/null 2>&1 || { log_debug_info "$desc is required but not found."; return 1; }
+    log_debug_info "$desc found at $(command -v "$cmd")"
+}
+
+echo "Configuring your system..."
+
+# Clear debug file
+> "$DEBUG_FILE"
+
+# Log system information
+log_debug_info "System information:"
+log_debug_info "$(uname -a)"
+
+# Log compiler information
+log_debug_info "Compiler information:"
+log_debug_info "$(gcc --version | head -n 1)"
+log_debug_info "$(g++ --version | head -n 1)"
+
+# Check for the presence of essential commands
+check_command gcc "C compiler (gcc)"
+check_command g++ "C++ compiler (g++)"
+check_command make "Make utility"
+check_command python3 "Python 3"
+
+echo "Configuration complete."
+
+echo "Debug information has been saved to: $DEBUG_FILE"
+

@@ -32,3 +32,4 @@ Release/
 
 # Additional Tools stuff
 /tools/OBCViewer/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/CMakeCXXCompilerId
+configure_debug.log
