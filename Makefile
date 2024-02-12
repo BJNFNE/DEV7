@@ -23,12 +23,17 @@ OBJS_CPP = $(SRCS_CPP:.cpp=.o)
 # Executables
 TARGETS = $(patsubst %.c,%,$(SRCS_C)) $(patsubst %.cpp,%,$(SRCS_CPP))
 
+# Directory for binaries
+BIN_DIR = binaries
+
 # Default rule
 all: $(TARGETS)
+	@mkdir -p $(BIN_DIR)
+	@mv $(TARGETS) $(BIN_DIR)
 
 # Rule to build each program
 $(TARGETS): % : %.o
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
 
 # Rule to compile C source files to object files
 %.o: %.c
@@ -40,4 +45,6 @@ $(TARGETS): % : %.o
 
 # Clean rule
 clean:
-	rm -f $(TARGETS) $(OBJS_C) $(OBJS_CPP)
+	rm -f $(OBJS_C) $(OBJS_CPP)
+	rm -rf $(BIN_DIR)
+
