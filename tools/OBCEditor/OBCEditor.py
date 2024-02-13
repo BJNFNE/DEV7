@@ -20,11 +20,15 @@ def search_and_replace(content, old_text, new_text):
     old_bytes = old_text.encode('utf-8')
     new_bytes = new_text.encode('utf-8')
 
+    # Check if old text exists in content
+    if old_bytes not in content:
+        print("Error: The text to be replaced does not exist in the OBC Script.")
+        return content
+
     # Perform search and replace on binary data
     modified_content = content.replace(old_bytes, new_bytes)
     
     return modified_content
-
 
 def main():
     filename = input("Enter OBC file name: ")
