@@ -30,6 +30,17 @@ def search_and_replace(content, old_text, new_text):
     
     return modified_content
 
+def count_occurrences(content, word):
+    occurrences = []
+    offset = 0
+    while True:
+        offset = content.find(word.encode('utf-8'), offset)
+        if offset == -1:
+            break
+        occurrences.append(offset)
+        offset += len(word)
+    return occurrences
+
 def main():
     while True:
         filename = input("Enter OBC Script name: ")
@@ -52,6 +63,7 @@ def main():
     while True:
         print("\nEnter 'modify' to display/edit the OBC Script.")
         print("Enter 'search' to search and replace printable text.")
+        print("Enter 'count' to count occurrences of a word.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'quit' to exit without saving.")
 
@@ -73,6 +85,14 @@ def main():
             new_text = input("Enter the replacement text: ")
             content = search_and_replace(content, old_text, new_text)
             print("Text replaced successfully.")
+        elif choice == 'count':
+            word = input("Enter the word to count: ")
+            occurrences = count_occurrences(content, word)
+            print(f"'{word}' is found {len(occurrences)} times in the script.")
+            if occurrences:
+                print("Offsets:")
+                for i, offset in enumerate(occurrences):
+                    print(f"{i+1}. 0x{offset:08X}")
         elif choice == 'save':
             save_changes(filename, content)
             break
