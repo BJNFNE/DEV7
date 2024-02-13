@@ -30,7 +30,7 @@ bool InjectDLL(DWORD processId, const string& dllPath) {
         return false;
     }
 
-    HMODULE hKernel32 = GetModuleHandle(L"kernel32.dll");
+    HMODULE hKernel32 = GetModuleHandleA("kernel32.dll");
     if (hKernel32 == NULL) {
         cout << "Failed to get handle to kernel32.dll. Error code: " << GetLastError() << endl;
         VirtualFreeEx(hProcess, dllPathAddr, 0, MEM_RELEASE);
@@ -88,16 +88,17 @@ int main() {
 
     if (processId1 != 0 && InjectDLL(processId1, dllPath)) {
         cout << "Custom DLL injected successfully into " << exeName1 << "!" << endl;
-    } else {
+    }
+    else {
         cout << "Failed to inject Custom DLL into " << exeName1 << "." << endl;
     }
 
     if (processId2 != 0 && InjectDLL(processId2, dllPath)) {
         cout << "Custom DLL injected successfully into " << exeName2 << "!" << endl;
-    } else {
+    }
+    else {
         cout << "Failed to inject Custom DLL into " << exeName2 << "." << endl;
     }
 
     return 0;
 }
-
