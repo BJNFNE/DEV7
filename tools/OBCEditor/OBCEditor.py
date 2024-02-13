@@ -15,6 +15,17 @@ def save_changes(filename, content):
         file.write(content)
     print("Changes saved successfully.")
 
+def search_and_replace(content, old_text, new_text):
+    # Convert old and new text to bytes
+    old_bytes = old_text.encode('utf-8')
+    new_bytes = new_text.encode('utf-8')
+
+    # Perform search and replace on binary data
+    modified_content = content.replace(old_bytes, new_bytes)
+    
+    return modified_content
+
+
 def main():
     filename = input("Enter OBC file name: ")
 
@@ -23,7 +34,7 @@ def main():
         return
 
     with open(filename, 'rb') as file:
-        content = bytearray(file.read())
+        content = file.read()
 
     print("OBC File Editor")
     print("-------------------------")
@@ -32,6 +43,7 @@ def main():
 
     while True:
         print("\nEnter 'modify' to display/edit the OBC Script.")
+        print("Enter 'search' to search and replace printable text.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'quit' to exit without saving.")
 
@@ -47,6 +59,11 @@ def main():
                     print("Offset updated successfully.")
             except ValueError:
                 print("Error: Invalid input.")
+        elif choice == 'search':
+            old_text = input("Enter the text to search for: ")
+            new_text = input("Enter the replacement text: ")
+            content = search_and_replace(content, old_text, new_text)
+            print("Text replaced successfully.")
         elif choice == 'save':
             save_changes(filename, content)
             break
@@ -58,4 +75,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
