@@ -31,19 +31,19 @@ def search_and_replace(content, old_text, new_text):
     return modified_content
 
 def main():
-    filename = input("Enter OBC file name: ")
+    filename = input("Enter OBC Script name: ")
 
     if not os.path.isfile(filename):
-        print(f"Error: File '{filename}' not found.")
+        print(f"Error: Script '{filename}' not found.")
         return
 
     with open(filename, 'rb') as file:
         content = file.read()
 
-    print("OBC File Editor")
+    print("OBCEditor ver. 1.1")
     print("-------------------------")
-    print(f"Editing file: {filename}")
-    print(f"File size: {len(content)} bytes\n")
+    print(f"Editing Script: {filename}")
+    print(f"Script size: {len(content)} bytes\n")
 
     while True:
         print("\nEnter 'modify' to display/edit the OBC Script.")
