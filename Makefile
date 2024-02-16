@@ -31,22 +31,30 @@ all: $(TARGETS_C) $(TARGETS_CPP)
 # Rule to compile each C source file to object file
 binaries/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@echo "-------------------------------------------------------------"
+	@echo "|                   Compiling C $(basename $<)               |"
+	@echo "-------------------------------------------------------------"
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@echo
 
 # Rule to compile each C++ source file to object file
 binaries/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	@echo "-------------------------------------------------------------"
+	@echo "|                 Compiling C++ $(basename $<)              |"
+	@echo "-------------------------------------------------------------"
+	@$(CXX) $(CXXFLAGS) -c -o $@ $<
+	@echo
 
 # Rule to build each C program
 $(TARGETS_C): binaries/%: binaries/%.o
-	$(CC) $(CFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^
 
 # Rule to build each C++ program
 $(TARGETS_CPP): binaries/%: binaries/%.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	@$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Clean rule
 clean:
-	rm -f $(OBJS_C) $(OBJS_CPP)
-	rm -rf binaries
+	@rm -f $(OBJS_C) $(OBJS_CPP)
+	@rm -rf binaries
