@@ -17,9 +17,25 @@ function check_command {
 
 # Check for the presence of Visual Studio folder on hard drives
 function check_visual_studio {
-    # TODO: Implement Visual Studio check (currently in maintenance)
-    print_debug_info "Visual Studio check is currently in maintenance as TODO, will be added soon!"
-    return 0  # Assume Visual Studio is installed for now
+    $vs_installed = $false
+    $driveLetters = "C", "D", "E"
+    $vs_folder_name = "Microsoft Visual Studio"
+    
+    foreach ($drive in $driveLetters) {
+        $vs_path = "${drive}:\Program Files (x86)\$vs_folder_name"
+        if (Test-Path $vs_path) {
+            $vs_installed = $true
+            print_debug_info "Visual Studio found at $vs_path"
+            break
+        }
+    }
+
+    if (-not $vs_installed) {
+        print_debug_info "Visual Studio is required but not found. - Not installed"
+        return 1
+    }
+
+    return 0
 }
 
 Write-Output "Checking your system..."
@@ -27,7 +43,7 @@ Write-Output "Checking your system..."
 # Check for the presence of essential commands
 check_command "python" "Python 3"
 
-# Check for the presence of Visual Studio folder (maintenance status)
+# Check for the presence of Visual Studio folder
 check_visual_studio
 
 Write-Output "Checking complete. You can now compile DEV7 Tools."
