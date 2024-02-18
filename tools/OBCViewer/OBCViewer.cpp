@@ -2,22 +2,32 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <ctime>
 #include <unistd.h>
 
-// Set here the versionNumber
-const std::string versionNumber = "1.5.1";
+const std::string versionNumber = "1.6";
+
+void printHeader() {
+    std::cout << "======================" << std::endl;
+    std::cout << "      OBCViewer       " << std::endl;
+    std::cout << "======================" << std::endl;
+}
+
+void printUsage() {
+    printHeader();
+    std::cout << "Usage: ./OBCViewer <script.obc>" << std::endl;
+    std::cout << "Version - " << versionNumber << std::endl << std::endl;
+    std::cout << "Supported games:" << std::endl;
+    std::cout << " * Adibou 3" << std::endl;
+    std::cout << " * Adi 5" << std::endl;
+    std::cout << " * Adibou presente series" << std::endl;
+    std::cout << " * Adiboud'chou series" << std::endl;
+    std::cout << " * Le Pays des pierres magiques" << std::endl << std::endl;
+}
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <script.obc>\n" << std::endl;
-        std::cerr << "Version - " << versionNumber << "\n" << std::endl;
-        printf("Supported games:\n");
-        printf(" * Adibou 3\n");
-        printf(" * Adi 5\n");
-        printf(" * Adibou presente series\n");
-        printf(" * Adiboud'chou series\n");
-        printf(" * Le Pays des pierres magiques\n\n");
-        printf("<script.obc>\n\t .obc script to view\n\n");
+        printUsage();
         return 1;
     }
 
@@ -39,7 +49,7 @@ int main(int argc, char* argv[]) {
     // Check if the input file is an OBC Script.
     std::filesystem::path inputScript(inputOBC);
     if (inputScript.extension() != ".obc") {
-        std::cerr << "Error: This File is not an OBC Script!\n" << std::endl;
+        std::cerr << "Error: This File is not an OBC Script!" << std::endl;
         return 1;
     }
 
@@ -59,8 +69,8 @@ int main(int argc, char* argv[]) {
 
     // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
     if (checkEntrypointOBC.find("OBC Copyright MDO 1999") != 0) {
-        std::cerr << "Error: The Entrypoint in the OBC Script was not found!\n" << std::endl;
-        std::cerr << "Maybe you have a new version of OBC? Then please contact BJNFNE on Discord.\n" << std::endl;
+        std::cerr << "Error: The Entrypoint in the OBC Script was not found!" << std::endl;
+        std::cerr << "Maybe you have a new version of OBC? Then please contact BJNFNE on Discord." << std::endl;
         return 1;
     }
 
@@ -105,17 +115,17 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Output of " << inputScript.stem().string() << ".obc" << " created at " << obc_timedate << std::endl;
     DebugInfoOutput << "Created by " << username << std::endl;
     DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
-    DebugInfoOutput << "Offset (bytes): " << std::scanf << offset << " bytes" << std::dec << std::endl;
+    DebugInfoOutput << "Offset (bytes): " << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
     std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << ".txt" << std::endl;
 
     // Display the full path of the output file of the OBC Script
-    std::cout << "\b" << std::endl;
+    std::cout << std::endl;
     printf("Output file created at: %s\n", std::filesystem::absolute(inputScript.stem().string() + ".txt").c_str());
 
     // Exit message for OBCViewer
-    std::cout << "\b" << std::endl;
+    std::cout << std::endl;
     std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
     getchar();
     system(clearConsole.c_str());
