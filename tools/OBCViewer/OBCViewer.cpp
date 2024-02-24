@@ -67,12 +67,13 @@ int main(int argc, char* argv[]) {
         checkEntrypointOBC += c;
     }
 
-    // Check if OBC Script contains the Entrypoint "OBC Copyright MDO 1999"
-    if (checkEntrypointOBC.find("OBC Copyright MDO 1999") != 0) {
-        std::cerr << "Error: The Entrypoint in the OBC Script was not found!" << std::endl;
-        std::cerr << "Maybe you have a new version of OBC? Then please contact BJNFNE on Discord." << std::endl;
-        return 1;
-    }
+    // Uses the OBC Copyright MDO as Entrypoint adds automatically also the last four number of the Year.
+    // (usually it is 1999, due to OBCEditor it is possible to change this Year so this Change is made so the modified Scripts are always compatible with OBCViewer)
+    int number;
+    if (sscanf(checkEntrypointOBC.c_str(), "OBC Copyright MDO %d", &number) != 1) {
+    std::cerr << "Error: Unable to find the number from the Entrypoint!" << std::endl;
+    return 1;
+}
 
     // Rewind the OBC Script back to the beginning
     OBCInput.seekg(0);
