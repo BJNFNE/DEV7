@@ -1,4 +1,5 @@
 import os
+import datetime
 
 def display_content(content):
     print("Offset     | Hexadecimal Representation | Printable Text")
@@ -94,8 +95,28 @@ def main():
                 for i, offset in enumerate(occurrences):
                     print(f"{i+1}. 0x{offset:08X}")
         elif choice == 'save':
-            save_changes(filename, content)
-            break
+            # Get the current year
+            current_year = str(datetime.datetime.now().year)
+            
+            # Ask user confirmation only if the string is found
+            if b'OBC Copyright MDO 1999' in content:
+                confirmation = input(f"Do you want to update the year from '1999' to '{current_year}'? (yes/no): ").lower()
+
+                if confirmation == 'yes':
+                    # Replace "1999" with the current year in the content
+                    content = search_and_replace(content, "1999", current_year)
+
+                    # Save changes
+                    save_changes(filename, content)
+                    break
+                elif confirmation == 'no':
+                    print("Year update cancelled.")
+                else:
+                    print("Invalid choice. Please enter 'yes' or 'no'.")
+            else:
+                print("The string 'OBC Copyright MDO 1999' was not found.")
+                break
+
         elif choice == 'quit':
             print("Exiting without saving.")
             break
