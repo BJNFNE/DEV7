@@ -56,7 +56,7 @@ def main():
     with open(filename, 'rb') as file:
         content = file.read()
 
-    print("OBCEditor ver. 1.1")
+    print("OBCEditor ver. 1.2beta")
     print("-------------------------")
     print(f"Editing Script: {filename}")
     print(f"Script size: {len(content)} bytes\n")
