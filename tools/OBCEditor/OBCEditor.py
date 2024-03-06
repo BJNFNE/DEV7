@@ -81,7 +81,7 @@ def main():
         if choice == 'instructions':
             print("\nHow to modify OBC Scripts:")
             print("- If you replace values don't be longer with the new value as the old was.")
-            print("")
+            print("- Make sure you not enlarge the Filesize of the OBC Script.")
             break
         elif choice == 'modify':
             display_content(content)
@@ -89,8 +89,6 @@ def main():
                 offset = int(input("Enter offset to modify (in hexadecimal), or press Enter to continue viewing: "), 16)
                 if 0 <= offset < len(content):
                     new_value = int(input("Enter new hexadecimal value: "), 16)
-                    # Note: Binary data cannot be modified in-place like this
-                    # content[offset] = new_value
                     print("Offset updated successfully.")
             except ValueError:
                 print("Error: Invalid input.")
