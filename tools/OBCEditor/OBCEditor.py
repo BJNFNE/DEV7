@@ -1,5 +1,6 @@
 import os
 import datetime
+import argparse
 
 def display_content(content):
     print("Offset     | Hexadecimal Representation | Printable Text")
@@ -43,15 +44,21 @@ def count_occurrences(content, word):
     return occurrences
 
 def main():
-    while True:
-        filename = input("Enter OBC Script name: ")
-        if not filename.endswith('.obc'):
-            filename += '.obc'
+    parser = argparse.ArgumentParser(description='Process OBC script.')
+    parser.add_argument('filename', nargs='?', help='OBC script name')
+    args = parser.parse_args()
 
-        if not os.path.isfile(filename):
-            print(f"Error: Script '{filename}' not found.")
-        else:
-            break
+    if args.filename:
+        filename = args.filename
+    else:
+        filename = input("Enter OBC Script name: ")
+
+    if not filename.endswith('.obc'):
+        filename += '.obc'
+
+    if not os.path.isfile(filename):
+        print(f"Error: Script '{filename}' not found.")
+        return
 
     with open(filename, 'rb') as file:
         content = file.read()
