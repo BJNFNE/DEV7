@@ -17,7 +17,7 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 6. ModelPathDumper dumps out of the EXO files the Path of the Models (Folders)
 7. DEV7Launcher allows you to run Dev7VM.EXE or loader7.exe over an Launcher instead of the command.
 8. BCD1Creator creates custom BCD1 files that can be used for Adibou 3's Applications.
-9. OBCEditor allows you to modify the OBC Scripts via bytecode modification.
+9. OBCEditor allows you to modify the OBC Scripts.
 
 # Rewritten original Software
 1. LoaderMDO starts LOADER7.EXE, it was known as Adibou3.EXE / ADI5.EXE. for more Information see [here](https://github.com/BJNFNE/DEV7/blob/tools/LoaderMDO/LoaderMDO.cpp)
@@ -33,6 +33,3 @@ DEV7 Tools can be compiled over MSVC (2022)
 
 # MacOS
 DEV7 Tools can be compiled over the Terminal via the Makefile (Available for some DEV7 Tools)
-
-# Compatibility
-* LOADER7VC runs under Linux but displays not any infos about the executable.
