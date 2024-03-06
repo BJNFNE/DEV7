@@ -66,11 +66,17 @@ def main():
         print("Enter 'search' to search and replace printable text.")
         print("Enter 'count' to count occurrences of a word.")
         print("Enter 'save' to save changes and exit.")
+        print("Enter 'instructions' to display instructions how to modify OBC Scripts.")
         print("Enter 'quit' to exit without saving.")
-
+        
         choice = input("Your choice: ").lower()
 
-        if choice == 'modify':
+        if choice == 'instructions':
+            print("\nHow to modify OBC Scripts:")
+            print("- If you replace values don't be longer with the new value as the old was.")
+            print("")
+            break
+        elif choice == 'modify':
             display_content(content)
             try:
                 offset = int(input("Enter offset to modify (in hexadecimal), or press Enter to continue viewing: "), 16)
