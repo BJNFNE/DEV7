@@ -1,4 +1,5 @@
-# DEV7 ![DEV7 logo](/icons/DEV7_github_logo.png)
+# DEV7 
+![DEV7 logo](/icons/DEV7_github_logo.png)
 DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm.org/index.php?title=DEV7_Information) 
 
 # Games that are using DEV7
