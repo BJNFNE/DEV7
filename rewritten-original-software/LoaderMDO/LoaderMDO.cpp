@@ -17,17 +17,21 @@ TODO:
 #include <windows.h>
 #include <string>
 
-	int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+    // Check if a window with the title "LoaderMDO" exists
+    HWND hwnd = FindWindowA(NULL, "LoaderMDO");
+    
+    // If no window with the title "LoaderMDO" exists, create the ADI5_LAUNCH_MUTEX
+    if (hwnd == NULL) {
+        HANDLE mutex = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
 
-
-    // Create the ADI5_LAUNCH_MUTEX
-    HANDLE mutex = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
-
-    if (mutex != NULL) {
-        std::string command = "Loader7.exe";
-        system(command.c_str());
-        CloseHandle(mutex);
+        if (mutex != NULL) {
+            std::string command = "Loader7.exe";
+            system(command.c_str());
+            CloseHandle(mutex);
+        }
     }
 
     return 0;
 }
+

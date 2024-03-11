@@ -11,7 +11,7 @@ if /i "%compile_release%"=="yes" (
     REM Compile the source file
     cl.exe /O2 /EHsc /MD /c LoaderMDO.cpp
     REM Link the object file
-    link.exe /OUT:LoaderMDO.exe LoaderMDO.obj
+    link.exe /OUT:LoaderMDO.exe LoaderMDO.obj user32.lib
 ) else if /i "%compile_release%"=="no" (
     echo Exiting without compilation.
     exit
