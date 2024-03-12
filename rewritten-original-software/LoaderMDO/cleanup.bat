@@ -35,6 +35,7 @@ del /s /q *.aps 2>nul
 del /s /q *.sbr 2>nul
 del /s /q *.idb 2>nul
 del /s /q *.html 2>nul
+del /s /q *.map 2>nul
 
 rem Remove executables
 echo Removing executables...
