@@ -29,6 +29,7 @@ Release/
 /binaries/BCD1Creator
 /binaries/OBCViewer
 /binaries/ModelPathDumper
+/binaries/OBJDumper
 
 # Additional Tools stuff
 binaries/CMakeCXXCompilerId
