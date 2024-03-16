@@ -10,8 +10,6 @@ Compiling:
 - Compile in Release mode to keep it original in Release mode as it was back then. (directly from Visual Studio 6.0)
 - build_release.bat: if you compile it over this batch file it whil be smaller then original in size.
 - build_debug.bat: if you compile over that batch file you have the exact same filesize with debug symbols included.
-TODO:
-- Try to avoid to create an Console window if the executable is being running.
 */
 
 #include <windows.h>
