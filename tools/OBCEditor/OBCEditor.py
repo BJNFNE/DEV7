@@ -12,6 +12,25 @@ def display_content(content):
         printable_text = ''.join(chr(byte) if 32 <= byte <= 126 else '.' for byte in line)
         print(f"{i:010X} | {hex_line.ljust(48)} | {printable_text}")
 
+def display_strings(content):
+    print("Strings in the OBC Script:")
+    print("--------------------------")
+    strings = content.split(b'\x00')
+    for string in strings:
+        decoded_string = None
+        for encoding in ['utf-8', 'latin-1', 'windows-1252']:
+            try:
+                decoded_string = string.decode(encoding)
+                break
+            except UnicodeDecodeError:
+                pass
+        if decoded_string is None:
+            print("Unable to decode string", end=' ')
+        else:
+            print(decoded_string, end=' | ')  # Use a vertical bar as the separator
+    print()  # Add a newline after all strings have been printed
+
+
 def save_changes(filename, content):
     with open(filename, 'wb') as file:
         file.write(content)
@@ -72,6 +91,7 @@ def main():
         print("\nEnter 'modify' to display/edit the OBC Script.")
         print("Enter 'search' to search and replace printable text.")
         print("Enter 'count' to count occurrences of a word.")
+        print("Enter 'strings' to display strings in the OBC Script.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'instructions' to display instructions how to modify OBC Scripts.")
         print("Enter 'quit' to exit without saving.")
@@ -105,6 +125,8 @@ def main():
                 print("Offsets:")
                 for i, offset in enumerate(occurrences):
                     print(f"{i+1}. 0x{offset:08X}")
+        elif choice == 'strings':
+            display_strings(content)
         elif choice == 'save':
             # Get the current year
             current_year = str(datetime.datetime.now().year)
