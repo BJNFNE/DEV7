@@ -9,9 +9,9 @@ REM Check the user input
 if /i "%compile_debug%"=="yes" (
     echo Compiling LoaderMDO in debug mode...
     REM Compile the source file
-    cl.exe /Zi /EHsc /MDd /c LoaderMDO.cpp
+    cl.exe /Zi /EHsc /MDd /MT /c LoaderMDO.cpp
     REM Link the object file
-    link.exe /PDB:LoaderMDO.pdb /DEBUG /MAP /OUT:LoaderMDO.exe LoaderMDO.obj user32.lib
+    link.exe /DEBUG /SUBSYSTEM:WINDOWS /OUT:LoaderMDO.exe LoaderMDO.obj user32.lib
 ) else if /i "%compile_debug%"=="no" (
     echo Exiting without compilation.
     exit
