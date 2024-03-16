@@ -16,19 +16,18 @@ def display_strings(content):
     print("Strings in the OBC Script:")
     print("--------------------------")
     strings = content.split(b'\x00')
+    printed = False
     for string in strings:
-        decoded_string = None
-        for encoding in ['utf-8', 'latin-1', 'windows-1252']:
-            try:
-                decoded_string = string.decode(encoding)
-                break
-            except UnicodeDecodeError:
-                pass
-        if decoded_string is None:
-            print("Unable to decode string", end=' ')
-        else:
-            print(decoded_string, end=' | ')  # Use a vertical bar as the separator
-    print()  # Add a newline after all strings have been printed
+        try:
+            decoded_string = string.decode('utf-8')
+            printable_string = ''.join(c for c in decoded_string if ' ' <= c <= '~')
+            if printable_string:
+                if printed:
+                    print()
+                print(printable_string)
+                printed = True
+        except UnicodeDecodeError:
+            pass
 
 
 def save_changes(filename, content):
