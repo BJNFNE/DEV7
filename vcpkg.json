@@ -1,0 +1,9 @@
+{
+  "name": "DEV7",
+  "version-string": "latest",
+  "dependencies": [
+    "zlib",
+    "libpng",
+    "discord-rpc"
+  ]
+}
