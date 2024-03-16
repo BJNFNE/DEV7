@@ -15,7 +15,6 @@ TODO:
 */
 
 #include <windows.h>
-#include <string>
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
     // Check if a window with the title "LoaderMDO" exists
@@ -23,11 +22,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     // If no window with the title "LoaderMDO" exists, create the ADI5_LAUNCH_MUTEX
     if (hwnd == NULL) {
-        HANDLE mutex = CreateEvent(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
+        HANDLE mutex = CreateEventA(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
 
         if (mutex != NULL) {
-            std::string command = "Loader7.exe";
-            system(command.c_str());
+            STARTUPINFOA si;
+            PROCESS_INFORMATION pi;
+            ZeroMemory(&si, sizeof(si));
+            si.cb = sizeof(si);
+            ZeroMemory(&pi, sizeof(pi));
+
+            // Command line to start Loader7.exe
+            LPSTR commandLine = "Loader7.exe";
+
+            // Start Loader7.exe
+            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+                // Optionally wait for Loader7.exe to finish
+                // WaitForSingleObject(pi.hProcess, INFINITE);
+                CloseHandle(pi.hProcess);
+                CloseHandle(pi.hThread);
+            }
+
             CloseHandle(mutex);
         }
     }
