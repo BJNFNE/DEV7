@@ -11,7 +11,7 @@ if /i "%compile_debug%"=="yes" (
     REM Compile the source file
     cl.exe /Zi /EHsc /MDd /MT /c LoaderMDO.cpp
     REM Link the object file
-    link.exe /DEBUG /SUBSYSTEM:WINDOWS /OUT:LoaderMDO.exe LoaderMDO.obj user32.lib
+    link.exe /DEBUG /PDB:LoaderMDO.pdb /MAP /SUBSYSTEM:WINDOWS /OUT:LoaderMDO.exe LoaderMDO.obj user32.lib
 ) else if /i "%compile_debug%"=="no" (
     echo Exiting without compilation.
     exit
