@@ -15,12 +15,22 @@ Compiling:
 #include <windows.h>
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
+    // Check if a window with the title "LoaderMDO" exists
+    HWND hwnd = FindWindowA(NULL, "LoaderMDO");
+    
+    // If a window with the title "LoaderMDO" exists, sleep for 100ms
+    while (hwnd != NULL) {
+        Sleep(100); // Sleep for 100 milliseconds
+        hwnd = FindWindowA(NULL, "LoaderMDO"); // Check again
+    }
+
     // Create the ADI5_LAUNCH_MUTEX
     HANDLE mutex = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
 
     if (mutex != NULL) {
-        DWORD lastError = GetLastError();
-        if (lastError != ERROR_ALREADY_EXISTS) {
+        if (GetLastError() != ERROR_ALREADY_EXISTS) {
+            // Mutex does not already exist, so proceed with launching Loader7.exe
+
             STARTUPINFOA si;
             PROCESS_INFORMATION pi;
             ZeroMemory(&si, sizeof(si));
@@ -36,7 +46,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 CloseHandle(pi.hThread);
             }
         }
-
         CloseHandle(mutex);
     }
 
