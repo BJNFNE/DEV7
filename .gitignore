@@ -16,9 +16,8 @@
 # Ignore Jetbrains CLion IDE files
 .idea
 
-# VSCode files
-/.vs
-/.vscode
+# Ignore Visual Studio specific files/folders
+.vs/
 
 # Debug/Release Folders
 Debug/
