@@ -18,30 +18,33 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Check if a window with the title "LoaderMDO" exists
     HWND hwnd = FindWindowA(NULL, "LoaderMDO");
     
-    // If no window with the title "LoaderMDO" exists, create the ADI5_LAUNCH_MUTEX
-    if (hwnd == NULL) {
-        HANDLE mutex = CreateEventA(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
+    // If a window with the title "LoaderMDO" exists, sleep for 100ms
+    while (hwnd != NULL) {
+        Sleep(100); // Sleep for 100 milliseconds
+        hwnd = FindWindowA(NULL, "LoaderMDO"); // Check again
+    }
 
-        if (mutex != NULL) {
-            STARTUPINFOA si;
-            PROCESS_INFORMATION pi;
-            ZeroMemory(&si, sizeof(si));
-            si.cb = sizeof(si);
-            ZeroMemory(&pi, sizeof(pi));
+    // Create the ADI5_LAUNCH_MUTEX
+    HANDLE mutex = CreateEventA(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
 
-            // Command line to start Loader7.exe
-            LPSTR commandLine = "Loader7.exe";
+    if (mutex != NULL) {
+        STARTUPINFOA si;
+        PROCESS_INFORMATION pi;
+        ZeroMemory(&si, sizeof(si));
+        si.cb = sizeof(si);
+        ZeroMemory(&pi, sizeof(pi));
 
-            // Start Loader7.exe
-            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-                CloseHandle(pi.hProcess);
-                CloseHandle(pi.hThread);
-            }
+        // Command line to start Loader7.exe
+        LPSTR commandLine = "Loader7.exe";
 
-            CloseHandle(mutex);
+        // Start Loader7.exe
+        if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+            CloseHandle(pi.hProcess);
+            CloseHandle(pi.hThread);
         }
+
+        CloseHandle(mutex);
     }
 
     return 0;
 }
-
