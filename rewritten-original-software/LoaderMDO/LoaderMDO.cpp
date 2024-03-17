@@ -15,32 +15,26 @@ Compiling:
 #include <windows.h>
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    // Check if a window with the title "LoaderMDO" exists
-    HWND hwnd = FindWindowA(NULL, "LoaderMDO");
-    
-    // If a window with the title "LoaderMDO" exists, sleep for 100ms
-    while (hwnd != NULL) {
-        Sleep(100); // Sleep for 100 milliseconds
-        hwnd = FindWindowA(NULL, "LoaderMDO"); // Check again
-    }
-
     // Create the ADI5_LAUNCH_MUTEX
-    HANDLE mutex = CreateEventA(NULL, TRUE, FALSE, "ADI5_LAUNCH_MUTEX");
+    HANDLE mutex = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
 
     if (mutex != NULL) {
-        STARTUPINFOA si;
-        PROCESS_INFORMATION pi;
-        ZeroMemory(&si, sizeof(si));
-        si.cb = sizeof(si);
-        ZeroMemory(&pi, sizeof(pi));
+        DWORD lastError = GetLastError();
+        if (lastError != ERROR_ALREADY_EXISTS) {
+            STARTUPINFOA si;
+            PROCESS_INFORMATION pi;
+            ZeroMemory(&si, sizeof(si));
+            si.cb = sizeof(si);
+            ZeroMemory(&pi, sizeof(pi));
 
-        // Command line to start Loader7.exe
-        LPSTR commandLine = "Loader7.exe";
+            // Command line to start Loader7.exe
+            LPSTR commandLine = "Loader7.exe";
 
-        // Start Loader7.exe
-        if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-            CloseHandle(pi.hProcess);
-            CloseHandle(pi.hThread);
+            // Start Loader7.exe
+            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+                CloseHandle(pi.hProcess);
+                CloseHandle(pi.hThread);
+            }
         }
 
         CloseHandle(mutex);
