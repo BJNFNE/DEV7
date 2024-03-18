@@ -20,7 +20,7 @@ jobs:
 
     - name: Set up MSVC 2022 environment
       run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+        cmd /c "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 
     - name: Compile C++
       run: cl "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp"
@@ -36,7 +36,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Download Artifact
