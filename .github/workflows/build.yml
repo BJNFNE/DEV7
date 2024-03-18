@@ -13,36 +13,43 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install C++ Components
-      run: choco install mingw -y
+    - name: Install MSVC 2022
+      run: |
+        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional" -y
+        choco install visualstudio2019-workload-vctools -y
 
-    - name: Compile LoaderMDO x64 version
-      run: g++ "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp" -o LoaderMDO.exe
+    - name: Set up MSVC 2022 environment
+      run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+
+    - name: Compile C++
+      run: cl "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp"
+
+    - name: Rename Executable
+      run: rename "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.exe" LoaderMDO.exe
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: LoaderMDO
+        name: compiled-binary
         path: LoaderMDO.exe
 
   release:
     needs: build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Download Artifact
       uses: actions/download-artifact@v2
       with:
-        name: LoaderMDO
+        name: compiled-binary
         path: .
 
-    - name: Create Release for LoaderMDO
+    - name: Create Release
       id: create_release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          LoaderMDO.exe
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
-        draft: false
-        prerelease: false
+      run: |
+        RELEASE_TITLE="Release ${{ github.sha }}"
+        RELEASE_BODY="This is an automatically generated release."
+        UPLOAD_URL=$(curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" "https://api.github.com/repos/${{ github.repository }}/releases" -d "{\"tag_name\": \"${{ github.sha }}\",\"name\": \"${RELEASE_TITLE}\",\"body\": \"${RELEASE_BODY}\"}" | jq -r .upload_url)
+        echo "Upload URL: $UPLOAD_URL"
+        curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -H "Content-Type: application/octet-stream" --data-binary "@LoaderMDO.exe" "${UPLOAD_URL/\{?name,label\}/}?name=LoaderMDO.exe"
