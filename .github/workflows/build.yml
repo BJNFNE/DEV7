@@ -1,4 +1,4 @@
-name: LoaderMDO Modern version
+name: Build
 
 on:
   push:
@@ -17,10 +17,11 @@ jobs:
       run: choco install mingw -y
 
     - name: Compile C++20
-      run: g++ -std=c++20 /rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp -o LoaderMDO.exe
+      run: |
+        g++ -std=c++20 ${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp -o LoaderMDO.exe
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: Compile modern version of LoaderMDO
+        name: compiled-binary
         path: LoaderMDO.exe
