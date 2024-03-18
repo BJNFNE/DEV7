@@ -1,0 +1,26 @@
+name: LoaderMDO Modern version
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install g++
+      run: choco install mingw -y
+
+    - name: Compile C++20
+      run: g++ -std=c++20 /rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp -o LoaderMDO.exe
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Compile modern version of LoaderMDO
+        path: LoaderMDO.exe
