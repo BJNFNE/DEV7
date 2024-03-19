@@ -8,6 +8,7 @@ Requirements:
 -  Compile under MSVC 2022
 Compiling:
 - Can directly be compiled in MSVC you can change between Release or Debug mode.
+- To compile over g++/MSYS2 you can run this command to compile: g++ -o LoaderMDO.exe LoaderMDO.cpp -luser32
 */
 
 #include <windows.h>
