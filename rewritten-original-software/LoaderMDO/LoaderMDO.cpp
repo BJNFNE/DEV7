@@ -31,12 +31,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         if (GetLastError() != ERROR_ALREADY_EXISTS) {
             // Mutex does not already exist, so proceed with launching Loader7.exe
 
+            STARTUPINFOA si;
+            PROCESS_INFORMATION pi;
+            ZeroMemory(&si, sizeof(si));
+            si.cb = sizeof(si);
+            ZeroMemory(&pi, sizeof(pi));
+
             // Command line to start Loader7.exe
             LPSTR commandLine = "Loader7.exe";
 
             // Start Loader7.exe
-            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, NULL, NULL)) {
-                // Successfully started Loader7.exe
+            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+                CloseHandle(pi.hProcess);
+                CloseHandle(pi.hThread);
             }
         }
         CloseHandle(mutex);
