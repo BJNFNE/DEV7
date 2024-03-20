@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install g++
-      run: sudo apt-get install -y g++
+    - name: Install MinGW
+      run: choco install mingw -y
 
     - name: Compile C++
       run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
@@ -27,7 +27,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Download Artifact
@@ -43,18 +43,18 @@ jobs:
         RELEASE_BODY="This is an automatically generated release."
 
         # Create a new release
-        RESPONSE=$(curl -s -X POST \
-          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          "https://api.github.com/repos/${{ github.repository }}/releases" \
+        RESPONSE=$(curl -s -X POST ^
+          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" ^
+          -H "Accept: application/vnd.github.v3+json" ^
+          "https://api.github.com/repos/${{ github.repository }}/releases" ^
           -d "{\"tag_name\": \"${{ github.sha }}\",\"name\": \"${RELEASE_TITLE}\",\"body\": \"${RELEASE_BODY}\"}")
 
         # Extract the release ID from the response
         RELEASE_ID=$(echo "$RESPONSE" | jq -r '.id')
 
         # Upload the artifact to the release
-        curl -s -X POST \
-          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" \
-          -H "Content-Type: application/octet-stream" \
-          --data-binary "@LoaderMDO.exe" \
+        curl -s -X POST ^
+          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" ^
+          -H "Content-Type: application/octet-stream" ^
+          --data-binary "@LoaderMDO.exe" ^
           "https://uploads.github.com/repos/${{ github.repository }}/releases/${RELEASE_ID}/assets?name=LoaderMDO.exe"
