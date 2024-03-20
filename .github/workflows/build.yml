@@ -13,20 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install MSVC 2022
-      run: |
-        choco install visualstudio2019buildtools --package-parameters "--includeRecommended --includeOptional" -y
-        choco install visualstudio2019-workload-vctools -y
-
-    - name: Set up MSVC 2022 environment
-      run: |
-        cmd /c "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+    - name: Install g++
+      run: choco install mingw -y
 
     - name: Compile C++
-      run: cl "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp"
-
-    - name: Rename Executable
-      run: rename "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.exe" LoaderMDO.exe
+      run: g++ "${{ github.workspace }}/rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp" -o LoaderMDO.exe
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
@@ -36,7 +27,7 @@ jobs:
 
   release:
     needs: build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Download Artifact
