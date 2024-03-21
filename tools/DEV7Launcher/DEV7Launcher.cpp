@@ -23,6 +23,10 @@
 // check if discord-rpc can be used in Launcher to display how long you play with Launcher an Game like Adibou or Adi
 // also show how lobg the game is being played
 
+// add adibou3.exe/LoaderMDO.exe to Launcher with check prefer to use LoaderMDO
+// if not found fallback to adibou3.exe for Adibou 3 and ADI5.EXE for ADI 5.
+// replace the start normal entry with adibou3.exe / ADI5.EXE / LoaderMDO.exe
+
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
