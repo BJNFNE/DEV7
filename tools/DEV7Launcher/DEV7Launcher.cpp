@@ -23,10 +23,6 @@
 // check if discord-rpc can be used in Launcher to display how long you play with Launcher an Game like Adibou or Adi
 // also show how lobg the game is being played
 
-// add adibou3.exe/LoaderMDO.exe to Launcher with check prefer to use LoaderMDO
-// if not found fallback to adibou3.exe for Adibou 3 and ADI5.EXE for ADI 5.
-// replace the start normal entry with adibou3.exe / ADI5.EXE / LoaderMDO.exe
-
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
@@ -162,6 +158,24 @@ void Ed4Intro() {
 #endif
 }
 
+void startLoader7Normal() {
+    if (fileExists("LoaderMDO.exe"))
+        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("LoaderMDO.exe");
+    else if (fileExists("LoaderMDO.exe"))
+        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("wine LoaderMDO.exe");
+    else if (fileExists("Adibou3.EXE"))
+        std::cout << "Adibou3.EXE found. Starting Adibou3.EXE..." << std::endl, launchCommand("Adibou3.EXE");
+    else if (fileExists("Adibou3.exe"))
+        std::cout << "Adibou3.exe found. Starting Adibou3.exe..." << std::endl, launchCommand("wine adibou3.exe");
+    else if (fileExists("ADI5.EXE"))
+        std::cout << "ADI5.EXE found. Starting ADI5.EXE..." << std::endl, launchCommand("ADI5.EXE");
+    else if (fileExists("ADI5.exe"))
+        std::cout << "ADI5.exe found. Starting ADI5.exe..." << std::endl, launchCommand("wine ADI5.exe");
+    else
+        std::cout << "None of the executables found. Skipping to next executable..." << std::endl;
+}
+
+
 int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now(); // Record the start time
     
@@ -232,7 +246,7 @@ int main(int argc, char* argv[]) {
             break;
         case 2:
             if (loader7Exists)
-                launchCommand("loader7.exe");
+                startLoader7Normal();
             else if (dev7VMExists)
                 launchCommand("Dev7VM.exe");
             break;
@@ -277,4 +291,3 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-
