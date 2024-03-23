@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <cstring>
-//#include <chrono>
 #include <filesystem>
 
 #ifdef _WIN32
@@ -19,11 +18,10 @@
 #define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
+// TODO:
 // check if discord-rpc can be used in Launcher to display how long you play with Launcher an Game like Adibou or Adi
 // also show how lobg the game is being played
 
-// Add for Function which are related to Adibou 3 / Adi 5, if the File in that specific Function don't find the File print an message via std::cout,
-// with an message "This Directory does not seem like to be an GameName Directory (replace GameName with actually GameName but use it currently as Placeholder)"
 
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
@@ -199,7 +197,6 @@ void startLoader7Normal() {
     else
         std::cout << "None of the executables found. Skipping to next executable..." << std::endl;
 }
-
 
 int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now(); // Record the start time
