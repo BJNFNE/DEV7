@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstring>
+//#include <chrono>
 #include <filesystem>
 
 #ifdef _WIN32
@@ -27,6 +28,14 @@ bool fileExists(const std::string& filename) {
 #else
     struct stat buffer;
     return stat(filename.c_str(), &buffer) == 0;
+#endif
+}
+
+void clearConsole() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
 #endif
 }
 
@@ -280,12 +289,16 @@ int main(int argc, char* argv[]) {
             break;
     }
 
+    std::cout << "\nPress any key to exit DEV7Launcher";
+    std::getchar();
+    std::cout << std::endl;
+
     auto end = std::chrono::steady_clock::now(); // Record the end time
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
-    std::cout << std::endl;
+    // If you want to show something after the clearing of the Console add the std::cout related function here.
+    clearConsole();
     std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
-    std::cout << std::endl;
 
     return 0;
 }
