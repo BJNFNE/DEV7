@@ -22,6 +22,9 @@
 // check if discord-rpc can be used in Launcher to display how long you play with Launcher an Game like Adibou or Adi
 // also show how lobg the game is being played
 
+// Add for Function which are related to Adibou 3 / Adi 5, if the File in that specific Function don't find the File print an message via std::cout,
+// with an message "This Directory does not seem like to be an GameName Directory (replace GameName with actually GameName but use it currently as Placeholder)"
+
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
@@ -109,8 +112,16 @@ void showTraceTXT() {
 }
 
 void modifyAdibou3Ini() {
+
+     // Check if Adibou3.ini exists
+    if (!std::filesystem::exists("Adibou3.ini")) {
+        std::cout << "Error: This directory does not seem to be an Adibou 3 game directory." << std::endl;
+        return;
+    }
+
     // This an Workaround for this Function to load Adibou3.ini into the Editors
     // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
+
 #ifdef _WIN32
   if (!std::filesystem::exists("Adibou3.ini")) {
     system("ren ADIBOU3.INI Adibou3.ini");
@@ -125,6 +136,13 @@ void modifyAdibou3Ini() {
 }
 
 void modifyAdi5Ini() {
+
+     // Check if Data/ADI5.ini exists
+    if (!std::filesystem::exists("Data/ADI5.ini")) {
+        std::cout << "Error: This directory does not seem to be an Adi 5 game directory." << std::endl;
+        return;
+    }
+
 #ifdef _WIN32
     system("notepad Data/ADI5.ini");
 #else
@@ -297,7 +315,7 @@ int main(int argc, char* argv[]) {
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
     // If you want to show something after the clearing of the Console add the std::cout related function here.
-    clearConsole();
+    //clearConsole();
     std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
 
     return 0;
