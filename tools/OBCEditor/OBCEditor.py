@@ -101,6 +101,8 @@ def main():
             print("\nHow to modify OBC Scripts:")
             print("- If you replace values don't be longer with the new value as the old was.")
             print("- Make sure you not enlarge the Filesize of the OBC Script.")
+            print("- Make sure you use version 1.30 of DEV7/Loader7 otherwise DEV7 won't able to use the Script and skip it.")
+
             break
         elif choice == 'modify':
             display_content(content)
