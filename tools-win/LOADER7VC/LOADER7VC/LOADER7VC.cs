@@ -4,14 +4,11 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-// TODO:
-// add interactive/noninteractive mode, if Program gets executed over an Command Line, then do not print "Press any Key to exit" but altough the Program gets executed via an Double-Click then print "Press any Key to exit"
-
 class Program
 {
     static void Main(string[] args)
     {
-        string EXEInput;
+        string EXEInput = null;
 
         // Check if there is a command line argument
         if (args.Length > 0)
@@ -19,12 +16,11 @@ class Program
             // Use the provided command line argument as the file path
             EXEInput = args[0];
 
-            // Check if the provided file ends with "LOADER7.EXE" or "Dev7VM.EXE"
-            if (!EXEInput.EndsWith("LOADER7.EXE", StringComparison.OrdinalIgnoreCase) &&
-                !EXEInput.EndsWith("Dev7VM.EXE", StringComparison.OrdinalIgnoreCase))
+            // Validate provided file path
+            if (!ValidateFilePath(EXEInput))
             {
-                Console.WriteLine("Please make sure you use the Tool on either LOADER7.EXE or Dev7VM.EXE!");
-                return;
+                Console.WriteLine("Only LOADER.EXE or Dev7VM.EXE.");
+                Environment.Exit(1);
             }
         }
         else
@@ -45,19 +41,33 @@ class Program
             {
                 Console.WriteLine("LOADER7.EXE or Dev7VM.EXE not found in the current directory.");
                 Console.WriteLine("Press enter to exit");
-                Console.ReadKey();
-                return;
+                Console.ReadLine();
+                Environment.Exit(1);
             }
         }
 
+        try
+        {
+            // Display file information
+            DisplayFileInfo(EXEInput, interactive: true);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+            Environment.Exit(1);
+        }
+    }
+
+    static void DisplayFileInfo(string filePath, bool interactive)
+    {
         // Calculate and display MD5 checksum
-        string md5Sum = CalculateMD5(EXEInput);
+        string md5Sum = CalculateMD5(filePath);
 
         // Get file size
-        long fileSize = new FileInfo(EXEInput).Length;
+        long fileSize = new FileInfo(filePath).Length;
 
-        FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(EXEInput);
-        string EXEFilename = Path.GetFileName(EXEInput);
+        FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(filePath);
+        string EXEFilename = Path.GetFileName(filePath);
 
         Console.WriteLine("\nInfos about " + EXEFilename + ":\n");
 
@@ -72,7 +82,7 @@ class Program
         Console.WriteLine($"File Size: {fileSize} Bytes");
 
         // Read the content of the EXE file
-        string exeContent = File.ReadAllText(EXEInput);
+        string exeContent = File.ReadAllText(filePath);
 
         // Find the index of "NB10" in the content
         int nb10Index = exeContent.IndexOf("NB10");
@@ -90,8 +100,19 @@ class Program
             Console.WriteLine("PDB File reference not found in " + EXEFilename);
         }
 
-        Console.WriteLine("\nPress any key to exit LOADER7VC");
-        Console.ReadKey();
+        // Wait for user input if running in interactive mode
+        if (interactive)
+        {
+            Console.WriteLine("\nPress any key to exit LOADER7VC");
+            Console.ReadKey();
+        }
+    }
+
+    static bool ValidateFilePath(string filePath)
+    {
+        // Add additional validation if needed
+        return filePath.EndsWith("LOADER7.EXE", StringComparison.OrdinalIgnoreCase) ||
+               filePath.EndsWith("Dev7VM.EXE", StringComparison.OrdinalIgnoreCase);
     }
 
     static void PrintIfNoInfos(string label, string value)
@@ -103,8 +124,8 @@ class Program
         else
         {
             Console.WriteLine($"{label}: Not available in LOADER7.EXE/Dev7VM.EXE.");
-         }
-       }
+        }
+    }
 
     static string CalculateMD5(string filePath)
     {
