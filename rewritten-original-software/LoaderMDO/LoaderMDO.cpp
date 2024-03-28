@@ -14,6 +14,9 @@ Compiling:
 
 #include <windows.h>
 
+// Function prototype for starting Loader7.exe with arguments
+void startLoader7(int argc, unsigned int* argv);
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
     // Check if a window with the title "LoaderMDO" exists
     HWND hwnd = FindWindowA(NULL, "LoaderMDO");
@@ -30,25 +33,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     if (mutex != NULL) {
         if (GetLastError() != ERROR_ALREADY_EXISTS) {
             // Mutex does not already exist, so proceed with launching Loader7.exe
-
-            STARTUPINFOA si;
-            PROCESS_INFORMATION pi;
-            ZeroMemory(&si, sizeof(si));
-            si.cb = sizeof(si);
-            ZeroMemory(&pi, sizeof(pi));
-
-            // Command line to start Loader7.exe
-            LPSTR commandLine = "Loader7.exe";
-
-            // Start Loader7.exe
-            if (CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-                CloseHandle(pi.hProcess);
-                CloseHandle(pi.hThread);
-                return;
-            }
+            unsigned int args[] = {1, (unsigned int)"Loader7.exe"};
+            startLoader7(sizeof(args)/sizeof(args[0]), args);
         }
         CloseHandle(mutex);
+        return;
     }
 
     return;
+}
+
+// Function definition for starting Loader7.exe with arguments
+void startLoader7(int argc, unsigned int* argv) {
+    // Start Loader7.exe
+    STARTUPINFOA si;
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory(&pi, sizeof(pi));
+
+    if (!CreateProcessA(NULL, "Loader7.exe", NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+        return;
+    }
 }
