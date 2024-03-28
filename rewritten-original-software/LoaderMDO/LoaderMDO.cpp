@@ -49,5 +49,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         CloseHandle(mutex);
     }
 
-    return 0;
+    return;
 }
