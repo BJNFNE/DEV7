@@ -11,30 +11,39 @@ def is_valid_image_file(file_path):
 def convert_to_tga(input_path, output_path, resolution):
     image = Image.open(input_path)
 
-    # Check if input image resolution is larger than output resolution
-    if image.size[0] > resolution[0] or image.size[1] > resolution[1]:
-        # Print warning to infrom the user that the input picture is using an larger resolsution instead of the output picture.
-        print("Warning: Input image resolution is larger than the output resolution. Resizing to fit within the resolution.\n")
-        # Calculate the aspect ratio of the original image
-        aspect_ratio = image.size[0] / image.size[1]
+    # Calculate new dimensions to fit within the specified resolution while maintaining aspect ratio
+    width, height = image.size
+    aspect_ratio = width / height
 
-        # Calculate the new dimensions to fit within the specified resolution
-        new_width = min(resolution[0], int(resolution[1] * aspect_ratio))
-        new_height = min(resolution[1], int(resolution[0] / aspect_ratio))
+    if width > resolution[0] or height > resolution[1]:
+        if aspect_ratio > resolution[0] / resolution[1]:
+            width = resolution[0]
+            height = int(width / aspect_ratio)
+        else:
+            height = resolution[1]
+            width = int(height * aspect_ratio)
+        image = image.resize((width, height), Image.ANTIALIAS)
+        print("Warning: Input image resized to fit within the specified resolution.")
 
-        # Resize the image while maintaining the aspect ratio
-        image = image.resize((new_width, new_height), Image.ANTIALIAS)
+    # Create a new blank image with the specified resolution
+    new_image = Image.new("RGB", resolution)
 
+    # Calculate the position to paste the resized image (centered horizontally)
+    x_offset = (resolution[0] - width) // 2
+    
+    # Calculate the vertical offset based on image and resolution heights
+    if height < resolution[1]:
+        y_offset = (resolution[1] - height) // 2
     else:
-        print("Resizing image to fit within the specified resolution.\n")
-        # Resize the image to the chosen resolution
-        image = image.resize(resolution, Image.ANTIALIAS)
+        y_offset = 0
 
-    # Calculate bits per pixel based on the image mode
-    bpp = image.bits if hasattr(image, 'bits') else len(image.getbands()) * 8
+    # Paste the resized image onto the new blank image
+    new_image.paste(image, (x_offset, y_offset))
 
-    image.save(output_path, format="TGA")
-    return bpp
+    # Save the new image
+    new_image.save(output_path, format="TGA")
+    return new_image.bits if hasattr(new_image, 'bits') else len(new_image.getbands()) * 8
+
 
 def is_resolution_valid(resolution):
     max_width = 800
