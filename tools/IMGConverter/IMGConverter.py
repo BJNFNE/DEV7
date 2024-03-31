@@ -2,7 +2,7 @@ from PIL import Image
 import os
 import sys
 
-ALLOWED_FORMATS = {".jpg", ".jpeg", ".png", ".bmp", ".tga", ".gif"}
+ALLOWED_FORMATS = {".jpg", ".jpeg", ".png", ".bmp", ".tga", ".gif", ".webp"}
 
 def is_valid_image_file(file_path):
     _, file_extension = os.path.splitext(file_path)
