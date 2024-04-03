@@ -308,10 +308,6 @@ int main(int argc, char* argv[]) {
             break;
     }
 
-    std::cout << "\nPress any key to exit DEV7Launcher";
-    std::getchar();
-    std::cout << std::endl;
-
     auto end = std::chrono::steady_clock::now(); // Record the end time
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
