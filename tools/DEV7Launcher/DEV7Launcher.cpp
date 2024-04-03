@@ -312,7 +312,7 @@ int main(int argc, char* argv[]) {
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
     // If you want to show something after the clearing of the Console add the std::cout related function here.
-    //clearConsole();
+    clearConsole();
     std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
 
     return 0;
