@@ -92,16 +92,16 @@ def main():
         print("Enter 'count' to count occurrences of a word.")
         print("Enter 'strings' to display strings in the OBC Script.")
         print("Enter 'save' to save changes and exit.")
-        print("Enter 'help' to display help how to modify OBC Scripts.")
+        print("Enter 'instructions' to display instructions how to modify OBC Scripts.")
         print("Enter 'quit' to exit without saving.")
         
         choice = input("Your choice: ").lower()
 
-        if choice == 'help':
+        if choice == 'instructions':
             print("\nHow to modify OBC Scripts:")
             print("- If you replace values don't be longer with the new value as the old was.")
             print("- Make sure you not enlarge the Filesize of the OBC Script.")
-            print("- Make sure you use version 1.3.0.0 (1.30, 1.30a 1.30b) of DEV7/Loader7 otherwise DEV7 won't able to use the Script and skip it.")
+            print("- Make sure you use version 1.30 of DEV7/Loader7 otherwise DEV7 won't able to use the Script and skip it.")
 
             break
         elif choice == 'modify':

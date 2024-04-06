@@ -194,12 +194,8 @@ void startLoader7Normal() {
         std::cout << "ADI5.EXE found. Starting ADI5.EXE..." << std::endl, launchCommand("ADI5.EXE");
     else if (fileExists("ADI5.exe"))
         std::cout << "ADI5.exe found. Starting ADI5.exe..." << std::endl, launchCommand("wine ADI5.exe");
-    else if (fileExists("Loader7.exe"))
-        std::cout << "Loader7.exe found. Starting ADI5.EXE..." << std::endl, launchCommand("Loader7.exe");
-    else if (fileExists("Loader7.exe"))
-        std::cout << "Loader7.exe found. Starting Loader7.exe..." << std::endl, launchCommand("wine Loader7.exe");
     else
-        std::cout << "None of the executables found. \nPlease make sure you have the exe in the same Directory as the Launcher." << std::endl;
+        std::cout << "None of the executables found. Skipping to next executable..." << std::endl;
 }
 
 int main(int argc, char* argv[]) {
@@ -308,11 +304,15 @@ int main(int argc, char* argv[]) {
             break;
     }
 
+    std::cout << "\nPress any key to exit DEV7Launcher";
+    std::getchar();
+    std::cout << std::endl;
+
     auto end = std::chrono::steady_clock::now(); // Record the end time
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
     // If you want to show something after the clearing of the Console add the std::cout related function here.
-    clearConsole();
+    //clearConsole();
     std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
 
     return 0;
