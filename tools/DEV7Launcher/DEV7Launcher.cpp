@@ -18,11 +18,6 @@
 #define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
-// TODO:
-// check if discord-rpc can be used in Launcher to display how long you play with Launcher an Game like Adibou or Adi
-// also show how lobg the game is being played
-
-
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
