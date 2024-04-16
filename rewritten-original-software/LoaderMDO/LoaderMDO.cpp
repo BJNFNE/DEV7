@@ -2,10 +2,10 @@
 LoaderMDO was used as Adibou3.EXE in Adibou 3 and as ADI5.EXE in ADI 5.
 It was developed to be linked to Loader7.exe to run it.
 ***********************************************************************
-This is just an attempt to recreate that EXE in C++ as it was developed.
+This is an attempt to recreate that EXE in C++ as it was developed back then by Coktel/MDO.
 It was originally developed for ADI 5 version 5.00 in the Year 2000.
 Requirements:
--  Compile under MSVC 6.0
+-  Compile under MSVC 6.0 build 8168 (Any newer build of MSVC6.0 work aswell but Coktel/MDO used back then used exactly this version of the Compiler.)
 Compiling:
 - Compile in Release mode to keep it original in Release mode as it was back then. (directly from Visual Studio 6.0)
 - build_release.bat: if you compile it over this batch file it whil be smaller then original in size.
