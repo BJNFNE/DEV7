@@ -1,3 +1,5 @@
+// Information based on b3_appliinfo.obc it is stored in b3_common.stk and is Adibou 3 only.
+// TODO: implement also the other functionlity which is required to create an working File
 #include <iostream>
 #include <fstream>
 #include <string>
