@@ -15,7 +15,7 @@ int main() {
     std::getline(std::cin, choice);
 
     // Ask the user for details based on the chosen section
-    std::string Name, CDName, PictCD, MiniEnviVersion, PictureNameR, PictureNameC, PictureNameN;
+    std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN;
 
     if (choice == "1") {
         std::cout << "Enter [AppliInfo] details:\n"; // (Applications only!)
@@ -27,6 +27,8 @@ int main() {
         std::getline(std::cin, PictCD);
         std::cout << "MiniEnviVersion: ";
         std::getline(std::cin, MiniEnviVersion);
+       // std::cout << "Order: ";
+       // std::getline(std::cin, Order);
         std::cout << "PictureNameR: ";
         std::getline(std::cin, PictureNameR);
         std::cout << "PictureNameC: ";
@@ -39,6 +41,8 @@ int main() {
         std::getline(std::cin, Name);
         std::cout << "PictCD: ";
         std::getline(std::cin, PictCD);
+       // std::cout << "Order: ";
+       // std::getline(std::cin, Order);
     } else {
         std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
         return 1;
@@ -59,6 +63,7 @@ int main() {
         outputBCD1 << "Name            = " << Name << "\n";
         outputBCD1 << "CDName          = " << CDName << "\n";
         outputBCD1 << "PictCD          = " << PictCD << "\n";
+       // outputBCD1 << "Order           = " << Order << "\n";
         outputBCD1 << "MiniEnviVersion = " << MiniEnviVersion << "\n";
         outputBCD1 << "PictureNameR    = " << PictureNameR << "\n";
         outputBCD1 << "PictureNameC    = " << PictureNameC << "\n";
@@ -67,6 +72,7 @@ int main() {
         outputBCD1 << "[ENVIINFO]\n"; // (Environment only!)
         outputBCD1 << "Name            = " << Name << "\n";
         outputBCD1 << "CDName          = " << CDName << "\n";
+    //    outputBCD1 << "Order           = " << Order << "\n";
     }
 
     // Close the file
@@ -76,3 +82,4 @@ int main() {
 
     return 0;
 }
+
