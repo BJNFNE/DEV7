@@ -9,7 +9,7 @@ int main() {
     std::string fileName;
     std::getline(std::cin, fileName);
 
-    // Ask the user for [AppliInfo] details
+    // Ask the user for [AppliInfo] details (Applications only)
     std::cout << "Enter [AppliInfo] details:\n";
     
     std::cout << "Name: ";
