@@ -9,36 +9,40 @@ int main() {
     std::string fileName;
     std::getline(std::cin, fileName);
 
-    // Ask the user for [AppliInfo] details (Applications only)
-    std::cout << "Enter [AppliInfo] details:\n";
-    
-    std::cout << "Name: ";
-    std::string Name;
-    std::getline(std::cin, Name);
+    // Ask the user to choose between AppliInfo and ENVIINFO
+    std::cout << "Choose between [1] AppliInfo or [2] ENVIINFO: ";
+    std::string choice;
+    std::getline(std::cin, choice);
 
-    std::cout << "CDName: ";
-    std::string CDName;
-    std::getline(std::cin, CDName);
+    // Ask the user for details based on the chosen section
+    std::string Name, CDName, PictCD, MiniEnviVersion, PictureNameR, PictureNameC, PictureNameN;
 
-    std::cout << "PictCD: ";
-    std::string PictCD;
-    std::getline(std::cin, PictCD);
-
-    std::cout << "MiniEnviVersion: ";
-    std::string MiniEnviVersion;
-    std::getline(std::cin, MiniEnviVersion);
-
-    std::cout << "PictureNameR: ";
-    std::string PictureNameR;
-    std::getline(std::cin, PictureNameR);
-
-    std::cout << "PictureNameC: ";
-    std::string PictureNameC;
-    std::getline(std::cin, PictureNameC);
-
-    std::cout << "PictureNameN: ";
-    std::string PictureNameN;
-    std::getline(std::cin, PictureNameN);
+    if (choice == "1") {
+        std::cout << "Enter [AppliInfo] details:\n"; // (Applications only!)
+        std::cout << "Name: ";
+        std::getline(std::cin, Name);
+        std::cout << "CDName: ";
+        std::getline(std::cin, CDName);
+        std::cout << "PictCD: ";
+        std::getline(std::cin, PictCD);
+        std::cout << "MiniEnviVersion: ";
+        std::getline(std::cin, MiniEnviVersion);
+        std::cout << "PictureNameR: ";
+        std::getline(std::cin, PictureNameR);
+        std::cout << "PictureNameC: ";
+        std::getline(std::cin, PictureNameC);
+        std::cout << "PictureNameN: ";
+        std::getline(std::cin, PictureNameN);
+    } else if (choice == "2") {
+        std::cout << "Enter [ENVIINFO] details:\n";  // (Environment only!)
+        std::cout << "Name: ";
+        std::getline(std::cin, Name);
+        std::cout << "PictCD: ";
+        std::getline(std::cin, PictCD);
+    } else {
+        std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
+        return 1;
+    }
 
     // Open the file for writing
     std::ofstream outputBCD1(fileName);
@@ -50,14 +54,20 @@ int main() {
     }
 
     // Write the user-inputted structure to the file
-    outputBCD1 << "[AppliInfo]\n";
-    outputBCD1 << "Name            = " << Name << "\n";
-    outputBCD1 << "CDName          = " << CDName << "\n";
-    outputBCD1 << "PictCD          = " << PictCD << "\n";
-    outputBCD1 << "MiniEnviVersion = " << MiniEnviVersion << "\n";
-    outputBCD1 << "PictureNameR    = " << PictureNameR << "\n";
-    outputBCD1 << "PictureNameC    = " << PictureNameC << "\n";
-    outputBCD1 << "PictureNameN    = " << PictureNameN << "\n";
+    if (choice == "1") {
+        outputBCD1 << "[AppliInfo]\n"; // (Applications only!)
+        outputBCD1 << "Name            = " << Name << "\n";
+        outputBCD1 << "CDName          = " << CDName << "\n";
+        outputBCD1 << "PictCD          = " << PictCD << "\n";
+        outputBCD1 << "MiniEnviVersion = " << MiniEnviVersion << "\n";
+        outputBCD1 << "PictureNameR    = " << PictureNameR << "\n";
+        outputBCD1 << "PictureNameC    = " << PictureNameC << "\n";
+        outputBCD1 << "PictureNameN    = " << PictureNameN << "\n";
+    } else if (choice == "2") {
+        outputBCD1 << "[ENVIINFO]\n"; // (Environment only!)
+        outputBCD1 << "Name            = " << Name << "\n";
+        outputBCD1 << "CDName          = " << CDName << "\n";
+    }
 
     // Close the file
     outputBCD1.close();
