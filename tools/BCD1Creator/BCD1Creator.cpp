@@ -15,7 +15,7 @@ int main() {
     std::getline(std::cin, choice);
 
     // Ask the user for details based on the chosen section
-    std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN;
+    std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN, IDFile, CDDetected;
 
     if (choice == "1") {
         std::cout << "Enter [AppliInfo] details:\n"; // (Applications only!)
@@ -41,8 +41,12 @@ int main() {
         std::getline(std::cin, Name);
         std::cout << "PictCD: ";
         std::getline(std::cin, PictCD);
-       // std::cout << "Order: ";
-       // std::getline(std::cin, Order);
+        // std::cout << "Order: ";
+        // std::getline(std::cin, Order);
+        // std::cout << "IDFile: ";
+        // std::getline(std::cin, IDFile);
+        // std::cout << "CDDetected: ";
+        // std::getline(std::cin, CDDetected);
     } else {
         std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
         return 1;
@@ -68,11 +72,15 @@ int main() {
         outputBCD1 << "PictureNameR    = " << PictureNameR << "\n";
         outputBCD1 << "PictureNameC    = " << PictureNameC << "\n";
         outputBCD1 << "PictureNameN    = " << PictureNameN << "\n";
+      //  outputBCD1 << "IDFile          = " << IDFile << "\n";
+      //  outputBCD1 << "CDDetected      = " << CDDetected << "\n";
     } else if (choice == "2") {
         outputBCD1 << "[ENVIINFO]\n"; // (Environment only!)
         outputBCD1 << "Name            = " << Name << "\n";
         outputBCD1 << "CDName          = " << CDName << "\n";
-    //    outputBCD1 << "Order           = " << Order << "\n";
+    // outputBCD1 << "Order           = " << Order << "\n";
+    // outputBCD1 << "IDFile          = " << IDFile << "\n";
+    // outputBCD1 << "CDDetected      = " << CDDetected << "\n";
     }
 
     // Close the file
@@ -82,4 +90,3 @@ int main() {
 
     return 0;
 }
-
