@@ -1,10 +1,34 @@
-// Information based on b3_appliinfo.obc it is stored in b3_common.stk and is Adibou 3 only.
+/*
+BCD1 Files are used for for the detecting the new Application, And add it to the Vulkan from where you can choose the Application to enter.
+
+Information based on b3_appliinfo.obc is stored in b3_common.stk  (Adibou 3 only).
+Information comes from b3_cdmanager.ini stored in b3_common.itk (Adibou 3 only).
+
+:Functions:
+name here the Name of the Application gets displayed.
+nameCD shows your the Name of the Disc, for the Window thats shows up if the Disc is not inserted.
+pictCD is for using the Image (.img) in the Menu where you can select your Application.
+MiniEnviVersion for set what is the Minimum version of Adibou 3 is required to use the Application. 
+(If an newer Application is being added to an older version Adibou 3 Environment then an message is shown to let the User know that they have to update the Environment.)
+PictureNameR for which picture should used for the Right.
+PictureNameC for which picture should used for the Corner.
+PictureNameN for which picture should used for the Middle?
+CDDetected checks if the CD was detected correctly, also checks for SecuROM.
+Order is to give Adibou 3 the the position where the Application should be shown in the Vulkan.
+
+
+[mask]
+envi=benxxD???.bcd?
+appli=b????D???.bcd?
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
 
 int main() {
-    // Ask the user for the file name
+    // Ask the user for the BCD1 file name
     std::cout << "Enter the name of the .BCD1 file: ";
     std::string fileName;
     std::getline(std::cin, fileName);
