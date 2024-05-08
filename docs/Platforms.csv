@@ -1,6 +1,7 @@
 Platform,Status
 Windows 10/11,"Fully supported"
 Windows 7,"Partially supported"
+Windows 98/XP,"Tools has to be backported for it"
 macOS,"Mostly supported"
 ReactOS,"Planned to be supported."
 Linux,"Fully supported except C# programs"
