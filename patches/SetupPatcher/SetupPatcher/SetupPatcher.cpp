@@ -81,7 +81,7 @@ int main() {
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 
-    std::cout << "SetpPatcher installed with the 2026 Bypass the Game sucessfully" << std::endl;
+    std::cout << "SetupPatcher installed with the 2026 Bypass the Game sucessfully" << std::endl;
 
     return 0;
 }
