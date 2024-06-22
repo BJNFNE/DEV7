@@ -5,11 +5,12 @@ It was developed to be linked to Loader7.exe to run it.
 This is a port to the x64 Platform and newer C++. Code based on LoaderMDO's rewritten code, which can be found in /rewritten-original-software/LoaderMDO/LoaderMDO.cpp
 It was originally developed for ADI 5 version 5.00 in the Year 2000.
 Requirements:
--  Compile under MSVC 2022
+-  Compile under MSVC 2022 or MinGW
 -  Compatible with Windows 7 to Windows 11
 Compiling:
 - Can directly be compiled in MSVC; you can change between Release or Debug mode.
 - To compile over g++/MinGW, you can run this command to compile: g++ -o LoaderMDO.exe LoaderMDO.cpp -luser32
+- When you want to remove the debug symbols from the exe use the "strip LoaderMDO.exe" (Without quotes) command (g++/MinGW only)
 */
 
 #include <windows.h>
