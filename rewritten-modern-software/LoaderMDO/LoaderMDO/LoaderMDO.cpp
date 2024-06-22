@@ -15,7 +15,6 @@ Compiling:
 #include <windows.h>
 #include <iostream>
 #include <string>
-#include <thread> // for std::this_thread::sleep_for
 
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 
@@ -27,7 +26,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     // If a window with the title "LoaderMDO" exists, sleep for 100ms
     while (hwnd != NULL) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        Sleep(100); // Sleep for 100 milliseconds
         hwnd = FindWindowW(NULL, L"LoaderMDO"); // Check again
     }
 
@@ -40,10 +39,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             startLoader7();
         }
         CloseHandle(mutex);
-        return;
     }
 
-    return
+    return 0;
 }
 
 // Function definition for starting Loader7.exe
@@ -61,6 +59,5 @@ void startLoader7() {
     if (CreateProcessW(NULL, const_cast<LPWSTR>(commandLine.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
         CloseHandle(pi.hProcess);
         CloseHandle(pi.hThread);
-        return;
     }
 }
