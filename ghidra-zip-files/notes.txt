@@ -1,0 +1,2 @@
+- adibou3.exe.gzf is the decompilation of adibou3.exe.
+- adibou3.exe is identical to ADI5.EXE they just renamed the exe.
