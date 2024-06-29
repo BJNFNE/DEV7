@@ -4,9 +4,12 @@ import os
 def calculate_md5(file_path):
     """ Calculate the MD5 hash of a file """
     md5 = hashlib.md5()
-    with open(file_path, 'rb') as f:
-        for chunk in iter(lambda: f.read(4096), b''):
-            md5.update(chunk)
+    try:
+        with open(file_path, 'rb') as f:
+            for chunk in iter(lambda: f.read(4096), b''):
+                md5.update(chunk)
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
     return md5.hexdigest()
 
 def read_expected_md5_from_file(file_name):
@@ -39,7 +42,7 @@ def main():
         return
 
     # List of executable files to check
-    executables = ['LoaderMDO.exe', 'Adibou3.exe', 'Adibou3.EXE', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']
+    executables = ['LoaderMDO.exe', 'Adibou3.exe', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']
 
     # Convert all executables to lowercase for case insensitivity
     executables_lower = [exe.lower() for exe in executables]
@@ -50,30 +53,33 @@ def main():
     # Check if LoaderMDO.exe is present and find one of Adibou3.exe or ADI5.exe
     if 'LoaderMDO.exe' in available_executables:
         try:
-            # Calculate the MD5 hash of LoaderMDO.exe
-            loadermdo_hash = calculate_md5('LoaderMDO.exe')
-            print(f"MD5 hash of LoaderMDO.exe: {loadermdo_hash}")
-
             # Find the available executable (Adibou3.exe or ADI5.exe) and calculate its MD5 hash
-            found_executable = False
-            for exe in ['LoaderMDO.exe', 'Adibou3.exe', 'Adibou3.EXE', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']:
-                if exe in available_executables:
-                    exe_hash = calculate_md5(exe)
-                    print(f"MD5 hash of {exe}: {exe_hash}")
-                    found_executable = True
+            found_executable = None
+            for exe in available_executables:
+                if exe.lower() in expected_hashes:
+                    found_executable = exe
+                    break
 
-                    # Compare the hashes
-                    if exe_hash == loadermdo_hash:
-                        print(f"Hashes match between LoaderMDO.exe and {exe}!")
-                    else:
-                        print(f"Hashes do not match between LoaderMDO.exe and {exe}")
-                    break  # Exit loop after finding and processing the first executable
+            if found_executable:
+                # Calculate the MD5 hash of LoaderMDO.exe
+                loadermdo_hash = calculate_md5('LoaderMDO.exe')
+                print(f"MD5 hash of LoaderMDO.exe: {loadermdo_hash}")
 
-            if not found_executable:
-                print("Error: Neither Adibou3.exe nor ADI5.exe found in the folder.")
+                # Calculate the MD5 hash of the found executable
+                found_exe_hash = calculate_md5(found_executable)
+                print(f"MD5 hash of {found_executable}: {found_exe_hash}")
 
-        except FileNotFoundError:
-            print("File not found error occurred.")
+                # Compare the hashes
+                #if found_exe_hash == expected_hashes[found_executable.lower()]:
+                 #   print(f"Hashes match between LoaderMDO.exe and {found_executable}!")
+                #else:
+                 #   print(f"Hashes do not match between LoaderMDO.exe and {found_executable}")
+
+            else:
+                print("Error: Neither Adibou3.exe nor ADI5.exe found in the folder or not listed in md5.txt.")
+
+        except FileNotFoundError as e:
+            print(f"File not found error occurred: {e}")
 
     else:
         print("Error: LoaderMDO.exe not found in the folder.")
