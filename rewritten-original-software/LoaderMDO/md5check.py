@@ -38,8 +38,8 @@ def main():
     if not expected_hashes:
         return
 
-    # List of executable files to check (LoaderMDO.exe, Adibou3.exe, ADI5.exe)
-    executables = ['LoaderMDO.exe', 'Adibou3.exe', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']
+    # List of executable files to check
+    executables = ['LoaderMDO.exe', 'Adibou3.exe', 'Adibou3.EXE', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']
 
     # Convert all executables to lowercase for case insensitivity
     executables_lower = [exe.lower() for exe in executables]
@@ -56,7 +56,7 @@ def main():
 
             # Find the available executable (Adibou3.exe or ADI5.exe) and calculate its MD5 hash
             found_executable = False
-            for exe in ['Adibou3.exe', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']:
+            for exe in ['LoaderMDO.exe', 'Adibou3.exe', 'Adibou3.EXE', 'adibou3.exe', 'ADI5.EXE', 'ADI5.exe']:
                 if exe in available_executables:
                     exe_hash = calculate_md5(exe)
                     print(f"MD5 hash of {exe}: {exe_hash}")
