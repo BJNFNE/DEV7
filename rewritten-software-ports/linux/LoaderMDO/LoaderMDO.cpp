@@ -50,4 +50,5 @@ int main() {
 // Function definition for starting Loader7.exe with arguments
 void startLoader7(const char* arg) {
     // Execute Loader7.exe using Wine
-    execlp("wine", "wine", arg,
+    execlp("wine", "wine", arg, nullptr);
+}
