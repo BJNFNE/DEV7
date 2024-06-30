@@ -1,9 +1,7 @@
 # Makefile for DEV7 Tools
 
-# Compiler for C
+# Default to using GCC
 CC = gcc
-
-# Compiler for C++
 CXX = g++
 
 # Compiler flags
@@ -58,3 +56,9 @@ $(TARGETS_CPP): binaries/%: binaries/%.o
 clean:
 	@rm -f $(OBJS_C) $(OBJS_CPP)
 	@rm -rf binaries
+
+# Rule to use Clang
+clang: CC = clang
+clang: CXX = clang++
+clang: CXXFLAGS = $(CFLAGS) -std=c++20
+clang: $(TARGETS_C) $(TARGETS_CPP)
