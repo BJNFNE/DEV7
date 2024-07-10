@@ -22,7 +22,7 @@ jobs:
         run: choco install mingw -y
 
       - name: Compile LoaderMDO
-        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO.cpp
+        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
       - name: Compile BCD1Creator
         run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
