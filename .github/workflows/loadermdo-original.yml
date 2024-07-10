@@ -1,4 +1,4 @@
-name: Compile LoaderMDO x86 Original
+name: LoaderMDO Original x86
 
 on:
   push:
@@ -9,31 +9,33 @@ on:
       - master
 
 jobs:
-  build-release:
-    runs-on: windows-latest
+  build-windows:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install g++
-      run: |
-        choco install mingw --params "/threads:posix" -y
-        refreshenv
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mingw-w64
 
-    - name: Set g++ path
-      run: |
-        echo "::set-env name=PATH::C:\tools\mingw\bin;${PATH}"
+      - name: Check MinGW-w64 installation
+        run: |
+          i686-w64-mingw32-g++ --version
+          x86_64-w64-mingw32-g++ --version
 
-    - name: Check g++ version
-      run: g++ --version
+      - name: Compile LoaderMDO for Windows XP
+        run: |
+          i686-w64-mingw32-g++ -o LoaderMDO.exe rewritten-original-software/LoaderMDO/LoaderMDO.cpp -mwindows -m32 -static-libgcc -static-libstdc++ -std=c++98 -O2
 
-    - name: Compile LoaderMDO in Release mode
-      run: |
-        g++ -o LoaderMDO.exe rewritten-original-software/LoaderMDO/LoaderMDO.cpp -m32 -O2 -std=c++98 -static-libgcc -static-libstdc++ -mwindows
-
-    - name: Archive Release artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: LoaderMDO-release-original
-        path: LoaderMDO.exe
+      - name: Upload Release artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: LoaderMDO-release-windows-xp
+          path: LoaderMDO.exe
