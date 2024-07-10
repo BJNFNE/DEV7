@@ -1,0 +1,42 @@
+name: Build and Release (Linux)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install g++
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
+
+      - name: Compile LoaderMDO
+        run: g++ -o LoaderMDO rewritten-software-ports/linux/LoaderMDO/LoaderMDO.cpp
+
+      - name: Compile BCD1Creator
+        run: g++ -o BCD1Creator tools/BCD1Creator/BCD1Creator.cpp
+
+      - name: Compile DEV7Launcher
+        run: g++ -o DEV7Launcher tools/DEV7Launcher/DEV7Launcher.cpp
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-stuff
+          path: |
+            LoaderMDO
+            BCD1Creator
+            DEV7Launcher

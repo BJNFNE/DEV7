@@ -1,0 +1,40 @@
+name: Build and Release (Windows)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install MinGW
+        run: choco install mingw -y
+
+      - name: Compile LoaderMDO
+        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO.cpp
+
+      - name: Compile BCD1Creator
+        run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+
+      - name: Compile DEV7Launcher
+        run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-stuff
+          path: |
+            LoaderMDO.exe
+            BCD1Creator.exe
+            DEV7Launcher.exe
