@@ -16,45 +16,20 @@ jobs:
     - name: Install MinGW
       run: choco install mingw -y
 
-    - name: Compile C++
+    - name: Compile LoaderMDO
       run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
-    - name: Upload Artifact
+    - name: Compile BCD1Creator
+      run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+
+    - name: Compile DEV7Launcher
+      run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+
+    - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: compiled-binary
-        path: LoaderMDO.exe
-
-  release:
-    needs: build
-    runs-on: windows-latest
-
-    steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: compiled-binary
-        path: .
-
-    - name: Create Release
-      id: create_release
-      run: |
-        RELEASE_TITLE="Release ${{ github.sha }}"
-        RELEASE_BODY="This is an automatically generated release."
-
-        # Create a new release
-        RESPONSE=$(curl -s -X POST ^
-          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" ^
-          -H "Accept: application/vnd.github.v3+json" ^
-          "https://api.github.com/repos/${{ github.repository }}/releases" ^
-          -d "{\"tag_name\": \"${{ github.sha }}\",\"name\": \"${RELEASE_TITLE}\",\"body\": \"${RELEASE_BODY}\"}")
-
-        # Extract the release ID from the response
-        RELEASE_ID=$(echo "$RESPONSE" | jq -r '.id')
-
-        # Upload the artifact to the release
-        curl -s -X POST ^
-          -H "Authorization: token ${{ secrets.DEV7_TOKEN }}" ^
-          -H "Content-Type: application/octet-stream" ^
-          --data-binary "@LoaderMDO.exe" ^
-          "https://uploads.github.com/repos/${{ github.repository }}/releases/${RELEASE_ID}/assets?name=LoaderMDO.exe"
+        name: compiled-stuff
+        path: |
+          LoaderMDO.exe
+          BCD1Creator.exe
+          DEV7Launcher.exe
