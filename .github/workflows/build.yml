@@ -16,14 +16,20 @@ jobs:
     - name: Install MinGW
       run: choco install mingw -y
 
-    - name: Compile LoaderMDO
+    - name: Compile LoaderMDO for Windows
       run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
-    - name: Compile BCD1Creator
+    - name: Compile BCD1Creator for Windows
       run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
-    - name: Compile DEV7Launcher
+    - name: Compile DEV7Launcher for Windows
       run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+
+    - name: Create Windows directory
+    - run: mkdir windows
+
+    - name: Copy Windows executable to directory
+    - run: copy *.exe windows/
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
