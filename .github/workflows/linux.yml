@@ -21,22 +21,22 @@ jobs:
       - name: Install g++
         run: |
           sudo apt-get update
-          sudo apt-get install -y g++
+          sudo apt-get install -y g++ make build-essential
 
-      - name: Compile LoaderMDO
-        run: g++ -o LoaderMDO rewritten-software-ports/linux/LoaderMDO/LoaderMDO.cpp
+      - name: Run configure
+        run: ./configure
 
-      - name: Compile BCD1Creator
-        run: g++ -o BCD1Creator tools/BCD1Creator/BCD1Creator.cpp
-
-      - name: Compile DEV7Launcher
-        run: g++ -o DEV7Launcher tools/DEV7Launcher/DEV7Launcher.cpp
+      - name: Compile all C++ programs
+        run: make
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: compiled-linux
           path: |
-            LoaderMDO
-            BCD1Creator
-            DEV7Launcher
+            binaries/LoaderMDO/LoaderMDO
+            binaries/BCD1Creator/BCD1Creator
+            binaries/DEV7Launcher/DEV7Launcher
+            binaries/ModelPathDumper/ModelPathDumper
+            binaries/OBJDumper/OBJDumper
+            binaries/OBCViewer/OBCViewer
