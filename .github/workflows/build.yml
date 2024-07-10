@@ -14,51 +14,55 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python 3
-      if: matrix.os == 'ubuntu-latest'
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      - name: Set up Python 3
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install MinGW
-      if: matrix.os == 'windows-latest'
-      run: |
-        choco install mingw -y
+      - name: Install MinGW
+        if: matrix.os == 'windows-latest'
+        run: |
+          choco install mingw -y
 
-    - name: Install g++
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y g++
+      - name: Install g++
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++
         
-    - name: Compile LoaderMDO
-      if: matrix.os == 'windows-latest'
-      run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+      - name: Compile LoaderMDO
+        if: matrix.os == 'windows-latest'
+        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO.cpp
 
-    - name: Compile BCD1Creator
-      if: matrix.os == 'windows-latest'
-      run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+      - name: Compile BCD1Creator
+        if: matrix.os == 'windows-latest'
+        run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
-    - name: Compile DEV7Launcher
-      if: matrix.os == 'windows-latest'
-      run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+      - name: Compile DEV7Launcher
+        if: matrix.os == 'windows-latest'
+        run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
-    - name: Compile LoaderMDO
-      if: matrix.os == 'ubuntu-latest'
-      run: g++ -o LoaderMDO rewritten-software-ports/linux/LoaderMDO/LoaderMDO.cpp
+      - name: Compile LoaderMDO
+        if: matrix.os == 'ubuntu-latest'
+        run: g++ -o LoaderMDO rewritten-software-ports/linux/LoaderMDO/LoaderMDO.cpp
 
-    - name: Compile BCD1Creator
-      if: matrix.os == 'ubuntu-latest'
-      run: g++ -o BCD1Creator tools/BCD1Creator/BCD1Creator.cpp
+      - name: Compile BCD1Creator
+        if: matrix.os == 'ubuntu-latest'
+        run: g++ -o BCD1Creator tools/BCD1Creator/BCD1Creator.cpp
 
-    - name: Compile DEV7Launcher
-      if: matrix.os == 'ubuntu-latest'
-      run: g++ -o DEV7Launcher tools/DEV7Launcher/DEV7Launcher.cpp
+      - name: Compile DEV7Launcher
+        if: matrix.os == 'ubuntu-latest'
+        run: g++ -o DEV7Launcher tools/DEV7Launcher/DEV7Launcher.cpp
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: compiled-stuff
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-stuff
+          path: |
+            LoaderMDO.exe
+            BCD1Creator.exe
+            DEV7Launcher.exe
