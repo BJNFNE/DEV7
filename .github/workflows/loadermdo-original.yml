@@ -1,0 +1,39 @@
+name: Compile LoaderMDO x86 Original
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install g++ and dependencies
+      run: |
+        choco install mingw -y
+        choco install python3 -y
+
+    - name: Set g++ path
+      run: |
+        echo "::set-env name=PATH::$(mingw-get install binutils gcc g++ mingw32 mingw-w64)"
+
+    - name: Check g++ version
+      run: g++ --version
+
+    - name: Compile LoaderMDO in Release mode
+      run: |
+        g++ -o LoaderMDO.exe rewritten-original-software/LoaderMDO/LoaderMDO.cpp -m32 -O2 -std=c++98 -static-libgcc -static-libstdc++ -mwindows
+
+    - name: Archive Release artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: LoaderMDO-release-original
+        path: LoaderMDO.exe
