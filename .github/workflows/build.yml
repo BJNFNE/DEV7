@@ -26,16 +26,13 @@ jobs:
       run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
     - name: Create Windows directory
-    - run: mkdir windows
+      run: mkdir windows
 
     - name: Copy Windows executable to directory
-    - run: copy *.exe windows/
+      run: copy *.exe windows/
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: compiled-stuff
-        path: |
-          LoaderMDO.exe
-          BCD1Creator.exe
-          DEV7Launcher.exe
+        path: windows/
