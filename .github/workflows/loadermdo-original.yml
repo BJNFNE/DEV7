@@ -16,14 +16,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install g++ and dependencies
+    - name: Install g++
       run: |
-        choco install mingw -y
-        choco install python3 -y
+        choco install mingw --params "/threads:posix" -y
+        refreshenv
 
     - name: Set g++ path
       run: |
-        echo "::set-env name=PATH::$(mingw-get install binutils gcc g++ mingw32 mingw-w64)"
+        echo "::set-env name=PATH::C:\tools\mingw\bin;${PATH}"
 
     - name: Check g++ version
       run: g++ --version
