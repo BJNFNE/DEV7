@@ -13,6 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install Python 3
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Use the latest version of Python 3 available
+
     - name: Install MinGW
       run: choco install mingw -y
 
@@ -29,7 +34,10 @@ jobs:
       run: mkdir windows
 
     - name: Copy Windows executable to directory
-      run: copy *.exe windows/
+      run: |
+        copy LoaderMDO.exe windows/
+        copy BCD1Creator.exe windows/
+        copy DEV7Launcher.exe windows/
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
