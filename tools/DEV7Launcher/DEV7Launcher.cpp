@@ -27,6 +27,14 @@ bool fileExists(const std::string& filename) {
 #endif
 }
 
+void printHeader() {
+    const std::string versionNumber = "0.1.0";
+
+    std::cout << "=========================" << std::endl;
+    std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
+    std::cout << "=========================" << std::endl;
+}
+
 void clearConsole() {
 #ifdef _WIN32
     system("cls");
@@ -209,6 +217,9 @@ int main(int argc, char* argv[]) {
 
     bool loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good());
     bool dev7VMExists = fileExists("Dev7VM.EXE");
+
+    // execute here the printHeader() to display the Header (Program name with versionNumber)
+    printHeader();
 
     if (loader7Exists && dev7VMExists) {
         std::cout << "Choose an option:\n";
