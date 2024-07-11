@@ -209,6 +209,7 @@ int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now(); // Record the start time
     
     int choice;
+    bool usedLoaderOrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
 
     if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client." << std::endl;
@@ -269,57 +270,77 @@ int main(int argc, char* argv[]) {
     std::cin >> choice;
     std::cout << "\n";
 
-    switch(choice) {
-        case 1:
-            if (loader7Exists)
-                launchCommand("loader7.exe -break");
-            else if (dev7VMExists)
-                launchCommand("Dev7VM.exe -break");
-            break;
-        case 2:
-            if (loader7Exists)
-                startLoader7Normal();
-            else if (dev7VMExists)
-                launchCommand("Dev7VM.exe");
-            break;
-        case 3:
-            modifyMDOIni();
-            break;
-        case 4:
-            showTraceTXT();
-            break;
-        case 5:
-            modifyMDODbg();
-            break;
-        case 6:
-            if (loader7Exists)
-                launchCommand("loader7.exe -obc='B3_ParentLaunch'");
-            else if (dev7VMExists)
-                launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
-            break;
-        case 7:
-            modifyAdibou3Ini();
-            break;
-        case 8:
-            runUNINST();
-            break;
-        case 9:
-            Ed4Intro();
-            break;
-        case 10:
-            modifyAdi5Ini();
-            break;
-        default:
-            std::cout << "Invalid choice. Please choose a valid option." << std::endl;
-            break;
-    }
+switch(choice) {
+    case 1:
+        if (loader7Exists) {
+            launchCommand("loader7.exe -break");
+            usedLoaderOrDev7VM = false;
+        } else if (dev7VMExists) {
+            launchCommand("Dev7VM.exe -break");
+            usedLoaderOrDev7VM = false;
+        }
+        break;
+    case 2:
+        if (loader7Exists) {
+            startLoader7Normal();
+            usedLoaderOrDev7VM = false;
+        } else if (dev7VMExists) {
+            launchCommand("Dev7VM.exe");
+            usedLoaderOrDev7VM = false;
+        }
+        break;
+    case 3:
+        modifyMDOIni();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 4:
+        showTraceTXT();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 5:
+        modifyMDODbg();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 6:
+        if (loader7Exists) {
+            launchCommand("loader7.exe -obc='B3_ParentLaunch'");
+            usedLoaderOrDev7VM = false;
+        } else if (dev7VMExists) {
+            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
+            usedLoaderOrDev7VM = false;
+        }
+        break;
+    case 7:
+        modifyAdibou3Ini();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 8:
+        runUNINST();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 9:
+        Ed4Intro();
+        usedLoaderOrDev7VM = true;
+        break;
+    case 10:
+        modifyAdi5Ini();
+        usedLoaderOrDev7VM = true;
+        break;
+    default:
+        std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+        usedLoaderOrDev7VM = true;
+        break;
+}
 
-    auto end = std::chrono::steady_clock::now(); // Record the end time
-    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
+auto end = std::chrono::steady_clock::now(); // Record the end time
+auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
-    // If you want to show something after the clearing of the Console add the std::cout related function here.
+if (usedLoaderOrDev7VM) {
     clearConsole();
-    std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
+}
 
-    return 0;
+std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
+
+return 0;
+
 }
