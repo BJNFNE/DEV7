@@ -1,12 +1,13 @@
-# Makefile for DEV7 Tools
-
 # Default to using GCC
 CC = gcc
 CXX = g++
 
 # Compiler flags
-CFLAGS = -O2 -g -pipe
-CXXFLAGS = $(CFLAGS) -std=c++20
+RELEASE_CFLAGS = -O2 -pipe
+DEBUG_CFLAGS = -g -pipe
+
+RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++20
+DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++20
 
 # Directory containing source files
 SRC_DIR = tools
@@ -24,7 +25,17 @@ TARGETS_C = $(patsubst $(SRC_DIR)/%.c,binaries/%,$(SRCS_C))
 TARGETS_CPP = $(patsubst $(SRC_DIR)/%.cpp,binaries/%,$(SRCS_CPP))
 
 # Default rule
-all: $(TARGETS_C) $(TARGETS_CPP)
+all: release
+
+# Release target
+release: CFLAGS = $(RELEASE_CFLAGS)
+release: CXXFLAGS = $(RELEASE_CXXFLAGS)
+release: $(TARGETS_C) $(TARGETS_CPP)
+
+# Debug target
+debug: CFLAGS = $(DEBUG_CFLAGS)
+debug: CXXFLAGS = $(DEBUG_CXXFLAGS)
+debug: $(TARGETS_C) $(TARGETS_CPP)
 
 # Rule to compile each C source file to object file
 binaries/%.o: $(SRC_DIR)/%.c
@@ -56,9 +67,14 @@ $(TARGETS_CPP): binaries/%: binaries/%.o
 clean:
 	@rm -f $(OBJS_C) $(OBJS_CPP)
 	@rm -rf binaries
+	@echo "Cleanup is done"
 
 # Rule to use Clang
 clang: CC = clang
 clang: CXX = clang++
-clang: CXXFLAGS = $(CFLAGS) -std=c++20
-clang: $(TARGETS_C) $(TARGETS_CPP)
+clang: release
+
+# Rule to use Clang for debug
+clang_debug: CC = clang
+clang_debug: CXX = clang++
+clang_debug: debug
