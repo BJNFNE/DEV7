@@ -30,6 +30,15 @@ jobs:
       - name: Compile DEV7Launcher
         run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
+      - name: Compile OBJDumper
+        run: g++ -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
+
+      - name: Compile ModelPathDumper
+        run: g++ -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+
+      - name: Compile OBCViewer
+        run: g++ -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -38,3 +47,7 @@ jobs:
             LoaderMDO.exe
             BCD1Creator.exe
             DEV7Launcher.exe
+            OBJDumper.exe
+            ModelPathDumper.exe
+            OBCViewer.exe
+
