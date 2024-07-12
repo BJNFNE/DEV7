@@ -1,5 +1,5 @@
 #include "zikSoundsQueue.h"
-// #include "zikSoundEvent.h" // Include the actual header for zikSoundEvent if needed
+#include "zikSoundEvent.h"
 
 // Constructor
 zikSoundsQueue::zikSoundsQueue(unsigned long arg1, unsigned long arg2, unsigned long arg3, bool arg4, unsigned long arg5) {
