@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "zikSoundEvent.h"
 
 // Default constructor
@@ -72,6 +73,10 @@ unsigned long zikSoundEvent::GetSampleStartPosition() const {
 }
 
 unsigned long zikSoundEvent::GetNextSampleToRead() const {
+    uint32_t getValue(uint8_t* param_1) {
+    return *(reinterpret_cast<uint32_t*>(param_1 + 4));
+}
+
     return nextSampleToRead;
 }
 
