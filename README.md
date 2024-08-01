@@ -6,9 +6,10 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 # Games that are using DEV7
 1. Adibou 3
 2. Adi 5
-3. Adibou'chou
+3. Adiboud'chou series
 4. Adibou presente series
 5. Le pays des pierres Magiques
+6. Nathan Vacances series
 
 # Tools
 1. LOADER7VC checks which Version of DEV7 your LOADER7.EXE is.
