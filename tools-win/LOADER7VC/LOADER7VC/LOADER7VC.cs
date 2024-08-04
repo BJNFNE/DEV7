@@ -77,6 +77,7 @@ class Program
         PrintIfNoInfos("Productname", myFileVersionInfo.ProductName);
         PrintIfNoInfos("Internalname", myFileVersionInfo.InternalName);
         PrintIfNoInfos("Copyright", myFileVersionInfo.LegalCopyright);
+        PrintIfNoInfos("Language", myFileVersionInfo.Language); // Language of the executable is displayed in the Language that your system is set to.
 
         Console.WriteLine("MD5 Checksum: " + md5Sum);
         Console.WriteLine($"File Size: {fileSize} Bytes");
