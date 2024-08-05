@@ -50,11 +50,11 @@ int main(int argc, char* argv[]) {
     // Use the CTRK File for Input
     std::ifstream CTRKInput(inputCTRK);
 
-    if (!inputFile) {
+   /* if (!inputFile) {
         std::cerr << "Error: Unable to find CTRK File." << std::endl;
         return 1;
     }
-
+*/
     // Rewind the OBC Script back to the beginning
     CTRKInput.seekg(0);
 
