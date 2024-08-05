@@ -29,6 +29,7 @@ Release/
 /binaries/OBCViewer
 /binaries/ModelPathDumper
 /binaries/OBJDumper
+/binaries/CTRKViewer
 
 # Additional Tools stuff
 binaries/CMakeCXXCompilerId
