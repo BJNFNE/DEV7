@@ -31,9 +31,6 @@ int main(int argc, char* argv[]) {
     // for clearing the Console after the Program closed.
     std::string clearConsole;
 
-    // List here everything for the Debug Infos.
-    std::string username = getlogin();
-
     #ifdef _WIN32
         clearConsole = "cls"; // Command to clear the console on Windows
     #else
