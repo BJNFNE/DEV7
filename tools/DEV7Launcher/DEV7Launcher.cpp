@@ -152,11 +152,20 @@ void modifyAdi5Ini() {
 void openLicenceFile() {
     std::string licenseFile = "Lizenzvereinbarung.txt";
     std::string warrantyFile = "garantie.txt";
+    std::string lisezMoiFile = "LISEZ MOI.txt";
     bool foundLicense = std::filesystem::exists(licenseFile);
     bool foundWarranty = std::filesystem::exists(warrantyFile);
+    bool foundLisezMoi = std::filesystem::exists(lisezMoiFile);
 
-    if (foundLicense || foundWarranty) {
-        std::string filename = foundLicense ? licenseFile : warrantyFile;
+    if (foundLicense || foundWarranty || foundLisezMoi) {
+        std::string filename;
+        if (foundLicense) {
+            filename = licenseFile;
+        } else if (foundWarranty) {
+            filename = warrantyFile;
+        } else {
+            filename = lisezMoiFile;
+        }
 
 #ifdef _WIN32
         system(("notepad.exe " + filename).c_str());
