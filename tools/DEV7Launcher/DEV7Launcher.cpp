@@ -341,6 +341,20 @@ if (usedLoaderOrDev7VM) {
 
 std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
 
+std::cout << "Would you like to restart DEV7Launcher? (y/n): ";
+char restartChoice;
+std::cin >> restartChoice;
+
+if (restartChoice == 'y' || restartChoice == 'Y') {
+    std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
+    system("rm /tmp/DEV7_INSTANCE_MUTEX");
+
+    std::cout << "Restarting DEV7Launcher..." << std::endl;
+    //system(SLEEP_COMMAND);  // Wait for a few seconds before restarting
+    clearConsole();  // Clear the console before restarting
+    main(argc, argv);  // Restart the launcher by calling main again
+}
+
 return 0;
 
 }
