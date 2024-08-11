@@ -160,8 +160,10 @@ void openLicenceFile() {
 
 #ifdef _WIN32
         system(("notepad.exe " + filename).c_str());
+        std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
 #else
         system(("open " + filename).c_str());
+        std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
 #endif
 
     } else {
@@ -343,6 +345,10 @@ switch(choice) {
         break;
     case 10:
         modifyAdi5Ini();
+        usedLoaderOrDev7VM = false;
+        break;
+    case 11:
+        openLicenceFile();
         usedLoaderOrDev7VM = false;
         break;
     default:
