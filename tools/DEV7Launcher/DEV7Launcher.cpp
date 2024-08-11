@@ -149,6 +149,26 @@ void modifyAdi5Ini() {
 #endif
 }
 
+void openLicenceFile() {
+    std::string licenseFile = "Lizenzvereinbarung.txt";
+    std::string warrantyFile = "garantie.txt";
+    bool foundLicense = std::filesystem::exists(licenseFile);
+    bool foundWarranty = std::filesystem::exists(warrantyFile);
+
+    if (foundLicense || foundWarranty) {
+        std::string filename = foundLicense ? licenseFile : warrantyFile;
+
+#ifdef _WIN32
+        system(("notepad.exe " + filename).c_str());
+#else
+        system(("open " + filename).c_str());
+#endif
+
+    } else {
+        std::cout << "License or warranty file not found." << std::endl;
+    }
+}
+
 void runUNINST() {
     std::string uninst = "UNINST.EXE";
 
@@ -232,6 +252,7 @@ int main(int argc, char* argv[]) {
         std::cout << "11. Run Uninstaller (UNINST.EXE)\n";
         std::cout << "12. Start Le pays des Pierres magiques Intro\n";
         std::cout << "13. Modify Adi5.ini (Adi 5 only)\n";
+        std::cout << "14. Open Licence Agreement\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
@@ -244,6 +265,7 @@ int main(int argc, char* argv[]) {
         std::cout << "8. Run Uninstaller\n";
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
         std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
+        std::cout << "11. Open Licence Agreement\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -256,6 +278,7 @@ int main(int argc, char* argv[]) {
         std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
         std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
+        std::cout << "11. Open Licence Agreement\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -270,49 +293,49 @@ switch(choice) {
     case 1:
         if (loader7Exists) {
             launchCommand("loader7.exe -break");
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         } else if (dev7VMExists) {
             launchCommand("Dev7VM.exe -break");
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         }
         break;
     case 2:
         if (loader7Exists) {
             startLoader7Normal();
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         } else if (dev7VMExists) {
             launchCommand("Dev7VM.exe");
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         }
         break;
     case 3:
         modifyMDOIni();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     case 4:
         showTraceTXT();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     case 5:
         modifyMDODbg();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     case 6:
         if (loader7Exists) {
             launchCommand("loader7.exe -obc='B3_ParentLaunch'");
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         } else if (dev7VMExists) {
             launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
-            usedLoaderOrDev7VM = false;
+            usedLoaderOrDev7VM = true;
         }
         break;
     case 7:
         modifyAdibou3Ini();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     case 8:
         runUNINST();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     case 9:
         Ed4Intro();
@@ -320,11 +343,11 @@ switch(choice) {
         break;
     case 10:
         modifyAdi5Ini();
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
     default:
         std::cout << "Invalid choice. Please choose a valid option." << std::endl;
-        usedLoaderOrDev7VM = true;
+        usedLoaderOrDev7VM = false;
         break;
 }
 
