@@ -347,12 +347,19 @@ std::cin >> restartChoice;
 
 if (restartChoice == 'y' || restartChoice == 'Y') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
+    // TODO: improve Windows workaround for delete temp files
+    //#ifdef _WIN32
+    //system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    //#endif
     system("rm /tmp/DEV7_INSTANCE_MUTEX");
-
-    std::cout << "Restarting DEV7Launcher..." << std::endl;
-    //system(SLEEP_COMMAND);  // Wait for a few seconds before restarting
     clearConsole();  // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
+}
+
+if (restartChoice == 'n' || restartChoice == 'N') {
+
+    clearConsole();
+
 }
 
 return 0;
