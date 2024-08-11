@@ -36,11 +36,7 @@ void printHeader() {
 }
 
 void clearConsole() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    std::cout << "\033[2J\033[H";
 }
 
 bool isDEV7Running() {

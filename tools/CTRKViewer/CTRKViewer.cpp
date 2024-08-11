@@ -20,8 +20,7 @@ void printUsage() {
 }
 
 void clearConsole() {
-    // WORKAROUND: Instead of really clearing the console, it just prints over 100 empty lines to make the console look empty.
-    std::cout << std::string(100, '\n');
+    std::cout << "\033[2J\033[H";
 }
 
 int main(int argc, char* argv[]) {
