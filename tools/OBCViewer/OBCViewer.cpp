@@ -25,6 +25,11 @@ void printUsage() {
     std::cout << " * Le Pays des pierres magiques" << std::endl << std::endl;
 }
 
+void clearConsole() {
+    // WORKAROUND: Instead of really clearing the console, it just prints over 100 empty lines to make the console look empty.
+    std::cout << std::string(100, '\n');
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         printUsage();
@@ -34,17 +39,8 @@ int main(int argc, char* argv[]) {
     // Here are listed the strings for OBC itself.
     std::string inputOBC = argv[1];
 
-    // for clearing the Console after the Program closed.
-    std::string clearConsole;
-
     // List here everything for the Debug Infos.
     std::string username = getlogin();
-
-    #ifdef _WIN32
-        clearConsole = "cls"; // Command to clear the console on Windows
-    #else
-        clearConsole = "clear"; // Command to clear the console on MacOS/Linux
-    #endif
 
     // Check if the input file is an OBC Script.
     std::filesystem::path inputScript(inputOBC);
@@ -71,9 +67,9 @@ int main(int argc, char* argv[]) {
     // (usually it is 1999, due to OBCEditor it is possible to change this Year so this Change is made so the modified Scripts are always compatible with OBCViewer)
     int number;
     if (sscanf(checkEntrypointOBC.c_str(), "OBC Copyright MDO %d", &number) != 1) {
-    std::cerr << "Error: Unable to find the number from the Entrypoint!" << std::endl;
-    return 1;
-}
+        std::cerr << "Error: Unable to find the number from the Entrypoint!" << std::endl;
+        return 1;
+    }
 
     // Rewind the OBC Script back to the beginning
     OBCInput.seekg(0);
@@ -127,9 +123,9 @@ int main(int argc, char* argv[]) {
 
     // Exit message for OBCViewer
     std::cout << std::endl;
-    std::cout << "Press Enter to exit OBCViewer & clear the Console" << std::endl;
+    std::cout << "Press Enter to exit OBCViewer" << std::endl;
     getchar();
-    system(clearConsole.c_str());
+    clearConsole();
 
     return 0;
 }

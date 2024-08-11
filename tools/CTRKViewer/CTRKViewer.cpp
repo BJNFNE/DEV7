@@ -25,24 +25,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Here are listed the strings for OBC itself.
+    // Here are listed the strings for CTRK itself.
     std::string inputCTRK = argv[1];
 
-    // for clearing the Console after the Program closed.
-    std::string clearConsole;
-
-    #ifdef _WIN32
-        clearConsole = "cls"; // Command to clear the console on Windows
-    #else
-        clearConsole = "clear"; // Command to clear the console on MacOS/Linux
-    #endif
-
-    // Check if the input file is an OBC Script.
-    std::filesystem::path inputFile(inputCTRK);
-    if (inputFile.extension() != ".ctrk") {
-        std::cerr << "Error: This File is not an CTRK File!" << std::endl;
-        return 1;
-    }
+void clearConsole() {
+    // WORKAROUND: Instead of real clearing the Console it just prints over 100 empty line to look the Console empty like as an simple clear.
+    std::cout << std::string(100, '\n');
+}
 
     // Use the CTRK File for Input
     std::ifstream CTRKInput(inputCTRK);
@@ -59,11 +48,11 @@ int main(int argc, char* argv[]) {
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
-        std::cerr << "Error: Unable to create a text output of the OBC Script." << std::endl;
+        std::cerr << "Error: Unable to create a text output of the CTRK Script." << std::endl;
         return 1;
     }
 
-    // Close input & output for OBC Script
+    // Close input & output for CTRK Script
     CTRKInput.close();
     CTRKOutput.close();
 
@@ -71,9 +60,9 @@ int main(int argc, char* argv[]) {
 
     // Exit message for CTRKViewer
     std::cout << std::endl;
-    std::cout << "Press Enter to exit CTRKViewer & clear the Console" << std::endl;
+    std::cout << "Press Enter to exit CTRKViewer" << std::endl;
     getchar();
-    system(clearConsole.c_str());
+    clearConsole();
 
     return 0;
 
