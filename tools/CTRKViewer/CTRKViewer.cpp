@@ -19,6 +19,11 @@ void printUsage() {
     std::cout << "Version - " << versionNumber << std::endl << std::endl;
 }
 
+void clearConsole() {
+    // WORKAROUND: Instead of really clearing the console, it just prints over 100 empty lines to make the console look empty.
+    std::cout << std::string(100, '\n');
+}
+
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         printUsage();
@@ -28,23 +33,19 @@ int main(int argc, char* argv[]) {
     // Here are listed the strings for CTRK itself.
     std::string inputCTRK = argv[1];
 
-void clearConsole() {
-    // WORKAROUND: Instead of real clearing the Console it just prints over 100 empty line to look the Console empty like as an simple clear.
-    std::cout << std::string(100, '\n');
-}
-
     // Use the CTRK File for Input
     std::ifstream CTRKInput(inputCTRK);
 
-   /* if (!inputFile) {
+    if (!CTRKInput) {
         std::cerr << "Error: Unable to find CTRK File." << std::endl;
         return 1;
     }
-*/
+
     // Rewind the OBC Script back to the beginning
     CTRKInput.seekg(0);
 
-        // Open the output file for the OBC Script
+    // Open the output file for the OBC Script
+    std::filesystem::path inputFile(inputCTRK);
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
@@ -65,6 +66,4 @@ void clearConsole() {
     clearConsole();
 
     return 0;
-
-
 }
