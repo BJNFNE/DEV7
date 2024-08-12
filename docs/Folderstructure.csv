@@ -3,5 +3,7 @@ Folderstructure,Comments
 /tools-win,"Compilable only for Windows."
 /rewritten-original-software,"Rewritten Original Software as near as possible."
 /rewritten-modern-software,"Rewritten Modern Software to port it to newer Platforms."
+/rewritten-modern-software,"Rewritten Modern Software to port it to newer Platforms."
+/rewritten-software-ports, "Rewritten Software ports for different Operating systems."
 /,"Root directory contains other required Files."
 /3rdParty,"Contains all 3rdParty LIBS/TOOLS."
