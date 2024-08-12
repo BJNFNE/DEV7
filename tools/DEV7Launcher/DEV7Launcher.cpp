@@ -194,7 +194,6 @@ void Ed4Intro() {
 
     if (!fileExists(Ed4IntroEXE)) {
         std::cout << "Error: " << Ed4IntroEXE << " not found in directory." << std::endl;
-        std::cout << std::endl;
         return;
     }
 #ifdef _WIN32
