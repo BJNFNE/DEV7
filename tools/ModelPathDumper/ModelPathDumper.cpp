@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile, int& fileCount) {
     std::ofstream output(outputFile);
     if (!output) {
-        std::cerr << "Error: Unable to open the output file." << std::endl;
+        std::cerr << "Error: Unable to open the output file.\n" << std::endl;
         return;
     }
 
@@ -47,13 +47,13 @@ int main() {
 
     fs::path directory(directoryPath);
     if (!fs::exists(directory) || !fs::is_directory(directory)) {
-        std::cerr << "Error: The specified directory does not exist or is not a directory." << std::endl;
+        std::cerr << "Error: The specified directory does not exist or is not a directory.\n" << std::endl;
         return 1;
     }
 
     int exoCount = 0;
     searchAndDumpPaths(directory, outputFile, exoCount);
 
-    std::cout << "Search is completed. Found " << exoCount << " .exo files." << std::endl;
+    std::cout << "Search is completed. Found " << exoCount << " .exo files.\n" << std::endl;
     return 0;
 }
