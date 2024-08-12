@@ -383,7 +383,7 @@ if (restartChoice == 'y' || restartChoice == 'Y') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
     // TODO: improve Windows workaround for delete temp files
     //#ifdef _WIN32
-    //system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    //system("del /tmp/DEV7_INSTANCE_MUTEX");
     //#endif
     system("rm /tmp/DEV7_INSTANCE_MUTEX");
     clearConsole();  // Clear the console before restarting
