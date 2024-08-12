@@ -41,7 +41,7 @@ debug: $(TARGETS_C) $(TARGETS_CPP)
 binaries/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@echo "-------------------------------------------------------------"
-	@echo "|                   Compiling C $(basename $<)               |"
+	@echo "|                   Compiling C $(@D)              	|"
 	@echo "-------------------------------------------------------------"
 	@$(CC) $(CFLAGS) -c -o $@ $<
 	@echo
@@ -50,7 +50,7 @@ binaries/%.o: $(SRC_DIR)/%.c
 binaries/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(@D)
 	@echo "-------------------------------------------------------------"
-	@echo "|                 Compiling C++ $(basename $<)              |"
+	@echo "|                 Compiling C++ $(@D)			  |"
 	@echo "-------------------------------------------------------------"
 	@$(CXX) $(CXXFLAGS) -c -o $@ $<
 	@echo
