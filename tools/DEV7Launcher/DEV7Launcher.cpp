@@ -60,25 +60,22 @@ bool isDEV7Running() {
 }
 
 void launchCommand(const std::string& command) {
-#ifdef _WIN32
-    system(command.c_str());
-#else
-    // On Linux, we always try running the command with Wine
-    std::string wineCommand = "wine " + command;
-    system(wineCommand.c_str());
-#endif
-    system(SLEEP_COMMAND);
+    #ifdef _WIN32
+        system(command.c_str());
+    #else
+        std::string wineCommand = "wine " + command;
+        int result = system(wineCommand.c_str());
+    #endif
+   int sleepcmd = system(SLEEP_COMMAND);
 }
 
 void modifyMDOIni() {
-#ifdef _WIN32
-    system("notepad mdo.ini");
-#else
-    // On Linux, we always try running the command with Wine
-    std::string modifyMDOIni = "nano mdo.ini";
-    system(modifyMDOIni.c_str());
-#endif
-
+    #ifdef _WIN32
+        int result = system("notepad mdo.ini");
+    #else
+        std::string modifyMDOIni = "nano mdo.ini";
+        int result = system(modifyMDOIni.c_str());
+    #endif
 }
 
 void modifyMDODbg() {
@@ -89,23 +86,21 @@ void modifyMDODbg() {
         return;
     }
 
-#ifdef _WIN32
-    system("notepad MDO.DBG");
-#else
-    // On Linux, we always try running the command with Wine
-    std::string modifyMDODbg = "nano MDO.DBG";
-    system(modifyMDODbg.c_str());
-#endif
+    #ifdef _WIN32
+        int result = system("notepad MDO.DBG");
+    #else
+        std::string modifyMDODbg = "nano MDO.dbg";
+        int result = system(modifyMDODbg.c_str());
+    #endif
 }
 
 void showTraceTXT() {
-#ifdef _WIN32
-    system("notepad Trace.txt");
-#else
-    // On Linux, we always try running the command with Wine
-    std::string showTraceTXT = "nano --view Trace.txt";
-    system(showTraceTXT.c_str());
-#endif
+    #ifdef _WIN32
+        int result = system("notepad Trace.txt");
+    #else
+        std::string showTraceTXT = "nano Trace.txt";
+        int result = system(showTraceTXT.c_str());
+    #endif
 }
 
 void modifyAdibou3Ini() {
@@ -123,12 +118,12 @@ void modifyAdibou3Ini() {
   if (!std::filesystem::exists("Adibou3.ini")) {
     system("ren ADIBOU3.INI Adibou3.ini");
   }
-  system("notepad Adibou3.ini");
+    system("notepad Adibou3.ini");
 #else
   if (!std::filesystem::exists("Adibou3.ini")) {
-    system("mv ADIBOU3.INI Adibou3.ini");
+     int move_adibou3 = system("mv ADIBOU3.INI Adibou3.ini");
   }
-  system("nano Adibou3.ini");
+   int nano_adibou3 = system("nano Adibou3.ini");
 #endif
 }
 
@@ -140,13 +135,12 @@ void modifyAdi5Ini() {
         return;
     }
 
-#ifdef _WIN32
-    system("notepad Data/ADI5.ini");
-#else
-    // On Linux, we always try running the command with Wine
-    std::string modifyAdi5Ini = "nano Data/ADI5.ini";
-    system(modifyAdi5Ini.c_str());
-#endif
+    #ifdef _WIN32
+        int result = system("notepad Data/ADI5.ini");
+    #else
+        std::string modifyAdi5Ini = "nano Data/ADI5.ini";
+        int result = system(modifyAdi5Ini.c_str());
+    #endif
 }
 
 void openLicenceFile() {
@@ -171,7 +165,7 @@ void openLicenceFile() {
         system(("notepad.exe " + filename).c_str());
         std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
 #else
-        system(("open " + filename).c_str());
+        int open = system(("open " + filename).c_str());
         std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
 #endif
 
@@ -385,7 +379,7 @@ if (restartChoice == 'y' || restartChoice == 'Y') {
     //#ifdef _WIN32
     //system("del /tmp/DEV7_INSTANCE_MUTEX");
     //#endif
-    system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    int delete_mutex = system("rm /tmp/DEV7_INSTANCE_MUTEX");
     clearConsole();  // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
 }
