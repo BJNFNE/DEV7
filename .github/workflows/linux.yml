@@ -40,3 +40,4 @@ jobs:
             binaries/ModelPathDumper/ModelPathDumper
             binaries/OBJDumper/OBJDumper
             binaries/OBCViewer/OBCViewer
+            binaries/CTRKViewer/CTRKViewer
