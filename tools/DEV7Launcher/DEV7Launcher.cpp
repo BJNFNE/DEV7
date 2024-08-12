@@ -82,7 +82,7 @@ void modifyMDODbg() {
     std::string mdo_dbg = "MDO.DBG";
 
     if (!fileExists(mdo_dbg)) {
-        std::cout << "Error: " << mdo_dbg << " not found in the directory." << std::endl;
+        std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
         return;
     }
 
@@ -107,7 +107,7 @@ void modifyAdibou3Ini() {
 
      // Check if Adibou3.ini exists
     if (!std::filesystem::exists("Adibou3.ini")) {
-        std::cout << "Error: This directory does not seem to be an Adibou 3 game directory." << std::endl;
+        std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
         return;
     }
 
@@ -131,7 +131,7 @@ void modifyAdi5Ini() {
 
      // Check if Data/ADI5.ini exists
     if (!std::filesystem::exists("Data/ADI5.ini")) {
-        std::cout << "Error: This directory does not seem to be an Adi 5 game directory." << std::endl;
+        std::cout << "Error: This directory does not seem to be an Adi 5 game directory.\n" << std::endl;
         return;
     }
 
@@ -163,14 +163,14 @@ void openLicenceFile() {
 
 #ifdef _WIN32
         system(("notepad.exe " + filename).c_str());
-        std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
+        std::cout << "Please wait a few moments to open the Licence for you.\n" << std::endl;
 #else
         int open = system(("open " + filename).c_str());
-        std::cout << "Please wait a few moments to open the Licence for you." << std::endl;
+        std::cout << "Please wait a few moments to open the Licence for you.\n" << std::endl;
 #endif
 
     } else {
-        std::cout << "License or warranty file not found." << std::endl;
+        std::cout << "License or warranty file not found.\n" << std::endl;
     }
 }
 
@@ -178,7 +178,7 @@ void runUNINST() {
     std::string uninst = "UNINST.EXE";
 
     if (!fileExists(uninst)) {
-        std::cout << "Error: " << uninst << " not found in directory." << std::endl;
+        std::cout << "Error: " << uninst << " not found in directory.\n" << std::endl;
         return;
     }
 #ifdef _WIN32
@@ -193,7 +193,7 @@ void Ed4Intro() {
     std::string Ed4IntroEXE = "Ed4Intro.exe";
 
     if (!fileExists(Ed4IntroEXE)) {
-        std::cout << "Error: " << Ed4IntroEXE << " not found in directory." << std::endl;
+        std::cout << "Error: " << Ed4IntroEXE << " not found in directory.\n" << std::endl;
         return;
     }
 #ifdef _WIN32
@@ -232,7 +232,7 @@ int main(int argc, char* argv[]) {
     bool usedLoaderOrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
 
     if (isDEV7Running()) {
-        std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client." << std::endl;
+        std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
         return 1;
     }
 
@@ -354,7 +354,7 @@ switch(choice) {
         usedLoaderOrDev7VM = false;
         break;
     default:
-        std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+        std::cout << "Invalid choice. Please choose a valid option.\n" << std::endl;
         usedLoaderOrDev7VM = false;
         break;
 }
