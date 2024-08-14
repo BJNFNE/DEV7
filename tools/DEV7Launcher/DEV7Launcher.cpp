@@ -192,8 +192,10 @@ void runUNINST() {
     }
 #ifdef _WIN32
     system("UNINST.EXE");
+    std::cout << "Follow the Instructions to process the uninstallation.\n" << std::endl;
 #else
     if (system("wine UNINST.EXE") != 0) {
+    std::cout << "Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n" << std::endl;
     }
 #endif
 }
