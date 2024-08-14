@@ -245,13 +245,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    bool loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good());
-    bool dev7VMExists = fileExists("Dev7VM.EXE");
+    bool Loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good()) || std::ifstream("Loader7.exe").good();
+    bool Dev7VMExists = fileExists("Dev7VM.EXE");
 
     // execute here the printHeader() to display the Header (Program name with versionNumber)
     printHeader();
 
-    if (loader7Exists && dev7VMExists) {
+    if (Loader7Exists && Dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
@@ -267,7 +267,7 @@ int main(int argc, char* argv[]) {
         std::cout << "13. Modify Adi5.ini (Adi 5 only)\n";
         std::cout << "14. Open Licence Agreement\n";
         std::cout << "15. Open MSG.DEF\n";
-    } else if (loader7Exists) {
+    } else if (Loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
         std::cout << "2. Start loader7 Normal\n";
@@ -281,7 +281,7 @@ int main(int argc, char* argv[]) {
         std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
         std::cout << "11. Open Licence Agreement\n";
         std::cout << "12. Open MSG.DEF\n";
-    } else if (dev7VMExists) {
+    } else if (Dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
         std::cout << "2. Start Dev7VM Normal\n";
@@ -307,19 +307,19 @@ int main(int argc, char* argv[]) {
 
 switch(choice) {
     case 1:
-        if (loader7Exists) {
+        if (Loader7Exists) {
             launchCommand("loader7.exe -break");
             usedLoaderOrDev7VM = true;
-        } else if (dev7VMExists) {
+        } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe -break");
             usedLoaderOrDev7VM = true;
         }
         break;
     case 2:
-        if (loader7Exists) {
+        if (Loader7Exists) {
             startLoader7Normal();
             usedLoaderOrDev7VM = true;
-        } else if (dev7VMExists) {
+        } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe");
             usedLoaderOrDev7VM = true;
         }
@@ -337,10 +337,10 @@ switch(choice) {
         usedLoaderOrDev7VM = false;
         break;
     case 6:
-        if (loader7Exists) {
+        if (Loader7Exists) {
             launchCommand("loader7.exe -obc='B3_ParentLaunch'");
             usedLoaderOrDev7VM = true;
-        } else if (dev7VMExists) {
+        } else if (Dev7VMExists) {
             launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
             usedLoaderOrDev7VM = true;
         }
