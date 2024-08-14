@@ -266,6 +266,7 @@ int main(int argc, char* argv[]) {
         std::cout << "12. Start Le pays des Pierres magiques Intro\n";
         std::cout << "13. Modify Adi5.ini (Adi 5 only)\n";
         std::cout << "14. Open Licence Agreement\n";
+        std::cout << "15. Open MSG.DEF\n";
     } else if (loader7Exists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start loader7 with Debug Menu\n";
