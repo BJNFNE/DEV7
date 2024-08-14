@@ -80,10 +80,10 @@ void modifyMDOIni() {
 
 void showMSGDef() {
     #ifdef _WIN32
-        int result = system("notepad msg.def");
+        int msgDEF = system("notepad msg.def");
     #else
         std::string modifyMSGDef = "nano msg.def";
-        int result = system(modifyMSGDef.c_str());
+        int msgDEF = system(modifyMSGDef.c_str());
     #endif
 }
 
@@ -96,19 +96,19 @@ void modifyMDODbg() {
     }
 
     #ifdef _WIN32
-        int result = system("notepad MDO.DBG");
+        int mdoDBG = system("notepad MDO.DBG");
     #else
         std::string modifyMDODbg = "nano MDO.dbg";
-        int result = system(modifyMDODbg.c_str());
+        int mdoDBG = system(modifyMDODbg.c_str());
     #endif
 }
 
 void showTraceTXT() {
     #ifdef _WIN32
-        int result = system("notepad Trace.txt");
+        int traceTXT = system("notepad Trace.txt");
     #else
         std::string showTraceTXT = "nano Trace.txt";
-        int result = system(showTraceTXT.c_str());
+        int traceTXT = system(showTraceTXT.c_str());
     #endif
 }
 
@@ -145,10 +145,10 @@ void modifyAdi5Ini() {
     }
 
     #ifdef _WIN32
-        int result = system("notepad Data/ADI5.ini");
+        int adi5ini = system("notepad Data/ADI5.ini");
     #else
         std::string modifyAdi5Ini = "nano Data/ADI5.ini";
-        int result = system(modifyAdi5Ini.c_str());
+        int adi5ini = system(modifyAdi5Ini.c_str());
     #endif
 }
 
