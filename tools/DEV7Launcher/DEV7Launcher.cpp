@@ -78,6 +78,15 @@ void modifyMDOIni() {
     #endif
 }
 
+void showMSGDef() {
+    #ifdef _WIN32
+        int result = system("notepad msg.def");
+    #else
+        std::string modifyMSGDef = "nano msg.def";
+        int result = system(modifyMSGDef.c_str());
+    #endif
+}
+
 void modifyMDODbg() {
     std::string mdo_dbg = "MDO.DBG";
 
@@ -270,6 +279,7 @@ int main(int argc, char* argv[]) {
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
         std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
         std::cout << "11. Open Licence Agreement\n";
+        std::cout << "12. Open MSG.DEF\n";
     } else if (dev7VMExists) {
         std::cout << "Choose an option:\n";
         std::cout << "1. Start Dev7VM with Debug Menu\n";
@@ -283,6 +293,7 @@ int main(int argc, char* argv[]) {
         std::cout << "9. Start Le pays des Pierres magiques Intro\n";
         std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
         std::cout << "11. Open Licence Agreement\n";
+        std::cout << "12. Open MSG.DEF\n";
     } else {
         std::cout << "Error: Dev7VM.EXE or loader7.exe is not found in the Game Directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
@@ -351,6 +362,10 @@ switch(choice) {
         break;
     case 11:
         openLicenceFile();
+        usedLoaderOrDev7VM = false;
+        break;
+    case 12:
+        showMSGDef();
         usedLoaderOrDev7VM = false;
         break;
     default:
