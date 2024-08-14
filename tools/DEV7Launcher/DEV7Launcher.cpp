@@ -203,8 +203,9 @@ void runUNINST() {
 void Ed4Intro() {
     std::string Ed4IntroEXE = "Ed4Intro.exe";
 
-    if (!fileExists(Ed4IntroEXE)) {
-        std::cout << "Error: " << Ed4IntroEXE << " not found in directory.\n" << std::endl;
+     // Check if Ed4Intro.exe exists
+    if (!std::filesystem::exists("Ed4Intro.exe")) {
+        std::cout << "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n" << std::endl;
         return;
     }
 #ifdef _WIN32
