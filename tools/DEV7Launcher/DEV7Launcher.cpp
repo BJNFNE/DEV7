@@ -217,19 +217,19 @@ void startLoader7Normal() {
     if (fileExists("LoaderMDO.exe"))
         std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("LoaderMDO.exe");
     else if (fileExists("LoaderMDO.exe"))
-        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("wine LoaderMDO.exe");
+        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe over wine..." << std::endl, launchCommand("wine LoaderMDO.exe");
     else if (fileExists("Adibou3.EXE"))
         std::cout << "Adibou3.EXE found. Starting Adibou3.EXE..." << std::endl, launchCommand("Adibou3.EXE");
     else if (fileExists("Adibou3.exe"))
-        std::cout << "Adibou3.exe found. Starting Adibou3.exe..." << std::endl, launchCommand("wine adibou3.exe");
+        std::cout << "Adibou3.exe found. Starting Adibou3.exe over wine..." << std::endl, launchCommand("wine adibou3.exe");
     else if (fileExists("ADI5.EXE"))
         std::cout << "ADI5.EXE found. Starting ADI5.EXE..." << std::endl, launchCommand("ADI5.EXE");
     else if (fileExists("ADI5.exe"))
-        std::cout << "ADI5.exe found. Starting ADI5.exe..." << std::endl, launchCommand("wine ADI5.exe");
+        std::cout << "ADI5.exe found. Starting ADI5.exe over wine..." << std::endl, launchCommand("wine ADI5.exe");
     else if (fileExists("Loader7.exe"))
         std::cout << "Loader7.exe found. Starting ADI5.EXE..." << std::endl, launchCommand("Loader7.exe");
     else if (fileExists("Loader7.exe"))
-        std::cout << "Loader7.exe found. Starting Loader7.exe..." << std::endl, launchCommand("wine Loader7.exe");
+        std::cout << "Loader7.exe found. Starting Loader7.exe over wine..." << std::endl, launchCommand("wine Loader7.exe");
     else
         std::cout << "None of the executables found. \nPlease make sure you have the exe in the same Directory as the Launcher." << std::endl;
 }
