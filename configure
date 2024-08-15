@@ -9,7 +9,7 @@ print_debug_info() {
 check_command() {
     local cmd=$1
     local desc=$2
-    command -v "$cmd" >/dev/null 2>&1 || { print_debug_info "$desc is required but not found."; return 1; }
+    command -v "$cmd" >/dev/null 2>&1 || { print_debug_info "$desc is required or may be needed but not found."; return 1; }
     print_debug_info "$desc found at $(command -v "$cmd")"
 }
 
@@ -20,11 +20,13 @@ print_debug_info "Compiler information:"
 print_debug_info "$(gcc --version | head -n 1)"
 print_debug_info "$(g++ --version | head -n 1)"
 print_debug_info "$(python3 --version | head -n 1)"
+print_debug_info "$(clang --version | head -n 1)"
 
 # Check for the presence of essential commands
 check_command gcc "C compiler (gcc)"
 check_command g++ "C++ compiler (g++)"
 check_command make "Make utility"
 check_command python3 "Python 3"
+check_command clang "Clang"
 
 echo "Configuration complete. Now you can compile DEV7 Tools via make"
