@@ -311,7 +311,7 @@ int main(int argc, char* argv[]) {
 switch(choice) {
     case 1:
         if (Loader7Exists) {
-            launchCommand("loader7.exe -break");
+            launchCommand("Loader7.exe -break");
             usedLoaderOrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe -break");
@@ -341,7 +341,7 @@ switch(choice) {
         break;
     case 6:
         if (Loader7Exists) {
-            launchCommand("loader7.exe -obc='B3_ParentLaunch'");
+            launchCommand("Loader7.exe -obc='B3_ParentLaunch'");
             usedLoaderOrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
