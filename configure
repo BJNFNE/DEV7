@@ -22,6 +22,7 @@ print_debug_info "$(g++ --version | head -n 1)"
 print_debug_info "$(python3 --version | head -n 1)"
 print_debug_info "$(clang --version | head -n 1)"
 print_debug_info "$(x86_64-w64-mingw32-gcc --version | head -n 1)"
+print_debug_info "$(git --version | head -n 1)"
 
 # Check for the presence of essential commands
 check_command gcc "C compiler (gcc)"
@@ -30,5 +31,6 @@ check_command make "Make utility"
 check_command python3 "Python 3"
 check_command clang "Clang"
 check_command x86_64-w64-mingw32-gcc "Linux MinGW W64"
+check_command git "git"
 
 echo "Configuration complete. Now you can compile DEV7 Tools via make"
