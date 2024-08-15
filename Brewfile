@@ -5,7 +5,8 @@ tap 'homebrew/bundle'
 brew 'cmake'
 brew 'gcc'
 brew 'g++'
-brew 'python@3.9'
+brew 'python'
+brew 'git'
 
 # Python dependencies
 brew 'pillow'
