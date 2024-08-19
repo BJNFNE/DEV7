@@ -82,3 +82,4 @@ clang_debug: debug
 recompile:
 	make clean
 	make
+	@echo "Recompilation is done"
