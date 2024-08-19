@@ -404,7 +404,7 @@ std::cout << "Would you like to restart DEV7Launcher? (y/n): ";
 char restartChoice;
 std::cin >> restartChoice;
 
-if (restartChoice == 'y' || restartChoice == 'Y') {
+if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
     // TODO: improve Windows workaround for delete temp files
     //#ifdef _WIN32
