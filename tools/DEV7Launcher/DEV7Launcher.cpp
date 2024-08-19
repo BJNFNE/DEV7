@@ -37,6 +37,7 @@ void printHeader() {
 
 void clearConsole() {
     std::cout << "\033[2J\033[H";
+    return;
 }
 
 bool isDEV7Running() {
@@ -302,6 +303,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
         getchar();
+        clearConsole();
         return 1;
     }
 
