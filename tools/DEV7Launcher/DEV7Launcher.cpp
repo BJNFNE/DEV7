@@ -246,6 +246,8 @@ int main(int argc, char* argv[]) {
 
     if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
+        getchar();
+        clearConsole();
         return 1;
     }
 
