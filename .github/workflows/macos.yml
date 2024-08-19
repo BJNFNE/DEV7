@@ -1,0 +1,42 @@
+name: Build and Release (Linux)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Brew deps
+        run: |
+          brew bundle install
+
+      - name: Run configure
+        run: ./configure
+
+      - name: Compile all C++ programs
+        run: make
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-macos
+          path: |
+            binaries/LoaderMDO/LoaderMDO
+            binaries/BCD1Creator/BCD1Creator
+            binaries/DEV7Launcher/DEV7Launcher
+            binaries/ModelPathDumper/ModelPathDumper
+            binaries/OBJDumper/OBJDumper
+            binaries/OBCViewer/OBCViewer
+            binaries/CTRKViewer/CTRKViewer
