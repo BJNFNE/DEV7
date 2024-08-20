@@ -19,7 +19,7 @@ class Program
             // Validate provided file path
             if (!ValidateFilePath(EXEInput))
             {
-                Console.WriteLine("Only LOADER.EXE or Dev7VM.EXE.");
+                Console.WriteLine("Only Loader7.exe or Dev7VM.EXE.");
                 Environment.Exit(1);
             }
         }
