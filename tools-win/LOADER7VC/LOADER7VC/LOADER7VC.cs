@@ -29,13 +29,13 @@ class Program
             string Loader7Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Loader7.exe");
             string Dev7VMPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dev7VM.EXE");
 
-            if (File.Exists(loader7Path))
+            if (File.Exists(Loader7Path))
             {
-                EXEInput = loader7Path;
+                EXEInput = Loader7Path;
             }
-            else if (File.Exists(dev7VMPath))
+            else if (File.Exists(Lev7VMPath))
             {
-                EXEInput = dev7VMPath;
+                EXEInput = Dev7VMPath;
             }
             else
             {
