@@ -72,7 +72,7 @@ void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputL
         }
         outFile << modifiedObjFile << ".obj" << std::endl;
     }
-1
+
     std::cout << "Unique .obj filenames have been dumped to " << outputLocation << std::endl;
 }
 
