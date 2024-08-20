@@ -6,6 +6,17 @@ using System.Text;
 
 class Program
 {
+
+    static void printHeader() {
+    
+    string versionNumber = "v1.5-testing"
+
+    Console.WriteLine("============================");
+    Console.WriteLine("LOADER7VC " + versionNumber);
+    Console.WriteLine("============================");
+
+} 
+
     static void Main(string[] args)
     {
         string EXEInput = null;
