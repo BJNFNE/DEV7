@@ -8,6 +8,14 @@
 
 namespace fs = std::filesystem;
 
+void printHeader() {
+    const std::string versionNumber = "0.4.0";
+
+    std::cout << "=========================" << std::endl;
+    std::cout << " OBJDumper ver. " << versionNumber << std::endl;
+    std::cout << "=========================" << std::endl;
+}
+
 // Function to extract unique .obj filenames and dump them to a text file
 void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputLocation, bool useSlash) {
     std::ifstream inFile(inputFile);
@@ -64,11 +72,12 @@ void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputL
         }
         outFile << modifiedObjFile << ".obj" << std::endl;
     }
-
+1
     std::cout << "Unique .obj filenames have been dumped to " << outputLocation << std::endl;
 }
 
 int main() {
+    printHeader();
     std::string inputFile = "loader7.map"; // Default input file
     std::string outputLocation;
     bool useSlash;
