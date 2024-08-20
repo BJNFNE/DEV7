@@ -5,6 +5,15 @@
 
 namespace fs = std::filesystem;
 
+
+void printHeader() {
+    const std::string versionNumber = "0.2.0";
+
+    std::cout << "===========================" << std::endl;
+    std::cout << " ModelPathDumper ver. " << versionNumber << std::endl;
+    std::cout << "===========================" << std::endl;
+}
+
 void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile, int& fileCount) {
     std::ofstream output(outputFile);
     if (!output) {
@@ -36,6 +45,7 @@ void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile
 }
 
 int main() {
+    printHeader();
     std::string directoryPath;
     std::cout << "Enter the directory path: \n";
     std::cout << "if you are already in the correct directory just type .\n";
