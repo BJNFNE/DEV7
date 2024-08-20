@@ -25,9 +25,9 @@ class Program
         }
         else
         {
-            // Check if LOADER7.EXE or Dev7VM.EXE exists in the current directory
-            string loader7Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LOADER7.EXE");
-            string dev7VMPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dev7VM.EXE");
+            // Check if Loader7.exe or Dev7VM.EXE exists in the current directory
+            string Loader7Path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Loader7.exe");
+            string Dev7VMPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dev7VM.EXE");
 
             if (File.Exists(loader7Path))
             {
@@ -39,7 +39,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("LOADER7.EXE or Dev7VM.EXE not found in the current directory.");
+                Console.WriteLine("Loader7.exe or Dev7VM.EXE not found in the current directory.");
                 Console.WriteLine("Press enter to exit");
                 Console.ReadLine();
                 Environment.Exit(1);
@@ -112,7 +112,7 @@ class Program
     static bool ValidateFilePath(string filePath)
     {
         // Add additional validation if needed
-        return filePath.EndsWith("LOADER7.EXE", StringComparison.OrdinalIgnoreCase) ||
+        return filePath.EndsWith("Loader7.exe", StringComparison.OrdinalIgnoreCase) ||
                filePath.EndsWith("Dev7VM.EXE", StringComparison.OrdinalIgnoreCase);
     }
 
