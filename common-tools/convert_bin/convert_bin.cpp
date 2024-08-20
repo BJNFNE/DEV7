@@ -21,7 +21,6 @@ std::string converter = "dd if=" + inputISO + " of=" + outputBIN + " bs=2048 con
 // Execute final Converter command.
 system(converter.c_str());
 
-
 return 0;
 
 }
