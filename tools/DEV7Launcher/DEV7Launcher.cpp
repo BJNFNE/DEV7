@@ -251,7 +251,7 @@ int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now(); // Record the start time
     
     int choice;
-    bool usedLoaderOrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
+    bool usedLoader7OrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
 
     if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
@@ -325,76 +325,76 @@ switch(choice) {
     case 1:
         if (Loader7Exists) {
             launchCommand("Loader7.exe -break");
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe -break");
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         }
         break;
     case 2:
         if (Loader7Exists) {
             startLoader7Normal();
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe");
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         }
         break;
     case 3:
         modifyMDOIni();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 4:
         showTraceTXT();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 5:
         modifyMDODbg();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 6:
         if (Loader7Exists) {
             launchCommand("Loader7.exe -obc='B3_ParentLaunch'");
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
-            usedLoaderOrDev7VM = true;
+            usedLoader7OrDev7VM = true;
         }
         break;
     case 7:
         modifyAdibou3Ini();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 8:
         runUNINST();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 9:
         Ed4Intro();
-        usedLoaderOrDev7VM = true;
+        usedLoader7OrDev7VM = true;
         break;
     case 10:
         modifyAdi5Ini();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 11:
         openLicenceFile();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     case 12:
         showMSGDef();
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
     default:
         std::cout << "Invalid choice. Please choose a valid option.\n" << std::endl;
-        usedLoaderOrDev7VM = false;
+        usedLoader7OrDev7VM = false;
         break;
 }
 
 auto end = std::chrono::steady_clock::now(); // Record the end time
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
-if (usedLoaderOrDev7VM) {
+if (usedLoader7OrDev7VM) {
     clearConsole();
 }
 
