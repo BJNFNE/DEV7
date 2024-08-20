@@ -44,7 +44,7 @@ class Program
             {
                 EXEInput = Loader7Path;
             }
-            else if (File.Exists(Lev7VMPath))
+            else if (File.Exists(Dev7VMPath))
             {
                 EXEInput = Dev7VMPath;
             }
