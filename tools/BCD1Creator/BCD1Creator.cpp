@@ -27,7 +27,18 @@ appli=b????D???.bcd?
 #include <fstream>
 #include <string>
 
+
+void printHeader() {
+    const std::string versionNumber = "0.1.0";
+
+    std::cout << "==========================" << std::endl;
+    std::cout << " BCD1Creator ver. " << versionNumber << std::endl;
+    std::cout << "==========================" << std::endl;
+}
+
+
 int main() {
+    printHeader();
     // Ask the user for the BCD1 file name
     std::cout << "Enter the name of the .BCD1 file: ";
     std::string fileName;
