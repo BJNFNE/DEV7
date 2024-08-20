@@ -4,6 +4,11 @@ import sys
 
 ALLOWED_FORMATS = {".jpg", ".jpeg", ".png", ".bmp", ".tga", ".gif", ".webp", ".psd"}
 
+def printHeader():
+    print("=====================")
+    print("IMGConverter ver. 1.1")
+    print("=====================")
+
 def is_valid_image_file(file_path):
     _, file_extension = os.path.splitext(file_path)
     return file_extension.lower() in ALLOWED_FORMATS
@@ -54,6 +59,7 @@ def is_resolution_valid(resolution):
 
 def main():
     try:
+        printHeader()
         # Enter Input file from user input
         input_image_path = input("Enter the path to the input image: ")
 
