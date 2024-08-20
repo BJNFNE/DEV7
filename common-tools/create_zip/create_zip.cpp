@@ -21,7 +21,6 @@ std::string zipCommand = "zip -r " + outputZIP + " " + inputFolder;
 // Execute final Converter command.
 system(zipCommand.c_str());
 
-
 return 0;
 
 }
