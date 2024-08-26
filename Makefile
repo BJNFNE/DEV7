@@ -69,6 +69,8 @@ clean:
 	@rm -rf binaries
 	@echo "Cleanup is done"
 
+.PHONY: clean all
+
 # Rule to use Clang
 clang: CC = clang
 clang: CXX = clang++
