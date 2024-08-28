@@ -2,17 +2,17 @@
 
 # Supported Compilers
 - Windows
-* Visual Studio 6.0 (only for LoaderMDO)
-* Visual Studio 2022
-* MinGW/gcc
+** Visual Studio 6.0 (only for LoaderMDO)
+** Visual Studio 2022
+** MinGW/gcc
 
 - Linux
-* gcc
-* clang
-* meson (WIP)
+** gcc
+** clang
+** meson (WIP)
 
 - macOS
-* gcc
+** gcc
 
 # Windows
 - Visual Studio:
