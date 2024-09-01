@@ -40,6 +40,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             startLoader7();
         }
         CloseHandle(mutex);
+        return 0;
     }
 
     return 0;
@@ -60,5 +61,6 @@ void startLoader7() {
     if (CreateProcessW(NULL, const_cast<LPWSTR>(commandLine.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
         CloseHandle(pi.hProcess);
         CloseHandle(pi.hThread);
+        return;
     }
 }
