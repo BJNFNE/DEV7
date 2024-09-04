@@ -28,8 +28,28 @@ appli=b????D???.bcd?
 #include <string>
 
 
+void exampleBCD1Names() {
+
+    std::cout << "Example BCD1 Filenames which were detected by Adibou 3\n" << std::endl;
+
+    std::cout << "French: " << "\b" << std::endl;
+    std::cout << "Environment:\b" << std::endl;
+    std::cout << "Application:\b" << std::endl;
+
+    std::cout << "German: " << "\b" << std::endl;
+    std::cout << "Environment:\b" << std::endl;
+    std::cout << " - Das Zauberland von Adiboo [benxxd300.bcd1]\n" << std::endl;
+
+    std::cout << "English:\b" << std::endl;
+    std::cout << "Environment:\b" << std::endl;
+    std::cout << "Application:\b" << std::endl;
+    std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
+
+    return;
+}
+
 void printHeader() {
-    const std::string versionNumber = "0.1.0";
+    const std::string versionNumber = "0.1.1";
 
     std::cout << "==========================" << std::endl;
     std::cout << " BCD1Creator ver. " << versionNumber << std::endl;
@@ -39,8 +59,11 @@ void printHeader() {
 
 int main() {
     printHeader();
+    std::cout << "\b" << std::endl;
+    exampleBCD1Names();
+    std::cout << "\b" << std::endl;
     // Ask the user for the BCD1 file name
-    std::cout << "Enter the name of the .BCD1 file: ";
+    std::cout << "Enter the Filename of the Game which you wanna modify: " << std::endl;
     std::string fileName;
     std::getline(std::cin, fileName);
 
