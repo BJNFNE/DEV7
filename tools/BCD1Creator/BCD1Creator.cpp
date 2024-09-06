@@ -27,22 +27,34 @@ appli=b????D???.bcd?
 #include <fstream>
 #include <string>
 
-
 void exampleBCD1Names() {
 
     std::cout << "Example BCD1 Filenames which were detected by Adibou 3\n" << std::endl;
 
     std::cout << "French: " << "\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
+    std::cout << " - Le pays d'Adibou [benxxf300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
+    std::cout << " - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n" << std::endl;
+    std::cout << " - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n" << std::endl;
+    std::cout << " - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]" << std::endl;
 
     std::cout << "German: " << "\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << " - Das Zauberland von Adiboo [benxxd300.bcd1]\n" << std::endl;
+    std::cout << "Application:\b" << std::endl;
+    std::cout << " - Die Stadt Wiwawort (Wörter 5-6 Jahre) [BFR56D300.BCD1]\n" << std::endl;
+    std::cout << " - Die Stadt Plusminus (Zahlen 5-6 Jahre) [BMA56D300.BCD1]\n" << std::endl;
+    std::cout << " - Das Tal Wortwörtlich (Im Leseland 6-7 Jahre)[BFR67D300.BCD1]\n" << std::endl;
+    std::cout << " - Das Tal Zählmal (Im Rechenland 6-7 Jahre) [BMA67D300.BCD1]\n" << std::endl;
+    std::cout << " - Das Königreich Hocus Pocus (Englisch 4-7 Jahre) [blg47D310.bcd1]\n" << std::endl;
+    std::cout << " - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n" << std::endl;
 
     std::cout << "English:\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << "Application:\b" << std::endl;
+    std::cout << " - Word-by-Word City (Reading 5-6 years) [bfr56a300.bcd1]\n" << std::endl;
+    std::cout << " - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n" << std::endl;
     std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
 
     return;
@@ -55,7 +67,6 @@ void printHeader() {
     std::cout << " BCD1Creator ver. " << versionNumber << std::endl;
     std::cout << "==========================" << std::endl;
 }
-
 
 int main() {
     printHeader();
