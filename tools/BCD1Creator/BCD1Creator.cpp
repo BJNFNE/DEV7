@@ -57,6 +57,20 @@ void exampleBCD1Names() {
     std::cout << " - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n" << std::endl;
     std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
 
+    std::cout << "Russian:\b" << std::endl;
+    std::cout << "Environment:\b" << std::endl;
+    std::cout << "Application:\b" << std::endl;
+    std::cout << " - Ãîðîä Íåðàâåíñòâ (Ñ÷åò 5-6 ëåò) [bma56F300.bcd1]\n" << std::endl;
+    std::cout << " - Ñ÷åòíàÿ äîëèíà (Ñ÷åò 6-7 ëåò) [bma67F300.bcd1]\n" << std::endl;
+    std::cout << " - Çàáûòàÿ ñòðàíà (Íàóêè, 4-7 ëåò) [bsc47F310.bcd1]\n" << std::endl;
+    std::cout << " - Çàãàäî÷íàÿ ìóçûêàëüíàÿ ìàøèíà (Ìóçûêà, 4-7 ëåò) [bmu47A310.bcd1]\n" << std::endl;
+    std::cout << " - Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò) [blg47F310.bcd1]\n" << std::endl;
+
+    std::cout << "Dutch:\b" << std::endl;
+    std::cout << "Environment:\b" << std::endl;
+    std::cout << " - Het Land van Adiboo [benxxa300.bcd1]\n" << std::endl;
+    std::cout << "Application:\b" << std::endl;
+
     return;
 }
 
