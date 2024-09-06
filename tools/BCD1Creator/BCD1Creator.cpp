@@ -37,7 +37,7 @@ void exampleBCD1Names() {
     std::cout << "Application:\b" << std::endl;
     std::cout << " - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n" << std::endl;
     std::cout << " - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n" << std::endl;
-    std::cout << " - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]" << std::endl;
+    std::cout << " - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n" << std::endl;
 
     std::cout << "German: " << "\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
