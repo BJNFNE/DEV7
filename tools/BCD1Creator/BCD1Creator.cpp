@@ -31,7 +31,7 @@ void exampleBCD1Names() {
 
     std::cout << "Example BCD1 Filenames which were detected by Adibou 3\n" << std::endl;
 
-    std::cout << "French: " << "\b" << std::endl;
+    std::cout << "Français:" << "\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << " - Le pays d'Adibou [benxxf300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
@@ -39,7 +39,7 @@ void exampleBCD1Names() {
     std::cout << " - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n" << std::endl;
     std::cout << " - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n" << std::endl;
 
-    std::cout << "German: " << "\b" << std::endl;
+    std::cout << "Deutsch:" << "\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << " - Das Zauberland von Adiboo [benxxd300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
@@ -57,7 +57,7 @@ void exampleBCD1Names() {
     std::cout << " - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n" << std::endl;
     std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
 
-    std::cout << "Russian:\b" << std::endl;
+    std::cout << "русский:\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << "Application:\b" << std::endl;
     std::cout << " - Ãîðîä Íåðàâåíñòâ (Ñ÷åò 5-6 ëåò) [bma56F300.bcd1]\n" << std::endl;
@@ -66,7 +66,7 @@ void exampleBCD1Names() {
     std::cout << " - Çàãàäî÷íàÿ ìóçûêàëüíàÿ ìàøèíà (Ìóçûêà, 4-7 ëåò) [bmu47A310.bcd1]\n" << std::endl;
     std::cout << " - Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò) [blg47F310.bcd1]\n" << std::endl;
 
-    std::cout << "Dutch:\b" << std::endl;
+    std::cout << "Nederlands:\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << " - Het Land van Adiboo [benxxa300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
