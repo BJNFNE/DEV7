@@ -13,46 +13,29 @@ Compiling:
 */
 
 #include <windows.h>
-
-// Function prototype for starting Loader7.exe with arguments
-void startLoader7(int argc, unsigned int* argv);
+#include <process.h>  // Include for _spawnl
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    // Check if a window with the title "LoaderMDO" exists
-    HWND hwnd = FindWindowA(NULL, "LoaderMDO");
-    
-    // If a window with the title "LoaderMDO" exists, sleep for 100ms
-    while (hwnd != NULL) {
-        Sleep(100); // Sleep for 100 milliseconds
-        hwnd = FindWindowA(NULL, "LoaderMDO"); // Check again
+    HANDLE MutexA;  // Declare Mutex handle
+
+    // Create a mutex named "ADI5_LAUNCH_MUTEX"
+    MutexA = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
+
+    // Check if mutex creation failed or if it already exists
+    if (!MutexA || GetLastError() == ERROR_ALREADY_EXISTS) {
+        return 0;  // Exit if mutex already exists or creation failed
     }
 
-    // Create the ADI5_LAUNCH_MUTEX
-    HANDLE mutex = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
-
-    if (mutex != NULL) {
-        if (GetLastError() != ERROR_ALREADY_EXISTS) {
-            // Mutex does not already exist, so proceed with launching Loader7.exe
-            unsigned int args[] = {1, (unsigned int)"Loader7.exe"};
-            startLoader7(sizeof(args)/sizeof(args[0]), args);
-        }
-        CloseHandle(mutex);
-        return;
+    // Check if a window with the title "LoaderMDO" exists, and wait if it does
+    while (FindWindowA(NULL, "LoaderMDO")) {
+        Sleep(100);  // Sleep for 100 milliseconds
     }
 
-    return;
-}
+    // Launch Loader7.exe using _spawnl
+    _spawnl(_P_NOWAIT, "Loader7.exe", "Loader7.exe", "Loader7.exe", NULL);
 
-// Function definition for starting Loader7.exe with arguments
-void startLoader7(int argc, unsigned int* argv) {
-    // Start Loader7.exe
-    STARTUPINFOA si;
-    PROCESS_INFORMATION pi;
-    ZeroMemory(&si, sizeof(si));
-    si.cb = sizeof(si);
-    ZeroMemory(&pi, sizeof(pi));
+    // Close the mutex handle after the process is spawned
+    CloseHandle(MutexA);
 
-    if (!CreateProcessA(NULL, "Loader7.exe", NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-        return;
-    }
+    return 0;  // Return 0 indicating successful execution
 }
