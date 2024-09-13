@@ -35,7 +35,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
 
     // Launch Loader7.exe using _spawnl
-    _spawnl(_P_NOWAIT, "Loader7.exe", "Loader7.exe", "Loader7.exe", NULL);
+    _spawnl(_P_NOWAIT, "Loader7.exe", "Loader7.exe", "Loader7.exe", nullptr);
 
     // Close the mutex handle after the process is created
     CloseHandle(MutexA);
