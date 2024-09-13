@@ -16,14 +16,14 @@ Compiling:
 #include <process.h>  // Include for _spawnl
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    HANDLE MutexA;  // Declare Mutex handle
+    HANDLE MutexA;
 
     // Create a mutex named "ADI5_LAUNCH_MUTEX"
     MutexA = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
 
     // Check if mutex creation failed or if it already exists
     if (!MutexA || GetLastError() == ERROR_ALREADY_EXISTS) {
-        return 0;  // Exit if mutex already exists or creation failed
+        return;  // Exit if mutex already exists or creation failed
     }
 
     // Check if a window with the title "LoaderMDO" exists, and wait if it does
@@ -34,8 +34,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Launch Loader7.exe using _spawnl
     _spawnl(_P_NOWAIT, "Loader7.exe", "Loader7.exe", "Loader7.exe", NULL);
 
-    // Close the mutex handle after the process is spawned
+    // Close the mutex handle after the process is created
     CloseHandle(MutexA);
-
-    return 0;  // Return 0 indicating successful execution
+	return;
 }
