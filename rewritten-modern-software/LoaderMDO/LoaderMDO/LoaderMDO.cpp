@@ -14,53 +14,30 @@ Compiling:
 */
 
 #include <windows.h>
-#include <iostream>
-#include <string>
+#include <process.h>  // Include for _spawnl
 
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 
-void startLoader7();
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-    // Check if a window with the title "LoaderMDO" exists
-    HWND hwnd = FindWindowW(NULL, L"LoaderMDO");
+    HANDLE MutexA;
 
-    // If a window with the title "LoaderMDO" exists, sleep for 100ms
-    while (hwnd != NULL) {
-        Sleep(100); // Sleep for 100 milliseconds
-        hwnd = FindWindowW(NULL, L"LoaderMDO"); // Check again
+    // Create a mutex named "ADI5_LAUNCH_MUTEX"
+    MutexA = CreateMutexA(NULL, TRUE, "ADI5_LAUNCH_MUTEX");
+
+    // Check if mutex creation failed or if it already exists
+    if (!MutexA || GetLastError() == ERROR_ALREADY_EXISTS) {
+        return 0;  // Exit if mutex already exists or creation failed
     }
 
-    // Create the ADI5_LAUNCH_MUTEX
-    HANDLE mutex = CreateMutexW(NULL, TRUE, L"ADI5_LAUNCH_MUTEX");
-
-    if (mutex != NULL) {
-        if (GetLastError() != ERROR_ALREADY_EXISTS) {
-            // Mutex does not already exist, so proceed with launching Loader7.exe
-            startLoader7();
-        }
-        CloseHandle(mutex);
-        return 0;
+    // Check if a window with the title "LoaderMDO" exists, and wait if it does
+    while (FindWindowA(NULL, "LoaderMDO")) {
+        Sleep(100);  // Sleep for 100 milliseconds
     }
 
+    // Launch Loader7.exe using _spawnl
+    _spawnl(_P_NOWAIT, "Loader7.exe", "Loader7.exe", "Loader7.exe", NULL);
+
+    // Close the mutex handle after the process is created
+    CloseHandle(MutexA);
     return 0;
-}
-
-// Function definition for starting Loader7.exe
-void startLoader7() {
-    STARTUPINFOW si;
-    PROCESS_INFORMATION pi;
-    ZeroMemory(&si, sizeof(si));
-    si.cb = sizeof(si);
-    ZeroMemory(&pi, sizeof(pi));
-
-    // Command line to start Loader7.exe
-    std::wstring commandLine = L"Loader7.exe";
-
-    // Start Loader7.exe
-    if (CreateProcessW(NULL, const_cast<LPWSTR>(commandLine.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-        CloseHandle(pi.hProcess);
-        CloseHandle(pi.hThread);
-        return;
-    }
 }
