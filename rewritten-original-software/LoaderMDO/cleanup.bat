@@ -33,9 +33,16 @@ del /s /q *.ilk 2>nul
 del /s /q *.pdb 2>nul
 del /s /q *.aps 2>nul
 del /s /q *.sbr 2>nul
-del /s /q *.idb 2>nul
 del /s /q *.html 2>nul
 del /s /q *.map 2>nul
+
+echo Removing tempory files from IDA
+del /s /q *.idb 2>nul
+del /s /q *.nam 2>nul
+del /s /q *.id0 2>nul
+del /s /q *.id1 2>nul
+del /s /q *.til 2>nul
+echo Remove the LoaderMDO.exe.i64 manually if its not required.
 
 rem Remove executables
 echo Removing executables...
