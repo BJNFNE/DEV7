@@ -1,16 +1,16 @@
-#include "stdafx.h"  // Precompiled header for Visual Studio 6.0
+#include "stdafx.h"
 #include <windows.h>
 #include <string.h>
 #include <stdlib.h>
 
-// Define the actual value of byte_405490
+// Define comparisonString to be 0
 char comparisonString[] = "0";
 
-int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
     int result;
 
-    // Compare the command-line argument with the value stored in byte_405490
+    // Compare the command-line argument with the value stored in comparisonString
     result = strcmp(lpCmdLine, comparisonString);
 
     // If the command line argument doesn't match, return the integer version of lpCmdLine
