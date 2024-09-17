@@ -9,6 +9,12 @@ Requirements:
 Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
 
+Supported Games:
+- Adiboo3 (German Applications)
+
+TODO:
+- Find out why ADI5 Adiboud'chou and Adibou3 don't accept the executable.
+
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000
 */
 
