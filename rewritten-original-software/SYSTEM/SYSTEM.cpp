@@ -10,15 +10,18 @@ Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
 
 Supported Games:
-- Adiboo3 (German version only currently)
+- Adibou3 (partially)
 
 Supported Applications:
-- Adiboo3
+- Adiboo3 (German)
 -- Natur und Technik
 -- Die rätselhafte Musikmaschine
 -- Mathe & Deutsch 4-6 Jahre
 -- Mathe & Deutsch 6-7 Jahre
 -- Das Königreich Hocus Pocus (English 4-7 Jahre)
+
+- Adiboo3 (Dutch)
+-- Lezen 5-6 jaar
 
 TODO:
 - Find out why ADI5 Adiboud'chou and Adibou3 don't accept the executable.
