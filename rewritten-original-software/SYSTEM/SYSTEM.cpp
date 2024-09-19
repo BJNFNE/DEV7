@@ -11,6 +11,7 @@ Compiling:
 
 Supported Games:
 - Adibou3 (partially)
+- Adiboud'chou (partially)
 
 Supported Applications:
 - Adiboo3 (German)
@@ -23,8 +24,11 @@ Supported Applications:
 - Adiboo3 (Dutch)
 -- Lezen 5-6 jaar
 
+- Adibú Chu (Spanish)
+-- Adibú Chu-El Mar
+
 TODO:
-- Find out why ADI5 Adiboud'chou and Adibou3 don't accept the executable.
+- Find out why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable.
 
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000
 */
