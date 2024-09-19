@@ -14,17 +14,20 @@ Supported Games:
 - Adiboud'chou (partially)
 
 Supported Applications:
-- Adiboo3 (German)
+- Adibou3
+-- German:
 -- Natur und Technik
 -- Die rätselhafte Musikmaschine
 -- Mathe & Deutsch 4-6 Jahre
 -- Mathe & Deutsch 6-7 Jahre
 -- Das Königreich Hocus Pocus (English 4-7 Jahre)
-
-- Adiboo3 (Dutch)
+-- Dutch:
 -- Lezen 5-6 jaar
 
-- Adibú Chu (Spanish)
+- Adiboud'chou
+-- French:
+-- Adiboud'chou à la campagne
+-- Spanish:
 -- Adibú Chu-El Mar
 
 TODO:
