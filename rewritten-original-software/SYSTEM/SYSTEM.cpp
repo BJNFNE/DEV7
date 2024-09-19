@@ -32,6 +32,9 @@ Supported Applications:
 
 TODO:
 - Find out why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable.
+FIRST_IDEA?:
+- It turns out that the original release from 2000 of Adiboud'chou works
+- Although the Re-Releases are modified which fails then to run the Game with the reimplemented executable.
 
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000
 */
