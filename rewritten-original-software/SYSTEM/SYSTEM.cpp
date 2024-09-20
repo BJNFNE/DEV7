@@ -10,9 +10,9 @@ Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
 
 Supported Games:
-- Adibou3 (partially)
-- Adiboud'chou (partially)
-- Adibou présenté
+- Adibou3 (partially supported)
+- Adiboud'chou (partially supported)
+- Adibou présenté (Fully supported)
 
 Supported Applications:
 - Adibou3
@@ -34,6 +34,8 @@ Supported Applications:
 -- French:
 -- Adibou présenté Cuisine
 -- Adibou présenté Dessin
+-- English:
+-- Adibou presents Cooking
 
 - Adiboud'chou
 -- French:
