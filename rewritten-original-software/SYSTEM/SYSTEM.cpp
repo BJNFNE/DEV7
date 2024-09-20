@@ -29,6 +29,10 @@ Supported Applications:
 -- Russian:
 -- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
 
+- Adibou presente
+- French:
+-- Adibou presente Cuisine
+
 - Adiboud'chou
 -- French:
 -- Adiboud'chou à la campagne
