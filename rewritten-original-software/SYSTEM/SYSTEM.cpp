@@ -35,7 +35,7 @@ Supported Applications:
 -- Adibou présenté Cuisine
 -- Adibou présenté Dessin
 -- English:
--- Adibou presents Cooking
+-- Adiboo presents Cooking
 -- Adiboo presents Drawing
 
 - Adiboud'chou
