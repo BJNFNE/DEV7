@@ -12,6 +12,7 @@ Compiling:
 Supported Games:
 - Adibou3 (partially)
 - Adiboud'chou (partially)
+- Adibou présenté
 
 Supported Applications:
 - Adibou3
@@ -29,9 +30,10 @@ Supported Applications:
 -- Russian:
 -- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
 
-- Adibou presente
-- French:
--- Adibou presente Cuisine
+- Adibou présenté
+-- French:
+-- Adibou présenté Cuisine
+-- Adibou présenté Dessin
 
 - Adiboud'chou
 -- French:
