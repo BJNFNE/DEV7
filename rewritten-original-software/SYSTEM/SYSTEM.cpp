@@ -23,6 +23,8 @@ Supported Applications:
 -- Das Königreich Hocus Pocus (English 4-7 Jahre)
 -- Dutch:
 -- Lezen 5-6 jaar
+-- Russian:
+-- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
 
 - Adiboud'chou
 -- French:
