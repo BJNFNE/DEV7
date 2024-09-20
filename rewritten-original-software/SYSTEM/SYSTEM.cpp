@@ -27,6 +27,7 @@ Supported Applications:
 - Adiboud'chou
 -- French:
 -- Adiboud'chou à la campagne
+-- Adiboud'chou dans la jungle et la savane
 -- Spanish:
 -- Adibú Chu-El Mar
 
