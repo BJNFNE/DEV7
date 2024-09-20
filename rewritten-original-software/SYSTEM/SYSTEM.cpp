@@ -21,6 +21,8 @@ Supported Applications:
 -- Mathe & Deutsch 4-6 Jahre
 -- Mathe & Deutsch 6-7 Jahre
 -- Das Königreich Hocus Pocus (English 4-7 Jahre)
+-- English:
+-- The Mysterious Music Machine (Music 4-7 years)
 -- Dutch:
 -- Lezen 5-6 jaar
 -- Russian:
