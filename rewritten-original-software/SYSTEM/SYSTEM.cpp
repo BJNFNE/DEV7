@@ -34,6 +34,7 @@ Supported Applications:
 -- French:
 -- Adibou présenté Cuisine
 -- Adibou présenté Dessin
+-- Adibou présente la magie
 -- English:
 -- Adiboo presents Cooking
 -- Adiboo presents Drawing
