@@ -23,13 +23,16 @@
 Debug/
 Release/
 
-# Compiled Tools
+# Compiled DEV7 Tools
 /binaries/DEV7Launcher
 /binaries/BCD1Creator
 /binaries/OBCViewer
 /binaries/ModelPathDumper
 /binaries/OBJDumper
 /binaries/CTRKViewer
+
+# Compiled Common Tools
+/common-tools/create_iso/create_iso
 
 # Rewritten Software Ports 
 rewritten-software-ports/linux/LoaderMDO/LoaderMDO
