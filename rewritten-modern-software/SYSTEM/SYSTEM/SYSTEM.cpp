@@ -8,6 +8,7 @@ Requirements:
 
 Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
+- To compile over g++/MinGW, you can run this command to compile: g++ -o SYSTEM.EXE SYSTEM.cpp -luser32
 
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000
 */
