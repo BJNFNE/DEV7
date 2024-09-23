@@ -35,6 +35,8 @@ jobs:
 
       - name: Compile ModelPathDumper
         run: g++ -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+      - name: Compile Modern version of SYSTEM
+        run: g++ -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
      # - name: Compile CTRKViewer
       #  run: g++ -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
@@ -48,6 +50,7 @@ jobs:
           name: compiled-windows
           path: |
             LoaderMDO.exe
+            SYSTEM.EXE
             BCD1Creator.exe
             DEV7Launcher.exe
             OBJDumper.exe
