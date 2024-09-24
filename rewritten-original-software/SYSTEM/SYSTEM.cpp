@@ -36,6 +36,7 @@ Supported Applications:
 -- Reading-Maths 5-6 years
 -- Dutch:
 -- Lezen 5-6 jaar
+-- Rekenen 5-6 jaar
 -- Russian:
 -- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
 
