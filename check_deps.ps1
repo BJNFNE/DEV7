@@ -75,5 +75,5 @@ $python3_found = check_python3
 if ($python_command_found -and $vs_found -and $python3_found) {
     Write-Output "Checking complete. You can now compile DEV7 Tools."
 } else {
-    Write-Output "Some requirements are missing. Please address the issues above."
+    Write-Output "Some requirements are missing. Please install the missing components to work properly."
 }
