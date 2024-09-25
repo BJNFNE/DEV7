@@ -30,9 +30,28 @@ function check_visual_studio {
         }
     }
 
+    # Check for the presence of Python3 folder on hard drives
+function check_python3 {
+    $python3_installed = $false
+    $driveLetters = "C", "D", "E"
+    $python3_folder_name = "Python3"
+    
+    foreach ($drive in $driveLetters) {
+        $vs_path = "${drive}:\Program Files (x86)\$python3_folder_name"
+        if (Test-Path $python3_path) {
+            $python3_installed = $true
+            print_debug_info "Python3 found at $python3_path"
+            break
+        }
+    }
+
     if (-not $vs_installed) {
         print_debug_info "Visual Studio is required but not found. - Not installed"
         return 1
+    else if (-not $python3_installed) {
+        print_debug_info "Python3 is required but not found. - Not installed"
+    }
+    
     }
 
     return 0
