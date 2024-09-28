@@ -1,5 +1,5 @@
 {
-  "name": "DEV7",
+  "name": "dev7",
   "version-string": "latest",
   "dependencies": [
     "zlib",
