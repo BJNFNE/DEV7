@@ -1,6 +1,7 @@
 {
   "name": "dev7",
   "version-string": "latest",
+  "builtin-baseline": "29b2ea2d4b6197e66ef346e62ccbba35b55b7de5",
   "dependencies": [
     "zlib",
     "libpng",
