@@ -70,6 +70,7 @@ void exampleBCD1Names() {
     std::cout << "Environment:\b" << std::endl;
     std::cout << " - Het Land van Adiboo [benxxa300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
+    std::cout << " - Rekenen 5-6 jaar\n" << std::endl;
 
     return;
 }
