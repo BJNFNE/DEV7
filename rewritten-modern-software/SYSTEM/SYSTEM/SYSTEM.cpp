@@ -1,14 +1,16 @@
 /*
+This is a port to the x64 Platform and newer C++. Code based on SYSTEM's rewritten code, which can be found in /rewritten-original-software/SYSTEM/SYSTEM.cpp
 SYSTEM was developed to check if the Disc is valid or not.
 This version is from 2000 that which one doesn't used SecuROM yet.
 SecuROM was started to being used in 2001/2002 in SYSTEM.EXE.
 
 Requirements:
--  Compile under MSVC 6.0 build 8168 (Any newer build of MSVC6.0 work aswell but Coktel/MDO used back then used exactly this version of the Compiler.)
-
+-  Compile under MSVC 2022 or MinGW
+-  Compatible with Windows 7 to Windows 11
 Compiling:
-- build_release.bat: Run the batch script and confirm with yes to compile.
-- To compile over g++/MinGW, you can run this command to compile: g++ -o SYSTEM.EXE SYSTEM.cpp -luser32
+- Can directly be compiled in MSVC; you can change between Release or Debug mode.
+- To compile over g++/MinGW, you can run this command to compile: g++ -o LoaderMDO.exe LoaderMDO.cpp -luser32
+- When you want to remove the debug symbols from the exe use the "strip LoaderMDO.exe" (Without quotes) command (g++/MinGW only)
 
 Supported Games:
 - Adibou3 (partially supported)
