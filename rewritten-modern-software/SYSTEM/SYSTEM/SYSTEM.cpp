@@ -10,7 +10,61 @@ Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
 - To compile over g++/MinGW, you can run this command to compile: g++ -o SYSTEM.EXE SYSTEM.cpp -luser32
 
-Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000
+Supported Games:
+- Adibou3 (partially supported)
+- Adiboud'chou (partially supported)
+- Adibou présenté (Fully supported)
+
+Unsupported Games (currently):
+- ADI 5
+- Adibou3 (French version only)
+- Some versions of Adiboud'chou (which are mostly Re-Releases)
+- English Fever (Here is it called SystemEx.exe instead of SYSTEM.EXE, it had also an own compiled Dev7VM.exe which the new SystemEx.exe reference)
+
+Not used SYSTEM.EXE Games:
+- Nathan Vacances
+
+Supported Applications:
+- Adibou3
+-- German:
+-- Natur und Technik
+-- Die rätselhafte Musikmaschine
+-- Mathe & Deutsch 4-6 Jahre
+-- Mathe & Deutsch 6-7 Jahre
+-- Das Königreich Hocus Pocus (English 4-7 Jahre)
+-- English:
+-- The Mysterious Music Machine (Music 4-7 years)
+-- Reading-Maths 5-6 years
+-- Dutch:
+-- Lezen 5-6 jaar
+-- Rekenen 5-6 jaar
+-- Russian:
+-- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
+
+- Adibou présenté
+-- French:
+-- Adibou présenté Cuisine
+-- Adibou présenté Dessin
+-- Adibou présente la magie
+-- English:
+-- Adiboo presents Cooking
+-- Adiboo presents Drawing
+
+- Adiboud'chou
+-- French:
+-- Adiboud'chou à la campagne
+-- Adiboud'chou dans la jungle et la savane
+-- Spanish:
+-- Adibú Chu-El Mar
+
+TODO:
+- Find out why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable.
+FIRST_IDEA?:
+- It turns out that the original release from 2000 of Adiboud'chou works
+- Although the Re-Releases are modified which fails then to run the Game with the reimplemented executable.
+
+Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000 (24KB)
+Another system.exe is identical to this code, which is instead 280KB large in Filesize: MD5: 76c96b9be44359c9afba513db6c2c9b6 Date: 13. Jun 2000
 */
 
 #include "pch.h"
