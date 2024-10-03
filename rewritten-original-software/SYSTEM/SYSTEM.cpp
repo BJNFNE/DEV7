@@ -58,6 +58,8 @@ Supported Applications:
 
 TODO:
 - Find out why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable.
+- Fix Windows Defender to detect SYSTEM.EXE as Trojan:Win32/Wacatac.B!ml
+
 FIRST_IDEA?:
 - It turns out that the original release from 2000 of Adiboud'chou works
 - Although the Re-Releases are modified which fails then to run the Game with the reimplemented executable.
