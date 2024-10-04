@@ -14,11 +14,11 @@ Compiling:
 
 Supported Games:
 - Adibou3 (partially supported)
+- ADI 5 (partially supported)
 - Adiboud'chou (partially supported)
 - Adibou présenté (Fully supported)
 
 Unsupported Games (currently):
-- ADI 5
 - Adibou3 (French version only)
 - Some versions of Adiboud'chou (which are mostly Re-Releases)
 - English Fever (Here is it called SystemEx.exe instead of SYSTEM.EXE, it had also an own compiled Dev7VM.exe which the new SystemEx.exe reference)
