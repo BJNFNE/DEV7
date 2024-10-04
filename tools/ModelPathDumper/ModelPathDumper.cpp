@@ -5,7 +5,6 @@
 
 namespace fs = std::filesystem;
 
-
 void printHeader() {
     const std::string versionNumber = "0.2.0";
 
