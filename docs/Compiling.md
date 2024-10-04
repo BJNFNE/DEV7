@@ -2,21 +2,21 @@
 
 # Supported Compilers
 - Windows
-** Visual Studio 6.0 (only for LoaderMDO)
-** Visual Studio 2022
-** MinGW/gcc
+* Visual Studio 6.0 (only for LoaderMDO/SYSTEM)
+* Visual Studio 2022
+* MinGW/gcc
 
 - Linux
-** gcc
-** clang
-** meson (WIP)
+ gcc
+* clang
+* meson (WIP)
 
 - macOS
-** gcc
+* gcc
 
 # Windows
 - Visual Studio:
-* To to compile LoaderMDO on Windows take an look at the Code comments.
+* To to compile LoaderMDO/SYSTEM on Windows take an look at the Code comments.
 
 1. Open the Project directory of the Tool which you want to compile in Visual Studio.
 2. Wait until Visual Studio is done with initializing the Project in Visual Studio
