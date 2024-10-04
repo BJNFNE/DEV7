@@ -16,11 +16,16 @@ PictureNameN for which picture should used for the Middle?
 CDDetected checks if the CD was detected correctly, also checks for SecuROM.
 Order is to give Adibou 3 the the position where the Application should be shown in the Vulkan.
 
-
 [mask]
 envi=benxxD???.bcd?
 appli=b????D???.bcd?
 
+Requirements:
+The first B stands for Adibou
+After that the secound two letters are for what type of Application it is (MU = Music FR = Language = MA = Math SC = Sciences LG = Hocus Pocus).
+Then the Year of the Age.
+The last letter is the Language (F = French/Russian, E = English, D = German/Dutch)
+The last 3 numbers are for the version number.
 */
 
 #include <iostream>
