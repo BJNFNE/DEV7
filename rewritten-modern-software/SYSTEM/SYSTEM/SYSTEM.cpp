@@ -7,6 +7,7 @@ SecuROM was started to being used in 2001/2002 in SYSTEM.EXE.
 Requirements:
 -  Compile under MSVC 2022 or MinGW
 -  Compatible with Windows 7 to Windows 11
+-  Make sure to have Visual C++ Redistributable 2022 x64 installed.
 Compiling:
 - Can directly be compiled in MSVC; you can change between Release or Debug mode.
 - To compile over g++/MinGW, you can run this command to compile: g++ -o LoaderMDO.exe LoaderMDO.cpp -luser32
