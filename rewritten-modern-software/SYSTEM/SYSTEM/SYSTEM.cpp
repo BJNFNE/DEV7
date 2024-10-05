@@ -62,6 +62,7 @@ Supported Applications:
 -- Adiboud'chou dans la jungle et la savane
 -- German:
 -- Addy Buschu Eis & Schnee (Addy Mini version works aswell)
+-- Addy Buschu Am Meer (Addy Mini version works aswell)
 -- Spanish:
 -- Adibú Chu-El Mar
 
