@@ -13,13 +13,12 @@ Compiling:
 - When you want to remove the debug symbols from the exe use the "strip LoaderMDO.exe" (Without quotes) command (g++/MinGW only)
 
 Supported Games:
-- Adibou3 (partially supported)
+- Adibou3 (Fully supported)
 - ADI 5 (partially supported)
 - Adiboud'chou (partially supported)
 - Adibou présenté (Fully supported)
 
 Unsupported Games (currently):
-- Adibou3 (French version only)
 - Some versions of Adiboud'chou (which are mostly Re-Releases)
 - English Fever (Here is it called SystemEx.exe instead of SYSTEM.EXE, it had also an own compiled Dev7VM.exe which the new SystemEx.exe reference)
 
@@ -64,6 +63,10 @@ TODO:
 FIRST_IDEA?:
 - It turns out that the original release from 2000 of Adiboud'chou works
 - Although the Re-Releases are modified which fails then to run the Game with the reimplemented executable.
+
+WORKAROUND:
+- For some Games you can leave the Environment CD/ISO mounted and mount the Application CD/ISO as an seperate drive.
+- Some Games although needs to be mounted in the same Drive as the Environment so there you have to change the CD/ISO.
 
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000 (24KB)
 Another system.exe is identical to this code, which is instead 280KB large in Filesize: MD5: 76c96b9be44359c9afba513db6c2c9b6 Date: 13. Jun 2000
