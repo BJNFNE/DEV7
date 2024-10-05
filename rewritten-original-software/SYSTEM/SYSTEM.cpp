@@ -12,7 +12,7 @@ Compiling:
 Supported Games:
 - ADI 5 (Fully supported)
 - Adibou3 (Fully supported)
-- Adiboud'chou (partially supported)
+- Adiboud'chou (Fully supported)
 - Adibou présenté (Fully supported)
 
 Unsupported Games (currently):
