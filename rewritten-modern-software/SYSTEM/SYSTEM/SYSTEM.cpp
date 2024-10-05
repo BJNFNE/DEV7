@@ -27,6 +27,9 @@ Not used SYSTEM.EXE Games:
 
 Supported Applications:
 - Adibou3
+-- French:
+-- Calcul 4-6 ans
+-- Lecture 4-6 ans
 -- German:
 -- Natur und Technik
 -- Die rätselhafte Musikmaschine
