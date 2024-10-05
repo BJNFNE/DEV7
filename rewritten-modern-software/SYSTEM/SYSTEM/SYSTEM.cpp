@@ -58,13 +58,12 @@ Supported Applications:
 -- Spanish:
 -- Adibú Chu-El Mar
 
-TODO:
-- Find out why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable.
 FIRST_IDEA?:
 - It turns out that the original release from 2000 of Adiboud'chou works
 - Although the Re-Releases are modified which fails then to run the Game with the reimplemented executable.
 
 WORKAROUND:
+- Why some versions of ADI5 Adiboud'chou and Adibou3 don't accept the executable?
 - For some Games you can leave the Environment CD/ISO mounted and mount the Application CD/ISO as an seperate drive.
 - Some Games although needs to be mounted in the same Drive as the Environment so there you have to change the CD/ISO.
 
