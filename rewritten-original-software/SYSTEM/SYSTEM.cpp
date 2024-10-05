@@ -38,6 +38,7 @@ Supported Applications:
 -- Rekenen 5-6 jaar
 -- Russian:
 -- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
+-- Çàáûòàÿ ñòðàíà (Íàóêè, 4-7 ëåò)
 
 - Adibou présenté
 -- French:
