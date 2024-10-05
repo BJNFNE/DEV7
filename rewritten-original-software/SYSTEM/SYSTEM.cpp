@@ -57,6 +57,7 @@ Supported Applications:
 -- German:
 -- Addy Buschu Eis & Schnee (Addy Mini version works aswell)
 -- Addy Buschu Am Meer (Addy Mini version works aswell)
+-- Addy Buschu Die Bunte Tierwelt (Addy Mini version works aswell)
 -- Spanish:
 -- Adibú Chu-El Mar
 
