@@ -54,6 +54,8 @@ Supported Applications:
 -- French:
 -- Adiboud'chou à la campagne
 -- Adiboud'chou dans la jungle et la savane
+-- German:
+-- Addy Buschu Eis & Schnee (Addy Mini version works aswell)
 -- Spanish:
 -- Adibú Chu-El Mar
 
