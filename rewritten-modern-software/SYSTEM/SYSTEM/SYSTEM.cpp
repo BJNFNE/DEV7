@@ -81,6 +81,12 @@ WORKAROUND:
 - For some Games you can leave the Environment CD/ISO mounted and mount the Application CD/ISO as an seperate drive.
 - Some Games although needs to be mounted in the same Drive as the Environment so there you have to change the CD/ISO.
 
+How does this works?
+-- Adibou3
+- Adibou3 checks when you want to enter an Application, if the Disc is valid over the B3_CDMANGER.OBC/B3_CHOOSEAPPLI.OBC script with the CheckCDPresent()
+  Next after this the BCD1 file will be checked if it contains the required filename and content in the BCD1 file.
+  If the Disc is valid, After this the required Game assets will be loaded with the OpenAppli()
+
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000 (24KB)
 Another system.exe is identical to this code, which is instead 280KB large in Filesize: MD5: 76c96b9be44359c9afba513db6c2c9b6 Date: 13. Jun 2000
 */
