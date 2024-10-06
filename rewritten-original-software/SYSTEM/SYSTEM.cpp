@@ -25,7 +25,8 @@ Not used SYSTEM.EXE Games:
 Supported Applications:
 - ADI 5
 -- German:
--- Englisch Klasse 5 
+-- Englisch Klasse 5
+-- Deutsch Klasse 7+8
 
 - Adibou3
 -- German:
