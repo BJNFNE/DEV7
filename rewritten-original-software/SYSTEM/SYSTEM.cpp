@@ -24,6 +24,9 @@ Not used SYSTEM.EXE Games:
 
 Supported Applications:
 - ADI 5
+-- French:
+-- Mathématiques CE1
+-- Français CE1
 -- German:
 -- Englisch Klasse 5
 -- Deutsch Klasse 7+8
