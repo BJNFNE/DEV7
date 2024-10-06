@@ -1,7 +1,7 @@
 /*
 SYSTEM was developed to check if the Disc is valid or not.
 This version is from 2000 that which one doesn't used SecuROM yet.
-SecuROM was started to being used in 2001/2002 in SYSTEM.EXE.
+SecuROM was started to being used in later versions in SYSTEM.EXE.
 
 Requirements:
 -  Compile under MSVC 6.0 build 8168 (Any newer build of MSVC6.0 work aswell but Coktel/MDO used back then used exactly this version of the Compiler.)

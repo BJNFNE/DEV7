@@ -2,7 +2,7 @@
 This is a port to the x64 Platform and newer C++. Code based on SYSTEM's rewritten code, which can be found in /rewritten-original-software/SYSTEM/SYSTEM.cpp
 SYSTEM was developed to check if the Disc is valid or not.
 This version is from 2000 that which one doesn't used SecuROM yet.
-SecuROM was started to being used in 2001/2002 in SYSTEM.EXE.
+SecuROM was started to being used in later versions in SYSTEM.EXE.
 
 Requirements:
 -  Compile under MSVC 2022 or MinGW
