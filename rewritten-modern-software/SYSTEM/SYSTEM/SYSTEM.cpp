@@ -27,6 +27,10 @@ Not used SYSTEM.EXE Games:
 - Le Pays des Pierres Magiques
 
 Supported Applications:
+- ADI 5
+-- German:
+-- Englisch Klasse 5 
+
 - Adibou3
 -- French:
 -- Calcul 4-6 ans
