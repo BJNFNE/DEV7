@@ -20,6 +20,7 @@ Unsupported Games (currently):
 
 Not used SYSTEM.EXE Games:
 - Nathan Vacances
+- Le Pays des Pierres Magiques
 
 Supported Applications:
 - Adibou3
