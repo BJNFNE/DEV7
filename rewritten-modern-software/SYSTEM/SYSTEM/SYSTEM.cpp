@@ -87,6 +87,10 @@ How does this works?
   Next after this the BCD1 file will be checked if it contains the required filename and content in the BCD1 file.
   If the Disc is valid, After this the required Game assets will be loaded with the OpenAppli()
 
+-- Adibou presente
+- Adibou presente games checks when you want to enter the Game, if the Disc is valid over the SFLOATBOOBAR.OBC script with the BOOT() function with
+- the comment "Official CD found".
+
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000 (24KB)
 Another system.exe is identical to this code, which is instead 280KB large in Filesize: MD5: 76c96b9be44359c9afba513db6c2c9b6 Date: 13. Jun 2000
 */
