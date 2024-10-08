@@ -1,3 +1,9 @@
+/*
+create_iso version 1.0
+
+For create_iso its not required to use the original VolumeID for rebuilding the extracted ISO.
+*/
+
 #include <iostream>
 #include <string>
 
