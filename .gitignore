@@ -32,7 +32,9 @@ Release/
 /binaries/CTRKViewer
 
 # Compiled Common Tools
-/common-tools/create_iso/create_iso
+# - Linux
+/common-tools/linux/create_iso/create_iso
+/common-tools/linux/extract_iso/extract_iso
 
 # Rewritten Software Ports 
 rewritten-software-ports/linux/LoaderMDO/LoaderMDO
