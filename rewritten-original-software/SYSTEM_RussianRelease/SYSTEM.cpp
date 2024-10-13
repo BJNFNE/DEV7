@@ -107,5 +107,5 @@ Based on system.exe MD5: 2515cf4364dccf43f8002225dfa0d6fa Date: Nov 05 2005 (36K
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
-        return atoi(lpCmdLine);
+  return atoi(lpCmdLine);
 }
