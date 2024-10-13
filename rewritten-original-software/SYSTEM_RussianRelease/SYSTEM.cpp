@@ -14,9 +14,64 @@ TODO:
 - Include MSVCRT functions for heap (stdio.h)
 
 Supported Games:
+- ADI5 (Fully supported)
 - Антошка3 (Fully supported)
+- Adibou présenté (Fully supported)
+- Adiboud'chou (Fully supported)
 
 Supported Applications:
+- ADI 5
+-- French:
+-- Mathématiques CE1
+-- Français CE1
+-- German:
+-- Englisch Klasse 5
+-- Deutsch Klasse 7+8
+
+- Антошка3
+-- French:
+-- Calcul 4-6 ans
+-- Lecture 4-6 ans
+-- German:
+-- Natur und Technik
+-- Die rätselhafte Musikmaschine
+-- Mathe & Deutsch 4-6 Jahre
+-- Mathe & Deutsch 6-7 Jahre
+-- Das Königreich Hocus Pocus (English 4-7 Jahre)
+-- English:
+-- The Mysterious Music Machine (Music 4-7 years)
+-- Reading-Maths 5-6 years
+-- Dutch:
+-- Lezen 5-6 jaar
+-- Rekenen 5-6 jaar
+-- Russian:
+-- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
+-- Çàáûòàÿ ñòðàíà (Íàóêè, 4-7 ëåò)
+-- Ãîðîä Íåðàâåíñòâ (Ñ÷åò 5-6 ëåò)
+-- Ñ÷åòíàÿ äîëèíà (Ñ÷åò 6-7 ëåò)
+-- Çàãàäî÷íàÿ ìóçûêàëüíàÿ ìàøèíà (Ìóçûêà, 4-7 ëåò)
+
+- Adibou présenté
+-- French:
+-- Adibou présenté Cuisine
+-- Adibou présenté Dessin
+-- Adibou présente la magie
+-- English:
+-- Adiboo presents Cooking
+-- Adiboo presents Drawing
+
+- Adiboud'chou
+-- French:
+-- Adiboud'chou à la campagne
+-- Adiboud'chou dans la jungle et la savane
+-- German:
+-- Addy Buschu Eis & Schnee (Addy Mini version works aswell)
+-- Addy Buschu Am Meer (Addy Mini version works aswell)
+-- Addy Buschu Die Bunte Tierwelt (Addy Mini version works aswell)
+-- Russian:
+-- Â ãîñòÿõ ó Òèìîøêè
+-- Spanish:
+-- Adibú Chu-El Mar
 - Антошка3
 -- Russian:
 -- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
