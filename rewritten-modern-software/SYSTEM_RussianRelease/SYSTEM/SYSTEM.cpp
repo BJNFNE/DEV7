@@ -4,8 +4,13 @@ It was mainly re-developed for Антошка3 Applications.
 This version comes from the russian release and is slightly different from the original SYSTEM executable.
 
 Requirements:
--  Compile under MSVC 6.0 build 8168 (Any newer build of MSVC6.0 work aswell but Coktel/Akella/MDO used back then used exactly this version of the Compiler.)
-
+-  Compile under MSVC 2022 or MinGW
+-  Compatible with Windows 7 to Windows 11
+-  Make sure to have Visual C++ Redistributable 2022 x64 installed.
+Compiling:
+- Can directly be compiled in MSVC: You can change between Release or Debug mode.
+- To compile over g++/MinGW: you can run this command to compile: g++ -o SYSTEM.exe SYSTEM.cpp -luser32
+- When you want to remove the debug symbols from the exe use the "strip SYSTEM.exe" (Without quotes) command (g++/MinGW only)
 Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
 
