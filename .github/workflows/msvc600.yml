@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install Visual C++ 6.0
+      run: |
+        git clone --depth 1 https://github.com/itsmattkc/MSVC600
+
+    - name: Build
+      shell: cmd
+      run: |
+        call MSVC600/VC98/Bin/vcvars32.bat
+        rewritten-original-software/SYSTEM/SYSTEM.dsw /make # Original SYSTEM
+        rewritten-original-software/LoaderMDO/LoaderMDO.dsw /make # LoaderMDO
+        msdev LoaderMDO.dsw /make
+
+        - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-windows600
+          path: |
+            SYSTEM.EXE
+            LoaderMDO.exe
