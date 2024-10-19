@@ -16,6 +16,7 @@ PictureNameN for which picture should used for the Middle?
 CDDetected checks if the CD was detected correctly, also checks for SecuROM.
 Order is to give Adibou 3 the the position where the Application should be shown in the Vulkan.
 
+This Information comes from b3_cdmanager.ini (Adibou 3 only).
 [mask]
 envi=benxxD???.bcd?
 appli=b????D???.bcd?
