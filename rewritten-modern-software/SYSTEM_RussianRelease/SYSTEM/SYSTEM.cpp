@@ -98,7 +98,7 @@ WORKAROUND:
 
 How does this works?
 -- Антошка3
-- Антошка3 checks when you want to enter an Application, if the Disc is valid over the B3_CDMANGER.OBC/B3_CHOOSEAPPLI.OBC script with the CheckCDPresent()
+- Антошка3 checks when you want to enter an Application, if the Disc is valid over the B3_CDMANGER.OBC/B3_CHOOSEAPPLI.OBC script with the CheckCDPresent() with comment "cd ok".
   Next after this the BCD1 file will be checked if it contains the required filename and content in the BCD1 file.
   If the Disc is valid, After this the required Game assets will be loaded with the OpenAppli()
 
