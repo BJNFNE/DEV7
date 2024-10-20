@@ -96,6 +96,7 @@ How does this works?
 - Антошка3 checks when you want to enter an Application, if the Disc is valid over the B3_CDMANGER.OBC/B3_CHOOSEAPPLI.OBC script with the CheckCDPresent() with the comment "cd ok".
   Next after this the BCD1 file will be checked if it contains the required filename and content in the BCD1 file.
   If the Disc is valid, After this the required Game assets will be loaded with the OpenAppli()
+  SYSTEM is only being executed when "cd ok" message is being printed.
 
 Based on system.exe MD5: 2515cf4364dccf43f8002225dfa0d6fa Date: Nov 05 2005 (36KB)
 */
