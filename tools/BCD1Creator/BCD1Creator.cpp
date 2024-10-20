@@ -2,7 +2,6 @@
 BCD1 Files are used for for the detecting the new Application, And add it to the Vulkan from where you can choose the Application to enter.
 
 Information based on b3_appliinfo.obc is stored in b3_common.stk (Adibou 3 only).
-Information comes from b3_cdmanager.ini stored in b3_common.itk (Adibou 3 only).
 
 :Functions:
 name here the Name of the Application gets displayed.
