@@ -11,7 +11,7 @@ if /i "%compile_debug%"=="yes" (
     REM Compile the source file
     cl.exe /Zi /EHsc /MDd /MT /c SYSTEM.cpp
     REM Link the object file
-    link.exe /DEBUG /PDB:SYSTEM.pdb /MAP /SUBSYSTEM:WINDOWS /OUT:SYSTEM.EXE SYSTEM.obj user32.lib
+    link.exe /DEBUG /PDB:SYSTEM.pdb /MAP /SUBSYSTEM:WINDOWS /OUT:system.exe SYSTEM.obj user32.lib
 ) else if /i "%compile_debug%"=="no" (
     echo Exiting without compilation.
     exit

@@ -11,7 +11,7 @@ if /i "%compile_release%"=="yes" (
     REM Compile the source file
     cl.exe /O2 /EHsc /c /MT SYSTEM.cpp
     REM Link the object file
-    link.exe /OUT:SYSTEM.EXE SYSTEM.obj user32.lib
+    link.exe /OUT:system.exe SYSTEM.obj user32.lib
 ) else if /i "%compile_release%"=="no" (
     echo Exiting without compilation.
     exit
