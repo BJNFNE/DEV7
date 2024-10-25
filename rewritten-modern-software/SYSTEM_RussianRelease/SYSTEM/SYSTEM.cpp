@@ -37,6 +37,9 @@ Supported Applications:
 -- French:
 -- Calcul 4-6 ans
 -- Lecture 4-6 ans
+-  L'île volante (4-7 ans)
+-  L'orgue fantastique (4-7 ans)
+-  Le royaume d'Hocus Pocus (4-7 ans)
 -- German:
 -- Natur und Technik
 -- Die rätselhafte Musikmaschine
