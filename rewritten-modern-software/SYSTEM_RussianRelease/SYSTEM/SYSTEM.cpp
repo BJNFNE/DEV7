@@ -25,6 +25,7 @@ Supported Games:
 - Adiboud'chou (Fully supported)
 
 Not used SYSTEM.EXE Games:
+- Adibou3 (Demo only)
 - Nathan Vacances
 - Le Pays des Pierres Magiques
 
