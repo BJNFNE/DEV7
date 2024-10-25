@@ -85,19 +85,6 @@ Supported Applications:
 -- Â ãîñòÿõ ó Òèìîøêè
 -- Spanish:
 -- Adibú Chu-El Mar
-- Антошка3
--- Russian:
--- Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò)
--- Çàáûòàÿ ñòðàíà (Íàóêè, 4-7 ëåò)
--- Ãîðîä Íåðàâåíñòâ (Ñ÷åò 5-6 ëåò)
--- Ñ÷åòíàÿ äîëèíà (Ñ÷åò 6-7 ëåò)
--- Çàãàäî÷íàÿ ìóçûêàëüíàÿ ìàøèíà (Ìóçûêà, 4-7 ëåò)
--- German:
--- Natur und Technik
--- Die rätselhafte Musikmaschine
--- Mathe & Deutsch 4-6 Jahre
--- Mathe & Deutsch 6-7 Jahre
--- Das Königreich Hocus Pocus (English 4-7 Jahre)
 
 WORKAROUND:
 - Why some versions of Антошка3 don't accept the executable?
