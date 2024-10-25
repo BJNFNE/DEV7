@@ -24,6 +24,10 @@ Supported Games:
 - Adibou présenté (Fully supported)
 - Adiboud'chou (Fully supported)
 
+Not used SYSTEM.EXE Games:
+- Nathan Vacances
+- Le Pays des Pierres Magiques
+
 Supported Applications:
 - ADI 5
 -- French:
