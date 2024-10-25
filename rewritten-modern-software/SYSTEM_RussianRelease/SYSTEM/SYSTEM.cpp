@@ -24,6 +24,9 @@ Supported Games:
 - Adibou présenté (Fully supported)
 - Adiboud'chou (Fully supported)
 
+Unsupported Games (currently):
+- English Fever (Here is it called SystemEx.exe instead of SYSTEM.EXE, it had also an own compiled Dev7VM.exe which the new SystemEx.exe reference)
+
 Not used SYSTEM.EXE Games:
 - Adibou3 (Demo only)
 - Nathan Vacances
