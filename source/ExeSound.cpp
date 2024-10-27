@@ -7,10 +7,16 @@ public:
     bool IsStopped(int param_1);
     void SetIsPaused(int param_1);
     int GetPlayingTrack(int param_1);
+    void SetNoEffectsBox(int param_1);
 };
 
-int GetPlayingTrack(int param_1) {
-    return *(int *)(param_1 + 0x14);
+void SoundManager::SetNoEffectsBox(int param_1) {
+*(int *)(param_1 + 0x14) = param_1; 
+}
+
+int SoundManager::GetPlayingTrack(int param_1) {
+return *(int *)(param_1 + 0x14);
+
 }
 
 void SoundManager::SoundStopNotify(int param_1) {
@@ -18,7 +24,7 @@ void SoundManager::SoundStopNotify(int param_1) {
     return;
 }
 
-bool SetIsPlaying(int param_1) {
+bool SoundManager::SetIsPlaying(int param_1) {
 
 return *(int *)(param_1 + 4) == 0;
 }
