@@ -13,6 +13,7 @@ public:
 class Dev7EffectsBox {
 public:
     void SubVmdLink(int param_1);
+    void AddVmdLink(int param_1);
 };
 
 void SoundManager::SetNoEffectsBox(int param_1) {
@@ -49,6 +50,11 @@ return *(int *)(param_1 + 4) == 1;
 void Dev7EffectsBox::SubVmdLink(int param_1) {
 
 *(reinterpret_cast<unsigned int*>(param_1 + 4)) = param_1;
+}
+
+void Dev7EffectsBox::AddVmdLink(int param_1) {
+
+*(reinterpret_cast<unsigned int*>(param_1 + 8)) = param_1;
 }
 
 } // namespace Dev7Sound
