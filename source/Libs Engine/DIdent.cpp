@@ -6,7 +6,9 @@ public:
 };
 
 void DIdent::IsStillReferenced(int param_1) {
-return *(int *)(param_1 + 4);
+*(int *)(param_1 + 4);
+return;
+}
 
 
 } // namespace DevList
