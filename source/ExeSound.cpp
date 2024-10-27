@@ -6,7 +6,12 @@ public:
     bool SetIsPlaying(int param_1);
     bool IsStopped(int param_1);
     void SetIsPaused(int param_1);
+    int GetPlayingTrack(int param_1);
 };
+
+int GetPlayingTrack(int param_1) {
+    return *(int *)(param_1 + 0x14);
+}
 
 void SoundManager::SoundStopNotify(int param_1) {
     *(reinterpret_cast<unsigned int*>(param_1 + 4)) = 2;
