@@ -10,6 +10,11 @@ public:
     void SetNoEffectsBox(int param_1);
 };
 
+class Dev7EffectsBox {
+public:
+    void SubVmdLink(int param_1);
+};
+
 void SoundManager::SetNoEffectsBox(int param_1) {
 *(int *)(param_1 + 0x14) = param_1; 
 }
@@ -35,9 +40,16 @@ void SoundManager::SetIsPaused(int param_1) {
     return;
 }
 
-bool IsStopped(int param_1) {
+bool SoundManager::IsStopped(int param_1) {
 
 return *(int *)(param_1 + 4) == 1;
 }
 
+
+void Dev7EffectsBox::SubVmdLink(int param_1) {
+
+*(reinterpret_cast<unsigned int*>(param_1 + 4)) = param_1;
+}
+
 } // namespace Dev7Sound
+  // namespace Dev7EffectsBox
