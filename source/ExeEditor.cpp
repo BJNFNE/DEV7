@@ -5,6 +5,7 @@ namespace DevEditor {
     public:
         void Draw(int param_1);
         int IsModeSelection(int param_1);
+        uint8_t SetSelection(int param_1);
     };
 
     void DevEditor::Draw(int param_1) {
@@ -14,5 +15,9 @@ namespace DevEditor {
 
     int DevEditor::IsModeSelection(int param_1) {
         return *(uint32_t *)(param_1 + 4);
+    }
+
+        uint8_t DevEditor::SetSelection(int param_1) {
+        return *(uint8_t *)(param_1 + 8);    
     }
 } // namespace DevEditor
