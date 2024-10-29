@@ -6,6 +6,7 @@ namespace DevEditor {
         void Draw(int param_1);
         int IsModeSelection(int param_1);
         uint8_t SetSelection(int param_1);
+        void GetDrawCursor(int param_1);
     };
 
     void DevEditor::Draw(int param_1) {
@@ -19,5 +20,9 @@ namespace DevEditor {
 
         uint8_t DevEditor::SetSelection(int param_1) {
         return *(uint8_t *)(param_1 + 8);    
+    }
+
+    void DevEditor::GetDrawCursor(int param_1) {
+        return;
     }
 } // namespace DevEditor
