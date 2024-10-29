@@ -16,6 +16,7 @@ public:
     void AddVmdLink(int param_1);
     void HasFixedTracks(int param_1);
     void GetNbEffects(int param_1);
+    void GetNoTrack(void);
 };
 
 void SoundManager::SetNoEffectsBox(int param_1) {
@@ -66,6 +67,11 @@ return;
 void Dev7EffectsBox::GetNbEffects(int param_1) {
 
 *(reinterpret_cast<int*>(param_1 + 0xc));
+}
+
+void Dev7EffectsBox::GetNoTrack(void) {
+
+return;
 }
 
 } // namespace Dev7Sound
