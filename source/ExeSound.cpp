@@ -17,6 +17,7 @@ public:
     void HasFixedTracks(int param_1);
     void GetNbEffects(int param_1);
     void GetNoTrack(void);
+    int HasPitchCorrection(int param_1);
 };
 
 void SoundManager::SetNoEffectsBox(int param_1) {
@@ -72,6 +73,11 @@ void Dev7EffectsBox::GetNbEffects(int param_1) {
 void Dev7EffectsBox::GetNoTrack(void) {
 
 return;
+}
+
+int Dev7EffectsBox::HasPitchCorrection(int param_1) {
+
+return *(int*)(param_1 + 8);
 }
 
 } // namespace Dev7Sound
