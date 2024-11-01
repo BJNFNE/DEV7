@@ -226,7 +226,7 @@ void Ed4Intro() {
 #endif
 }
 
-void startLoader7Normal() {
+void startGameExecutable() {
     if (fileExists("LoaderMDO.exe"))
         std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("LoaderMDO.exe");
     else if (fileExists("LoaderMDO.exe"))
@@ -337,7 +337,7 @@ switch(choice) {
         break;
     case 2:
         if (Loader7Exists) {
-            startLoader7Normal();
+            startGameExecutable();
             usedLoader7OrDev7VM = true;
         } else if (Dev7VMExists) {
             launchCommand("Dev7VM.exe");
