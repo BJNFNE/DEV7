@@ -6,7 +6,7 @@ public:
 };
 
 int trkWinMasterChannel::GetLastReadBlockPosition(int param_1) {
-    return *(int *)(param_1 + 0x6);
+    return *(int *)(param_1 + 0x6c);
 }
 
 } // namespace ChannelsPC
