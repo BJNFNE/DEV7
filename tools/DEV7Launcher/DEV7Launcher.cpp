@@ -235,6 +235,10 @@ void startLoader7Normal() {
         std::cout << "Adibou3.EXE found. Starting Adibou3.EXE..." << std::endl, launchCommand("Adibou3.EXE");
     else if (fileExists("Adibou3.exe"))
         std::cout << "Adibou3.exe found. Starting Adibou3.exe over wine..." << std::endl, launchCommand("wine adibou3.exe");
+    else if (fileExists("adiboo3.exe"))
+        std::cout << "adiboo3.exe found. Starting adiboo3.exe..." << std::endl, launchCommand("adiboo3.exe");
+    else if (fileExists("adiboo3.exe"))
+        std::cout << "adiboo3.exe found. Starting adiboo3.exe over wine..." << std::endl, launchCommand("wine adiboo3.exe");
     else if (fileExists("ADI5.EXE"))
         std::cout << "ADI5.EXE found. Starting ADI5.EXE..." << std::endl, launchCommand("ADI5.EXE");
     else if (fileExists("ADI5.exe"))
