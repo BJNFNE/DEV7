@@ -272,10 +272,10 @@ int main(int argc, char* argv[]) {
 
     if (Loader7Exists && Dev7VMExists) {
         std::cout << "Choose an option:\n";
-        std::cout << "1. Start Dev7VM with Debug Menu\n";
-        std::cout << "2. Start Dev7VM Normal\n";
-        std::cout << "3. Start loader7 with Debug Menu\n";
-        std::cout << "4. Start loader7 Normal\n";
+        std::cout << "1. Start Dev7VM with Debug Menu/Windowed mode\n";
+        std::cout << "2. Start Dev7VM in Fullscreen mode\n";
+        std::cout << "3. Start loader7 with Debug Menu/Windowed mode\n";
+        std::cout << "4. Start loader7 in Fullscreen mode\n";
         std::cout << "5. Modify mdo.ini\n";
         std::cout << "7. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "8. Modify mdo.dbg\n";
@@ -288,8 +288,8 @@ int main(int argc, char* argv[]) {
         std::cout << "15. Open MSG.DEF\n";
     } else if (Loader7Exists) {
         std::cout << "Choose an option:\n";
-        std::cout << "1. Start loader7 with Debug Menu\n";
-        std::cout << "2. Start loader7 Normal\n";
+        std::cout << "1. Start loader7 with Debug Menu/Windowed mode\n";
+        std::cout << "2. Start loader7 in Fullscreen mode\n";
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
@@ -302,8 +302,8 @@ int main(int argc, char* argv[]) {
         std::cout << "12. Open MSG.DEF\n";
     } else if (Dev7VMExists) {
         std::cout << "Choose an option:\n";
-        std::cout << "1. Start Dev7VM with Debug Menu\n";
-        std::cout << "2. Start Dev7VM Normal\n";
+        std::cout << "1. Start Dev7VM with Debug Menu/Windowed mode\n";
+        std::cout << "2. Start Dev7VM in Fullscreen mode\n";
         std::cout << "3. Modify mdo.ini\n";
         std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
         std::cout << "5. Modify mdo.dbg\n";
