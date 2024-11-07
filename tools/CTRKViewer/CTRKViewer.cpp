@@ -40,10 +40,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Rewind the OBC Script back to the beginning
+    // Rewind the CTRK Script back to the beginning
     CTRKInput.seekg(0);
 
-    // Open the output file for the OBC Script
+    // Open the output file for the CTRK Script
     std::filesystem::path inputFile(inputCTRK);
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
