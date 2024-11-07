@@ -1,3 +1,5 @@
+// CTRKViewer is based on OBCViewer
+
 #include <iostream>
 #include <fstream>
 #include <filesystem>
