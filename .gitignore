@@ -41,3 +41,6 @@ rewritten-software-ports/linux/LoaderMDO/LoaderMDO
 
 # Additional Tools stuff
 binaries/CMakeCXXCompilerId
+
+# AdibouNet stuff
+adibounet/adibounet.log
