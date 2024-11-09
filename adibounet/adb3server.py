@@ -2,6 +2,10 @@
 # Login Credentials:
 # the maximum password length is only allowed to be 9 chars being long.
 
+# Connection informations:
+# When each new connection will be established to the server always an new temp port will be choice.
+
+# WORKAROUND:
 # If the Server can't be started and Adress is already in use message is being displayed, Restart Adibou3 or return into the Garden of Adibou.
 
 import socket
