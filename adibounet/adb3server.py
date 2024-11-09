@@ -7,6 +7,7 @@
 import socket
 import threading
 import datetime
+import sys
 
 def current_timestamp():
     """Returns the current timestamp as a formatted string."""
@@ -49,8 +50,26 @@ def run_server(port):
         client_socket, client_address = server.accept()  # Accept a new connection
         threading.Thread(target=handle_connection, args=(client_socket, client_address)).start()
 
+def start_console():
+    """Starts the command-line console that accepts user input."""
+    while True:
+        command = input(f"[{current_timestamp()}] Enter command to navigate in the Server: \n").strip().lower()
+        
+        if command == "shutdown":
+            print(f"[{current_timestamp()}] Shutting down the server.")
+            sys.exit(0)  # Exit the program, shutting down the server
+        
+        elif command == "help":
+            print("\nAvailable commands:")
+            print("  shutdown  - Stop the server")
+            print("  help      - Display this help message")
+            print("\nNote: Type 'shutdown' to stop the server and 'help' for a list of commands.")
+        
+        else:
+            print(f"[{current_timestamp()}] Unknown command: {command}. Type 'help' for a list of commands.")
+
 # Define the ports you want the server to listen on
-ports = [3000, 3100] # 3000 (French server), 3100 (German server)
+ports = [3000, 3100]  # 3000 (French server), 3100 (German server)
 
 # Create and start a separate thread for each port
 threads = []
@@ -60,9 +79,9 @@ for port in ports:
     threads.append(thread)
     thread.start()
 
-# Keep the main thread alive to keep the server running
+# Start the console input listener in the main thread
 try:
-    while True:
-        pass
+    start_console()  # This will allow you to interact with the server via the console
 except KeyboardInterrupt:
-    print(f"[{current_timestamp()}] Shutting down the server.")
+    print(f"[{current_timestamp()}] KeyboardInterrupt received. Shutting down the server.")
+    sys.exit(0)
