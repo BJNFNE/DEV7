@@ -1,8 +1,15 @@
+# AdibouNet Server reimplementation
+
 import socket
 import threading
+import datetime
+
+def current_timestamp():
+    """Returns the current timestamp as a formatted string."""
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
 def handle_connection(client_socket, client_address):
-    print(f"Connection established from: {client_address}")
+    print(f"[{current_timestamp()}] Connection established from: {client_address}")
     
     # Receive data from the client (up to 1024 bytes)
     data = client_socket.recv(1024)
@@ -11,10 +18,10 @@ def handle_connection(client_socket, client_address):
         # Attempt to decode the data, handle potential errors
         try:
             received_data = data.decode('utf-8')
-            print(f"Data received: {received_data}")  # Print received data
+            print(f"[{current_timestamp()}] Data received: {received_data}")  # Print received data with timestamp
         except UnicodeDecodeError:
             # If decoding fails, print a warning and the raw bytes
-            print(f"Data received (non-UTF-8): {data}")
+            print(f"[{current_timestamp()}] Data received (non-UTF-8): {data}")
             received_data = "<non-UTF-8 data>"
         
         # Example response to the client (you could customize this)
@@ -22,7 +29,7 @@ def handle_connection(client_socket, client_address):
         
         # Send data back to the client
         client_socket.send(response.encode('utf-8'))
-        print(f"Data sent: {response}")  # Print sent data
+        print(f"[{current_timestamp()}] Data sent: {response}")  # Print sent data with timestamp
     
     # Close the connection after handling the data
     client_socket.close()
@@ -32,7 +39,7 @@ def run_server(port):
     server.bind(("", port))
     server.listen(5)  # Listen for incoming connections
 
-    print(f"Listening on port {port}...")
+    print(f"[{current_timestamp()}] Listening on port {port}...")
     
     while True:
         client_socket, client_address = server.accept()  # Accept a new connection
@@ -54,4 +61,4 @@ try:
     while True:
         pass
 except KeyboardInterrupt:
-    print("Shutting down the server.")
+    print(f"[{current_timestamp()}] Shutting down the server.")
