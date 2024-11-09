@@ -14,6 +14,7 @@
 import socket
 import threading
 import datetime
+import os
 import sys
 import logging
 import subprocess
@@ -96,6 +97,7 @@ def start_console():
             logger.info("Displaying help message.")
             print("\nAvailable commands:")
             print("  shutdown  - Stop the server")
+            print("  clear     - Clear the Console")
             print("  openlog   - Open adibounet.log")
             print("  help      - Display this help message")
             print("\n")
@@ -104,6 +106,9 @@ def start_console():
             logger.info("Opening adibounet.log over an Texteditor")
             logfile = 'adibounet.log'
             subprocess.call(['open', 'adibounet.log'])
+
+        elif command == "clear":
+            os.system('cls' if os.name=='nt' else 'clear')
 
         else:
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
