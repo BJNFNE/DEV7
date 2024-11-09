@@ -5,6 +5,9 @@
 # Connection informations:
 # When each new connection will be established to the server always an new temp port will be choice.
 
+# Wireshark:
+# Set the filter there to either tcp.port == 3100 or tcp.port == 3000
+
 # WORKAROUND:
 # If the Server can't be started and Adress is already in use message is being displayed, Restart Adibou3 or return into the Garden of Adibou.
 
