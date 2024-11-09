@@ -1,4 +1,6 @@
 # AdibouNet Server reimplementation
+# Login Credentials:
+# the maximum password length is only allowed to be 9 chars being long.
 
 import socket
 import threading
@@ -46,7 +48,7 @@ def run_server(port):
         threading.Thread(target=handle_connection, args=(client_socket, client_address)).start()
 
 # Define the ports you want the server to listen on
-ports = [3000, 3100]
+ports = [3000, 3100] # 3000 (French server), 3100 (German server)
 
 # Create and start a separate thread for each port
 threads = []
