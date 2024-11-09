@@ -2,7 +2,7 @@
 # Login Credentials:
 # the maximum password length is only allowed to be 9 chars being long.
 
-# If the Server can't be started and Adress is already in use message is being displayed, Restart Adibou3.
+# If the Server can't be started and Adress is already in use message is being displayed, Restart Adibou3 or return into the Garden of Adibou.
 
 import socket
 import threading
