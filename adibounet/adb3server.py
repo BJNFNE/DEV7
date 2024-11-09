@@ -63,8 +63,8 @@ def start_console():
             print("\nAvailable commands:")
             print("  shutdown  - Stop the server")
             print("  help      - Display this help message")
-            print("\nNote: Type 'shutdown' to stop the server and 'help' for a list of commands.")
-        
+            print("\n")
+
         else:
             print(f"[{current_timestamp()}] Unknown command: {command}. Type 'help' for a list of commands.")
 
