@@ -27,5 +27,9 @@ sudo apt install screen -y
 echo "Installing Htop..."
 sudo apt install htop -y
 
+# Install net-tools (ifconfig)
+echo "Installing net-tools (ifconfig)..."
+sudo apt install net-tools -y
+
 # Print completion message
 echo "Installation of AdibouNet deps is done!"
