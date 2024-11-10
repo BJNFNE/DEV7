@@ -23,7 +23,7 @@ import subprocess
 log_filename = "adibounet.log"
 
 # Setting up logging
-logger = logging.getLogger("")
+logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)  # Log everything (debug level and higher)
 
 # Console handler (prints to the console)
