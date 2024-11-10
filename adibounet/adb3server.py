@@ -99,6 +99,7 @@ def start_console():
             print("  shutdown  - Stop the server")
             print("  clear     - Clear the Console")
             print("  openlog   - Open adibounet.log")
+            print("  showip    - Display Server IP")
             print("  help      - Display this help message")
             print("\n")
         
@@ -109,6 +110,9 @@ def start_console():
 
         elif command == "clear":
             os.system('cls' if os.name=='nt' else 'clear')
+
+        elif command == "showip":
+            os.system('ipconfig | findstr "IPv4"' if os.name=='nt' else 'ifconfig | grep "255.255.255.0"') # Search for submask on Linux
 
         else:
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
