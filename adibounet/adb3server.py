@@ -105,7 +105,7 @@ def start_console():
         elif command == "openlog":
             logger.info("Opening adibounet.log over an Texteditor")
             logfile = 'adibounet.log'
-            subprocess.call(['open', 'adibounet.log'])
+            os.system('notepad adibounet.log' if os.name=='nt' else 'open adibounet.log')
 
         elif command == "clear":
             os.system('cls' if os.name=='nt' else 'clear')
