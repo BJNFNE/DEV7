@@ -114,7 +114,7 @@ def start_console():
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
 
 # Define the ports you want the server to listen on
-ports = [3000, 3100]  # 3000 (French server), 3100 (German server)
+ports = [3000, 3100]  # 3000 (French/English server), 3100 (German server)
 
 # Create and start a separate thread for each port
 threads = []
