@@ -23,5 +23,9 @@ sudo apt install git -y
 echo "Installing Screen..."
 sudo apt install screen -y
 
+# Install Htop
+echo "Installing Htop..."
+sudo apt install htop -y
+
 # Print completion message
 echo "Installation of AdibouNet deps is done!"
