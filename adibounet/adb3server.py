@@ -11,6 +11,9 @@
 # WORKAROUND:
 # If the Server can't be started and Adress is already in use message is being displayed, Restart Adibou3 or return into the Garden of Adibou.
 
+# Setup custom Server:
+# Modify b3i_url.ini can be found in b3_internet.itk, In the section called [SERVER] change the domain of PortalServerIp to the IP of your custom Server.
+
 import socket
 import threading
 import datetime
