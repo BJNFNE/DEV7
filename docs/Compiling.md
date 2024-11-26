@@ -7,7 +7,7 @@
 * MinGW/gcc
 
 - Linux
- gcc
+* gcc
 * clang
 * meson (WIP)
 
