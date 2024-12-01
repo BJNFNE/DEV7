@@ -103,6 +103,7 @@ def start_console():
             print("  clear     - Clear the Console")
             print("  openlog   - Open adibounet.log")
             print("  showip    - Display Server IP")
+            print("  pythonversion - Display python version")
             print("  help      - Display this help message")
             print("\n")
         
@@ -116,6 +117,9 @@ def start_console():
 
         elif command == "showip":
             os.system('ipconfig | findstr "IPv4"' if os.name=='nt' else 'ifconfig | grep "255.255.255.0"') # Search for submask on Linux
+
+        elif command == "pythonversion":
+            os.system('python --version' if os.name=='nt' else 'python3 --version') # Show python version under Linux
 
         else:
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
