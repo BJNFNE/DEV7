@@ -99,14 +99,15 @@ def start_console():
         elif command == "help":
             logger.info("Displaying help message.")
             print("\nAvailable commands:")
-            print("  shutdown  - Stop the server")
-            print("  clear     - Clear the Console")
-            print("  openlog   - Open adibounet.log")
-            print("  showip    - Display Server IP")
+            print("\nAvailable commands:")
+            print("  shutdown - Stop the server")
+            print("  clear - Clear the Console")
+            print("  openlog - Open adibounet.log")
+            print("  showip - Display Server IP")
             print("  pythonversion - Display python version")
             print("  poweroff_server - Shutdown the server (Physical Server)")
             print("  reboot_server - Reboot the server (Physical Server)")
-            print("  help      - Display this help message")
+            print("  help - Display this help message")
             print("\n")
         
         elif command == "openlog":
