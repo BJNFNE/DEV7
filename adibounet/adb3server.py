@@ -147,3 +147,7 @@ try:
 except KeyboardInterrupt:
     logger.info("KeyboardInterrupt received. Shutting down the server.")
     sys.exit(0)
+
+except MemoryError:
+    logger.info("Out of memory!")
+    sys.exit(0)
