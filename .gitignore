@@ -35,6 +35,7 @@ Release/
 # - Linux
 /common-tools/linux/create_iso/create_iso
 /common-tools/linux/extract_iso/extract_iso
+/common-tools/linux/convert_bin/convert_bin
 
 # Rewritten Software Ports 
 rewritten-software-ports/linux/LoaderMDO/LoaderMDO
