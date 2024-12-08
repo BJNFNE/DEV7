@@ -83,7 +83,7 @@ bool extractISO(const char* isoPath, const char* destDir) {
 
 // Helper function to check if the file has the ".iso" extension
 bool hasISOExtension(const std::string& filePath) {
-    return filePath.size() >= 4 && filePath.substr(filePath.size() - 4) == ".iso";
+    return filePath.size() >= 4 && filePath.substr(filePath.size() - 4) == ".iso" || filePath.size() >= 4 && filePath.substr(filePath.size() - 4) == ".ISO";
 }
 
 int main() {
