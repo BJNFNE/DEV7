@@ -4,7 +4,7 @@ It was mainly re-developed for Антошка3 Applications.
 This version comes from the russian release and is slightly different from the original SYSTEM executable.
 
 Requirements:
--  Compile under MSVC 6.0 build 8168 (Any newer build of MSVC6.0 work aswell but Coktel/Akella/MDO used back then used exactly this version of the Compiler.)
+-  Compile under MSVC 6.0 build 8966 (Any newer build of MSVC6.0 work aswell but Coktel/Akella/MDO used back then used exactly this version of the Compiler.)
 
 Compiling:
 - build_release.bat: Run the batch script and confirm with yes to compile.
