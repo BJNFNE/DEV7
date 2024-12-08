@@ -14,6 +14,10 @@
 # Setup custom Server:
 # Modify b3i_url.ini can be found in b3_internet.itk, In the section called [SERVER] change the domain of PortalServerIp to the IP of your custom Server.
 
+# Status:
+# Currently can only be comunicated with the Server to the Client to bring up the Login screen and display Username and Password.
+# Non printable data will be also shown in the Console. (Maybe useful for further debugging)
+
 import socket
 import threading
 import datetime
