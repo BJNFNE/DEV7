@@ -3,6 +3,9 @@ extract_iso version 1.0
 Compiling:
 - To compile under gcc use this command: g++ -o extract_iso extract_iso.cpp -larchive
 
+Status: 
+- extract_iso currently can only extract ISO9660 parition from ISO image. Add later support for extracting HFS partitions aswell which contents the Mac files. 
+
 Requirements:
 - Make sure to have under Linux libarchive-dev installed.
 */
