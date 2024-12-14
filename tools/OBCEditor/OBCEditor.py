@@ -93,6 +93,7 @@ def main():
         print("Enter 'strings' to display strings in the OBC Script.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'help' to display help how to modify OBC Script.")
+        print("Enter 'clear' to clear the Console output")
         print("Enter 'exit' to exit without saving.")
         
         choice = input("Your choice: ").lower()
@@ -129,6 +130,8 @@ def main():
                     print(f"{i+1}. 0x{offset:08X}")
         elif choice == 'strings':
             display_strings(content)
+        elif choice == 'clear':
+            print("\033[2J\033[H")
         elif choice == 'save':
             # Get the current year
             current_year = str(datetime.datetime.now().year)
