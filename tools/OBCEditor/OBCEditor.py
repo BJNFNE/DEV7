@@ -84,7 +84,7 @@ def main():
     print("OBCEditor ver. 1.2beta")
     print("-------------------------")
     print(f"Editing Script: {filename}")
-    print(f"Script size: {len(content)} bytes\n")
+    print(f"Script size: {len(content)} bytes")
 
     while True:
         print("\nEnter 'modify' to display/edit the OBC Script.")
