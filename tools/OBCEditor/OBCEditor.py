@@ -93,7 +93,7 @@ def main():
         print("Enter 'strings' to display strings in the OBC Script.")
         print("Enter 'save' to save changes and exit.")
         print("Enter 'help' to display help how to modify OBC Script.")
-        print("Enter 'quit' to exit without saving.")
+        print("Enter 'exit' to exit without saving.")
         
         choice = input("Your choice: ").lower()
 
@@ -151,7 +151,7 @@ def main():
                 print("The string 'OBC Copyright MDO 1999' was not found.")
                 break
 
-        elif choice == 'quit':
+        elif choice == 'exit':
             print("Exiting without saving.")
             break
         else:
