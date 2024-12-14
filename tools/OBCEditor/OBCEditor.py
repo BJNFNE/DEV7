@@ -88,7 +88,7 @@ def main():
 
     while True:
         print("\nEnter 'modify' to display/edit the OBC Script.")
-        print("Enter 'search' to search and replace printable text.")
+        print("Enter 'replace' to replace printable text.")
         print("Enter 'count' to count occurrences of a word.")
         print("Enter 'strings' to display strings in the OBC Script.")
         print("Enter 'save' to save changes and exit.")
@@ -113,7 +113,7 @@ def main():
                     print("Offset updated successfully.")
             except ValueError:
                 print("Error: Invalid input.")
-        elif choice == 'search':
+        elif choice == 'replace':
             old_text = input("Enter the text to search for: ")
             new_text = input("Enter the replacement text: ")
             content = search_and_replace(content, old_text, new_text)
