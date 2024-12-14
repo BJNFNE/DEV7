@@ -99,6 +99,7 @@ def main():
 
         if choice == 'help':
             print("\nHow to modify OBC Script:")
+            print("- Make sure to always make an Backup of the Script you want to modify!")
             print("- If you replace values don't be longer with the new value as the old was.")
             print("- Make sure you not enlarge the Filesize of the OBC Script.")
             print("- Make sure you use version 1.3.0.0 (1.30, 1.30a 1.30b) of DEV7/Loader7 otherwise DEV7 won't able to use the Script and skip it.")
