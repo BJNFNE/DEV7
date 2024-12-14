@@ -63,6 +63,7 @@ def count_occurrences(content, word):
 
 def main():
     parser = argparse.ArgumentParser(description='Process OBC script.')
+    print("Usage: OBCEditor.py enter then the Script name.\nOr OBCEditor.py example.obc to directly pass the script to the Editor.\n")
     parser.add_argument('filename', nargs='?', help='OBC script name')
     args = parser.parse_args()
 
