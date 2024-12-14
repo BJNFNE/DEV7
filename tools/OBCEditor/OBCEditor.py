@@ -30,7 +30,7 @@ def display_strings(content):
             pass
 
 def clearConsole():
-    print("Press Enter to clear the Console")
+    input("Press Enter to clear the Console")
     print("\033[2J\033[H")
 
 def save_changes(filename, content):
