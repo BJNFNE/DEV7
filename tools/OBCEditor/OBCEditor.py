@@ -29,6 +29,9 @@ def display_strings(content):
         except UnicodeDecodeError:
             pass
 
+def clearConsole():
+    print("Press Enter to clear the Console")
+    print("\033[2J\033[H")
 
 def save_changes(filename, content):
     with open(filename, 'wb') as file:
@@ -125,6 +128,7 @@ def main():
             word = input("Enter the word to count: ")
             occurrences = count_occurrences(content, word)
             print(f"'{word}' is found {len(occurrences)} times in the script.")
+            clearConsole()
             if occurrences:
                 print("Offsets:")
                 for i, offset in enumerate(occurrences):
@@ -132,7 +136,7 @@ def main():
         elif choice == 'strings':
             display_strings(content)
         elif choice == 'clear':
-            print("\033[2J\033[H")
+            clearConsole()
         elif choice == 'save':
             # Get the current year
             current_year = str(datetime.datetime.now().year)
