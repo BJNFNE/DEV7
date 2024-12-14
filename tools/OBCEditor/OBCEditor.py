@@ -88,7 +88,7 @@ def main():
     print(f"Script size: {len(content)} bytes")
 
     while True:
-        print("\nEnter 'modify' to display/edit the OBC Script.")
+        print("\nEnter 'hexedit' to display/edit the OBC Script.")
         print("Enter 'replace' to replace printable text.")
         print("Enter 'count' to count occurrences of a word.")
         print("Enter 'strings' to display strings in the OBC Script.")
@@ -107,7 +107,7 @@ def main():
             print("- Make sure you use version 1.3.0.0 (1.30, 1.30a 1.30b) of DEV7/Loader7 otherwise DEV7 won't able to use the Script and skip it.")
 
             break
-        elif choice == 'modify':
+        elif choice == 'hexedit':
             display_content(content)
             try:
                 offset = int(input("Enter offset to modify (in hexadecimal), or press Enter to continue viewing: "), 16)
