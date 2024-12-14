@@ -47,3 +47,16 @@ binaries/CMakeCXXCompilerId
 
 # AdibouNet stuff
 adibounet/adibounet.log
+
+# DEV7 File formats
+*.obc
+*.ctrk
+*.let
+*.aca
+*.vmd
+*.img
+*.mdx
+*.dbf
+*.ini 
+*.mesh
+*.cure
