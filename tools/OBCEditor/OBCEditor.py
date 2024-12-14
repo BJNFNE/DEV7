@@ -162,6 +162,7 @@ def main():
 
         elif choice == 'exit':
             print("Exiting without saving.")
+            clearConsole()
             break
         else:
             print("Error: Invalid choice.")
