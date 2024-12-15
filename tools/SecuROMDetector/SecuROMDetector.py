@@ -10,11 +10,14 @@ def identify_exe(exe_path, exe_check):
         print(f"File {exe_path} not found.")
     return False
 
+# Define a list of valid executable names (case-insensitive)
+valid_exes = ["SYSTEM.EXE", "system.exe", "System.EXE", "System.exe", "loader7.exe", "Dev7VM.exe"]
+
 # Ask the user for the file path
 exe_file = input("Enter the name of the EXE file (with .EXE extension): ")
 
-# Check if the input file has a valid .exe extension
-if exe_file.lower().endswith((".exe")):
+# Check if the input file is valid by matching it against valid EXE names
+if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
     found_pattern = False
 
     # Check for SecuROM version 4.00.00
@@ -47,6 +50,6 @@ if exe_file.lower().endswith((".exe")):
         print("Maybe this EXE uses a different version of SecuROM, "
               "Please contact BJNFNE on Discord")
 else:
-    print("Invalid EXE file extension. Please add the .exe extension as well.")
+    print("Invalid EXE file. Please enter a valid executable name.")
 
 input("Press enter to close SecuROMDetector")
