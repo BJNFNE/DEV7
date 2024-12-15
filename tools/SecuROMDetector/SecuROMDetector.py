@@ -16,10 +16,20 @@ exe_file = input("Enter the name of the EXE file (with .EXE extension): ")
 # Check if the input file has a valid .exe extension
 if exe_file.lower().endswith((".exe")):
     found_pattern = False
-    
+
+    # Check for SecuROM version 4.00.00
+    if identify_exe(exe_file, "4.00.00"):
+        print("SecuROM 4.00.00")
+        found_pattern = True
+
     # Check for SecuROM version 4.77.00
     if identify_exe(exe_file, "4.77.00"):
         print("SecuROM 4.77.00")
+        found_pattern = True
+
+    # Check for SecuROM version 4.83.11
+    if identify_exe(exe_file, "4.83.11"):
+        print("SecuROM 4.83.11")
         found_pattern = True
     
     # Check for .cms_t pattern
