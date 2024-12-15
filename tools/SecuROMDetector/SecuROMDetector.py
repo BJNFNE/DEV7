@@ -25,6 +25,11 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
         print("SecuROM 4.00.00")
         found_pattern = True
 
+    # Check for SecuROM version 4.68.00
+    if identify_exe(exe_file, "4.68.00"):
+        print("SecuROM 4.68.00")
+        found_pattern = True
+
     # Check for SecuROM version 4.77.00
     if identify_exe(exe_file, "4.77.00"):
         print("SecuROM 4.77.00")
