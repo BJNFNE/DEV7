@@ -11,7 +11,7 @@ def identify_exe(exe_path, exe_check):
     return False
 
 # Define a list of valid executable names (case-insensitive)
-valid_exes = ["SYSTEM.EXE", "system.exe", "System.EXE", "System.exe", "loader7.exe", "Dev7VM.exe"]
+valid_exes = ["SYSTEM.EXE", "system.exe", "System.EXE", "System.exe", "loader7.exe", "Dev7VM.exe", "SystemEx.exe"]
 
 # Ask the user for the file path
 exe_file = input("Enter the name of the EXE file (with .EXE extension): ")
