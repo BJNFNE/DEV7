@@ -39,6 +39,21 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
     if identify_exe(exe_file, "4.83.11"):
         print("SecuROM 4.83.11")
         found_pattern = True
+
+    # Check for SIntf16.dll pattern
+    if identify_exe(exe_file, "SIntf16.dll"):
+        print("SIntf16.dll found inside of executable")
+        found_pattern = True
+
+    # Check for SIntf32.dll pattern
+    if identify_exe(exe_file, "SIntf32.dll"):
+        print("SIntf32.dll found inside of executable")
+        found_pattern = True
+
+    # Check for SIntfNT.dll pattern
+    if identify_exe(exe_file, "SIntfNT.dll"):
+        print("SIntfNT.dll found inside of executable")
+        found_pattern = True
     
     # Check for .cms_t pattern
     if identify_exe(exe_file, ".cms_t"):
