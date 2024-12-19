@@ -99,7 +99,7 @@ How does this works?
   If the Disc is valid, After this the required Game assets will be loaded with the OpenAppli()
   SYSTEM is only being executed when "cd ok" message is being printed.
 
-  -- Adibou presente
+-- Adibou presente
 - Adibou presente games checks when you want to enter the Game, if the Disc is valid over the SFLOATBOOBAR.OBC script with the BOOT() function with
 - the comment "Official CD found".
 
