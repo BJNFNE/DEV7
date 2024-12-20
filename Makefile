@@ -31,11 +31,12 @@ all: release
 release: CFLAGS = $(RELEASE_CFLAGS)
 release: CXXFLAGS = $(RELEASE_CXXFLAGS)
 release: $(TARGETS_C) $(TARGETS_CPP)
-
+	@echo "Release builds were compiled, can be found in the binaries folder\b"
 # Debug target
 debug: CFLAGS = $(DEBUG_CFLAGS)
 debug: CXXFLAGS = $(DEBUG_CXXFLAGS)
 debug: $(TARGETS_C) $(TARGETS_CPP)
+	@echo "Debug builds were compiled, can be found in the binaries folder\b"
 
 # Rule to compile each C source file to object file
 binaries/%.o: $(SRC_DIR)/%.c
