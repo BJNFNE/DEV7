@@ -3,9 +3,8 @@ CC = gcc
 CXX = g++
 
 # Compiler flags
-RELEASE_CFLAGS = -O2 -pipe -static
+RELEASE_CFLAGS = -O2 -pipe -static -s
 DEBUG_CFLAGS = -g -pipe -static
-
 RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++20
 DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++20
 
@@ -32,6 +31,7 @@ release: CFLAGS = $(RELEASE_CFLAGS)
 release: CXXFLAGS = $(RELEASE_CXXFLAGS)
 release: $(TARGETS_C) $(TARGETS_CPP)
 	@echo "Release builds were compiled, can be found in the binaries folder\b"
+
 # Debug target
 debug: CFLAGS = $(DEBUG_CFLAGS)
 debug: CXXFLAGS = $(DEBUG_CXXFLAGS)
@@ -63,6 +63,9 @@ $(TARGETS_C): binaries/%: binaries/%.o
 # Rule to build each C++ program
 $(TARGETS_CPP): binaries/%: binaries/%.o
 	@$(CXX) $(CXXFLAGS) -o $@ $^
+	@if [ "$(MAKECMDGOALS)" = "debug" ]; then \
+		$(CXX) $(DEBUG_CXXFLAGS) -o $@ $^ -Xlinker -Map=$(basename $@).map; \
+	fi
 
 # Clean rule
 clean:
