@@ -35,6 +35,7 @@ jobs:
 
       - name: Compile ModelPathDumper
         run: g++ -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+
       - name: Compile Modern version of SYSTEM
         run: g++ -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
