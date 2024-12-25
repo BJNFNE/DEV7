@@ -22,6 +22,12 @@
 2. Wait until Visual Studio is done with initializing the Project in Visual Studio
 3. Now press under Build -> Build (Name of the Tool.exe)
 
+- WSL:
+
+1. First install WSL and an dist of your preferences.
+2. Set the WSL instance up and update it.
+3. Install all required deps, and then run ./configure
+4. And now you can run the 'make' command to compile the Tools.
 
 # Linux
 - gcc:
