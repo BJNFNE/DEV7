@@ -3,8 +3,8 @@ CC = gcc
 CXX = g++
 
 # Compiler flags
-RELEASE_CFLAGS = -O2 -pipe -static -s
-DEBUG_CFLAGS = -g -pipe -static
+RELEASE_CFLAGS = -O2 -pipe -s
+DEBUG_CFLAGS = -g -pipe
 RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++20
 DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++20
 
@@ -53,7 +53,7 @@ binaries/%.o: $(SRC_DIR)/%.cpp
 	@echo "-------------------------------------------------------------"
 	@echo "|                 Compiling C++ $(@D)			  |"
 	@echo "-------------------------------------------------------------"
-	@$(CXX) $(CXXFLAGS) -c -o $@ $<
+	@$(CXX) $(CXXFLAGS) -v -c -o $@ $<
 	@echo
 
 # Rule to build each C program
@@ -62,9 +62,9 @@ $(TARGETS_C): binaries/%: binaries/%.o
 
 # Rule to build each C++ program
 $(TARGETS_CPP): binaries/%: binaries/%.o
-	@$(CXX) $(CXXFLAGS) -o $@ $^
+	@$(CXX) $(CXXFLAGS) -v -o $@ $^ -lstdc++ -lm -lc
 	@if [ "$(MAKECMDGOALS)" = "debug" ]; then \
-		$(CXX) $(DEBUG_CXXFLAGS) -o $@ $^ -Xlinker -Map=$(basename $@).map; \
+		$(CXX) $(DEBUG_CXXFLAGS) -v -o $@ $^ -Xlinker -Map=$(basename $@).map -lstdc++ -lm -lc; \
 	fi
 
 # Clean rule
