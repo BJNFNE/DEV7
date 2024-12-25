@@ -1,9 +1,7 @@
-echo "Installation script for DEV7 repository deps"
+echo "Installation script for DEV7 repository deps (only for apt package manager)"
 
 # Installation commands
 sudo apt install python3 clang build-essential make cmake python3
-
-echo > log.txt
 
 exit
 
