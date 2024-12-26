@@ -99,4 +99,5 @@ int main() {
     dumpUniqueObjFiles(inputFile, outputLocation, useSlash);
 
     return 0;
-}
+
+} // End of namespace fs 

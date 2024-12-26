@@ -5,6 +5,8 @@
 #include <ctime>
 #include <unistd.h>
 
+namespace fs = std::filesystem;
+
 const std::string versionNumber = "1.6";
 
 void printHeader() {
@@ -42,7 +44,7 @@ int main(int argc, char* argv[]) {
     std::string username = getlogin();
 
     // Check if the input file is an OBC Script.
-    std::filesystem::path inputScript(inputOBC);
+    fs::path inputScript(inputOBC);
     if (inputScript.extension() != ".obc") {
         std::cerr << "Error: This File is not an OBC Script!" << std::endl;
         return 1;
@@ -118,7 +120,7 @@ int main(int argc, char* argv[]) {
 
     // Display the full path of the output file of the OBC Script
     std::cout << std::endl;
-    printf("Output file created at: %s\n", std::filesystem::absolute(inputScript.stem().string() + ".txt").c_str());
+    printf("Output file created at: %s\n", fs::absolute(inputScript.stem().string() + ".txt").c_str());
 
     // Exit message for OBCViewer
     std::cout << std::endl;
@@ -127,4 +129,5 @@ int main(int argc, char* argv[]) {
     clearConsole();
 
     return 0;
-}
+
+} // End of namespace fs

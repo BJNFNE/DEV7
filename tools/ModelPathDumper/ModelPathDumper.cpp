@@ -65,4 +65,5 @@ int main() {
 
     std::cout << "Search is completed. Found " << exoCount << " .exo files.\n" << std::endl;
     return 0;
-}
+    
+} // End of namespace fs

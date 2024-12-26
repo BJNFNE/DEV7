@@ -18,6 +18,8 @@
 #define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
+namespace fs = std::filesystem;
+
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
@@ -119,7 +121,7 @@ void showTraceTXT() {
 void modifyAdibou3Ini() {
 
      // Check if Adibou3.ini exists
-    if (!std::filesystem::exists("Adibou3.ini")) {
+    if (!fs::exists("Adibou3.ini")) {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
         getchar();
@@ -131,12 +133,12 @@ void modifyAdibou3Ini() {
     // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
 
 #ifdef _WIN32
-  if (!std::filesystem::exists("Adibou3.ini")) {
+  if (!fs::exists("Adibou3.ini")) {
     system("ren ADIBOU3.INI Adibou3.ini");
   }
     system("notepad Adibou3.ini");
 #else
-  if (!std::filesystem::exists("Adibou3.ini")) {
+  if (!fs::exists("Adibou3.ini")) {
      int move_adibou3 = system("mv ADIBOU3.INI Adibou3.ini");
   }
    int nano_adibou3 = system("nano Adibou3.ini");
@@ -146,7 +148,7 @@ void modifyAdibou3Ini() {
 void modifyAdi5Ini() {
 
      // Check if Data/ADI5.ini exists
-    if (!std::filesystem::exists("Data/ADI5.ini")) {
+    if (!fs::exists("Data/ADI5.ini")) {
         std::cout << "Error: This directory does not seem to be an Adi 5 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
         getchar();
@@ -166,9 +168,9 @@ void openLicenceFile() {
     std::string licenseFile = "Lizenzvereinbarung.txt";
     std::string warrantyFile = "garantie.txt";
     std::string lisezMoiFile = "LISEZ MOI.txt";
-    bool foundLicense = std::filesystem::exists(licenseFile);
-    bool foundWarranty = std::filesystem::exists(warrantyFile);
-    bool foundLisezMoi = std::filesystem::exists(lisezMoiFile);
+    bool foundLicense = fs::exists(licenseFile);
+    bool foundWarranty = fs::exists(warrantyFile);
+    bool foundLisezMoi = fs::exists(lisezMoiFile);
 
     if (foundLicense || foundWarranty || foundLisezMoi) {
         std::string filename;
@@ -214,7 +216,7 @@ void Ed4Intro() {
     std::string Ed4IntroEXE = "Ed4Intro.exe";
 
      // Check if Ed4Intro.exe exists
-    if (!std::filesystem::exists("Ed4Intro.exe")) {
+    if (!fs::exists("Ed4Intro.exe")) {
         std::cout << "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n" << std::endl;
         return;
     }
@@ -427,4 +429,4 @@ if (restartChoice == 'n' || restartChoice == 'N') {
 
 return 0;
 
-}
+} // End of namespace fs
