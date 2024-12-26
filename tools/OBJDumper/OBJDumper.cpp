@@ -9,7 +9,7 @@
 namespace fs = std::filesystem;
 
 void printHeader() {
-    const std::string versionNumber = "0.4.0";
+    const std::string versionNumber = "0.5.0";
 
     std::cout << "=========================" << std::endl;
     std::cout << " OBJDumper ver. " << versionNumber << std::endl;
@@ -87,10 +87,10 @@ int main() {
     std::getline(std::cin, inputFile);
 
     // Ask user for output file format preference
-    std::cout << "Do you want to use 'Folder/Object.obj' format? (yes/no): ";
+    std::cout << "Do you want to use 'Folder/Object.obj' format? (y/n): ";
     std::string preference;
     std::getline(std::cin, preference);
-    useSlash = (preference == "yes");
+    useSlash = (preference == "y");
 
     // Get user input for output location
     std::cout << "Enter the output file name: ";
