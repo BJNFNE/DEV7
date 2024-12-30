@@ -8,14 +8,14 @@
 #include <windows.h>
 #include <io.h>
 #define SLEEP_COMMAND "ping -n 2 127.0.0.1 > nul"
-#define DEV7_MUTEX_LAUNCH "DEV7_INSTANCE_MUTEX"
+#define DEV7_MUTEX_LAUNCH_WIN "%temp%/DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/file.h>
 #define SLEEP_COMMAND "sleep 2"
-#define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
+#define DEV7_MUTEX_LAUNCH_UNIX "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
 // Defines
@@ -48,13 +48,13 @@ void clearConsole() {
 
 bool isDEV7Running() {
 #ifdef _WIN32
-    HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_LAUNCH);
+    HANDLE mutex = CreateMutex(NULL, TRUE, DEV7_MUTEX_LAUNCH_WIN);
     if (mutex && GetLastError() == ERROR_ALREADY_EXISTS) {
         CloseHandle(mutex);
         return true;
     }
 #else
-    int fd = open(DEV7_MUTEX_LAUNCH, O_CREAT | O_RDWR, FILE_PERMISSIONS);
+    int fd = open(DEV7_MUTEX_LAUNCH_UNIX, O_CREAT | O_RDWR, FILE_PERMISSIONS);
     if (fd == -1) {
         return true;
     }
@@ -422,10 +422,10 @@ std::cin >> restartChoice;
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
     // TODO: improve Windows workaround for delete temp files
-    //#ifdef _WIN32
-    //system("del /tmp/DEV7_INSTANCE_MUTEX");
-    //#endif
-    int deleteMutex = system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    #ifdef _WIN32
+    int deleteMutexWin = system("del %temp%/DEV7_INSTANCE_MUTEX");
+    #endif
+    int deleteMutexUnix = system("rm /tmp/DEV7_INSTANCE_MUTEX");
     clearConsole();  // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
 }
