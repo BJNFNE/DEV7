@@ -18,6 +18,9 @@
 #define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
+// Defines
+#define FILE_PERMISSIONS 0666
+
 // Namespaces
 namespace fs = std::filesystem;
 
@@ -51,7 +54,7 @@ bool isDEV7Running() {
         return true;
     }
 #else
-    int fd = open(DEV7_MUTEX_LAUNCH, O_CREAT | O_RDWR, 0666);
+    int fd = open(DEV7_MUTEX_LAUNCH, O_CREAT | O_RDWR, FILE_PERMISSIONS);
     if (fd == -1) {
         return true;
     }
