@@ -30,7 +30,7 @@ bool fileExists(const std::string& filename) {
 }
 
 void printHeader() {
-    const std::string versionNumber = "1.1.0";
+    const std::string versionNumber = "1.1.4";
 
     std::cout << "=========================" << std::endl;
     std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
@@ -400,11 +400,16 @@ switch(choice) {
 auto end = std::chrono::steady_clock::now(); // Record the end time
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
+// Convert seconds to hours, minutes, and seconds
+int hours = elapsed.count() / 3600; // 3600 seconds in an hour
+int minutes = (elapsed.count() % 3600) / 60; // Remaining minutes after extracting hours
+int seconds = elapsed.count() % 60; // Remaining seconds after extracting minutes
+
 if (usedLoader7OrDev7VM) {
     clearConsole();
 }
 
-std::cout << "Total playtime: " << elapsed.count() << " seconds." << std::endl;
+std::cout << "Total playtime: " << hours << " hours, " << minutes << " minutes and " << seconds << " seconds." << std::endl;
 
 std::cout << "Would you like to restart DEV7Launcher? (y/n): ";
 char restartChoice;
