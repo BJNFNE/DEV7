@@ -421,7 +421,7 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
     //#ifdef _WIN32
     //system("del /tmp/DEV7_INSTANCE_MUTEX");
     //#endif
-    int delete_mutex = system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    int deleteMutex = system("rm /tmp/DEV7_INSTANCE_MUTEX");
     clearConsole();  // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
 }
