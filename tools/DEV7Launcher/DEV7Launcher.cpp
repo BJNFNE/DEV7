@@ -18,6 +18,7 @@
 #define DEV7_MUTEX_LAUNCH "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
+// Namespaces
 namespace fs = std::filesystem;
 
 bool fileExists(const std::string& filename) {
@@ -69,7 +70,7 @@ void launchCommand(const std::string& command) {
         std::string wineCommand = "wine " + command;
         int result = system(wineCommand.c_str());
     #endif
-   int sleepcmd = system(SLEEP_COMMAND);
+   int sleepCmd = system(SLEEP_COMMAND);
 }
 
 void modifyMDOIni() {
@@ -139,9 +140,9 @@ void modifyAdibou3Ini() {
     system("notepad Adibou3.ini");
 #else
   if (!fs::exists("Adibou3.ini")) {
-     int move_adibou3 = system("mv ADIBOU3.INI Adibou3.ini");
+     int moveAdibou3 = system("mv ADIBOU3.INI Adibou3.ini");
   }
-   int nano_adibou3 = system("nano Adibou3.ini");
+   int nanoAdibou3 = system("nano Adibou3.ini");
 #endif
 }
 
@@ -157,10 +158,10 @@ void modifyAdi5Ini() {
     }
 
     #ifdef _WIN32
-        int adi5ini = system("notepad Data/ADI5.ini");
+        int adi5Ini = system("notepad Data/ADI5.ini");
     #else
         std::string modifyAdi5Ini = "nano Data/ADI5.ini";
-        int adi5ini = system(modifyAdi5Ini.c_str());
+        int adi5Ini = system(modifyAdi5Ini.c_str());
     #endif
 }
 
