@@ -100,7 +100,7 @@ void modifyMDODbg() {
     if (!fileExists(mdo_dbg)) {
         std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        getchar();
+        (void)getchar();
         clearConsole();
         return;
     }
@@ -128,7 +128,7 @@ void modifyAdibou3Ini() {
     if (!fs::exists("Adibou3.ini")) {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        getchar();
+        (void)getchar();
         clearConsole();
         return;
     }
@@ -155,7 +155,7 @@ void modifyAdi5Ini() {
     if (!fs::exists("Data/ADI5.ini")) {
         std::cout << "Error: This directory does not seem to be an Adi 5 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        getchar();
+        (void)getchar();
         clearConsole();
         return;
     }
@@ -265,7 +265,7 @@ int main(int argc, char* argv[]) {
 
     if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
-        getchar();
+        (void)getchar();
         clearConsole();
         return 1;
     }
@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
     } else {
         std::cout << "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
-        getchar();
+        (void)getchar();
         clearConsole();
         return 1;
     }
