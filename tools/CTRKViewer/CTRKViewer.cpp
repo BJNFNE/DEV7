@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
     // Exit message for CTRKViewer
     std::cout << std::endl;
     std::cout << "Press Enter to exit CTRKViewer" << std::endl;
-    getchar();
+    (void)getchar();
     clearConsole();    
     return 0;
 
