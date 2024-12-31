@@ -10,6 +10,8 @@
 #include <unistd.h>
 #endif
 
+namespace fs = std::filesystem;
+
 const std::string versionNumber = "1.0";
 
 void printHeader() {
@@ -49,7 +51,7 @@ int main(int argc, char* argv[]) {
     CTRKInput.seekg(0);
 
     // Open the output file for the CTRK Script
-    std::filesystem::path inputFile(inputCTRK);
+    fs::path inputFile(inputCTRK);
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
@@ -70,4 +72,5 @@ int main(int argc, char* argv[]) {
     clearConsole();
 
     return 0;
-}
+
+} // End of namespace fs
