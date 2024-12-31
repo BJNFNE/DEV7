@@ -5,7 +5,10 @@
 #include <filesystem>
 #include <string>
 #include <ctime>
+
+#ifdef __unix__
 #include <unistd.h>
+#endif
 
 const std::string versionNumber = "1.0";
 
