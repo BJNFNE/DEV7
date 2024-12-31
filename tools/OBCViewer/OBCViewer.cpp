@@ -27,6 +27,7 @@ void printUsage() {
     std::cout << " * Adi 5" << std::endl;
     std::cout << " * Adibou presente series" << std::endl;
     std::cout << " * Adiboud'chou series" << std::endl;
+    std::cout << " * Nathan Vacances series" << std::endl;
     std::cout << " * Le Pays des pierres magiques" << std::endl << std::endl;
 }
 
