@@ -32,8 +32,11 @@ The last 3 numbers are for the version number.
 #include <fstream>
 #include <string>
 
-void exampleBCD1Names() {
+#ifdef _WIN32
+#include <windows.h> // For setting console encoding
+#endif
 
+void exampleBCD1Names() {
     std::cout << "Example BCD1 Filenames which were detected by Adibou 3\n" << std::endl;
 
     std::cout << "Français:" << "\b" << std::endl;
@@ -62,14 +65,26 @@ void exampleBCD1Names() {
     std::cout << " - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n" << std::endl;
     std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
 
+#ifdef _WIN32
+    // Set code page to UTF-8 (65001) for universal character support
+    SetConsoleCP(65001);          // Set input code page to UTF-8
+    SetConsoleOutputCP(65001);    // Set output code page to UTF-8
+#endif
+
     std::cout << "русский:\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
     std::cout << "Application:\b" << std::endl;
-    std::cout << " - Ãîðîä Íåðàâåíñòâ (Ñ÷åò 5-6 ëåò) [bma56F300.bcd1]\n" << std::endl;
-    std::cout << " - Ñ÷åòíàÿ äîëèíà (Ñ÷åò 6-7 ëåò) [bma67F300.bcd1]\n" << std::endl;
-    std::cout << " - Çàáûòàÿ ñòðàíà (Íàóêè, 4-7 ëåò) [bsc47F310.bcd1]\n" << std::endl;
-    std::cout << " - Çàãàäî÷íàÿ ìóçûêàëüíàÿ ìàøèíà (Ìóçûêà, 4-7 ëåò) [bmu47A310.bcd1]\n" << std::endl;
-    std::cout << " - Êîðîëåâñòâî Ôîêóñ-Ïîêóñ (Àíãëèéñêèé, 4-7 ëåò) [blg47F310.bcd1]\n" << std::endl;
+    std::cout << " - Король Смирности (Чтение 5-6 лет) [bma56F300.bcd1]\n" << std::endl;
+    std::cout << " - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n" << std::endl;
+    std::cout << " - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n" << std::endl;
+    std::cout << " - Занимательная музыкальная машинка (Музыка, 4-7 лет) [bmu47A310.bcd1]\n" << std::endl;
+    std::cout << " - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n" << std::endl;
+
+#ifdef _WIN32
+    // Optionally reset to default code page (optional)
+    SetConsoleCP(437);           // Set input code page back to default (optional)
+    SetConsoleOutputCP(437);     // Set output code page back to default (optional)
+#endif
 
     std::cout << "Nederlands:\b" << std::endl;
     std::cout << "Environment:\b" << std::endl;
@@ -115,15 +130,16 @@ int main() {
         std::getline(std::cin, PictCD);
         std::cout << "MiniEnviVersion: ";
         std::getline(std::cin, MiniEnviVersion);
-       // std::cout << "Order: ";
-       // std::getline(std::cin, Order);
+        // std::cout << "Order: ";
+        // std::getline(std::cin, Order);
         std::cout << "PictureNameR: ";
         std::getline(std::cin, PictureNameR);
         std::cout << "PictureNameC: ";
         std::getline(std::cin, PictureNameC);
         std::cout << "PictureNameN: ";
         std::getline(std::cin, PictureNameN);
-    } else if (choice == "2") {
+    }
+    else if (choice == "2") {
         std::cout << "Enter [ENVIINFO] details:\n";  // (Environment only!)
         std::cout << "Name: ";
         std::getline(std::cin, Name);
@@ -135,7 +151,8 @@ int main() {
         // std::getline(std::cin, IDFile);
         // std::cout << "CDDetected: ";
         // std::getline(std::cin, CDDetected);
-    } else {
+    }
+    else {
         std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
         return 1;
     }
@@ -155,20 +172,21 @@ int main() {
         outputBCD1 << "Name            = " << Name << "\n";
         outputBCD1 << "CDName          = " << CDName << "\n";
         outputBCD1 << "PictCD          = " << PictCD << "\n";
-       // outputBCD1 << "Order           = " << Order << "\n";
+        // outputBCD1 << "Order           = " << Order << "\n";
         outputBCD1 << "MiniEnviVersion = " << MiniEnviVersion << "\n";
         outputBCD1 << "PictureNameR    = " << PictureNameR << "\n";
         outputBCD1 << "PictureNameC    = " << PictureNameC << "\n";
         outputBCD1 << "PictureNameN    = " << PictureNameN << "\n";
-      //  outputBCD1 << "IDFile          = " << IDFile << "\n";
-      //  outputBCD1 << "CDDetected      = " << CDDetected << "\n";
-    } else if (choice == "2") {
+        // outputBCD1 << "IDFile          = " << IDFile << "\n";
+        // outputBCD1 << "CDDetected      = " << CDDetected << "\n";
+    }
+    else if (choice == "2") {
         outputBCD1 << "[ENVIINFO]\n"; // (Environment only!)
         outputBCD1 << "Name            = " << Name << "\n";
         outputBCD1 << "CDName          = " << CDName << "\n";
-    // outputBCD1 << "Order           = " << Order << "\n";
-    // outputBCD1 << "IDFile          = " << IDFile << "\n";
-    // outputBCD1 << "CDDetected      = " << CDDetected << "\n";
+        // outputBCD1 << "Order           = " << Order << "\n";
+        // outputBCD1 << "IDFile          = " << IDFile << "\n";
+        // outputBCD1 << "CDDetected      = " << CDDetected << "\n";
     }
 
     // Close the file
