@@ -6,7 +6,7 @@ message("-- OBCViewer - CMake compilation")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
-set(CMAKE_CXX_FLAGS "-O2 -pipe -s")
+set(CMAKE_CXX_FLAGS "-O2")
 
 # Check if the system is Linux
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
