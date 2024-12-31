@@ -134,7 +134,6 @@ int main(int argc, char* argv[]) {
     std::cout << "Press Enter to exit OBCViewer" << std::endl;
     getchar();
     clearConsole();
-
     return 0;
 
 } // End of namespace fs
