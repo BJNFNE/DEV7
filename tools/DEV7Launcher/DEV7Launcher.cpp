@@ -78,10 +78,10 @@ void launchCommand(const std::string& command) {
 
 void modifyMDOIni() {
     #ifdef _WIN32
-        int result = system("notepad mdo.ini");
+        int mdoIni = system("notepad mdo.ini");
     #else
         std::string modifyMDOIni = "nano mdo.ini";
-        int result = system(modifyMDOIni.c_str());
+        int mdoIni = system(modifyMDOIni.c_str());
     #endif
 }
 
@@ -138,9 +138,9 @@ void modifyAdibou3Ini() {
 
 #ifdef _WIN32
   if (!fs::exists("Adibou3.ini")) {
-    system("ren ADIBOU3.INI Adibou3.ini");
+    int notepadAdibou3 = system("ren ADIBOU3.INI Adibou3.ini");
   }
-    system("notepad Adibou3.ini");
+   int notepadAdibou3 = system("notepad Adibou3.ini");
 #else
   if (!fs::exists("Adibou3.ini")) {
      int moveAdibou3 = system("mv ADIBOU3.INI Adibou3.ini");
@@ -207,7 +207,7 @@ void runUNINST() {
         return;
     }
 #ifdef _WIN32
-    system("UNINST.EXE");
+    int Uninstaller = system("UNINST.EXE");
     std::cout << "Follow the Instructions to process the uninstallation.\n" << std::endl;
 #else
     if (system("wine UNINST.EXE") != 0) {
@@ -225,7 +225,7 @@ void Ed4Intro() {
         return;
     }
 #ifdef _WIN32
-    system("Ed4Intro.exe");
+    int Ed4Intro = system("Ed4Intro.exe");
 #else
     if (system("wine Ed4Intro.exe") != 0) {
     }
