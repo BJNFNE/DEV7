@@ -85,9 +85,6 @@ clang_debug: CC = clang
 clang_debug: CXX = clang++
 clang_debug: debug
 
-macOS:
-	make clang
-
 recompile:
 	make clean
 	make
