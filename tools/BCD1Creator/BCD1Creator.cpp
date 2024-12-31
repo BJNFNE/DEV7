@@ -76,7 +76,6 @@ void exampleBCD1Names() {
     std::cout << " - Het Land van Adiboo [benxxa300.bcd1]\n" << std::endl;
     std::cout << "Application:\b" << std::endl;
     std::cout << " - Rekenen 5-6 jaar [bma56a300.bcd1]\n" << std::endl;
-
     return;
 }
 
@@ -90,9 +89,9 @@ void printHeader() {
 
 int main() {
     printHeader();
-    std::cout << "\b" << std::endl;
+    std::cout << std::endl;
     exampleBCD1Names();
-    std::cout << "\b" << std::endl;
+    std::cout << std::endl;
     // Ask the user for the BCD1 file name
     std::cout << "Enter the Filename of the Game which you wanna modify: " << std::endl;
     std::string fileName;
