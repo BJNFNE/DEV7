@@ -3,7 +3,10 @@
 #include <filesystem>
 #include <string>
 #include <ctime>
+
+#ifdef __unix__
 #include <unistd.h>
+#endif
 
 namespace fs = std::filesystem;
 
@@ -40,8 +43,10 @@ int main(int argc, char* argv[]) {
     // Here are listed the strings for OBC itself.
     std::string inputOBC = argv[1];
 
+    #ifdef __unix__
     // List here everything for the Debug Infos.
     std::string username = getlogin();
+    #endif
 
     // Check if the input file is an OBC Script.
     fs::path inputScript(inputOBC);
@@ -111,7 +116,9 @@ int main(int argc, char* argv[]) {
     // Write Debug Infos to the separate file
     DebugInfoOutput << "Debug Infos:" << std::endl;
     DebugInfoOutput << "Output of " << inputScript.stem().string() << ".obc" << " created at " << obc_timedate << std::endl;
+    #ifdef __unix__
     DebugInfoOutput << "Created by " << username << std::endl;
+    #endif
     DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
     DebugInfoOutput << "Offset (bytes): " << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
