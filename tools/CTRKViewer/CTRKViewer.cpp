@@ -69,8 +69,7 @@ int main(int argc, char* argv[]) {
     std::cout << std::endl;
     std::cout << "Press Enter to exit CTRKViewer" << std::endl;
     getchar();
-    clearConsole();
-
+    clearConsole();    
     return 0;
 
 } // End of namespace fs
