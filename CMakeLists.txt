@@ -14,6 +14,28 @@ add_subdirectory(tools/OBCViewer)
 add_subdirectory(tools/OBJDumper)
 add_subdirectory(tools/ModelPathDumper)
 
+# Check if we are building on Linux
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    # Set a separate output directory for Linux binaries
+    set(LINUX_BIN_DIR ${CMAKE_SOURCE_DIR}/binaries/linux)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${LINUX_BIN_DIR})
+
+    # Only add the Linux-specific program if on Linux
+    add_subdirectory(rewritten-software-ports/linux/LoaderMDO)
+    add_subdirectory(common-tools/linux/convert_bin)
+    add_subdirectory(common-tools/linux/create_iso)
+    #add_subdirectory(common-tools/linux/extract_iso)
+    add_subdirectory(common-tools/linux/create_tar)
+    add_subdirectory(common-tools/linux/create_zip)
+else()
+    # Set a different output directory for non-Linux binaries
+    set(OTHER_BIN_DIR ${CMAKE_SOURCE_DIR}/binaries/linux)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OTHER_BIN_DIR})
+
+    # Optionally, add any other non-Linux tools here (if applicable)
+    # add_subdirectory(some/other/tools)
+endif()
+
 # Optional: Add a custom target to build all tools at once
 add_custom_target(all_tools
     DEPENDS BCD1Creator CTRKViewer DEV7Launcher OBCViewer OBJDumper ModelPathDumper)

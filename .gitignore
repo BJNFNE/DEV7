@@ -33,6 +33,14 @@ Release/
 /binaries/CTRKViewer
 
 # Compiled Common Tools
+# - Linux (CMake)
+/binaries/linux/LoaderMDO
+/binaries/linux/create_zip
+/binaries/linux/convert_bin
+/binaries/linux/create_tar
+/binaries/linux/create_iso
+
+# Compiled Common Tools
 # - Linux
 /common-tools/linux/create_iso/create_iso
 /common-tools/linux/extract_iso/extract_iso
