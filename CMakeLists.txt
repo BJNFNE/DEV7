@@ -38,4 +38,4 @@ endif()
 
 # Optional: Add a custom target to build all tools at once
 add_custom_target(all_tools
-    DEPENDS BCD1Creator CTRKViewer DEV7Launcher OBCViewer OBJDumper ModelPathDumper)
+    DEPENDS BCD1Creator CTRKViewer DEV7Launcher OBCViewer OBJDumper ModelPathDumper LoaderMDO)
