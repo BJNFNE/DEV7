@@ -31,9 +31,6 @@ else()
     # Set a different output directory for non-Linux binaries
     set(OTHER_BIN_DIR ${CMAKE_SOURCE_DIR}/binaries/linux)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OTHER_BIN_DIR})
-
-    # Optionally, add any other non-Linux tools here (if applicable)
-    # add_subdirectory(some/other/tools)
 endif()
 
 # Optional: Add a custom target to build all tools at once
