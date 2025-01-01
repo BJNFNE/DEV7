@@ -53,6 +53,7 @@ rewritten-software-ports/linux/LoaderMDO/LoaderMDO
 
 # CMake stuff
 build/
+out/
 CMakeFiles/
 binaries/CMakeCXXCompilerId
 
