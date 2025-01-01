@@ -17,7 +17,7 @@ std::cin >> outputTAR;
 std::string tarCommand = "tar -cf \"" + outputTAR + "\" -C \"" + inputFolder + "\" .";
 
 // Execute final TAR converter command.
-system(tarCommand.c_str());
+int tarCmd = system(tarCommand.c_str());
 
 return 0;
 

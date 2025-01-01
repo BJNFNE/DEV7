@@ -19,7 +19,7 @@ std::cin >> outputBIN;
 std::string converter = "dd if=" + inputISO + " of=" + outputBIN + " bs=2048 conv=sync,notrunc";
 
 // Execute final Converter command.
-system(converter.c_str());
+int converterCmd = system(converter.c_str());
 
 return 0;
 
