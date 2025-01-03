@@ -6,6 +6,6 @@ message("-- DEV7Launcher - CMake compilation")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
-set(CMAKE_CXX_FLAGS "-O2")
+set(CMAKE_CXX_FLAGS "-Od")
 
 add_executable(DEV7Launcher DEV7Launcher.cpp)
