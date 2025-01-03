@@ -128,7 +128,9 @@ int main(int argc, char* argv[]) {
 
     // Display the full path of the output file of the OBC Script
     std::cout << std::endl;
-    printf("Output file created at: %s\n", fs::absolute(inputScript.stem().string() + ".txt").c_str());
+    std::cout << "Output created at:" << std::endl;
+    printf("%s", fs::absolute(inputScript.stem().string() + ".txt").c_str());
+    std::cout << std::endl;
 
     // Exit message for OBCViewer
     std::cout << std::endl;
