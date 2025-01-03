@@ -6,7 +6,7 @@ message("-- DEV7Launcher - CMake compilation")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
-set(CMAKE_CXX_FLAGS "-Od")
+set(CMAKE_CXX_FLAGS "-Os")
 
 # Check if the system is Linux
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
