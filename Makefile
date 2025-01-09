@@ -71,6 +71,8 @@ $(TARGETS_CPP): binaries/%: binaries/%.o
 clean:
 	@rm -f $(OBJS_C) $(OBJS_CPP)
 	@rm -rf binaries
+	@rm -rf build
+	@rm -rf CMakeFiles
 	@echo "Cleanup is done"
 
 .PHONY: clean all
