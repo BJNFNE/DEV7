@@ -1,3 +1,12 @@
+/*
+ModelPathDumper
+
+EXO files are used by following Games:
+- Adi 5
+- Adibou 3
+- Nathan Vacances series
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
