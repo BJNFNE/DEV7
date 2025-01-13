@@ -38,8 +38,6 @@ void clearConsole() {
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         printUsage();
-        std::cout << "Press any Key to exit" << std::endl;
-        (void)getchar();
         return 1;
     }
 
