@@ -7,14 +7,14 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <io.h>
-#define SLEEP_COMMAND "ping -n 2 127.0.0.1 > nul"
+#define SLEEP_COMMAND_WIN "ping -n 2 127.0.0.1 > nul"
 #define DEV7_MUTEX_LAUNCH_WIN "%temp%/DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/file.h>
-#define SLEEP_COMMAND "sleep 2"
+#define SLEEP_COMMAND_UNIX "sleep 2"
 #define DEV7_MUTEX_LAUNCH_UNIX "/tmp/DEV7_INSTANCE_MUTEX"
 #endif
 
@@ -73,7 +73,7 @@ void launchCommand(const std::string& command) {
         std::string wineCommand = "wine " + command;
         int result = system(wineCommand.c_str());
     #endif
-   int sleepCmd = system(SLEEP_COMMAND);
+   int sleepCmdUnix = system(SLEEP_COMMAND_UNIX);
 }
 
 void modifyMDOIni() {
@@ -135,7 +135,6 @@ void modifyAdibou3Ini() {
 
     // This an Workaround for this Function to load Adibou3.ini into the Editors
     // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
-
 #ifdef _WIN32
   if (!fs::exists("Adibou3.ini")) {
     int moveAdibou3Ini = system("ren ADIBOU3.INI Adibou3.ini");
@@ -169,9 +168,9 @@ void modifyAdi5Ini() {
 }
 
 void openLicenceFile() {
-    std::string licenseFile = "Lizenzvereinbarung.txt";
-    std::string warrantyFile = "garantie.txt";
-    std::string lisezMoiFile = "LISEZ MOI.txt";
+    std::string licenseFile = "Lizenzvereinbarung.txt"; // German
+    std::string warrantyFile = "garantie.txt"; // English
+    std::string lisezMoiFile = "LISEZ MOI.txt"; // French
     bool foundLicense = fs::exists(licenseFile);
     bool foundWarranty = fs::exists(warrantyFile);
     bool foundLisezMoi = fs::exists(lisezMoiFile);
@@ -435,8 +434,10 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
 if (restartChoice == 'n' || restartChoice == 'N') {
 
     clearConsole();
-    return 0;
+    return 1;
 
 }
+
+return 0;
 
 } // End of namespace fs
