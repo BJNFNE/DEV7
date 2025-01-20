@@ -187,7 +187,7 @@ void openLicenceFile() {
         }
 
 #ifdef _WIN32
-        system(("notepad.exe " + filename).c_str());
+        int open = system(("notepad.exe " + filename).c_str());
         std::cout << "Please wait a few moments to open the Licence for you.\n" << std::endl;
 #else
         int open = system(("open " + filename).c_str());
