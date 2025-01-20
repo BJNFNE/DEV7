@@ -435,9 +435,8 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
 if (restartChoice == 'n' || restartChoice == 'N') {
 
     clearConsole();
+    return 0;
 
 }
-
-return 0;
 
 } // End of namespace fs
