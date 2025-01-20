@@ -425,8 +425,9 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
     // TODO: improve Windows workaround for delete temp files
     #ifdef _WIN32
     int deleteMutexWin = system("del %temp%/DEV7_INSTANCE_MUTEX");
-    #endif
+    #else
     int deleteMutexUnix = system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    #endif
     clearConsole();  // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
 }
