@@ -419,6 +419,7 @@ std::cout << "Would you like to restart DEV7Launcher? (y/n): ";
 char restartChoice;
 std::cin >> restartChoice;
 
+// y/Y english keyboard layout. j/J german kayboard layout. o/O french keyboard layout.
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
     // TODO: improve Windows workaround for delete temp files
