@@ -87,10 +87,10 @@ void modifyMDOIni() {
 
 void showMSGDef() {
     #ifdef _WIN32
-        int msgDEF = system("notepad msg.def");
+        int showMsgDef = system("notepad msg.def");
     #else
-        std::string modifyMSGDef = "nano msg.def";
-        int msgDEF = system(modifyMSGDef.c_str());
+        std::string showMSGDef = "nano msg.def";
+        int showMsgDef = system(showMSGDef.c_str());
     #endif
 }
 
@@ -138,14 +138,14 @@ void modifyAdibou3Ini() {
 
 #ifdef _WIN32
   if (!fs::exists("Adibou3.ini")) {
-    int notepadAdibou3 = system("ren ADIBOU3.INI Adibou3.ini");
+    int moveAdibou3Ini = system("ren ADIBOU3.INI Adibou3.ini");
   }
-   int notepadAdibou3 = system("notepad Adibou3.ini");
+   int editAdibou3Ini = system("notepad Adibou3.ini");
 #else
   if (!fs::exists("Adibou3.ini")) {
-     int moveAdibou3 = system("mv ADIBOU3.INI Adibou3.ini");
+     int moveAdibou3Ini = system("mv ADIBOU3.INI Adibou3.ini");
   }
-   int nanoAdibou3 = system("nano Adibou3.ini");
+   int editAdibou3Ini = system("nano Adibou3.ini");
 #endif
 }
 
@@ -161,10 +161,10 @@ void modifyAdi5Ini() {
     }
 
     #ifdef _WIN32
-        int adi5Ini = system("notepad Data/ADI5.ini");
+        int editAdi5Ini = system("notepad Data/ADI5.ini");
     #else
         std::string modifyAdi5Ini = "nano Data/ADI5.ini";
-        int adi5Ini = system(modifyAdi5Ini.c_str());
+        int editAdi5Ini = system(modifyAdi5Ini.c_str());
     #endif
 }
 
