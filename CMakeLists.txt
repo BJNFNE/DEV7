@@ -11,6 +11,7 @@ add_subdirectory(tools/BCD1Creator)
 add_subdirectory(tools/CTRKViewer)
 add_subdirectory(tools/DEV7Launcher)
 add_subdirectory(tools/OBCViewer)
+add_subdirectory(tools/PLAViewer)
 add_subdirectory(tools/OBJDumper)
 add_subdirectory(tools/ModelPathDumper)
 
