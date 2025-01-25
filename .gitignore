@@ -28,6 +28,7 @@ Release/
 /binaries/DEV7Launcher
 /binaries/BCD1Creator
 /binaries/OBCViewer
+/binaries/PLAViewer
 /binaries/ModelPathDumper
 /binaries/OBJDumper
 /binaries/CTRKViewer
@@ -72,3 +73,4 @@ adibounet/adibounet.log
 *.ini 
 *.mesh
 *.cure
+*.pla
