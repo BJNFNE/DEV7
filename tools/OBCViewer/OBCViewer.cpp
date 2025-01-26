@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Offset (bytes): " << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
-    std::cout << "OBC Script (" << argv[1] << ") is now displayable, and the output is saved to " << inputScript.stem().string() << ".txt" << std::endl;
+    std::cout << "OBC Script (" << argv[1] << ") is now readable." << std::endl;
 
     // Display the full path of the output file of the OBC Script
     std::cout << std::endl;
