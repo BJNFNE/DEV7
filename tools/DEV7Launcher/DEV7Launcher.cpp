@@ -72,8 +72,8 @@ void launchCommand(const std::string& command) {
     #else
         std::string wineCommand = "wine " + command;
         int result = system(wineCommand.c_str());
+        int sleepCmdUnix = system(SLEEP_COMMAND_UNIX);
     #endif
-   int sleepCmdUnix = system(SLEEP_COMMAND_UNIX);
 }
 
 void modifyMDOIni() {
