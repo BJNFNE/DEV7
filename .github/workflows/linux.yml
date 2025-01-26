@@ -41,4 +41,4 @@ jobs:
             binaries/OBJDumper/OBJDumper
             binaries/OBCViewer/OBCViewer
             binaries/CTRKViewer/CTRKViewer
-            binariers/PLAViewer/PLAViewer
+            binaries/PLAViewer/PLAViewer
