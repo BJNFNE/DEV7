@@ -26,9 +26,6 @@ int main(int argc, char* argv[]) {
     // for clearing the Console after the Program closed.
     std::string clearConsole;
 
-    // List here everything for the Debug Infos.
-    std::string username = getlogin();
-
     #ifdef _WIN32
         clearConsole = "cls"; // Command to clear the console on Windows
     #else
@@ -64,26 +61,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Adds the Date when Output file was created to the Output file
-    time_t current_time = time(nullptr);
-    char PLA_timedate[100];
-    strftime(PLA_timedate, sizeof(PLA_timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
-
-    // Read from input and write to output, keeping track of the offset
-    std::streampos offset = PLAInput.tellg();
-    char c;
-    while (PLAInput.get(c)) {
-        if (std::isprint(static_cast<unsigned char>(c))) {
-            PLAOutput.put(c);
-            offset = PLAInput.tellg(); // Update the offset after each character is processed
-        }
-    }
-
     // Close input & output for PLA Script
     PLAInput.close();
     PLAOutput.close();
 
-    std::cout << "PLA Savegame (" << argv[1] << ") is now displayable, and the output is saved to " << inputSaveGame.stem().string() << ".txt" << std::endl;
+    std::cout << "PLA Savegame (" << argv[1] << ") is now readable." << std::endl;
 
     // Display the full path of the output file of the PLA Savegame
     std::cout << "\b" << std::endl;
@@ -91,9 +73,9 @@ int main(int argc, char* argv[]) {
 
     // Exit message for PLAViewer
     std::cout << "\b" << std::endl;
-    std::cout << "Press Enter to exit PLAViewer & clear the Console\n" << std::endl;
-    getchar();
-    int clearConsoleExecute =  system(clearConsole.c_str());
+    std::cout << "Press Enter to exit PLAViewer.\n" << std::endl;
+    (void)getchar();
+    int clearConsoleExec = system(clearConsole.c_str());
 
     return 0;
 
