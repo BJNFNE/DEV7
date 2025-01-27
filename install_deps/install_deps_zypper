@@ -1,0 +1,3 @@
+# Installation deps script for DEV7 Tools for Zypper
+sudo zypper install clang gcc cmake
+echo "Installation done over zypper"
