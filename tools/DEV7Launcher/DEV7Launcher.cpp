@@ -421,9 +421,8 @@ std::cin >> restartChoice;
 // y/Y english keyboard layout. j/J german kayboard layout. o/O french keyboard layout.
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
-    // TODO: improve Windows workaround for delete temp files
     #ifdef _WIN32
-    int deleteMutexWin = system("del %temp%/DEV7_INSTANCE_MUTEX");
+    int deleteMutexWin = system("del %temp%\\DEV7_INSTANCE_MUTEX");
     #else
     int deleteMutexUnix = system("rm /tmp/DEV7_INSTANCE_MUTEX");
     #endif
