@@ -397,7 +397,7 @@ switch(choice) {
     default:
         std::cout << "Invalid choice. Please choose a valid option.\n" << std::endl;
         usedLoader7OrDev7VM = false;
-        break;
+        return 0;
 }
 
 auto end = std::chrono::steady_clock::now(); // Record the end time
