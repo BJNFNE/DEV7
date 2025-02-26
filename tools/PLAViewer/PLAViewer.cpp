@@ -8,15 +8,15 @@
 namespace fs = std::filesystem;
 
 // Set here the versionNumber
-const std::string versionNumber = "1.0";
+const std::string versionNumber = "1.1";
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <savegame.PLA>\n" << std::endl;
-        std::cerr << "Version - " << versionNumber << "\n" << std::endl;
-        printf("Supported games:\n");
-        printf("Land of the Magic Stones\n");
-        printf("<savegame.PLA>\n\t .PLA savegame to view\n\n");
+        std::cout << "Usage: " << argv[0] << " <savegame.PLA>\n" << std::endl;
+        std::cout << "Version - " << versionNumber << "\n" << std::endl;
+        std::cout << "Supported games:" << std::endl;
+        std::cout << "Land of Magic Stones\n" << std::endl;
+        std::cout << "<savegame.PLA>\n\t .PLA savegame to view\n" << std::endl;
         return 1;
     }
 
