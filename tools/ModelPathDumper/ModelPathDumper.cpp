@@ -9,7 +9,6 @@ EXO files are used by following Games:
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <filesystem>
 
 namespace fs = std::filesystem;
