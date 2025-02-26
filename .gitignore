@@ -61,6 +61,9 @@ binaries/CMakeCXXCompilerId
 # AdibouNet stuff
 adibounet/adibounet.log
 
+# Tools formats? (TODO: Find better name for this place)
+*.txt
+
 # DEV7 File formats
 *.obc
 *.ctrk
