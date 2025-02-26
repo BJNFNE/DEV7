@@ -55,7 +55,7 @@ int main() {
     printHeader();
     std::string directoryPath;
     std::cout << "Enter the directory path: \n";
-    std::cout << "if you are already in the correct directory just type .\n";
+    std::cout << "If you are already in the correct directory just type .\n";
     std::cin >> directoryPath;
 
     std::string outputFile;
