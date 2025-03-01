@@ -13,17 +13,12 @@
 # - For example, 'a' is represented as '0003', 'b' as '0001', and other letters remain as themselves.
 # - If the input is a single character, it is returned directly without further processing.
 
-import sys
-
 def decode_password(encoded_str):
     """Decodes an encoded password back into plaintext."""
     
     # If the input is a single character, return it directly
     if len(encoded_str) == 1:
         return encoded_str
-    else:
-        print("Password is longer as an single character!")
-        sys.exit(0)
     
     decoded_chars = []
     
