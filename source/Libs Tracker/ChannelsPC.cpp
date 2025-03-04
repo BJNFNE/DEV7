@@ -1,19 +1,4 @@
-namespace ChannelsPC {
-
-class trkWinMasterChannel {
-public:
-    int GetLastReadBlockPosition(int param_1);
-    int GetSoundBuffer(int param_1);
-    int GetDataToWrite(int param_1);
-};
-
-class trkChannel {
-    public:
-        int GetSoundBuffer(int param_1);
-        int GetDataToWrite(int param_1);
-        int isStereo(int param_1);
-        int Stop(int param_1);
-};
+#include "ChannelsPC.h"
 
 int trkWinMasterChannel::GetLastReadBlockPosition(int param_1) {
     return *(int *)(param_1 + 0x6c);
@@ -37,7 +22,4 @@ int trkChannel::Stop(int param_1) {
         return 1;
     }
       
-}
-
-} // namespace ChannelsPC
-  // namespace trkChannel
+};
