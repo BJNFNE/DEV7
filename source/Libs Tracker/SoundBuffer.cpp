@@ -1,11 +1,6 @@
-namespace SoundBuffer {
+#include "SoundBuffer.h"
 
-    class trkSoundBuffer {
-    public:
-        int GetSizeInBytes(int param_1);
-        int GetFrequency(int param_1);
-        int GetData(int param_1);
-    };
+namespace SoundBuffer {
 
     int trkSoundBuffer::GetSizeInBytes(int param_1) {
         return *(int *)(param_1 + 0x10);
