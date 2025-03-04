@@ -4,6 +4,7 @@ namespace SoundBuffer {
     public:
         int GetSizeInBytes(int param_1);
         int GetFrequency(int param_1);
+        int GetData(int param_1);
     };
 
     int trkSoundBuffer::GetSizeInBytes(int param_1) {
@@ -14,4 +15,8 @@ namespace SoundBuffer {
         return *(int *)(param_1 + 4);
     }
 
-}
+    int trkSoundBuffer::GetData(int param_1) {
+        return *(int *)(param_1 + 0x18);
+    }
+
+} // namespace SoundBuffer
