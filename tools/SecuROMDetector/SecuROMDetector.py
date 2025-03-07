@@ -67,7 +67,7 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
     
     # If no recognized pattern was found
     if not found_pattern:
-        print("Maybe this EXE uses a different version of SecuROM, "
+        print("Maybe this executable uses a different version of SecuROM, "
               "Please contact BJNFNE on Discord")
 else:
     print("Invalid EXE file. Please enter a valid executable name.")
