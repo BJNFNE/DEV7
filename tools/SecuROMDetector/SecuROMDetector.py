@@ -54,6 +54,11 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
     if identify_exe(exe_file, "SIntfNT.dll"):
         print("SIntfNT.dll found inside of executable")
         found_pattern = True
+
+        # Check for SecuExp.exe pattern
+    if identify_exe(exe_file, "SecuExp.exe"):
+        print("SecuExp.exe found inside of executable")
+        found_pattern = True
     
     # Check for .cms_t pattern
     if identify_exe(exe_file, ".cms_t"):
