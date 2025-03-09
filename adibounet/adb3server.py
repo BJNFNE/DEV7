@@ -103,10 +103,15 @@ def start_console():
             logger.info("Shutting down the server.")
             sys.exit(0)  # Exit the program, shutting down the server
         
+        if command == "restart":
+            logger.info("Restarts the server.")
+            os.execl(sys.executable, *sys.orig_argv)  # Exit the program, restarting the server
+
         elif command == "help":
             logger.info("Displaying help message.")
             print("\nAvailable commands:")
             print("  shutdown - Stop the server")
+            print("  restart -  Restarts the server")
             print("  clear - Clear the Console")
             print("  openlog - Open adibounet.log")
             print("  showip - Display Server IP")
