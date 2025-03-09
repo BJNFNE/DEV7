@@ -26,6 +26,9 @@ import sys
 import logging
 import subprocess
 
+# AdibouNet defines
+versionNumber = "v0.1alpha"
+
 # Configure logging to output to both the console and a log file
 log_filename = "adibounet.log"
 
@@ -111,6 +114,7 @@ def start_console():
             print("  poweroff_server - Shutdown the server (Physical Server)")
             print("  reboot_server - Reboot the server (Physical Server)")
             print("  help - Display this help message")
+            print("  version - Display version of AdibouNet")
             print("\n")
         
         elif command == "openlog":
@@ -129,6 +133,9 @@ def start_console():
 
         elif command == "pythonversion":
             os.system('python --version' if os.name=='nt' else 'python3 --version"') # Show python version under Linux
+
+        elif command == "version":
+            print("AdibouNet", versionNumber)
 
         else:
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
