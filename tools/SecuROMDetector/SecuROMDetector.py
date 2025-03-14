@@ -55,6 +55,21 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
         print("SIntfNT.dll found inside of executable")
         found_pattern = True
 
+    # Check for CmdLineExt.DLL pattern
+    if identify_exe(exe_file, "CmdLineExt.DLL"):
+        print("CmdLineExt.DLL found inside of executable")
+        found_pattern = True
+
+    # Check for CmdLineExt02.dll pattern
+    if identify_exe(exe_file, "CmdLineExt02.dll"):
+        print("CmdLineExt02.dll found inside of executable")
+        found_pattern = True
+
+    # Check for SIntfIcn.ani pattern
+    if identify_exe(exe_file, "SIntfIcn.ani"):
+        print("SIntfIcn.ani found inside of executable")
+        found_pattern = True
+
         # Check for SecuExp.exe pattern
     if identify_exe(exe_file, "SecuExp.exe"):
         print("SecuExp.exe found inside of executable")
