@@ -131,7 +131,7 @@ def start_console():
         elif command == "deletelog":
             logfile = 'adibounet.log'
             os.system('del adiboulog.txt' if os.name=='nt' else 'rm adibounet.log')
-            logger.info("Deleting old adibou3.log")
+            logger.info("Deleting old adibou3.log\n Restart AdibouNet Server with 'restart' to generate an new Logfile.")
 
         elif command == "clear":
             os.system('cls' if os.name=='nt' else 'clear')
