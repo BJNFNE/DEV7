@@ -27,7 +27,7 @@ import logging
 import subprocess
 
 # AdibouNet defines
-versionNumber = "v0.1alpha"
+versionNumber = "v0.2alpha"
 
 # Configure logging to output to both the console and a log file
 logfile = "adibounet.log"
