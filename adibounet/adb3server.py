@@ -114,6 +114,7 @@ def start_console():
             print("  restart -  Restarts the server")
             print("  clear - Clear the Console")
             print("  openlog - Open adibounet.log")
+            print("  deletelog - Delete old adibounet.log")
             print("  showip - Display Server IP")
             print("  pythonversion - Display python version")
             print("  poweroff_server - Shutdown the server (Physical Server)")
@@ -126,6 +127,11 @@ def start_console():
             logger.info("Opening adibounet.log over an Texteditor")
             logfile = 'adibounet.log'
             os.system('notepad adibounet.log' if os.name=='nt' else 'open adibounet.log')
+
+        elif command == "deletelog":
+            logfile = 'adibounet.log'
+            os.system('del adiboulog.txt' if os.name=='nt' else 'rm adibounet.log')
+            logger.info("Deleting old adibou3.log")
 
         elif command == "clear":
             os.system('cls' if os.name=='nt' else 'clear')
