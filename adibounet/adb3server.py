@@ -125,11 +125,9 @@ def start_console():
         
         elif command == "openlog":
             logger.info("Opening adibounet.log over an Texteditor")
-            logfile = 'adibounet.log'
             os.system('notepad adibounet.log' if os.name=='nt' else 'open adibounet.log')
 
         elif command == "deletelog":
-            logfile = 'adibounet.log'
             os.system('del adiboulog.txt' if os.name=='nt' else 'rm adibounet.log')
             logger.info("Deleting old adibou3.log\n Restart AdibouNet Server with 'restart' to generate an new Logfile.")
 
