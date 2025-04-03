@@ -30,7 +30,7 @@ import subprocess
 versionNumber = "v0.1alpha"
 
 # Configure logging to output to both the console and a log file
-log_filename = "adibounet.log"
+logfile = "adibounet.log"
 
 # Setting up logging
 logger = logging.getLogger()
@@ -41,7 +41,7 @@ console_handler = logging.StreamHandler(sys.stdout)
 console_handler.setLevel(logging.DEBUG)
 
 # File handler (writes to a log file)
-file_handler = logging.FileHandler(log_filename)
+file_handler = logging.FileHandler(logfile)
 file_handler.setLevel(logging.DEBUG)
 
 # Create a formatter for timestamps and log levels
