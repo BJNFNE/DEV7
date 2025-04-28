@@ -21,6 +21,9 @@ jobs:
       - name: Install MinGW
         run: choco install mingw -y
 
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
       - name: Compile LoaderMDO
         run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
@@ -48,6 +51,9 @@ jobs:
     # - name: Compile PLAViewer
       #  run: g++ -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
 
+      - name: Compile IMGConverter
+        run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -59,7 +65,8 @@ jobs:
             DEV7Launcher.exe
             OBJDumper.exe
             ModelPathDumper.exe
+            IMGConverter.exe
           #  OBCViewer.exe
           #  CTRKViewer.exe
           #  PLAViewer.exe
-
+            
