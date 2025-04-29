@@ -25,7 +25,7 @@ jobs:
         run: pip install pyinstaller
 
       - name: Compile LoaderMDO
-        run: g++ -static -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+        run: g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
       - name: Compile BCD1Creator
         run: g++ -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
@@ -40,7 +40,7 @@ jobs:
         run: g++ -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
 
       - name: Compile SYSTEM (Modern Version)
-        run: g++ -static -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
+        run: g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
       # - name: Compile CTRKViewer
       #   run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
