@@ -18,45 +18,38 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Set up Visual Studio
-        uses: microsoft/setup-msbuild@v1
-        with:
-          vs-version: '2022'  # Specify Visual Studio 2022
-
-      - name: Initialize MSVC environment
-        run: |
-          call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+      - name: Install MinGW
+        run: choco install mingw -y
 
       - name: Install PyInstaller
         run: pip install pyinstaller
 
       - name: Compile LoaderMDO
-        run: cl /EHsc /Fe:LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
       - name: Compile BCD1Creator
-        run: cl /EHsc /Fe:BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+        run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
       - name: Compile DEV7Launcher
-        run: cl /EHsc /Fe:DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+        run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
       - name: Compile OBJDumper
-        run: cl /EHsc /Fe:OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
+        run: g++ -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
 
       - name: Compile ModelPathDumper
-        run: cl /EHsc /Fe:ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+        run: g++ -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
 
       - name: Compile SYSTEM (Modern Version)
-        run: cl /EHsc /Fe:SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
+        run: g++ -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
-      # Uncomment if you want to compile these
       # - name: Compile CTRKViewer
-      #   run: cl /EHsc /Fe:CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
+      #  run: g++ -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
 
       # - name: Compile OBCViewer
-      #   run: cl /EHsc /Fe:OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+      #  run: g++ -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
 
       # - name: Compile PLAViewer
-      #   run: cl /EHsc /Fe:PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+      #  run: g++ -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
