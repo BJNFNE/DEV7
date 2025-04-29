@@ -10,7 +10,7 @@ Requirements:
 -  Make sure to have Visual C++ Redistributable 2022 x64 installed.
 Compiling:
 - Can directly be compiled in MSVC: You can change between Release or Debug mode.
-- To compile over g++/MinGW: you can run this command to compile: g++ -o SYSTEM.exe SYSTEM.cpp -luser32
+- To compile over g++/MinGW: you can run this command to compile: g++ -static -mwindows -o SYSTEM.exe SYSTEM.cpp -luser32
 - When you want to remove the debug symbols from the exe use the "strip SYSTEM.exe" (Without quotes) command (g++/MinGW only)
 
 Supported Games:
