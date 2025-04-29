@@ -25,31 +25,31 @@ jobs:
         run: pip install pyinstaller
 
       - name: Compile LoaderMDO
-        run: g++ -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+        run: g++ -static -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
       - name: Compile BCD1Creator
-        run: g++ -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+        run: g++ -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
       - name: Compile DEV7Launcher
-        run: g++ -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+        run: g++ -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
       - name: Compile OBJDumper
-        run: g++ -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
+        run: g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
 
       - name: Compile ModelPathDumper
-        run: g++ -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+        run: g++ -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
 
       - name: Compile SYSTEM (Modern Version)
-        run: g++ -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
+        run: g++ -static -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
       # - name: Compile CTRKViewer
-      #  run: g++ -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
+      #   run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
 
       # - name: Compile OBCViewer
-      #  run: g++ -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+      #   run: g++ -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
 
       # - name: Compile PLAViewer
-      #  run: g++ -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+      #   run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
