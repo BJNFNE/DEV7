@@ -61,7 +61,7 @@ jobs:
         run: g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp
 
       - name: Compile Y2K38Patcher
-        run: g++ -static -o SetupPatcher.exe patches/Y2K38Patcher/Y2K38Patcher/Y2K38Patcher.cpp
+        run: g++ -static -o Y2K38Patcher.exe patches/Y2K38Patcher/Y2K38Patcher/Y2K38Patcher.cpp
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
