@@ -39,7 +39,7 @@ jobs:
         run: g++ -o create_tar common-tools/linux/create_tar/create_tar.cpp
 
       - name: Compile create_zip
-        run: g++ -o create_zip common-tools/linux/create_tar/create_zip.cpp
+        run: g++ -o create_zip common-tools/linux/create_zip/create_zip.cpp
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
