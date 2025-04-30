@@ -42,14 +42,14 @@ jobs:
       - name: Compile SYSTEM (Modern Version)
         run: g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
-      # - name: Compile CTRKViewer
-      #   run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
+      - name: Compile CTRKViewer
+        run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
 
-      # - name: Compile OBCViewer
-      #   run: g++ -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+      - name: Compile OBCViewer
+        run: g++ -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
 
-      # - name: Compile PLAViewer
-      #   run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+      - name: Compile PLAViewer
+        run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
@@ -94,6 +94,6 @@ jobs:
             PetiteDetector.exe
             PKLiteDetector.exe
             SecuROMDetector.exe
-          #  OBCViewer.exe
-          #  CTRKViewer.exe
-          #  PLAViewer.exe
+            OBCViewer.exe
+            CTRKViewer.exe
+            PLAViewer.exe
