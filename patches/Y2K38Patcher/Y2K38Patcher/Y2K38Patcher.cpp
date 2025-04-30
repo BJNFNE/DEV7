@@ -67,9 +67,12 @@ int main() {
     ZeroMemory(&si, sizeof(si));
     ZeroMemory(&pi, sizeof(pi));
     BOOL success = CreateProcess(NULL, loaderExePath, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+    printf("When you done playing your DEV7 game, set the Date back to the one you currently have.\n");
 
     if (!success) {
         std::cerr << "Failed to execute Loader7.exe." << std::endl;
+        std::cout << "Press Enter to exit\n" << std::endl;
+        std::cin.get();
         return 1;
     }
 
@@ -85,6 +88,8 @@ int main() {
 
     if (!success) {
         std::cerr << "Failed to execute Dev7VM.EXE." << std::endl;
+        std::cout << "Press Enter to exit\n" << std::endl;
+        std::cin.get();
         return 1;
     }
 
@@ -95,10 +100,11 @@ int main() {
     SetSystemTime(&originalSysTime);
 
     // Close process and thread handles
+    printf("When you done playing your DEV7 game, set the Date back to the one you currently have.\n");
+    printf("Pres Enter to exit Y2K38Patcher\n");
+    std::cin.get();
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
-
-    std::cout << "Y2K38Patcher" << std::endl;
 
     return 0;
 }
