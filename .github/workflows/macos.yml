@@ -26,7 +26,7 @@ jobs:
         run: ./configure
 
       - name: Compile all C++ programs
-        run: make
+        run: make cmake
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
