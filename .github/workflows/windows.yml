@@ -42,6 +42,9 @@ jobs:
       - name: Compile SYSTEM (Modern Version)
         run: g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
 
+      - name: Compile SYSTEM (Modern Russian Version)
+        run: g++ -static -mwindows -o SYSTEM_RussianRelease.EXE rewritten-modern-software/SYSTEM_RussianRelease/SYSTEM/SYSTEM.cpp
+
       - name: Compile CTRKViewer
         run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
 
