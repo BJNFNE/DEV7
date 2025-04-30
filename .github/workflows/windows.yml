@@ -88,6 +88,7 @@ jobs:
           path: |
             LoaderMDO.exe
             SYSTEM.EXE
+            SYSTEM_RussianRelease.EXE
             BCD1Creator.exe
             DEV7Launcher.exe
             OBJDumper.exe
