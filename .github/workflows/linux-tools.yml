@@ -32,8 +32,8 @@ jobs:
       - name: Compile extract_iso
         run: g++ -o extract_iso common-tools/linux/extract_iso/extract_iso.cpp -larchive
 
-      - name: Compile create_bin
-        run: g++ -o create_bin common-tools/linux/create_bin/create_bin.cpp
+      - name: Compile convert_bin
+        run: g++ -o convert_bin common-tools/linux/convert_bin/convert_bin.cpp
 
       - name: Compile create_tar
         run: g++ -o create_tar common-tools/linux/create_tar/create_tar.cpp
