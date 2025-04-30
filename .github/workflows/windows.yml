@@ -50,6 +50,9 @@ jobs:
 
       - name: Compile PLAViewer
         run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+        
+      - name: Compile SetupPatcher
+        run: g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
@@ -97,3 +100,4 @@ jobs:
             OBCViewer.exe
             CTRKViewer.exe
             PLAViewer.exe
+            SetupPatcher.exe
