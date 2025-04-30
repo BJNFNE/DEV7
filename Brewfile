@@ -1,5 +1,4 @@
-# Homebrew Bundle
-tap 'homebrew/bundle'
+# Brewfile for Homebrew dependencies
 
 # Core dependencies
 brew 'cmake'
