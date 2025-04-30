@@ -1,43 +1,43 @@
-#name: Build and Release (macOS)
+name: Build and Release (macOS)
 
-#on:
-#  push:
- #   branches:
-  #    - master
+on:
+  push:
+    branches:
+      - master
 
-#jobs:
- # build:
-  #  runs-on: macos-latest
+jobs:
+  build:
+    runs-on: macos-latest
 
-   # steps:
-     # - name: Checkout repository
-    #    uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      #- name: Set up Python 3
-       # uses: actions/setup-python@v4
-        #with:
-         # python-version: '3.x'
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-     # - name: Install Brew deps
-      #  run: |
-       #   brew bundle install
+      - name: Install Brew deps
+        run: |
+          brew bundle install
 
-     # - name: Run configure
-      #  run: ./configure
+      - name: Run configure
+        run: ./configure
 
-      #- name: Compile all C++ programs
-        #run: make macOS
+      - name: Compile all C++ programs
+        run: make macOS
 
-     # - name: Upload Artifacts
-       # uses: actions/upload-artifact@v4
-      #  with:
-        #  name: compiled-macos
-         # path: |
-          #  binaries/LoaderMDO/LoaderMDO
-           # binaries/BCD1Creator/BCD1Creator
-            #binaries/DEV7Launcher/DEV7Launcher
-           # binaries/ModelPathDumper/ModelPathDumper
-            #binaries/OBJDumper/OBJDumper
-            #binaries/OBCViewer/OBCViewer
-            #binaries/CTRKViewer/CTRKViewer
-            #binaries/PLAViewer/PLAViewer
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-macos
+          path: |
+            binaries/LoaderMDO/LoaderMDO
+            binaries/BCD1Creator/BCD1Creator
+            binaries/DEV7Launcher/DEV7Launcher
+            binaries/ModelPathDumper/ModelPathDumper
+            binaries/OBJDumper/OBJDumper
+            binaries/OBCViewer/OBCViewer
+            binaries/CTRKViewer/CTRKViewer
+            binaries/PLAViewer/PLAViewer
