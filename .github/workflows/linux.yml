@@ -21,10 +21,7 @@ jobs:
       - name: Install required libs
         run: |
           sudo apt update
-          sudo apt install -y g++ make build-essential cmake
-          sudo apt install -y python3
-          sudo apt install -y genisoimage
-          sudo apt install -y libarchive-dev
+          sudo apt install -y g++ make build-essential cmake libarchive-dev python3 genisoimage
 
       - name: Run configure
         run: ./configure
