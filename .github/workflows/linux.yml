@@ -18,10 +18,13 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install g++
+      - name: Install required libs
         run: |
-          sudo apt-get update
-          sudo apt-get install -y g++ make build-essential
+          sudo apt update
+          sudo apt install -y g++ make build-essential cmake
+          sudo apt install -y python3
+          sudo apt install -y genisoimage
+          sudo apt install -y libarchive-dev
 
       - name: Run configure
         run: ./configure
