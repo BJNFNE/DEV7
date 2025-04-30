@@ -54,6 +54,9 @@ jobs:
       - name: Compile PLAViewer
         run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
         
+      - name: Compile DEV7Monitor
+        run: g++ -static -o SetupPatcher.exe tools-win/DEV7Monitor/DEV7Monitor/DEV7Monitor.cpp
+
       - name: Compile SetupPatcher
         run: g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp
 
@@ -105,3 +108,4 @@ jobs:
             CTRKViewer.exe
             PLAViewer.exe
             SetupPatcher.exe
+            DEV7Monitor.exe
