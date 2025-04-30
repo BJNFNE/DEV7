@@ -1,0 +1,54 @@
+name: Build and Release (Linux tools)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install required libs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage
+
+      - name: Run configure
+        run: ./configure
+
+      - name: Compile create_iso
+        run: g++ -o create_iso common-tools/linux/create_iso/create_iso.cpp
+
+      - name: Compile extract_iso
+        run: g++ -o extract_iso common-tools/linux/extract_iso/extract_iso.cpp -larchive
+
+      - name: Compile create_bin
+        run: g++ -o create_bin common-tools/linux/create_bin/create_bin.cpp
+
+      - name: Compile create_tar
+        run: g++ -o create_tar common-tools/linux/create_tar/create_tar.cpp
+
+      - name: Compile create_zip
+        run: g++ -o create_zip common-tools/linux/create_tar/create_zip.cpp
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-linux-tools
+          path: |
+            create_iso
+            extract_iso
+            create_tar
+            create_bin
+            create_zip
+            
