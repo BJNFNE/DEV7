@@ -1,9 +1,14 @@
+// Ported over from SetupPatcher
 #include <iostream>
 #include <windows.h>
 #include <tlhelp32.h>
 #include <tchar.h>
 #include <ctime>
 #include <string>
+
+// TODO:
+// Change the clock date back to the realtime value when the process (setup.exe) is being closed/terminated.
+// Current Workaround, sync the Time between PC and Time Server over the Settings, to change it back to the current timedate
 
 // Function to find the process ID of a given process name
 DWORD GetProcessId(const TCHAR* processName) {
