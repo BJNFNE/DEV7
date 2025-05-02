@@ -4,6 +4,7 @@
 brew 'cmake'
 brew 'gcc'
 brew 'python'
+brew 'pyinstaller'
 brew 'git'
 
 # Python dependencies
