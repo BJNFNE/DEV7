@@ -21,7 +21,7 @@ jobs:
       - name: Install required libs
         run: |
           sudo apt-get update
-          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage python3-pip python3-pyinstaller
+          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage python3-pip
 
       - name: Install PyInstaller
         run: pip install pyinstaller
