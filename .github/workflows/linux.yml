@@ -29,6 +29,33 @@ jobs:
       - name: Compile all C++ programs
         run: make
 
+      - name: Compile IMGConverter
+        run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+
+      - name: Compile AdultCornerDecoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+
+      - name: Compile AdultCornerEncoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+
+      - name: Compile IMGIdentifier
+        run: pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+
+      - name: Compile OBCEditor
+        run: pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+
+      - name: Compile PetiteDetector
+        run: pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
+
+      - name: Compile PKLiteDetector
+        run: pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
+
+      - name: Compile SecuROMDetector
+        run: pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+
+      - name: Compile copyDatas
+        run: pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -42,3 +69,12 @@ jobs:
             binaries/OBCViewer/OBCViewer
             binaries/CTRKViewer/CTRKViewer
             binaries/PLAViewer/PLAViewer
+            IMGConverter
+            AdultCornerDecoder
+            AdultCornerEncoder
+            IMGIdentifier
+            OBCEditor
+            PetiteDetector
+            PKLiteDetector
+            SecuROMDetector
+            copyDatas
