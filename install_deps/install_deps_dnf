@@ -1,7 +1,7 @@
 echo "Installation script for DEV7 repository deps (only for dnf package manager)"
 
 # Installation commands
-sudo dnf install clang gcc cmake
+sudo dnf install clang gcc cmake python3 python3-pip
 
 exit
 
