@@ -10,6 +10,7 @@ DEV7 is very well documented on the ScummVM Wiki see [here](https://wiki.scummvm
 4. Adibou presente series
 5. Le pays des pierres Magiques
 6. Nathan Vacances series
+7. English Fever series
 
 # Tools (DEV7)
 1. LOADER7VC checks which Version of DEV7 your LOADER7.EXE is.
