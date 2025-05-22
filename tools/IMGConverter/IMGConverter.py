@@ -27,7 +27,7 @@ def convert_to_tga(input_path, output_path, resolution):
         else:
             height = resolution[1]
             width = int(height * aspect_ratio)
-        image = image.resize((width, height), Image.ANTIALIAS)
+        image = image.resize((width, height))
         print("Warning: Input image resized to fit within the specified resolution.")
 
     # Create a new blank image with the specified resolution
