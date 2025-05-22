@@ -8,6 +8,11 @@ def identify_img(img_path, img_check):
         pass
     return False
 
+versionNumber = "ver. 1.0"
+print("=============================|")
+print("IMGIdentifier ", versionNumber, "     |")
+print("=============================|")
+
 print("\b")
 img_file = input("Enter the name of the IMG file (with .IMG extension): ")
 
