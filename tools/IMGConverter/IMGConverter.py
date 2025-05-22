@@ -7,9 +7,10 @@ import sys
 ALLOWED_FORMATS = {".jpg", ".jpeg", ".png", ".bmp", ".tga", ".gif", ".webp", ".psd"}
 
 def printHeader():
-    print("=====================")
-    print("IMGConverter ver. 1.1")
-    print("=====================")
+    versionNumber = "ver. 1.1"
+    print("======================")
+    print("IMGConverter ", versionNumber)
+    print("======================")
 
 def is_valid_image_file(file_path):
     _, file_extension = os.path.splitext(file_path)
