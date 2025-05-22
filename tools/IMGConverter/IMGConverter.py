@@ -1,3 +1,5 @@
+# TODO: Make sure that if an Image is larger as the background (800x600) then it should scale the Image so that it fits into the size even if it was orignally larger
+
 from PIL import Image
 import os
 import sys
