@@ -145,6 +145,9 @@ def start_console():
 
         elif command == "version":
             print("AdibouNet", versionNumber)
+            
+        elif command == "gameports":
+            print("Ports: ", ports)
 
         else:
             logger.warning(f"Unknown command: {command}. Type 'help' for a list of commands.")
