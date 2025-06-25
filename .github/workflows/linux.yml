@@ -30,7 +30,7 @@ jobs:
         run: ./configure
 
       - name: Compile all C++ programs
-        run: make
+        run: make -j4
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
