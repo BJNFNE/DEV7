@@ -31,7 +31,7 @@ jobs:
         run: g++ -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
       - name: Compile DEV7Launcher
-        run: g++ -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+        run: g++ -I. -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
 
       - name: Compile OBJDumper
         run: g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
@@ -46,13 +46,13 @@ jobs:
         run: g++ -static -mwindows -o SYSTEM_RussianRelease.EXE rewritten-modern-software/SYSTEM_RussianRelease/SYSTEM/SYSTEM.cpp
 
       - name: Compile CTRKViewer
-        run: g++ -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
+        run: g++ -I. -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
 
       - name: Compile OBCViewer
-        run: g++ -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+        run: g++ -I. -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
 
       - name: Compile PLAViewer
-        run: g++ -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+        run: g++ -I. -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
         
     #  - name: Compile DEV7Monitor
      #   run: g++ -static -o DEV7Monitor.exe tools-win/DEV7Monitor/DEV7Monitor/DEV7Monitor.cpp -lpdh
