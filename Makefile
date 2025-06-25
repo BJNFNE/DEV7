@@ -5,8 +5,8 @@ CXX = g++
 # Compiler flags
 RELEASE_CFLAGS = -O2 -pipe -s
 DEBUG_CFLAGS = -g -pipe
-RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++23
-DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++23
+RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++23 -I.
+DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++23 -I.
 
 # Directory containing source files
 SRC_DIR = tools
