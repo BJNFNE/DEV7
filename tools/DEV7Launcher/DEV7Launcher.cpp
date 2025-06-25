@@ -2,6 +2,8 @@
 #include <fstream>
 #include <filesystem>
 
+#include "common-code/ConsoleUtils.h"
+
 #ifdef _WIN32
 #include <windows.h>
 #include <io.h>
@@ -37,11 +39,6 @@ void printHeader() {
     std::cout << "=========================" << std::endl;
     std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
     std::cout << "=========================" << std::endl;
-}
-
-void clearConsole() {
-    std::cout << "\033[2J\033[H";
-    return;
 }
 
 bool isDEV7Running() {
@@ -99,7 +96,7 @@ void modifyMDODbg() {
         std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
         (void)getchar();
-        clearConsole();
+        ConsoleUtils::clearConsole();
         return;
     }
 
@@ -127,7 +124,7 @@ void modifyAdibou3Ini() {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
         (void)getchar();
-        clearConsole();
+        ConsoleUtils::clearConsole();
         return;
     }
 
@@ -153,7 +150,7 @@ void modifyAdi5Ini() {
         std::cout << "Error: This directory does not seem to be an Adi 5 game directory.\n" << std::endl;
         std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
         (void)getchar();
-        clearConsole();
+        ConsoleUtils::clearConsole();
         return;
     }
 
@@ -263,7 +260,7 @@ int main(int argc, char* argv[]) {
     if (isDEV7Running()) {
         std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
         (void)getchar();
-        clearConsole();
+        ConsoleUtils::clearConsole();
         return 1;
     }
 
@@ -321,7 +318,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated." << std::endl;
         std::cout << "Press Enter to exit." << std::endl;
         (void)getchar();
-        clearConsole();
+        ConsoleUtils::clearConsole();
         return 1;
     }
 
@@ -407,7 +404,7 @@ int minutes = (elapsed.count() % 3600) / 60; // Remaining minutes after extracti
 int seconds = elapsed.count() % 60; // Remaining seconds after extracting minutes
 
 if (usedLoader7OrDev7VM) {
-    clearConsole();
+    ConsoleUtils::clearConsole();
 }
 
 std::cout << "Total playtime: " << hours << " hours, " << minutes << " minutes and " << seconds << " seconds." << std::endl;
@@ -424,13 +421,13 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
     #else
     int deleteMutexUnix = system("rm /tmp/DEV7_INSTANCE_MUTEX");
     #endif
-    clearConsole();  // Clear the console before restarting
+    ConsoleUtils::clearConsole(); // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
 }
 
 if (restartChoice == 'n' || restartChoice == 'N') {
 
-    clearConsole();
+    ConsoleUtils::clearConsole();
     return 1;
 
 }

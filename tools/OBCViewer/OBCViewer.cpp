@@ -3,6 +3,8 @@
 #include <filesystem>
 #include <ctime>
 
+#include "common-code/ConsoleUtils.h"
+
 #ifdef __unix__
 #include <unistd.h>
 #endif
@@ -28,10 +30,6 @@ void printUsage() {
     std::cout << " * Adiboud'chou series" << std::endl;
     std::cout << " * Nathan Vacances series" << std::endl;
     std::cout << " * Le Pays des pierres magiques" << std::endl << std::endl;
-}
-
-void clearConsole() {
-    std::cout << "\033[2J\033[H";
 }
 
 int main(int argc, char* argv[]) {
@@ -135,7 +133,7 @@ int main(int argc, char* argv[]) {
     std::cout << std::endl;
     std::cout << "Press Enter to exit OBCViewer" << std::endl;
     (void)getchar();
-    clearConsole();
+    ConsoleUtils::clearConsole();
     return 0;
 
 } // End of namespace fs
