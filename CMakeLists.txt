@@ -6,6 +6,8 @@ project(DEV7)
 # Specify where the executables will be placed
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/binaries)
 
+include_directories(${CMAKE_SOURCE_DIR})
+
 # Add each tool's directory as a subdirectory
 add_subdirectory(tools/BCD1Creator)
 add_subdirectory(tools/CTRKViewer)
