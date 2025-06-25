@@ -55,7 +55,7 @@ jobs:
         run: g++ -I. -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
         
     #  - name: Compile DEV7Monitor
-     #   run: g++ -static -o DEV7Monitor.exe tools-win/DEV7Monitor/DEV7Monitor/DEV7Monitor.cpp -lpdh
+     #   run: g++ -I. -static -o DEV7Monitor.exe tools-win/DEV7Monitor/DEV7Monitor/DEV7Monitor.cpp -lpdh
 
       - name: Compile SetupPatcher
         run: g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp

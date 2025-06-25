@@ -5,6 +5,8 @@
 #include <Psapi.h>
 #include <TlHelp32.h>
 
+#include "common-code/ConsoleUtils.h"
+
 #pragma comment(lib, "pdh.lib")
 
 using namespace std;
@@ -113,7 +115,7 @@ int main() {
     }
 
     while (true) {
-        system("cls"); // Clear the console
+        ConsoleUtils::clearConsole();
 
         double cpuUsage = GetCPULoad(GetProcessId(LOADER_EXE_NAME));
 
