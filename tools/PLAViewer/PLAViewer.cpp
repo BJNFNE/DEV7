@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <algorithm>
 
+#include "common-code/ConsoleUtils.h"
+
 namespace fs = std::filesystem;
 
 // Set here the versionNumber
@@ -21,15 +23,6 @@ int main(int argc, char* argv[]) {
 
     // Here are listed the strings for PLA itself.
     std::string inputPLA = argv[1];
-
-    // for clearing the Console after the Program closed.
-    std::string clearConsole;
-
-    #ifdef _WIN32
-        clearConsole = "cls"; // Command to clear the console on Windows
-    #else
-        clearConsole = "clear"; // Command to clear the console on MacOS/Linux
-    #endif
 
     // Convert the extension to lowercase for case-insensitive comparison
     fs::path inputSaveGame(inputPLA);
@@ -74,7 +67,7 @@ int main(int argc, char* argv[]) {
     std::cout << "\b" << std::endl;
     std::cout << "Press Enter to exit PLAViewer.\n" << std::endl;
     (void)getchar();
-    int clearConsoleExec = system(clearConsole.c_str());
+    ConsoleUtils::clearConsole();
 
     return 0;
 
