@@ -19,7 +19,7 @@
 #endif
 
 // Defines
-#define FILE_PERMISSIONS 0666
+#define READ_WRITE_PERMISSION 0666
 
 // Namespaces
 namespace fs = std::filesystem;
@@ -49,7 +49,7 @@ bool isDEV7Running() {
         return true;
     }
 #else
-    int fd = open(DEV7_MUTEX_LAUNCH_UNIX, O_CREAT | O_RDWR, FILE_PERMISSIONS);
+    int fd = open(DEV7_MUTEX_LAUNCH_UNIX, O_CREAT | O_RDWR, READ_WRITE_PERMISSION);
     if (fd == -1) {
         return true;
     }
