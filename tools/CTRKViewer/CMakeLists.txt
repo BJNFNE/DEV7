@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.29.5)
-#cmake_minimum_required(VERSION 3.24)
 project(CTRKViewer)
 message("-- CTRKViewer - CMake compilation")
 
