@@ -94,7 +94,7 @@ int main() {
 
     // Prompt the user for the ISO file path
     std::cout << "Enter the path to the ISO file (including .iso extension): ";
-    std::getline(std::cin, isoPath);
+    getline(std::cin, isoPath);
 
     // Check if the file has a valid ".iso" extension
     if (!hasISOExtension(isoPath)) {
@@ -104,7 +104,7 @@ int main() {
 
     // Prompt the user for the destination directory
     std::cout << "Enter the destination directory for extraction: ";
-    std::getline(std::cin, destDir);
+    getline(std::cin, destDir);
 
     // Extract the ISO
     if (extractISO(isoPath.c_str(), destDir.c_str())) {

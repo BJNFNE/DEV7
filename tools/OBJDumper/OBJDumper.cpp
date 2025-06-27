@@ -25,7 +25,7 @@ void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputL
 
     std::set<std::string> objFiles;
     std::string line;
-    while (std::getline(inFile, line)) {
+    while (getline(inFile, line)) {
         if (line.find(".obj") != std::string::npos && line.find_first_not_of(' ') == std::string::npos) {
             // Skip lines containing only ".obj"
             continue;
@@ -83,17 +83,17 @@ int main() {
 
     // Get user input for input file
     std::cout << "Enter the input file (default is loader7.map): ";
-    std::getline(std::cin, inputFile);
+    getline(std::cin, inputFile);
 
     // Ask user for output file format preference
     std::cout << "Do you want to use 'Folder/Object.obj' format? (y/n): ";
     std::string preference;
-    std::getline(std::cin, preference);
+    getline(std::cin, preference);
     useSlash = (preference == "y");
 
     // Get user input for output location
     std::cout << "Enter the output file name: ";
-    std::getline(std::cin, outputLocation);
+    getline(std::cin, outputLocation);
 
     dumpUniqueObjFiles(inputFile, outputLocation, useSlash);
 
