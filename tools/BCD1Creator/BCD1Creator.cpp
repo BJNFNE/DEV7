@@ -110,12 +110,12 @@ int main(int argc, const char **argv) {
     // Ask the user for the BCD1 file name
     std::cout << "Enter the Filename of the Game which you wanna modify: " << std::endl;
     std::string fileName;
-    std::getline(std::cin, fileName);
+    getline(std::cin, fileName);
 
     // Ask the user to choose between AppliInfo and ENVIINFO
     std::cout << "Choose between [1] AppliInfo or [2] ENVIINFO: ";
     std::string choice;
-    std::getline(std::cin, choice);
+    getline(std::cin, choice);
 
     // Ask the user for details based on the chosen section
     std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN, IDFile, CDDetected;
@@ -123,34 +123,34 @@ int main(int argc, const char **argv) {
     if (choice == "1") {
         std::cout << "Enter [AppliInfo] details:\n"; // (Applications only!)
         std::cout << "Name: ";
-        std::getline(std::cin, Name);
+        getline(std::cin, Name);
         std::cout << "CDName: ";
-        std::getline(std::cin, CDName);
+        getline(std::cin, CDName);
         std::cout << "PictCD: ";
-        std::getline(std::cin, PictCD);
+        getline(std::cin, PictCD);
         std::cout << "MiniEnviVersion: ";
-        std::getline(std::cin, MiniEnviVersion);
+        getline(std::cin, MiniEnviVersion);
         // std::cout << "Order: ";
-        // std::getline(std::cin, Order);
+        // getline(std::cin, Order);
         std::cout << "PictureNameR: ";
-        std::getline(std::cin, PictureNameR);
+        getline(std::cin, PictureNameR);
         std::cout << "PictureNameC: ";
-        std::getline(std::cin, PictureNameC);
+        getline(std::cin, PictureNameC);
         std::cout << "PictureNameN: ";
-        std::getline(std::cin, PictureNameN);
+        getline(std::cin, PictureNameN);
     }
     else if (choice == "2") {
         std::cout << "Enter [ENVIINFO] details:\n";  // (Environment only!)
         std::cout << "Name: ";
-        std::getline(std::cin, Name);
+        getline(std::cin, Name);
         std::cout << "PictCD: ";
-        std::getline(std::cin, PictCD);
+        getline(std::cin, PictCD);
         // std::cout << "Order: ";
-        // std::getline(std::cin, Order);
+        // getline(std::cin, Order);
         // std::cout << "IDFile: ";
-        // std::getline(std::cin, IDFile);
+        // getline(std::cin, IDFile);
         // std::cout << "CDDetected: ";
-        // std::getline(std::cin, CDDetected);
+        // getline(std::cin, CDDetected);
     }
     else {
         std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
