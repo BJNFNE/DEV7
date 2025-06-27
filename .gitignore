@@ -14,6 +14,17 @@
 *.out
 *.EXE
 
+# Picture File Formats
+*.bmp
+*.tga
+*.gif
+*.jpg
+*.jpeg
+*.png
+*.img
+*.webp
+*.psd
+
 # Ignore Jetbrains CLion IDE files
 .idea
 
