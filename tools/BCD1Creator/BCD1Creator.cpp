@@ -30,7 +30,6 @@ The last 3 numbers are for the version number.
 
 #include <iostream>
 #include <fstream>
-#include <string>
 
 #ifdef _WIN32
 #include <windows.h> // For setting console encoding
