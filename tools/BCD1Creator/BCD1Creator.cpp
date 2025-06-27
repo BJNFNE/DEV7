@@ -102,7 +102,7 @@ void printHeader() {
     std::cout << "==========================" << std::endl;
 }
 
-int main() {
+int main(int argc, const char **argv) {
     printHeader();
     std::cout << std::endl;
     exampleBCD1Names();
