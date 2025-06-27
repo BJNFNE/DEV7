@@ -34,7 +34,7 @@ bool fileExists(const std::string& filename) {
 }
 
 void printHeader() {
-    const std::string versionNumber = "1.1.4";
+    const std::string versionNumber = "1.1.5";
 
     std::cout << "=========================" << std::endl;
     std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
