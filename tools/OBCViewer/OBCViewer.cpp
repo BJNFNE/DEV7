@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
     // (usually it is 1999, due to OBCEditor it is possible to change this Year so this Change is made so the modified Scripts are always compatible with OBCViewer)
     int number;
     if (sscanf(checkEntrypointOBC.c_str(), "OBC Copyright MDO %d", &number) != 1) {
-        std::cerr << "Error: Unable to find the number from the Entrypoint!" << std::endl;
+        printf("Error: Unable to find the number of the Entrypoint!");
         return 1;
     }
 
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
     std::ofstream OBCOutput(inputScript.stem().string() + ".txt");
 
     if (!OBCOutput) {
-        std::cerr << "Error: Unable to create a text output of the OBC Script." << std::endl;
+        printf("Error: Unable to create a text output of the OBC Script");
         return 1;
     }
 
@@ -107,7 +107,7 @@ int main(int argc, char* argv[]) {
     // Create a separate file for Debug Infos
     std::ofstream DebugInfoOutput(inputScript.stem().string() + "_debuginfo.txt");
     if (!DebugInfoOutput) {
-        std::cerr << "Error: Unable to create Debug Infos file." << std::endl;
+        printf("Error: Unable to create Debug Infos file.");
         return 1;
     }
 
@@ -121,17 +121,17 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Offset (bytes): " << offset << " bytes" << std::dec << std::endl;
     DebugInfoOutput.close();
 
-    std::cout << "OBC Script (" << argv[1] << ") is now readable." << std::endl;
+    printf("OBC Script (%s) is now readable\n", argv[1]);
 
     // Display the full path of the output file of the OBC Script
     ConsoleUtils::printNewLine();
-    std::cout << "Output created at:" << std::endl;
+    printf("Output created at:");
     printf("%s", fs::absolute(inputScript.stem().string() + ".txt").c_str());
     ConsoleUtils::printNewLine();
 
     // Exit message for OBCViewer
     ConsoleUtils::printNewLine();
-    std::cout << "Press Enter to exit OBCViewer" << std::endl;
+    printf("Press Enter to exit OBCViewer");
     (void)getchar();
     ConsoleUtils::clearConsole();
     return 0;
