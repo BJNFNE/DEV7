@@ -1,0 +1,83 @@
+name: Build and Release (Linux CMake)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install required libs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage python3-pip
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Run configure
+        run: ./configure
+
+      - name: Compile all C++ programs
+        run: make cmake
+
+      - name: Compile IMGConverter
+        run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+
+      - name: Compile AdultCornerDecoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+
+      - name: Compile AdultCornerEncoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+
+      - name: Compile IMGIdentifier
+        run: pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+
+      - name: Compile OBCEditor
+        run: pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+
+      - name: Compile PetiteDetector
+        run: pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
+
+      - name: Compile PKLiteDetector
+        run: pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
+
+      - name: Compile SecuROMDetector
+        run: pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+
+      - name: Compile copyDatas
+        run: pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-linux
+          path: |
+            binaries/LoaderMDO/LoaderMDO
+            binaries/BCD1Creator/BCD1Creator
+            binaries/DEV7Launcher/DEV7Launcher
+            binaries/ModelPathDumper/ModelPathDumper
+            binaries/OBJDumper/OBJDumper
+            binaries/OBCViewer/OBCViewer
+            binaries/CTRKViewer/CTRKViewer
+            binaries/PLAViewer/PLAViewer
+            IMGConverter
+            AdultCornerDecoder
+            AdultCornerEncoder
+            IMGIdentifier
+            OBCEditor
+            PetiteDetector
+            PKLiteDetector
+            SecuROMDetector
+            copyDatas
