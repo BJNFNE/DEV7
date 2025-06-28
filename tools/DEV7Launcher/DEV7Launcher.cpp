@@ -243,7 +243,7 @@ void startGameExecutable() { // TODO: Function refactor/rework has to be done fr
     else if (fileExists("Loader7.exe"))
         std::cout << "Loader7.exe found. Starting Loader7.exe over wine..." << std::endl, launchCommand("wine Loader7.exe");
     else
-        std::cout << "None of the executables found. \nPlease make sure you have the exe in the same Directory as the Launcher." << std::endl;
+        printf("None of the executables found. \nPlease make sure you have the exe in the same Directory as the Launcher.");
 }
 
 int main(int argc, char* argv[]) {
@@ -338,16 +338,13 @@ switch(choice) {
         break;
     case 3:
         modifyMDOIni();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 4:
         showTraceTXT();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 5:
         modifyMDODbg();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 6:
         if (Loader7Exists) {
             launchCommand("Loader7.exe -obc='B3_ParentLaunch'");
@@ -359,32 +356,25 @@ switch(choice) {
         break;
     case 7:
         modifyAdibou3Ini();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 8:
         runUNINST();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 9:
         Ed4Intro();
-        usedLoader7OrDev7VM = true;
-        break;
+        return 0;
     case 10:
         modifyAdi5Ini();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 11:
         openLicenceFile();
-        usedLoader7OrDev7VM = false;
-        break;
+        return 0;
     case 12:
         showMSGDef();
-        usedLoader7OrDev7VM = false;
-        break;
-    default:
-        printf("Invalid choice. Please choose a valid option.\n");
-        usedLoader7OrDev7VM = false;
         return 0;
+    default:
+        printf("Invalid choice. Launcher exits\n");
+        TaskExecution::pressEnterToExit();
 }
 
 auto end = std::chrono::steady_clock::now(); // Record the end time
