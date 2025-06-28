@@ -7,6 +7,8 @@
 #include <Shlwapi.h>
 #include <iomanip>
 
+#include "common-code/TaskExecution.h"
+
 #pragma comment(lib, "Version.lib")
 #pragma comment(lib, "Shlwapi.lib")
 
@@ -25,13 +27,13 @@ void PrintVersionInfo(const std::string& filename) {
     DWORD dummy;
     DWORD size = GetFileVersionInfoSizeA(filename.c_str(), &dummy);
     if (size == 0) {
-        std::cout << "No version info found.\n";
+        printf("No version info found.\n");
         return;
     }
 
     std::vector<char> data(size);
     if (!GetFileVersionInfoA(filename.c_str(), 0, size, data.data())) {
-        std::cout << "GetFileVersionInfo failed.\n";
+        printf("GetFileVersionInfo failed.\n");
         return;
     }
 
@@ -116,8 +118,7 @@ void DisplayFileInfo(const std::string& filepath) {
         std::cout << "PDB File reference not found in " << filepath << "\n";
     }
 
-    std::cout << "\nPress Enter to exit LOADER7VC...";
-    std::cin.get();
+    TaskExecution::pressEnterToExit();
 }
 
 int main(int argc, char* argv[]) {
@@ -128,7 +129,7 @@ int main(int argc, char* argv[]) {
     if (argc > 1) {
         exePath = argv[1];
         if (!ValidateFilePath(exePath)) {
-            std::cerr << "Only Loader7.exe or Dev7VM.EXE are allowed.\n";
+            fprintf(stderr,"Only Loader7.exe or Dev7VM.EXE are allowed.\n");
             return 1;
         }
     }
@@ -148,9 +149,8 @@ int main(int argc, char* argv[]) {
             exePath = dev7vm;
         }
         else {
-            std::cerr << "Loader7.exe or Dev7VM.EXE not found in the current directory.\n";
-            std::cout << "Press Enter to exit.\n";
-            std::cin.get();
+            fprintf(stderr, "Loader7.exe or Dev7VM.EXE not found in the current directory.\n");
+            TaskExecution::pressEnterToExit();
             return 1;
         }
     }
