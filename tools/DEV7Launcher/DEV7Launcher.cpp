@@ -3,6 +3,7 @@
 #include <filesystem>
 
 #include "common-code/ConsoleUtils.h"
+#include "common-code/TaskExecution.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -34,11 +35,11 @@ bool fileExists(const std::string& filename) {
 }
 
 void printHeader() {
-    const std::string versionNumber = "1.1.5";
+    const std::string versionNumber = "1.2.0";
 
-    std::cout << "=========================" << std::endl;
+    printf("=========================\n");
     std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
-    std::cout << "=========================" << std::endl;
+    printf("=========================\n");
 }
 
 bool isDEV7Running() {
@@ -94,9 +95,7 @@ void modifyMDODbg() {
 
     if (!fileExists(mdo_dbg)) {
         std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
-        std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        (void)getchar();
-        ConsoleUtils::clearConsole();
+        TaskExecution::pressEnterToExit();
         return;
     }
 
@@ -122,9 +121,7 @@ void modifyAdibou3Ini() {
      // Check if Adibou3.ini exists
     if (!fs::exists("Adibou3.ini")) {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
-        std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        (void)getchar();
-        ConsoleUtils::clearConsole();
+        TaskExecution::pressEnterToExit();
         return;
     }
 
@@ -147,10 +144,8 @@ void modifyAdi5Ini() {
 
      // Check if Data/ADI5.ini exists
     if (!fs::exists("Data/ADI5.ini")) {
-        std::cout << "Error: This directory does not seem to be an Adi 5 game directory.\n" << std::endl;
-        std::cout << "Press Enter to exit DEV7Launcher" << std::endl;
-        (void)getchar();
-        ConsoleUtils::clearConsole();
+        printf("Error: This directory does not seem to be an Adi 5 game directory.\n");
+        TaskExecution::pressEnterToExit();
         return;
     }
 
@@ -182,14 +177,14 @@ void openLicenceFile() {
 
 #ifdef _WIN32
         int open = system(("notepad.exe " + filename).c_str());
-        std::cout << "Please wait a few moments to open the Licence for you.\n" << std::endl;
+        printf("Please wait a few moments to open the Licence for you.\n");
 #else
         int open = system(("open " + filename).c_str());
-        std::cout << "Please wait a few moments to open the Licence for you.\n" << std::endl;
+        printf("Please wait a few moments to open the Licence for you.\n");
 #endif
 
     } else {
-        std::cout << "License or warranty file not found.\n" << std::endl;
+        printf("License or warranty file not found.\n");
     }
 }
 
@@ -205,7 +200,7 @@ void runUNINST() {
     std::cout << "Follow the Instructions to process the uninstallation.\n" << std::endl;
 #else
     if (system("wine UNINST.EXE") != 0) {
-    std::cout << "Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n" << std::endl;
+    printf("Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n");
     }
 #endif
 }
@@ -215,7 +210,7 @@ void Ed4Intro() {
 
      // Check if Ed4Intro.exe exists
     if (!fs::exists("Ed4Intro.exe")) {
-        std::cout << "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n" << std::endl;
+        printf("Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         return;
     }
 #ifdef _WIN32
@@ -258,9 +253,8 @@ int main(int argc, char* argv[]) {
     bool usedLoader7OrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
 
     if (isDEV7Running()) {
-        std::cout << "A DEV7 client is already running, cannot handle more than one DEV7 client.\n" << std::endl;
-        (void)getchar();
-        ConsoleUtils::clearConsole();
+        printf("A DEV7 client is already running, cannot handle more than one DEV7 client.\n");
+        TaskExecution::pressEnterToExit();
         return 1;
     }
 
@@ -271,54 +265,52 @@ int main(int argc, char* argv[]) {
     printHeader();
 
     if (Loader7Exists && Dev7VMExists) {
-        std::cout << "Choose an option:\n";
-        std::cout << "1. Start Dev7VM with Debug Menu/Windowed mode\n";
-        std::cout << "2. Start Dev7VM in Fullscreen mode\n";
-        std::cout << "3. Start loader7 with Debug Menu/Windowed mode\n";
-        std::cout << "4. Start loader7 in Fullscreen mode\n";
-        std::cout << "5. Modify mdo.ini\n";
-        std::cout << "7. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
-        std::cout << "8. Modify mdo.dbg\n";
-        std::cout << "9. Launch Parentsection (Adibou 3 only)\n";
-        std::cout << "10. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "11. Run Uninstaller (UNINST.EXE)\n";
-        std::cout << "12. Start Le pays des Pierres magiques Intro\n";
-        std::cout << "13. Modify Adi5.ini (Adi 5 only)\n";
-        std::cout << "14. Open Licence Agreement\n";
-        std::cout << "15. Open MSG.DEF\n";
+        printf("Choose an option:\n");
+        printf("1. Start Dev7VM with Debug Menu/Windowed mode\n");
+        printf("2. Start Dev7VM in Fullscreen mode\n");
+        printf("3. Start loader7 with Debug Menu/Windowed mode\n");
+        printf("4. Start loader7 in Fullscreen mode\n");
+        printf("5. Modify mdo.ini\n");
+        printf("7. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
+        printf("8. Modify mdo.dbg\n");
+        printf("9. Launch Parentsection (Adibou 3 only)\n");
+        printf("10. Modify Adibou3.ini (Adibou 3 only)\n");
+        printf("11. Run Uninstaller (UNINST.EXE)\n");
+        printf("12. Start Le pays des Pierres magiques Intro\n");
+        printf("13. Modify Adi5.ini (Adi 5 only)\n");
+        printf("14. Open Licence Agreement\n");
+        printf("15. Open MSG.DEF\n");
     } else if (Loader7Exists) {
-        std::cout << "Choose an option:\n";
-        std::cout << "1. Start loader7 with Debug Menu/Windowed mode\n";
-        std::cout << "2. Start loader7 in Fullscreen mode\n";
-        std::cout << "3. Modify mdo.ini\n";
-        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
-        std::cout << "5. Modify mdo.dbg\n";
-        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
-        std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "8. Run Uninstaller\n";
-        std::cout << "9. Start Le pays des Pierres magiques Intro\n";
-        std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
-        std::cout << "11. Open Licence Agreement\n";
-        std::cout << "12. Open MSG.DEF\n";
+        printf("Choose an option:\n");
+        printf("1. Start loader7 with Debug Menu/Windowed mode\n");
+        printf("2. Start loader7 in Fullscreen mode\n");
+        printf("3. Modify mdo.ini\n");
+        printf("4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
+        printf("5. Modify mdo.dbg\n");
+        printf("6. Launch Parentsection (Adibou 3 only)\n");
+        printf("7. Modify Adibou3.ini (Adibou 3 only)\n");
+        printf("8. Run Uninstaller\n");
+        printf("9. Start Le pays des Pierres magiques Intro\n");
+        printf("10. Modify Adi5.ini (Adi 5 only)\n");
+        printf("11. Open Licence Agreement\n");
+        printf("12. Open MSG.DEF\n");
     } else if (Dev7VMExists) {
-        std::cout << "Choose an option:\n";
-        std::cout << "1. Start Dev7VM with Debug Menu/Windowed mode\n";
-        std::cout << "2. Start Dev7VM in Fullscreen mode\n";
-        std::cout << "3. Modify mdo.ini\n";
-        std::cout << "4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n";
-        std::cout << "5. Modify mdo.dbg\n";
-        std::cout << "6. Launch Parentsection (Adibou 3 only)\n";
-        std::cout << "7. Modify Adibou3.ini (Adibou 3 only)\n";
-        std::cout << "8. Run Uninstaller (UNINST.EXE)\n";
-        std::cout << "9. Start Le pays des Pierres magiques Intro\n";
-        std::cout << "10. Modify Adi5.ini (Adi 5 only)\n";
-        std::cout << "11. Open Licence Agreement\n";
-        std::cout << "12. Open MSG.DEF\n";
+        printf("Choose an option:\n");
+        printf("1. Start Dev7VM with Debug Menu/Windowed mode\n");
+        printf("2. Start Dev7VM in Fullscreen mode\n");
+        printf("3. Modify mdo.ini\n");
+        printf("4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
+        printf("5. Modify mdo.dbg\n");
+        printf("6. Launch Parentsection (Adibou 3 only)\n");
+        printf("7. Modify Adibou3.ini (Adibou 3 only)\n");
+        printf("8. Run Uninstaller (UNINST.EXE)\n");
+        printf("9. Start Le pays des Pierres magiques Intro\n");
+        printf("10. Modify Adi5.ini (Adi 5 only)\n");
+        printf("11. Open Licence Agreement\n");
+        printf("12. Open MSG.DEF\n");
     } else {
-        std::cout << "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated." << std::endl;
-        std::cout << "Press Enter to exit." << std::endl;
-        (void)getchar();
-        ConsoleUtils::clearConsole();
+        printf("Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated.\n");
+        TaskExecution::pressEnterToExit();
         return 1;
     }
 
