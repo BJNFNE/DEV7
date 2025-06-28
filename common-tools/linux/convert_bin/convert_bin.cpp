@@ -7,11 +7,11 @@ int main() {
 
 // inputISO for registering which ISO should be converted. 
 std::string inputISO;
-std::cout << "Navigate to the Path of your ISO!" << std::endl;
+printf("Navigate to the Path of your ISO!");
 std::cin >> inputISO;
 
 std::string outputBIN;
-std::cout << "Give me the Output directory for the BIN file" << std::endl;
+printf("Give me the Output directory for the BIN file");
 std::cin >> outputBIN;
 
 // Setup here the Program for converting iso to bin

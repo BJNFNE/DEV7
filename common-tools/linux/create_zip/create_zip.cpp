@@ -7,11 +7,11 @@ int main() {
 
 // inputFolder for selecting which Folder should be used for the creation of the ZIP archive. 
 std::string inputFolder;
-std::cout << "Navigate to the Path of the input Folder!" << std::endl;
+printf("Navigate to the Path of the input Folder!");
 std::cin >> inputFolder;
 
 std::string outputZIP;
-std::cout << "Give me the Output directory for the ZIP archive" << std::endl;
+printf("Give me the Output directory for the ZIP archive");
 std::cin >> outputZIP;
 
 // Setup here the Program for creating ZIP archive from the Folder.

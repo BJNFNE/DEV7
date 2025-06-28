@@ -14,16 +14,16 @@ int main() {
     std::string directory, outputFileName;
 
     // Get directory path from the user
-    std::cout << "Enter the directory path to create ISO from: ";
+    printf("Enter the directory path to create ISO from: ");
     std::cin >> directory;
 
     // Get volume ID from the user
     std::string volumeId;
-    std::cout << "Enter the volume ID for the ISO image: ";
+    printf("Enter the volume ID for the ISO image: ");
     std::cin >> volumeId;
 
     // Get output file name from the user
-    std::cout << "Enter the output file name for the ISO image (including file/directory path): ";
+    printf("Enter the output file name for the ISO image (including file/directory path): ");
     std::cin >> outputFileName;
 
     // Create command to execute genisoimage
@@ -33,9 +33,9 @@ int main() {
     int result = std::system(command.c_str());
 
     if (result == 0) {
-        std::cout << "ISO file created successfully." << std::endl;
+        printf("ISO file created successfully.\n");
     } else {
-        std::cerr << "Error creating ISO file." << std::endl;
+        fprintf(stderr, "Error creating ISO file.\n");
     }
 
     return 0;

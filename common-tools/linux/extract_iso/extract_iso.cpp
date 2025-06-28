@@ -15,6 +15,7 @@ Requirements:
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string.h>
 
 // Function to extract files from an ISO archive
 bool extractISO(const char* isoPath, const char* destDir) {
@@ -93,24 +94,24 @@ int main() {
     std::string isoPath, destDir;
 
     // Prompt the user for the ISO file path
-    std::cout << "Enter the path to the ISO file (including .iso extension): ";
+    printf("Enter the path to the ISO file (including .iso extension): ");
     getline(std::cin, isoPath);
 
     // Check if the file has a valid ".iso" extension
     if (!hasISOExtension(isoPath)) {
-        std::cerr << "Error: The file must have a '.iso' extension." << std::endl;
+        fprintf(stderr, "Error: The file must have a '.iso' extension.");
         return 1;
     }
 
     // Prompt the user for the destination directory
-    std::cout << "Enter the destination directory for extraction: ";
+    printf("Enter the destination directory for extraction: ");
     getline(std::cin, destDir);
 
     // Extract the ISO
     if (extractISO(isoPath.c_str(), destDir.c_str())) {
-        std::cout << "ISO extracted successfully to " << destDir << std::endl;
+        printf("ISO extracted successfully to %d ", destDir);
     } else {
-        std::cerr << "Failed to extract ISO to " << destDir << std::endl;
+        printf("Failed to extract ISO to %d", destDir);
     }
 
     return 0;
