@@ -216,8 +216,7 @@ void Ed4Intro() {
 #ifdef _WIN32
     int Ed4Intro = system("Ed4Intro.exe");
 #else
-    if (system("wine Ed4Intro.exe") != 0) {
-    }
+    int Ed4Intro = system("wine Ed4Intro.exe");
 #endif
 }
 
