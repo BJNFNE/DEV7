@@ -30,6 +30,7 @@
 
 # Ignore Visual Studio specific files/folders
 .vs/
+.vscode/
 
 # Debug/Release Folders
 Debug/
