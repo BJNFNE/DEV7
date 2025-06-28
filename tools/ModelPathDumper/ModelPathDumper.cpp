@@ -24,7 +24,7 @@ void printHeader() {
 void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile, int& fileCount) {
     std::ofstream output(outputFile);
     if (!output) {
-        std::cerr << "Error: Unable to open the output file.\n" << std::endl;
+        fprintf(stderr, "Error: Unable to open the output file.");
         return;
     }
 
@@ -54,24 +54,23 @@ void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile
 int main() {
     printHeader();
     std::string directoryPath;
-    std::cout << "Enter the directory path: \n";
-    std::cout << "If you are already in the correct directory just type .\n";
+    printf("Enter the directory path\n");
+    printf("If you are already in the correct directory just type.\n");
     std::cin >> directoryPath;
 
     std::string outputFile;
-    std::cout << "Enter the output file path: ";
+    printf("Enter the output file path: ");
     std::cin >> outputFile;
 
     fs::path directory(directoryPath);
     if (!fs::exists(directory) || !fs::is_directory(directory)) {
-        std::cerr << "Error: The specified directory does not exist or is not a directory.\n" << std::endl;
+        fprintf(stderr, "Error: The specified directory does not exist or is not a directory.");
         return 1;
     }
 
     int exoCount = 0;
     searchAndDumpPaths(directory, outputFile, exoCount);
-
-    std::cout << "Search is completed. Found " << exoCount << " .exo files.\n" << std::endl;
+    printf("Search is completed. Found %d .exo files.", exoCount);
     return 0;
     
 } // End of namespace fs
