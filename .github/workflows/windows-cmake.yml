@@ -1,0 +1,84 @@
+name: Build and Release (Windows CMake)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install MinGW
+        run: choco install mingw -y
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Compile C++ programs over CMake
+      - run: make cmake
+
+      - name: Compile IMGConverter
+        run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+
+      - name: Compile AdultCornerDecoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+
+      - name: Compile AdultCornerEncoder
+        run: pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+
+      - name: Compile IMGIdentifier
+        run: pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+
+      - name: Compile OBCEditor
+        run: pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+
+      - name: Compile PetiteDetector
+        run: pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
+
+      - name: Compile PKLiteDetector
+        run: pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
+
+      - name: Compile SecuROMDetector
+        run: pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+
+      - name: Compile copyDatas
+        run: pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-windows-cmake
+          path: |
+            LoaderMDO.exe
+            SYSTEM.EXE
+            SYSTEM_RussianRelease.EXE
+            BCD1Creator.exe
+            DEV7Launcher.exe
+            OBJDumper.exe
+            ModelPathDumper.exe
+            IMGConverter.exe
+            decoder.exe
+            encoder.exe
+            IMGIdentifier.exe
+            OBCEditor.exe
+            PetiteDetector.exe
+            PKLiteDetector.exe
+            SecuROMDetector.exe
+            OBCViewer.exe
+            CTRKViewer.exe
+            PLAViewer.exe
+            SetupPatcher.exe
+            Y2K38Patcher.exe
+            copyDatas.exe
+            LOADER7VC.exe
+          #  DEV7Monitor.exe
