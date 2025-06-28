@@ -18,14 +18,14 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install MinGW
-        run: choco install mingw -y
-
       - name: Install PyInstaller
         run: pip install pyinstaller
 
-      - name: Compile C++ programs over CMake
-      - run: make cmake
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build with CMake
+        run: cmake --build build --config Release
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
@@ -81,4 +81,4 @@ jobs:
             Y2K38Patcher.exe
             copyDatas.exe
             LOADER7VC.exe
-          #  DEV7Monitor.exe
+          # DEV7Monitor.exe
