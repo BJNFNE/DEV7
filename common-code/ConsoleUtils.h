@@ -6,8 +6,7 @@
 
 namespace ConsoleUtils {
     inline void clearConsole() {
-        std::cout << "\033[2J\033[H";
+      puts("\033[2J\033[H");
     }
 }
-
 #endif
