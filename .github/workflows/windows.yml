@@ -28,7 +28,7 @@ jobs:
         run: g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
 
       - name: Compile BCD1Creator
-        run: g++ -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+        run: g++ -I. -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
 
       - name: Compile DEV7Launcher
         run: g++ -I. -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
@@ -37,7 +37,7 @@ jobs:
         run: g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
 
       - name: Compile ModelPathDumper
-        run: g++ -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+        run: g++ -I. -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
 
       - name: Compile SYSTEM (Modern Version)
         run: g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
