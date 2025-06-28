@@ -323,7 +323,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::cin >> choice;
-    std::cout << "\n";
+    ConsoleUtils::printNewLine();
 
 switch(choice) {
     case 1:
@@ -390,7 +390,7 @@ switch(choice) {
         usedLoader7OrDev7VM = false;
         break;
     default:
-        std::cout << "Invalid choice. Please choose a valid option.\n" << std::endl;
+        printf("Invalid choice. Please choose a valid option.\n");
         usedLoader7OrDev7VM = false;
         return 0;
 }
@@ -409,13 +409,13 @@ if (usedLoader7OrDev7VM) {
 
 std::cout << "Total playtime: " << hours << " hours, " << minutes << " minutes and " << seconds << " seconds." << std::endl;
 
-std::cout << "Would you like to restart DEV7Launcher? (y/n): ";
+printf("Would you like to restart DEV7Launcher? (y/n): ");
 char restartChoice;
 std::cin >> restartChoice;
 
 // y/Y english keyboard layout. j/J german kayboard layout. o/O french keyboard layout.
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
-    std::cout << "Delete temp files of DEV7Launcher..." << std::endl;
+    printf("Delete temp files of DEV7Launcher...");
     #ifdef _WIN32
     int deleteMutexWin = system("del %temp%\\DEV7_INSTANCE_MUTEX");
     #else
