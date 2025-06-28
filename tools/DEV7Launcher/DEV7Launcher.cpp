@@ -221,7 +221,7 @@ void Ed4Intro() {
 #endif
 }
 
-void startGameExecutable() {
+void startGameExecutable() { // TODO: Function refactor/rework has to be done from scratch
     if (fileExists("LoaderMDO.exe"))
         std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("LoaderMDO.exe");
     else if (fileExists("LoaderMDO.exe"))
