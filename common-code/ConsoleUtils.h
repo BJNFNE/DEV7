@@ -8,5 +8,8 @@ namespace ConsoleUtils {
     inline void clearConsole() {
       puts("\033[2J\033[H");
     }
+    inline void printNewLine() {
+      printf("\n");
+    }
 }
 #endif

@@ -124,13 +124,13 @@ int main(int argc, char* argv[]) {
     std::cout << "OBC Script (" << argv[1] << ") is now readable." << std::endl;
 
     // Display the full path of the output file of the OBC Script
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
     std::cout << "Output created at:" << std::endl;
     printf("%s", fs::absolute(inputScript.stem().string() + ".txt").c_str());
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
 
     // Exit message for OBCViewer
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
     std::cout << "Press Enter to exit OBCViewer" << std::endl;
     (void)getchar();
     ConsoleUtils::clearConsole();
