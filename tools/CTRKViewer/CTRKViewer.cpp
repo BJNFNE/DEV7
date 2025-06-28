@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     std::cout << "CTRK File (" << argv[1] << ") is now displayable, and the output is saved to " << inputFile.stem().string() << ".txt" << std::endl;
 
     // Exit message for CTRKViewer
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
     std::cout << "Press Enter to exit CTRKViewer" << std::endl;
     (void)getchar();
     ConsoleUtils::clearConsole(); 

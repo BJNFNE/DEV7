@@ -31,6 +31,8 @@ The last 3 numbers are for the version number.
 #include <iostream>
 #include <fstream>
 
+#include "common-code/ConsoleUtils.h"
+
 #ifdef _WIN32
 #include <windows.h> // For setting console encoding
 #endif
@@ -103,9 +105,9 @@ void printHeader() {
 
 int main(int argc, const char **argv) {
     printHeader();
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
     exampleBCD1Names();
-    std::cout << std::endl;
+    ConsoleUtils::printNewLine();
     // Ask the user for the BCD1 file name
     std::cout << "Enter the Filename of the Game which you wanna modify: " << std::endl;
     std::string fileName;
