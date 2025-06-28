@@ -38,33 +38,33 @@ The last 3 numbers are for the version number.
 #endif
 
 void exampleBCD1Names() {
-    std::cout << "Example BCD1 Filenames which were detected by Adibou 3\n" << std::endl;
+    printf("Example BCD1 Filenames which were detected by Adibou 3\n");
 
-    std::cout << "Français:" << "\b" << std::endl;
-    std::cout << "Environment:\b" << std::endl;
-    std::cout << " - Le pays d'Adibou [benxxf300.bcd1]\n" << std::endl;
-    std::cout << "Application:\b" << std::endl;
-    std::cout << " - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n" << std::endl;
-    std::cout << " - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n" << std::endl;
-    std::cout << " - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n" << std::endl;
+    printf("Français: \b");
+    printf("Environment:\b");
+    printf(" - Le pays d'Adibou [benxxf300.bcd1]\n");
+    printf("Application:\b");
+    printf(" - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n");
+    printf(" - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n");
+    printf(" - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n");
 
-    std::cout << "Deutsch:" << "\b" << std::endl;
-    std::cout << "Environment:\b" << std::endl;
-    std::cout << " - Das Zauberland von Adiboo [benxxd300.bcd1]\n" << std::endl;
-    std::cout << "Application:\b" << std::endl;
-    std::cout << " - Die Stadt Wiwawort (Wörter 5-6 Jahre) [BFR56D300.BCD1]\n" << std::endl;
-    std::cout << " - Die Stadt Plusminus (Zahlen 5-6 Jahre) [BMA56D300.BCD1]\n" << std::endl;
-    std::cout << " - Das Tal Wortwörtlich (Im Leseland 6-7 Jahre)[BFR67D300.BCD1]\n" << std::endl;
-    std::cout << " - Das Tal Zählmal (Im Rechenland 6-7 Jahre) [BMA67D300.BCD1]\n" << std::endl;
-    std::cout << " - Das Königreich Hocus Pocus (Englisch 4-7 Jahre) [blg47D310.bcd1]\n" << std::endl;
-    std::cout << " - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n" << std::endl;
+    printf("Deutsch:\b");
+    printf("Basisprogramm:\b");
+    printf(" - Das Zauberland von Adiboo [benxxd300.bcd1]\n");
+    printf("Lernprogramme:\b");
+    printf(" - Die Stadt Wiwawort (Wörter 5-6 Jahre) [BFR56D300.BCD1]\n");
+    printf(" - Die Stadt Plusminus (Zahlen 5-6 Jahre) [BMA56D300.BCD1]\n");
+    printf(" - Das Tal Wortwörtlich (Im Leseland 6-7 Jahre)[BFR67D300.BCD1]\n");
+    printf(" - Das Tal Zählmal (Im Rechenland 6-7 Jahre) [BMA67D300.BCD1]\n");
+    printf(" - Das Königreich Hocus Pocus (Englisch 4-7 Jahre) [blg47D310.bcd1]\n");
+    printf(" - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n");
 
-    std::cout << "English:\b" << std::endl;
-    std::cout << "Environment:\b" << std::endl;
-    std::cout << "Application:\b" << std::endl;
-    std::cout << " - Word-by-Word City (Reading 5-6 years) [bfr56a300.bcd1]\n" << std::endl;
-    std::cout << " - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n" << std::endl;
-    std::cout << " - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n" << std::endl;
+    printf("English:\b");
+    printf("Environment:\b");
+    printf("Application:\b");
+    printf(" - Word-by-Word City (Reading 5-6 years) [bfr56a300.bcd1]\n");
+    printf(" - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n");
+    printf(" - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n");
 
 #ifdef _WIN32
     // Set code page to UTF-8 (65001) for universal character support
@@ -72,14 +72,14 @@ void exampleBCD1Names() {
     SetConsoleOutputCP(65001);    // Set output code page to UTF-8
 #endif
 
-    std::cout << "русский:\b" << std::endl;
-    std::cout << "Environment:\b" << std::endl;
-    std::cout << "Application:\b" << std::endl;
-    std::cout << " - Король Смирности (Чтение 5-6 лет) [bma56F300.bcd1]\n" << std::endl;
-    std::cout << " - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n" << std::endl;
-    std::cout << " - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n" << std::endl;
-    std::cout << " - Занимательная музыкальная машинка (Музыка, 4-7 лет) [bmu47A310.bcd1]\n" << std::endl;
-    std::cout << " - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n" << std::endl;
+    printf("русский:\b");
+    printf("Environment:\b");
+    printf("Application:\b");
+    printf(" - Король Смирности (Чтение 5-6 лет) [bma56F300.bcd1]\n");
+    printf(" - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n");
+    printf(" - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n");
+    printf(" - Занимательная музыкальная машинка (Музыка, 4-7 лет) [bmu47A310.bcd1]\n");
+    printf(" - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n");
 
 #ifdef _WIN32
     // Optionally reset to default code page (optional)
@@ -87,20 +87,20 @@ void exampleBCD1Names() {
     SetConsoleOutputCP(437);     // Set output code page back to default (optional)
 #endif
 
-    std::cout << "Nederlands:\b" << std::endl;
-    std::cout << "Environment:\b" << std::endl;
-    std::cout << " - Het Land van Adiboo [benxxa300.bcd1]\n" << std::endl;
-    std::cout << "Application:\b" << std::endl;
-    std::cout << " - Rekenen 5-6 jaar [bma56a300.bcd1]\n" << std::endl;
+    printf("Nederlands:\b");
+    printf("Environment:\b");
+    printf(" - Het Land van Adiboo [benxxa300.bcd1]\n");
+    printf("Application:\b");
+    printf(" - Rekenen 5-6 jaar [bma56a300.bcd1]\n");
     return;
 }
 
 void printHeader() {
     const std::string versionNumber = "0.1.1";
 
-    std::cout << "==========================" << std::endl;
+    printf("==========================");
     std::cout << " BCD1Creator ver. " << versionNumber << std::endl;
-    std::cout << "==========================" << std::endl;
+    printf("==========================");
 }
 
 int main(int argc, const char **argv) {
@@ -109,52 +109,51 @@ int main(int argc, const char **argv) {
     exampleBCD1Names();
     ConsoleUtils::printNewLine();
     // Ask the user for the BCD1 file name
-    std::cout << "Enter the Filename of the Game which you wanna modify: " << std::endl;
-    std::string fileName;
-    getline(std::cin, fileName);
+    printf("Enter the Filename of the Game which you wanna modify: ");
+   // std::getline(std::cin, fileName);
 
     // Ask the user to choose between AppliInfo and ENVIINFO
-    std::cout << "Choose between [1] AppliInfo or [2] ENVIINFO: ";
+    printf("Choose between [1] AppliInfo or [2] ENVIINFO: ");
     std::string choice;
-    getline(std::cin, choice);
+    std::getline(std::cin, choice);
 
     // Ask the user for details based on the chosen section
     std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN, IDFile, CDDetected;
 
     if (choice == "1") {
         std::cout << "Enter [AppliInfo] details:\n"; // (Applications only!)
-        std::cout << "Name: ";
-        getline(std::cin, Name);
-        std::cout << "CDName: ";
-        getline(std::cin, CDName);
-        std::cout << "PictCD: ";
-        getline(std::cin, PictCD);
-        std::cout << "MiniEnviVersion: ";
-        getline(std::cin, MiniEnviVersion);
-        // std::cout << "Order: ";
-        // getline(std::cin, Order);
-        std::cout << "PictureNameR: ";
-        getline(std::cin, PictureNameR);
-        std::cout << "PictureNameC: ";
-        getline(std::cin, PictureNameC);
-        std::cout << "PictureNameN: ";
-        getline(std::cin, PictureNameN);
+        printf("Name: ");
+        std::getline(std::cin, Name);
+        printf("CDName: ");
+        std::getline(std::cin, CDName);
+        printf("PictCD: ");
+        std::getline(std::cin, PictCD);
+        printf("MiniEnviVersion: ");
+        std::getline(std::cin, MiniEnviVersion);
+        // printf("Order: ");
+        // std::getline(std::cin, Order);
+        printf("PictureNameR: ");
+        std::getline(std::cin, PictureNameR);
+        printf("PictureNameC: ");
+        std::getline(std::cin, PictureNameC);
+        printf("PictureNameN: ");
+        std::getline(std::cin, PictureNameN);
     }
     else if (choice == "2") {
-        std::cout << "Enter [ENVIINFO] details:\n";  // (Environment only!)
-        std::cout << "Name: ";
-        getline(std::cin, Name);
-        std::cout << "PictCD: ";
-        getline(std::cin, PictCD);
+        printf("Enter [ENVIINFO] details:\n");  // (Environment only!)
+        printf("Name: ");
+        std::getline(std::cin, Name);
+        printf("PictCD: ");
+        std::getline(std::cin, PictCD);
         // std::cout << "Order: ";
-        // getline(std::cin, Order);
+        // std::getline(std::cin, Order);
         // std::cout << "IDFile: ";
-        // getline(std::cin, IDFile);
+        // std::getline(std::cin, IDFile);
         // std::cout << "CDDetected: ";
-        // getline(std::cin, CDDetected);
+        // std::getline(std::cin, CDDetected);
     }
     else {
-        std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
+        fprintf(stderr, "Invalid choice. Please enter either '1' or '2'.");
         return 1;
     }
 
@@ -163,7 +162,7 @@ int main(int argc, const char **argv) {
 
     // Check if the file is opened successfully
     if (!outputBCD1.is_open()) {
-        std::cerr << "Error opening file for writing." << std::endl;
+        fprintf(stderr, "Error opening file for writing.");
         return 1;
     }
 
