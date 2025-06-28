@@ -16,14 +16,14 @@ namespace fs = std::filesystem;
 const std::string versionNumber = "1.0";
 
 void printHeader() {
-    std::cout << "======================" << std::endl;
-    std::cout << "      CTRKViewer      " << std::endl;
-    std::cout << "======================" << std::endl;
+    printf("======================");
+    printf("      CTRKViewer      ");
+    printf("======================");
 }
 
 void printUsage() {
     printHeader();
-    std::cout << "Usage: ./CTRKViewer <file.ctrk>" << std::endl;
+    printf("Usage: ./CTRKViewer <file.ctrk>");
     std::cout << "Version - " << versionNumber << std::endl << std::endl;
 }
 
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     std::ifstream CTRKInput(inputCTRK);
 
     if (!CTRKInput) {
-        std::cerr << "Error: Unable to find CTRK File." << std::endl;
+        fprintf(stderr, "Error: Unable to find CTRK File.");
         return 1;
     }
 
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
-        std::cerr << "Error: Unable to create a text output of the CTRK Script." << std::endl;
+        fprintf(stderr, "Error: Unable to create a text output of the CTRK Script.");
         return 1;
     }
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
     // Exit message for CTRKViewer
     ConsoleUtils::printNewLine();
-    std::cout << "Press Enter to exit CTRKViewer" << std::endl;
+    printf("Press Enter to exit CTRKViewer");
     (void)getchar();
     ConsoleUtils::clearConsole(); 
     return 0;
