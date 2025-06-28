@@ -64,7 +64,7 @@ jobs:
         run: g++ -static -o Y2K38Patcher.exe patches/Y2K38Patcher/Y2K38Patcher/Y2K38Patcher.cpp
 
       - name: Compile LOADER7VC
-        run: g++ -static -o LOADER7VC.exe tools-win/LOADER7VC/LOADER7VC/LOADER7VC.cpp -lversion -lshlwapi
+        run: g++ -I. -static -o LOADER7VC.exe tools-win/LOADER7VC/LOADER7VC/LOADER7VC.cpp -lversion -lshlwapi
 
       - name: Compile IMGConverter
         run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
