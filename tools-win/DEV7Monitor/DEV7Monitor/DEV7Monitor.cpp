@@ -128,7 +128,7 @@ int main() {
 
         // Check if Loader7.exe process is still running
         if (!isProcessRunning(LOADER_EXE_NAME)) {
-            cout << "Loader7.exe process stopped. Exiting DEV7Monitor." << endl;
+            printf("Loader7.exe process stopped. Exiting DEV7Monitor.");
             break;
         }
 
