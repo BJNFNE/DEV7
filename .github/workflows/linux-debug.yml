@@ -62,7 +62,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-linux
+          name: compiled-linux-debug
           path: |
             binaries/LoaderMDO/LoaderMDO
             binaries/BCD1Creator/BCD1Creator
