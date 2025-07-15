@@ -3,7 +3,7 @@ CC = gcc
 CXX = g++
 
 # Compiler flags
-RELEASE_CFLAGS = -O2 -pipe -s
+RELEASE_CFLAGS = -O2 -pipe
 DEBUG_CFLAGS = -g -pipe
 RELEASE_CXXFLAGS = $(RELEASE_CFLAGS) -std=c++23 -I.
 DEBUG_CXXFLAGS = $(DEBUG_CFLAGS) -std=c++23 -I.
