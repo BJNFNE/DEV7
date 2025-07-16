@@ -13,8 +13,9 @@
 * meson (WIP)
 * CMake
 
-- macOS (Currently unsupported)
+- macOS
 * gcc
+* CMake
 
 # Windows
 - Visual Studio:
@@ -63,5 +64,5 @@
 - gcc:
 1. Go into the Root directory of DEV7. (If you you not already are) 
 2. First install brew. (If you not already have)
-3. Type brew bundle --file=Brewfile, to install the required dependencies. (Optional: Only do it when the dependencies not already installed)
-4. Type make and press Enter. 
+3. Type 'brew bundle install', to install the required dependencies. (Optional: Only do it when the dependencies not already installed)
+4. Type 'make' and press Enter. 
