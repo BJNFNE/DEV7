@@ -60,11 +60,11 @@ int main(int argc, char* argv[]) {
     std::cout << "PLA Savegame (" << argv[1] << ") is now readable." << std::endl;
 
     // Display the full path of the output file of the PLA Savegame
-    std::cout << "\b" << std::endl;
+    ConsoleUtils::printNewLine();
     printf("Output file created at: %s\n", fs::absolute(inputSaveGame.stem().string() + ".txt").c_str());
 
     // Exit message for PLAViewer
-    std::cout << "\b" << std::endl;
+    ConsoleUtils::printNewLine();
     std::cout << "Press Enter to exit PLAViewer.\n" << std::endl;
     (void)getchar();
     ConsoleUtils::clearConsole();
