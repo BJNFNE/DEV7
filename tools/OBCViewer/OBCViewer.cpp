@@ -7,6 +7,8 @@
 
 #ifdef __unix__
 #include <unistd.h>
+#elif __APPLE__
+#include "../../../../../Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/unistd.h"
 #endif
 
 namespace fs = std::filesystem;
@@ -43,6 +45,8 @@ int main(int argc, char* argv[]) {
 
     #ifdef __unix__
     // List here everything for the Debug Infos.
+    std::string username = getlogin();
+    #elif __APPLE__
     std::string username = getlogin();
     #endif
 
@@ -115,6 +119,8 @@ int main(int argc, char* argv[]) {
     DebugInfoOutput << "Debug Infos:" << std::endl;
     DebugInfoOutput << "Output of " << inputScript.stem().string() << ".obc" << " created at " << obc_timedate << std::endl;
     #ifdef __unix__
+    DebugInfoOutput << "Created by " << username << std::endl;
+    #elif __APPLE__
     DebugInfoOutput << "Created by " << username << std::endl;
     #endif
     DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
