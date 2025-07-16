@@ -54,12 +54,13 @@ Release/
 /binaries/linux/create_iso
 
 # Compiled Common Tools
-# - Linux
+# - Linux/macOS
 /common-tools/linux/create_iso/create_iso
 /common-tools/linux/extract_iso/extract_iso
-/common-tools/linux/convert_bin/convert_bin
-/common-tools/linux/create_zip/create_zip
-/common-tools/linux/create_tar/create_tar
+/common-tools/nowin/convert_bin/convert_bin
+/common-tools/nowin/convert_bin/convert_bin.dSYM/Contents/Resources/DWARF/convert_bin
+/common-tools/nowin/create_zip/create_zip
+/common-tools/nowin/create_tar/create_tar
 
 # Rewritten Software Ports 
 rewritten-software-ports/linux/LoaderMDO/LoaderMDO
@@ -89,3 +90,6 @@ adibounet/adibounet.log
 *.mesh
 *.cure
 *.pla
+
+# Apple specific formats
+*.plist
