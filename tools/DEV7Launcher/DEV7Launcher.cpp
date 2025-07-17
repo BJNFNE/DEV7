@@ -150,8 +150,7 @@ void modifyAdi5Ini() {
     #ifdef _WIN32
         int editAdi5Ini = system("notepad Data/ADI5.ini");
     #else
-        std::string modifyAdi5Ini = "nano Data/ADI5.ini";
-        int editAdi5Ini = system(modifyAdi5Ini.c_str());
+        int modifyAdi5Ini = system("nano Data/ADI5.ini");
     #endif
 }
 
