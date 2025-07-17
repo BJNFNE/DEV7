@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <string>
+#include <vector>
 
 #include "common-code/ConsoleUtils.h"
 #include "common-code/TaskExecution.h"
@@ -220,30 +222,37 @@ void Ed4Intro() {
 #endif
 }
 
-void startGameExecutable() { // TODO: Function refactor/rework has to be done from scratch
-    if (fileExists("LoaderMDO.exe"))
-        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe..." << std::endl, launchCommand("LoaderMDO.exe");
-    else if (fileExists("LoaderMDO.exe"))
-        std::cout << "LoaderMDO.exe found. Starting LoaderMDO.exe over wine..." << std::endl, launchCommand("wine LoaderMDO.exe");
-    else if (fileExists("Adibou3.EXE"))
-        std::cout << "Adibou3.EXE found. Starting Adibou3.EXE..." << std::endl, launchCommand("Adibou3.EXE");
-    else if (fileExists("Adibou3.exe"))
-        std::cout << "Adibou3.exe found. Starting Adibou3.exe over wine..." << std::endl, launchCommand("wine adibou3.exe");
-    else if (fileExists("adiboo3.exe"))
-        std::cout << "adiboo3.exe found. Starting adiboo3.exe..." << std::endl, launchCommand("adiboo3.exe");
-    else if (fileExists("adiboo3.exe"))
-        std::cout << "adiboo3.exe found. Starting adiboo3.exe over wine..." << std::endl, launchCommand("wine adiboo3.exe");
-    else if (fileExists("ADI5.EXE"))
-        std::cout << "ADI5.EXE found. Starting ADI5.EXE..." << std::endl, launchCommand("ADI5.EXE");
-    else if (fileExists("ADI5.exe"))
-        std::cout << "ADI5.exe found. Starting ADI5.exe over wine..." << std::endl, launchCommand("wine ADI5.exe");
-    else if (fileExists("Loader7.exe"))
-        std::cout << "Loader7.exe found. Starting ADI5.EXE..." << std::endl, launchCommand("Loader7.exe");
-    else if (fileExists("Loader7.exe"))
-        std::cout << "Loader7.exe found. Starting Loader7.exe over wine..." << std::endl, launchCommand("wine Loader7.exe");
-    else
-        printf("None of the executables found. \nPlease make sure you have the exe in the same Directory as the Launcher.");
+void startGameExecutable() {
+    struct ExecutableOption {
+        std::string fileName;
+        std::string command;
+        bool useWine;
+    };
+
+    std::vector<ExecutableOption> executables = {
+        {"LoaderMDO.exe", "LoaderMDO.exe", false},
+        {"LoaderMDO.exe", "wine LoaderMDO.exe", true},
+        {"Adibou3.EXE", "Adibou3.EXE", false},
+        {"Adibou3.exe", "wine Adibou3.exe", true},
+        {"adiboo3.exe", "adiboo3.exe", false},
+        {"adiboo3.exe", "wine adiboo3.exe", true},
+        {"ADI5.EXE", "ADI5.EXE", false},
+        {"ADI5.exe", "wine ADI5.exe", true},
+        {"Loader7.exe", "Loader7.exe", false},
+        {"Loader7.exe", "wine Loader7.exe", true}
+    };
+
+    for (const auto& exe : executables) {
+        if (fileExists(exe.fileName)) {
+            std::cout << exe.fileName << " found. Starting " << exe.command << "..." << std::endl;
+            launchCommand(exe.command);
+            return;
+        }
+    }
+
+    std::cout << "None of the executables found.\nPlease make sure you have the exe in the same directory as the launcher." << std::endl;
 }
+
 
 int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now(); // Record the start time
