@@ -78,8 +78,7 @@ void modifyMDOIni() {
     #ifdef _WIN32
         int mdoIni = system("notepad mdo.ini");
     #else
-        std::string modifyMDOIni = "nano mdo.ini";
-        int mdoIni = system(modifyMDOIni.c_str());
+        int openMDOINI = system("nano mdo.ini");
     #endif
 }
 
@@ -87,8 +86,7 @@ void showMSGDef() {
     #ifdef _WIN32
         int showMsgDef = system("notepad msg.def");
     #else
-        std::string showMSGDef = "nano msg.def";
-        int showMsgDef = system(showMSGDef.c_str());
+        int showMSGDef = system("nano msg.def");
     #endif
 }
 
@@ -104,8 +102,7 @@ void modifyMDODbg() {
     #ifdef _WIN32
         int mdoDBG = system("notepad MDO.DBG");
     #else
-        std::string modifyMDODbg = "nano MDO.dbg";
-        int mdoDBG = system(modifyMDODbg.c_str());
+        int modifyMDODbg = system("nano MDO.dbg");
     #endif
 }
 
@@ -113,8 +110,7 @@ void showTraceTXT() {
     #ifdef _WIN32
         int traceTXT = system("notepad Trace.txt");
     #else
-        std::string showTraceTXT = "nano Trace.txt";
-        int traceTXT = system(showTraceTXT.c_str());
+        int traceTXT = system("nano Trace.txt");
     #endif
 }
 
