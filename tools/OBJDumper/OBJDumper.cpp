@@ -82,17 +82,17 @@ int main() {
     bool useSlash;
 
     // Get user input for input file
-    std::cout << "Enter the input file (default is loader7.map): ";
+    printf("Enter the input file (default is loader7.map): ");
     getline(std::cin, inputFile);
 
     // Ask user for output file format preference
-    std::cout << "Do you want to use 'Folder/Object.obj' format? (y/n): ";
+    printf("Do you want to use 'Folder/Object.obj' format? (y/n): ");
     std::string preference;
     getline(std::cin, preference);
     useSlash = (preference == "y");
 
     // Get user input for output location
-    std::cout << "Enter the output file name: ";
+    printf("Enter the output file name: ");
     getline(std::cin, outputLocation);
 
     dumpUniqueObjFiles(inputFile, outputLocation, useSlash);
