@@ -78,7 +78,7 @@ void modifyMDOIni() {
     #ifdef _WIN32
         int mdoIni = system("notepad mdo.ini");
     #else
-        int openMDOINI = system("nano mdo.ini");
+        execlp("nano", "nano", "mdo.ini", NULL);
     #endif
 }
 
@@ -86,7 +86,7 @@ void showMSGDef() {
     #ifdef _WIN32
         int showMsgDef = system("notepad msg.def");
     #else
-        int showMSGDef = system("nano msg.def");
+        execlp("nano", "nano", "msg.def", NULL);
     #endif
 }
 
@@ -102,7 +102,7 @@ void modifyMDODbg() {
     #ifdef _WIN32
         int mdoDBG = system("notepad MDO.DBG");
     #else
-        int modifyMDODbg = system("nano MDO.dbg");
+        execlp("nano", "nano", "MDO.DBG", NULL);
     #endif
 }
 
@@ -110,7 +110,7 @@ void showTraceTXT() {
     #ifdef _WIN32
         int traceTXT = system("notepad Trace.txt");
     #else
-        int traceTXT = system("nano Trace.txt");
+        execlp("nano", "nano", "Trace.txt", NULL);
     #endif
 }
 
@@ -134,7 +134,7 @@ void modifyAdibou3Ini() {
   if (!fs::exists("Adibou3.ini")) {
      int moveAdibou3Ini = system("mv ADIBOU3.INI Adibou3.ini");
   }
-   int editAdibou3Ini = system("nano Adibou3.ini");
+   execlp("nano", "nano", "Adibou3.ini", NULL);
 #endif
 }
 
@@ -150,7 +150,7 @@ void modifyAdi5Ini() {
     #ifdef _WIN32
         int editAdi5Ini = system("notepad Data/ADI5.ini");
     #else
-        int modifyAdi5Ini = system("nano Data/ADI5.ini");
+        execlp("nano", "nano", "Data/ADI5.ini", NULL);
     #endif
 }
 
@@ -213,7 +213,7 @@ void Ed4Intro() {
 #ifdef _WIN32
     int Ed4Intro = system("Ed4Intro.exe");
 #else
-    int Ed4Intro = system("wine Ed4Intro.exe");
+    execlp("wine", "wine", "Ed4Intro.exe", NULL);
 #endif
 }
 
