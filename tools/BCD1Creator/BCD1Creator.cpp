@@ -154,7 +154,7 @@ int main(int argc, const char **argv) {
         // getline(std::cin, CDDetected);
     }
     else {
-        std::cerr << "Invalid choice. Please enter either '1' or '2'." << std::endl;
+        fprintf(stderr, "Invalid choice. Please enter either '1' or '2'.\n");
         return 1;
     }
 
@@ -163,7 +163,7 @@ int main(int argc, const char **argv) {
 
     // Check if the file is opened successfully
     if (!outputBCD1.is_open()) {
-        std::cerr << "Error opening file for writing." << std::endl;
+        fprintf(stderr, "Error opening file for writing.\n");
         return 1;
     }
 
