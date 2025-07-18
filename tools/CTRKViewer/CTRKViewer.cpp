@@ -34,10 +34,10 @@ int main(int argc, char* argv[]) {
     }
 
     // Here are listed the strings for CTRK itself.
-    std::string inputCTRK = argv[1];
+    std::string ctrkArgv = argv[1];
 
     // Use the CTRK File for Input
-    std::ifstream CTRKInput(inputCTRK);
+    std::ifstream CTRKInput(ctrkArgv);
 
     if (!CTRKInput) {
         fprintf(stderr, "Error: Unable to find CTRK File.");
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
     CTRKInput.seekg(0);
 
     // Open the output file for the CTRK Script
-    fs::path inputFile(inputCTRK);
+    fs::path inputFile(ctrkArgv);
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
     CTRKInput.close();
     CTRKOutput.close();
 
-    std::cout << "CTRK File (" << argv[1] << ") is now displayable, and the output is saved to " << inputFile.stem().string() << ".txt" << std::endl;
+    std::cout << "CTRK File (" << ctrkArgv[1] << ") is now displayable, and the output is saved to " << inputFile.stem().string() << ".txt" << std::endl;
 
     // Exit message for CTRKViewer
     ConsoleUtils::printNewLine();
