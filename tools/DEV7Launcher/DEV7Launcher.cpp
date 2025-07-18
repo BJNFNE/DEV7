@@ -74,7 +74,14 @@ void launchCommand(const std::string& command) {
     #endif
 }
 
-void modifyMDOIni() {
+int modifyMDOIni() {
+     // Check if mdo.ini exists
+    if (!fs::exists("mdo.ini")) {
+        std::cout << "Error: This directory does not seem to contain an configuration file in the directory.\n" << std::endl;
+        TaskExecution::pressEnterToExit();
+        return 1;
+    }
+
     #ifdef _WIN32
         int mdoIni = system("notepad mdo.ini");
     #else
@@ -82,7 +89,13 @@ void modifyMDOIni() {
     #endif
 }
 
-void showMSGDef() {
+uint showMSGDef() {
+    // Check if mdo.ini exists
+    if (!fs::exists("msg.def")) {
+        std::cout << "Error: This directory does not seem to contain an debug configuration file in the directory.\n" << std::endl;
+        TaskExecution::pressEnterToExit();
+        return 1;
+    }
     #ifdef _WIN32
         int showMsgDef = system("notepad msg.def");
     #else
@@ -106,7 +119,14 @@ void modifyMDODbg() {
     #endif
 }
 
-void showTraceTXT() {
+int showTraceTXT() {
+     // Check if Trace.txt exists
+    if (!fs::exists("Trace.txt")) {
+        std::cout << "Error: This directory does not contain an Debug log in the directory.\n" << std::endl;
+        TaskExecution::pressEnterToExit();
+        return 1;
+    }
+
     #ifdef _WIN32
         int traceTXT = system("notepad Trace.txt");
     #else
@@ -138,13 +158,13 @@ int modifyAdibou3Ini() {
 #endif
 }
 
-void modifyAdi5Ini() {
+int modifyAdi5Ini() {
 
      // Check if Data/ADI5.ini exists
     if (!fs::exists("Data/ADI5.ini")) {
         printf("Error: This directory does not seem to be an Adi 5 game directory.\n");
         TaskExecution::pressEnterToExit();
-        return;
+        return 1;
     }
 
     #ifdef _WIN32
