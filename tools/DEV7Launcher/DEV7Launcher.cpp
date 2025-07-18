@@ -114,13 +114,13 @@ void showTraceTXT() {
     #endif
 }
 
-void modifyAdibou3Ini() {
+int modifyAdibou3Ini() {
 
      // Check if Adibou3.ini exists
     if (!fs::exists("Adibou3.ini")) {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
         TaskExecution::pressEnterToExit();
-        return;
+        return 1;
     }
 
     // This an Workaround for this Function to load Adibou3.ini into the Editors
