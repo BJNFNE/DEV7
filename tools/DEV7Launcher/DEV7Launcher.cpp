@@ -86,10 +86,11 @@ int modifyMDOIni() {
         int mdoIni = system("notepad mdo.ini");
     #else
         execlp("nano", "nano", "mdo.ini", NULL);
+        return 1;
     #endif
 }
 
-uint showMSGDef() {
+int showMSGDef() {
     // Check if mdo.ini exists
     if (!fs::exists("msg.def")) {
         std::cout << "Error: This directory does not seem to contain an debug configuration file in the directory.\n" << std::endl;
@@ -100,22 +101,24 @@ uint showMSGDef() {
         int showMsgDef = system("notepad msg.def");
     #else
         execlp("nano", "nano", "msg.def", NULL);
+        return 1;
     #endif
 }
 
-void modifyMDODbg() {
+int modifyMDODbg() {
     std::string mdo_dbg = "MDO.DBG";
 
     if (!fileExists(mdo_dbg)) {
         std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
         TaskExecution::pressEnterToExit();
-        return;
+        return 1;
     }
 
     #ifdef _WIN32
         int mdoDBG = system("notepad MDO.DBG");
     #else
         execlp("nano", "nano", "MDO.DBG", NULL);
+        return 1;
     #endif
 }
 
@@ -131,6 +134,7 @@ int showTraceTXT() {
         int traceTXT = system("notepad Trace.txt");
     #else
         execlp("nano", "nano", "Trace.txt", NULL);
+        return 1;
     #endif
 }
 
@@ -155,6 +159,7 @@ int modifyAdibou3Ini() {
      int moveAdibou3Ini = system("mv ADIBOU3.INI Adibou3.ini");
   }
    execlp("nano", "nano", "Adibou3.ini", NULL);
+   return 1;
 #endif
 }
 
@@ -171,6 +176,7 @@ int modifyAdi5Ini() {
         int editAdi5Ini = system("notepad Data/ADI5.ini");
     #else
         execlp("nano", "nano", "Data/ADI5.ini", NULL);
+        return 1;
     #endif
 }
 
