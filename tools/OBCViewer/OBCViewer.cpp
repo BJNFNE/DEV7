@@ -23,15 +23,16 @@ void printHeader() {
 
 void printUsage() {
     printHeader();
-    std::cout << "Usage: ./OBCViewer <script.obc>" << std::endl;
+    printf("Usage: ./OBCViewer <script.obc>\n");
     std::cout << "Version - " << versionNumber << std::endl << std::endl;
-    std::cout << "Supported games:" << std::endl;
-    std::cout << " * Adibou 3" << std::endl;
-    std::cout << " * Adi 5" << std::endl;
-    std::cout << " * Adibou presente series" << std::endl;
-    std::cout << " * Adiboud'chou series" << std::endl;
-    std::cout << " * Nathan Vacances series" << std::endl;
-    std::cout << " * Le Pays des pierres magiques" << std::endl << std::endl;
+    printf("Supported games:\n");
+    printf(" * Adi 5\n");
+    printf(" * Adibou 3\n");
+    printf(" * Adibou presente series\n");
+    printf(" * Adiboud'chou series\n");
+    printf(" * Nathan Vacances series\n");
+    printf(" * Le Pays des pierres magiques\n");
+    ConsoleUtils::printNewLine();
 }
 
 int main(int argc, char* argv[]) {
