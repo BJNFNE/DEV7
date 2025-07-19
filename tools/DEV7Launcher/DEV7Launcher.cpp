@@ -139,7 +139,6 @@ int showTraceTXT() {
 }
 
 int modifyAdibou3Ini() {
-
      // Check if Adibou3.ini exists
     if (!fs::exists("Adibou3.ini")) {
         std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
@@ -164,7 +163,6 @@ int modifyAdibou3Ini() {
 }
 
 int modifyAdi5Ini() {
-
      // Check if Data/ADI5.ini exists
     if (!fs::exists("Data/ADI5.ini")) {
         printf("Error: This directory does not seem to be an Adi 5 game directory.\n");
