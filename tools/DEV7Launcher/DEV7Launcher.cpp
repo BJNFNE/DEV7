@@ -214,6 +214,7 @@ int runUNINST() {
 
     if (!fileExists(uninst)) {
         std::cout << "Error: " << uninst << " not found in directory.\n" << std::endl;
+        TaskExecution::pressEnterToExit();
         return 1;
     }
 #ifdef _WIN32
