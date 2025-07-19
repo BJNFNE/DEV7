@@ -211,16 +211,17 @@ void openLicenceFile() {
     }
 }
 
-void runUNINST() {
+int runUNINST() {
     std::string uninst = "UNINST.EXE";
 
     if (!fileExists(uninst)) {
         std::cout << "Error: " << uninst << " not found in directory.\n" << std::endl;
-        return;
+        return 1;
     }
 #ifdef _WIN32
-    int Uninstaller = system("UNINST.EXE");
-    std::cout << "Follow the Instructions to process the uninstallation.\n" << std::endl;
+    if (system("UNINST.EXE") != 0) {
+    printf("Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n");
+    }
 #else
     if (system("wine UNINST.EXE") != 0) {
     printf("Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n");
