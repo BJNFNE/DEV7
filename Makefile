@@ -102,3 +102,12 @@ cmake:
 	fi
 	@cd $(BUILD_DIR) && cmake ..
 	@cd $(BUILD_DIR) && make
+
+ninja:
+	# Create build directory if it doesn't exist
+	@if [ ! -d "$(BUILD_DIR)" ]; then \
+		mkdir $(BUILD_DIR); \
+	fi
+	@cmake -S . -B build -G Ninja
+	@cd $(BUILD_DIR) && ninja
+
