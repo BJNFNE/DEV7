@@ -219,7 +219,7 @@ int runUNINST() {
     }
 #ifdef _WIN32
     if (system("UNINST.EXE") != 0) {
-    printf("Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n");
+    printf("Uninstaller has been started, Follow the Instructions to process the uninstallation.\n");
     }
 #else
     if (system("wine UNINST.EXE") != 0) {
