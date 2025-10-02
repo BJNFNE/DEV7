@@ -27,10 +27,10 @@ TARGETS_CPP = $(patsubst $(SRC_DIR)/%.cpp,binaries/%,$(SRCS_CPP))
 all: release
 
 # Release target
-release: CFLAGS = $(RELEASE_CFLAGS)
+release: CFLAGS   = $(RELEASE_CFLAGS)
 release: CXXFLAGS = $(RELEASE_CXXFLAGS)
-release: $(TARGETS_C) $(TARGETS_CPP)
-	@echo "Release builds were compiled, can be found in the binaries folder\b"
+release: $(TARGETS_C) $(TARGETS_CPP) strip
+	@echo "Release builds were compiled, can be found in the binaries folder"
 
 # Debug target
 debug: CFLAGS = $(DEBUG_CFLAGS)
