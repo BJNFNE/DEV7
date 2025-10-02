@@ -111,3 +111,7 @@ ninja:
 	@cmake -S . -B build -G Ninja
 	@cd $(BUILD_DIR) && ninja
 
+strip:
+	@strip --strip-all $(TARGETS_C) $(TARGETS_CPP)
+	@echo "Stripping is done"
+
