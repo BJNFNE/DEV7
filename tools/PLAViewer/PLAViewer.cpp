@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#ifdef __UNIX__
 #include <unistd.h>
+#endif
 #include <algorithm>
 
 #include "common-code/ConsoleUtils.h"
