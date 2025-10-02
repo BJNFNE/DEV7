@@ -25,11 +25,11 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
     # Only add the Linux-specific program if on Linux
     add_subdirectory(rewritten-software-ports/linux/LoaderMDO)
-    add_subdirectory(common-tools/nowin/convert_bin)
+    #add_subdirectory(common-tools/nowin/convert_bin)
     add_subdirectory(common-tools/linux/create_iso)
     #add_subdirectory(common-tools/linux/extract_iso)
-    add_subdirectory(common-tools/nowin/create_tar)
-    add_subdirectory(common-tools/nowin/create_zip)
+    #add_subdirectory(common-tools/nowin/create_tar)
+    #add_subdirectory(common-tools/nowin/create_zip)
 else()
     # Set a different output directory for non-Linux binaries
     set(OTHER_BIN_DIR ${CMAKE_SOURCE_DIR}/binaries/linux)
