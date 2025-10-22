@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     std::ofstream CTRKOutput(inputFile.stem().string() + ".txt");
 
     if (!CTRKOutput) {
-        fprintf(stderr, "Error: Unable to create a text output of the CTRK Script.");
+        fprintf(stderr, "Error: Unable to create a text output of the CTRK Script.\n");
         return 1;
     }
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
     // Exit message for CTRKViewer
     ConsoleUtils::printNewLine();
-    printf("Press Enter to exit CTRKViewer");
+    printf("Press Enter to exit CTRKViewer\n");
     (void)getchar();
     ConsoleUtils::clearConsole(); 
     return 0;

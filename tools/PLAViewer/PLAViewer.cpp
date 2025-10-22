@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Close input & output for PLA Script
+    // Cleanup
     PLAInput.close();
     PLAOutput.close();
 
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
     // Exit message for PLAViewer
     ConsoleUtils::printNewLine();
-    std::cout << "Press Enter to exit PLAViewer.\n" << std::endl;
+    printf("Press Enter to exit PLAViewer.\n");
     (void)getchar();
     ConsoleUtils::clearConsole();
 
