@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29.5)
+cmake_minimum_required(VERSION 3.28.3)
 
 # Set the project name
 project(DEV7)

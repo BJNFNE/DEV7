@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.29.5)
-#cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.28.3)
 project(LoaderMDO)
 message("-- LoaderMDO - CMake compilation")
 
