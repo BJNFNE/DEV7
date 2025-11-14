@@ -27,13 +27,14 @@ jobs:
 
       - name: Compile all C++ programs
         run: make cmake
-        
+
       - name: Compile all Python tools
         run: | 
           pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
           pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
           pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
-          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.pypyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
           pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
           pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
           pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
