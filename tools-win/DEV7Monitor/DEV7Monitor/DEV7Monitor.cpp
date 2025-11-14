@@ -48,7 +48,7 @@ void startLoader7() {
     ZeroMemory(&pi, sizeof(pi));
 
     if (!CreateProcessW(NULL, const_cast<LPWSTR>(command.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-        wcerr << L"Failed to start Loader7.exe." << endl; // Use wcerr for wide-character output
+        fprintf(stderr, "Failed to start Loader7.exe.");
     }
     else {
         CloseHandle(pi.hProcess);
