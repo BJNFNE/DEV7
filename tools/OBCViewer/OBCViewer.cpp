@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 
-const std::string versionNumber = "1.6";
+const std::string versionNumber = "1.7";
 
 void printHeader() {
     std::cout << "======================" << std::endl;
@@ -41,7 +41,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Here are listed the strings for OBC itself.
     std::string inputOBC = argv[1];
 
     #ifdef __unix__
@@ -52,9 +51,9 @@ int main(int argc, char* argv[]) {
     #endif
 
     // Check if the input file is an OBC Script.
-    fs::path inputScript(inputOBC);
-    if (inputScript.extension() != ".obc") {
-        std::cerr << "Error: This File is not an OBC Script!" << std::endl;
+    fs::path inputFile(inputOBC);
+    if (inputFile.extension() != ".obc") {
+        fprintf(stderr, "Error: This File is not an OBC Script!");
         return 1;
     }
 
@@ -62,21 +61,21 @@ int main(int argc, char* argv[]) {
     std::ifstream OBCInput(inputOBC);
 
     if (!OBCInput) {
-        std::cerr << "Error: Unable to find OBC Script." << std::endl;
+        fprintf(stderr, "Error: Unable to load OBC Script.");
         return 1;
     }
     
-    std::string checkEntrypointOBC;
+    std::string checkEntrypoint;
     char c;
     for (int i = 0; i < 25 && OBCInput.get(c); ++i) {
-        checkEntrypointOBC += c;
+        checkEntrypoint += c;
     }
 
     // Uses the OBC Copyright MDO as Entrypoint adds automatically also the last four number of the Year.
     // (usually it is 1999, due to OBCEditor it is possible to change this Year so this Change is made so the modified Scripts are always compatible with OBCViewer)
     int number;
-    if (sscanf(checkEntrypointOBC.c_str(), "OBC Copyright MDO %d", &number) != 1) {
-        printf("Error: Unable to find the number of the Entrypoint!");
+    if (sscanf(checkEntrypoint.c_str(), "OBC Copyright MDO %d", &number) != 1) {
+        fprintf(stderr, "Error: Unable to find the Entrypoint!");
         return 1;
     }
 
@@ -84,41 +83,41 @@ int main(int argc, char* argv[]) {
     OBCInput.seekg(0);
 
     // Open the output file for the OBC Script
-    std::ofstream OBCOutput(inputScript.stem().string() + ".txt");
+    std::ofstream outputScript(inputFile.stem().string() + ".txt");
 
-    if (!OBCOutput) {
-        printf("Error: Unable to create a text output of the OBC Script");
+    if (!outputScript) {
+        fprintf(stderr, "Error: Unable to create a text output of the OBC Script");
         return 1;
     }
 
     // Adds the Date when Output file was created to the Output file
     time_t current_time = time(nullptr);
-    char obc_timedate[100];
-    strftime(obc_timedate, sizeof(obc_timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
+    char timedate[100];
+    strftime(timedate, sizeof(timedate), "%Y-%m-%d %H:%M:%S", localtime(&current_time));
 
     // Read from input and write to output, keeping track of the offset
     std::streampos offset = OBCInput.tellg();
     while (OBCInput.get(c)) {
         if (std::isprint(static_cast<unsigned char>(c))) {
-            OBCOutput.put(c);
+            outputScript.put(c);
             offset = OBCInput.tellg(); // Update the offset after each character is processed
         }
     }
 
     // Close input & output for OBC Script
     OBCInput.close();
-    OBCOutput.close();
+    outputScript.close();
 
     // Create a separate file for Debug Infos
-    std::ofstream DebugInfoOutput(inputScript.stem().string() + "_debuginfo.txt");
+    std::ofstream DebugInfoOutput(inputFile.stem().string() + "_debuginfo.txt");
     if (!DebugInfoOutput) {
-        printf("Error: Unable to create Debug Infos file.");
+        fprintf(stderr, "Error: Unable to create Debug Infos file.");
         return 1;
     }
 
     // Write Debug Infos to the separate file
     DebugInfoOutput << "Debug Infos:" << std::endl;
-    DebugInfoOutput << "Output of " << inputScript.stem().string() << ".obc" << " created at " << obc_timedate << std::endl;
+    DebugInfoOutput << "Output of " << inputFile.stem().string() << ".obc" << " created at " << timedate << std::endl;
     #ifdef __unix__
     DebugInfoOutput << "Created by " << username << std::endl;
     #elif __APPLE__
@@ -133,7 +132,7 @@ int main(int argc, char* argv[]) {
     // Display the full path of the output file of the OBC Script
     ConsoleUtils::printNewLine();
     printf("Output created at:");
-    printf("%s", fs::absolute(inputScript.stem().string() + ".txt").c_str());
+    printf("%s", fs::absolute(inputFile.stem().string() + ".txt").c_str());
     ConsoleUtils::printNewLine();
 
     // Exit message for OBCViewer
