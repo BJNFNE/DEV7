@@ -24,74 +24,32 @@ jobs:
       - name: Install PyInstaller
         run: pip install pyinstaller
 
-      - name: Compile LoaderMDO
-        run: g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+      - name: Compile C++ programs with MinGW
+        run: |
+          g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
+          g++ -I. -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
+          g++ -I. -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
+          g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
+          g++ -I. -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
+          g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
+          g++ -static -mwindows -o SYSTEM_RussianRelease.EXE rewritten-modern-software/SYSTEM_RussianRelease/SYSTEM/SYSTEM.cpp
+          g++ -I. -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
+          g++ -I. -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
+          g++ -I. -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
+          g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp
+          g++ -static -o Y2K38Patcher.exe patches/Y2K38Patcher/Y2K38Patcher/Y2K38Patcher.cpp
+          g++ -I. -static -o LOADER7VC.exe tools-win/LOADER7VC/LOADER7VC/LOADER7VC.cpp -lversion -lshlwapi
 
-      - name: Compile BCD1Creator
-        run: g++ -I. -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
-
-      - name: Compile DEV7Launcher
-        run: g++ -I. -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
-
-      - name: Compile OBJDumper
-        run: g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
-
-      - name: Compile ModelPathDumper
-        run: g++ -I. -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
-
-      - name: Compile SYSTEM (Modern Version)
-        run: g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
-
-      - name: Compile SYSTEM (Modern Russian Version)
-        run: g++ -static -mwindows -o SYSTEM_RussianRelease.EXE rewritten-modern-software/SYSTEM_RussianRelease/SYSTEM/SYSTEM.cpp
-
-      - name: Compile CTRKViewer
-        run: g++ -I. -static -o CTRKViewer.exe tools/CTRKViewer/CTRKViewer.cpp
-
-      - name: Compile OBCViewer
-        run: g++ -I. -static -o OBCViewer.exe tools/OBCViewer/OBCViewer.cpp
-
-      - name: Compile PLAViewer
-        run: g++ -I. -static -o PLAViewer.exe tools/PLAViewer/PLAViewer.cpp
-        
-    #  - name: Compile DEV7Monitor
-     #   run: g++ -I. -static -o DEV7Monitor.exe tools-win/DEV7Monitor/DEV7Monitor/DEV7Monitor.cpp -lpdh
-
-      - name: Compile SetupPatcher
-        run: g++ -static -o SetupPatcher.exe patches/SetupPatcher/SetupPatcher/SetupPatcher.cpp
-
-      - name: Compile Y2K38Patcher
-        run: g++ -static -o Y2K38Patcher.exe patches/Y2K38Patcher/Y2K38Patcher/Y2K38Patcher.cpp
-
-      - name: Compile LOADER7VC
-        run: g++ -I. -static -o LOADER7VC.exe tools-win/LOADER7VC/LOADER7VC/LOADER7VC.cpp -lversion -lshlwapi
-
-      - name: Compile IMGConverter
-        run: pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
-
-      - name: Compile AdultCornerDecoder
-        run: pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
-
-      - name: Compile AdultCornerEncoder
-        run: pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
-
-      - name: Compile IMGIdentifier
-        run: pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
-
-      - name: Compile OBCEditor
-        run: pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-
-      - name: Compile PetiteDetector
-        run: pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
-
-      - name: Compile PKLiteDetector
-        run: pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
-
-      - name: Compile SecuROMDetector
-        run: pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
-
-      - name: Compile copyDatas
-        run: pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+      - name: Compile all Python tools
+        run: | 
+          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.pypyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+          pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4

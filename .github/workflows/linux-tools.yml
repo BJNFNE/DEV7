@@ -26,20 +26,13 @@ jobs:
       - name: Run configure
         run: ./configure
 
-      - name: Compile create_iso
-        run: g++ -o create_iso common-tools/linux/create_iso/create_iso.cpp
-
-      - name: Compile extract_iso
-        run: g++ -o extract_iso common-tools/linux/extract_iso/extract_iso.cpp -larchive
-
-      - name: Compile convert_bin
-        run: g++ -o convert_bin common-tools/nowin/convert_bin/convert_bin.cpp
-
-      - name: Compile create_tar
-        run: g++ -o create_tar common-tools/nowin/create_tar/create_tar.cpp
-
-      - name: Compile create_zip
-        run: g++ -o create_zip common-tools/nowin/create_zip/create_zip.cpp
+      - name: Compile Linux tools
+        run: | 
+          g++ -o create_iso common-tools/linux/create_iso/create_iso.cpp
+          g++ -o extract_iso common-tools/linux/extract_iso/extract_iso.cpp -larchive
+          g++ -o convert_bin common-tools/nowin/convert_bin/convert_bin.cpp
+          g++ -o create_tar common-tools/nowin/create_tar/create_tar.cpp
+          g++ -o create_zip common-tools/nowin/create_zip/create_zip.cpp
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
