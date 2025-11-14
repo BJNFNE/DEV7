@@ -49,14 +49,14 @@ jobs:
         with:
           name: compiled-linux
           path: |
-            binaries/LoaderMDO/LoaderMDO
-            binaries/BCD1Creator/BCD1Creator
-            binaries/DEV7Launcher/DEV7Launcher
-            binaries/ModelPathDumper/ModelPathDumper
-            binaries/OBJDumper/OBJDumper
-            binaries/OBCViewer/OBCViewer
-            binaries/CTRKViewer/CTRKViewer
-            binaries/PLAViewer/PLAViewer
+            binaries/LoaderMDO
+            binaries/BCD1Creator
+            binaries/DEV7Launcher
+            binaries/ModelPathDumper
+            binaries/OBJDumper
+            binaries/OBCViewer
+            binaries/CTRKViewer
+            binaries/PLAViewer
             IMGConverter
             AdultCornerDecoder
             AdultCornerEncoder
