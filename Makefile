@@ -29,7 +29,7 @@ all: release
 # Release target
 release: CFLAGS   = $(RELEASE_CFLAGS)
 release: CXXFLAGS = $(RELEASE_CXXFLAGS)
-release: $(TARGETS_C) $(TARGETS_CPP) strip
+release: $(TARGETS_C) $(TARGETS_CPP)
 	@echo "Release builds were compiled, can be found in the binaries folder"
 
 # Debug target
@@ -110,8 +110,3 @@ ninja:
 	fi
 	@cmake -S . -B build -G Ninja
 	@cd $(BUILD_DIR) && ninja
-
-strip:
-	@strip --strip-all $(TARGETS_C) $(TARGETS_CPP)
-	@echo "Stripping is done"
-
