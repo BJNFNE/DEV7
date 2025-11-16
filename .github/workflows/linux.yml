@@ -30,7 +30,7 @@ jobs:
         run: ./configure
 
       - name: Compile all C++ programs
-        run: make -j4
+        run: make -j64
 
       - name: Compile all Python tools
         run: | 
