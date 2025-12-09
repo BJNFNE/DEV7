@@ -155,6 +155,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    DisplayFileInfo(exePath);
+    displayFileInfo(exePath);
     return 0;
 }
