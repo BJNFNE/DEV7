@@ -209,13 +209,13 @@ void openLicenceFile() {
     }
 }
 
-int runUNINST() {
+void runUNINST() {
     std::string uninst = "UNINST.EXE";
 
     if (!fileExists(uninst)) {
         std::cout << "Error: " << uninst << " not found in directory.\n" << std::endl;
         TaskExecution::pressEnterToExit();
-        return 1;
+        return;
     }
 #ifdef _WIN32
     if (system("UNINST.EXE") != 0) {
@@ -228,14 +228,14 @@ int runUNINST() {
 #endif
 }
 
-int Ed4Intro() {
+void Ed4Intro() {
     std::string Ed4IntroEXE = "Ed4Intro.exe";
 
      // Check if Ed4Intro.exe exists
     if (!fs::exists("Ed4Intro.exe")) {
         printf("Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         TaskExecution::pressEnterToExit();
-        return 1;
+        return;
     }
 #ifdef _WIN32
     int Ed4Intro = system("Ed4Intro.exe");
