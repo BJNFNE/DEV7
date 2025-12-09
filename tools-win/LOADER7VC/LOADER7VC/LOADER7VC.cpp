@@ -111,11 +111,11 @@ void displayFileInfo(const std::string& filepath) {
     size_t nb10Index = content.find("NB10");
     if (nb10Index != std::string::npos) {
         std::string afterNB10 = content.substr(nb10Index + 4);
-        std::string pdbPath = GetPrintableString(afterNB10);
-        std::cout << "PDB File: " << pdbPath << "\n";
+        std::string pdbPath = getPrintableString(afterNB10);
+        printf("PDB File: %s", pdbPath);
     }
     else {
-        std::cout << "PDB File reference not found in " << filepath << "\n";
+        printf("PDB File reference not found in %s", filepath);
     }
 
     TaskExecution::pressEnterToExit();
