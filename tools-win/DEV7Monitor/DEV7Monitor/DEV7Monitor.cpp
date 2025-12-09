@@ -82,7 +82,7 @@ double GetCPULoad(DWORD processId) {
     PdhOpenQuery(NULL, NULL, &cpuQuery);
     PdhAddCounter(cpuQuery, (L"\\Process(" + to_wstring(processId) + L")\\% Processor Time").c_str(), NULL, &cpuCounter);
     PdhCollectQueryData(cpuQuery);
-    Sleep(1000); // Wait for a second to collect new data
+    Sleep(1000);
 
     PDH_FMT_COUNTERVALUE counterVal;
     PdhCollectQueryData(cpuQuery);
@@ -96,17 +96,17 @@ double GetCPULoad(DWORD processId) {
 double GetMemoryUsage(DWORD processId) {
     HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, processId);
     if (hProcess == NULL) {
-        return -1; // Failed to open process
+        return -1;
     }
 
     PROCESS_MEMORY_COUNTERS_EX pmc;
     if (!GetProcessMemoryInfo(hProcess, reinterpret_cast<PROCESS_MEMORY_COUNTERS*>(&pmc), sizeof(pmc))) {
         CloseHandle(hProcess);
-        return -1; // Failed to get memory info
+        return -1;
     }
 
     CloseHandle(hProcess);
-    return pmc.PrivateUsage / (1024.0 * 1024.0); // Return memory usage in MB
+    return pmc.PrivateUsage / (1024.0 * 1024.0);
 }
 
 int main() {
