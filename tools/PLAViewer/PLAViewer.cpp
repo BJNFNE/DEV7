@@ -15,7 +15,7 @@ char versionNumber[4] = "1.2";
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <savegame.PLA>\n" << std::endl;
-        std::cout << "Version - " << versionNumber << "\n" << std::endl;
+        printf("Version %s", versionNumber);
         printf("Supported games:\n");
         printf("Land of Magic Stones\n");
         std::cout << "<savegame.PLA>\n\t .PLA savegame to view\n" << std::endl;
