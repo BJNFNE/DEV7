@@ -12,18 +12,18 @@
 #pragma comment(lib, "Version.lib")
 #pragma comment(lib, "Shlwapi.lib")
 
-void PrintHeader() {
+void printHeader() {
     std::string versionNumber = "v1.5-testing";
     std::cout << "============================\n";
     std::cout << "LOADER7VC " << versionNumber << "\n";
     std::cout << "============================\n";
 }
 
-bool ValidateFilePath(const std::string& filePath) {
+bool validateFilePath(const std::string& filePath) {
     return StrStrIA(filePath.c_str(), "Loader7.exe") || StrStrIA(filePath.c_str(), "Dev7VM.EXE");
 }
 
-void PrintVersionInfo(const std::string& filename) {
+void printVersionInfo(const std::string& filename) {
     DWORD dummy;
     DWORD size = GetFileVersionInfoSizeA(filename.c_str(), &dummy);
     if (size == 0) {
@@ -33,7 +33,7 @@ void PrintVersionInfo(const std::string& filename) {
 
     std::vector<char> data(size);
     if (!GetFileVersionInfoA(filename.c_str(), 0, size, data.data())) {
-        printf("GetFileVersionInfo failed.\n");
+        fprintf(stderr, "GetFileVersionInfo failed.\n");
         return;
     }
 
@@ -80,7 +80,7 @@ void PrintVersionInfo(const std::string& filename) {
     }
 }
 
-std::string GetPrintableString(const std::string& input) {
+std::string getPrintableString(const std::string& input) {
     std::string output;
     for (char c : input) {
         if (isprint(static_cast<unsigned char>(c)) || isspace(static_cast<unsigned char>(c))) {
@@ -90,20 +90,20 @@ std::string GetPrintableString(const std::string& input) {
     return output;
 }
 
-void DisplayFileInfo(const std::string& filepath) {
+void displayFileInfo(const std::string& filepath) {
     std::ifstream file(filepath, std::ios::binary);
     if (!file) {
-        std::cerr << "Failed to open file.\n";
+        fprintf(stderr, "Failed to open file.\n");
         return;
     }
 
     // Read entire file into memory (only for small files)
     std::string content((std::istreambuf_iterator<char>(file)),
-        std::istreambuf_iterator<char>());
+    std::istreambuf_iterator<char>());
 
     std::cout << "\nInfos about " << filepath << ":\n\n";
 
-    PrintVersionInfo(filepath);
+    printVersionInfo(filepath);
 
     std::ifstream sizeFile(filepath, std::ios::binary | std::ios::ate);
     std::cout << "File Size: " << sizeFile.tellg() << " Bytes\n";
@@ -122,13 +122,13 @@ void DisplayFileInfo(const std::string& filepath) {
 }
 
 int main(int argc, char* argv[]) {
-    PrintHeader();
+    printHeader();
 
     std::string exePath;
 
     if (argc > 1) {
         exePath = argv[1];
-        if (!ValidateFilePath(exePath)) {
+        if (!validateFilePath(exePath)) {
             fprintf(stderr,"Only Loader7.exe or Dev7VM.EXE are allowed.\n");
             return 1;
         }
