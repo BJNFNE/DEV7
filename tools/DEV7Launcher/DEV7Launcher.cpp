@@ -77,7 +77,7 @@ void launchCommand(const std::string& command) {
 int modifyMDOIni() {
      // Check if mdo.ini exists
     if (!fs::exists("mdo.ini")) {
-        std::cout << "Error: This directory does not seem to contain an configuration file in the directory.\n" << std::endl;
+        printf("Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -93,7 +93,7 @@ int modifyMDOIni() {
 int showMSGDef() {
     // Check if mdo.ini exists
     if (!fs::exists("msg.def")) {
-        std::cout << "Error: This directory does not seem to contain an debug configuration file in the directory.\n" << std::endl;
+        printf("Error: This directory does not seem to contain an debug configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -125,7 +125,7 @@ int modifyMDODbg() {
 int showTraceTXT() {
      // Check if Trace.txt exists
     if (!fs::exists("Trace.txt")) {
-        std::cout << "Error: This directory does not contain an Debug log in the directory.\n" << std::endl;
+        printf("Error: This directory does not contain an Debug log in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -141,7 +141,7 @@ int showTraceTXT() {
 int modifyAdibou3Ini() {
      // Check if Adibou3.ini exists
     if (!fs::exists("Adibou3.ini")) {
-        std::cout << "Error: This directory does not seem to be an Adibou 3 game directory.\n" << std::endl;
+        printf("Error: This directory does not seem to be an Adibou 3 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -272,7 +272,7 @@ void startGameExecutable() {
         }
     }
 
-    std::cout << "None of the executables found.\nPlease make sure you have the exe in the same directory as the launcher." << std::endl;
+    printf("None of the executables found.\nPlease make sure you have the exe in the same directory as the launcher.\n");
 }
 
 
