@@ -8,7 +8,7 @@
 namespace fs = std::filesystem;
 
 void printHeader() {
-    const std::string versionNumber = "0.5.0";
+    char versionNumber[6] = "0.5.0";
 
     std::cout << "=========================" << std::endl;
     std::cout << " OBJDumper ver. " << versionNumber << std::endl;

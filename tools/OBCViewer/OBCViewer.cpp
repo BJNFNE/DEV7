@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 
-const std::string versionNumber = "1.7";
+char versionNumber[4] = "1.7";
 
 void printHeader() {
     std::cout << "======================" << std::endl;
@@ -24,7 +24,7 @@ void printHeader() {
 void printUsage() {
     printHeader();
     printf("Usage: ./OBCViewer <script.obc>\n");
-    std::cout << "Version - " << versionNumber << std::endl << std::endl;
+    printf("%s", versionNumber);
     printf("Supported games:\n");
     printf(" * Adi 5\n");
     printf(" * Adibou 3\n");

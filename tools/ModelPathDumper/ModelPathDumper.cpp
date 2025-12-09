@@ -14,7 +14,7 @@ EXO files are used by following Games:
 namespace fs = std::filesystem;
 
 void printHeader() {
-    const std::string versionNumber = "0.2.0";
+    char versionNumber[6] = "0.2.0";
 
     printf("===========================");
     std::cout << " ModelPathDumper ver. " << versionNumber << std::endl;

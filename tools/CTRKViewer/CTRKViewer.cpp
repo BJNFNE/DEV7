@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 
-const std::string versionNumber = "1.0";
+char versionNumber[6] = "1.0.1";
 
 void printHeader() {
     printf("======================");
@@ -24,7 +24,7 @@ void printHeader() {
 void printUsage() {
     printHeader();
     printf("Usage: ./CTRKViewer <file.ctrk>");
-    std::cout << "Version - " << versionNumber << std::endl << std::endl;
+    printf("%s", versionNumber);
 }
 
 int main(int argc, char* argv[]) {

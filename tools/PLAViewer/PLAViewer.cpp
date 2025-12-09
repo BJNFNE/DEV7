@@ -10,8 +10,7 @@
 
 namespace fs = std::filesystem;
 
-// Set here the versionNumber
-const std::string versionNumber = "1.2";
+char versionNumber[4] = "1.2";
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
