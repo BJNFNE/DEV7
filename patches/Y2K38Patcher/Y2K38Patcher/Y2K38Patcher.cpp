@@ -6,6 +6,8 @@
 #include <ctime>
 #include <string>
 
+#include "common-code/ConsoleUtils.h"
+
 // TODO:
 // Change the clock date back to the realtime value when the process (setup.exe) is being closed/terminated.
 // Current Workaround, sync the Time between PC and Time Server over the Settings, to change it back to the current timedate
@@ -70,9 +72,8 @@ int main() {
     printf("When you done playing your DEV7 game, set the Date back to the one you currently have.\n");
 
     if (!success) {
-        std::cerr << "Failed to execute Loader7.exe." << std::endl;
-        std::cout << "Press Enter to exit\n" << std::endl;
-        std::cin.get();
+        fprintf(stderr, "Failed to execute %s.", loaderExeName);
+        TaskExecution::pressEnterToExit();
         return 1;
     }
 
@@ -87,9 +88,8 @@ int main() {
     success = CreateProcess(NULL, devExePath, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
 
     if (!success) {
-        std::cerr << "Failed to execute Dev7VM.EXE." << std::endl;
-        std::cout << "Press Enter to exit\n" << std::endl;
-        std::cin.get();
+        fprintf(stderr, "Failed to execute Dev7VM.EXE.");
+        TaskExecution::pressEnterToExit();
         return 1;
     }
 
@@ -101,8 +101,7 @@ int main() {
 
     // Close process and thread handles
     printf("When you done playing your DEV7 game, set the Date back to the one you currently have.\n");
-    printf("Pres Enter to exit Y2K38Patcher\n");
-    std::cin.get();
+    TaskExecution::pressEnterToExit();
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 

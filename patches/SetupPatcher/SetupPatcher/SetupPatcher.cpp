@@ -67,7 +67,7 @@ int main() {
     BOOL success = CreateProcess(NULL, setupExePath, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
 
     if (!success) {
-        std::cerr << "Failed to execute setup.exe." << std::endl;
+        fprintf(stderr, "Failed to execute setup.exe.");
         return 1;
     }
 
@@ -81,7 +81,7 @@ int main() {
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 
-    std::cout << "SetupPatcher installed with the 2026 Bypass the Game sucessfully" << std::endl;
+    printf("SetupPatcher installed with the 2026 Bypass the Game sucessfully");
 
     return 0;
 }
