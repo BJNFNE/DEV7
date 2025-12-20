@@ -10,16 +10,16 @@ namespace fs = std::filesystem;
 void printHeader() {
     char versionNumber[6] = "0.5.0";
 
-    std::cout << "=========================" << std::endl;
-    std::cout << " OBJDumper ver. " << versionNumber << std::endl;
-    std::cout << "=========================" << std::endl;
+    printf("=========================\n");
+    printf("OBJDumper ver. %s\n", versionNumber);
+    printf("=========================\n");
 }
 
 // Function to extract unique .obj filenames and dump them to a text file
-void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputLocation, bool useSlash) {
+void extractObjFilenames(const std::string& inputFile, const std::string& outputLocation, bool useSlash) {
     std::ifstream inFile(inputFile);
     if (!inFile) {
-        std::cerr << "Error: Unable to open input file " << inputFile << std::endl;
+        fprintf(stderr, "Error: Unable to open input file\n");
         return;
     }
 
@@ -53,11 +53,11 @@ void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputL
             // Try to create a text file instead of a directory
             outFile.open(outputLocation + ".txt");
             if (!outFile) {
-                std::cerr << "Error: Unable to create output file " << outputLocation << ".txt" << std::endl;
+                fprintf(stderr, "Error: Unable to create output file");
                 return;
             }
         } else {
-            std::cerr << "Error: Unable to open output file " << outputLocation << std::endl;
+            fprintf(stderr,"Error: Unable to open output file");
             return;
         }
     }
@@ -72,12 +72,12 @@ void dumpUniqueObjFiles(const std::string& inputFile, const std::string& outputL
         outFile << modifiedObjFile << ".obj" << std::endl;
     }
 
-    std::cout << "Unique .obj filenames have been dumped to " << outputLocation << std::endl;
+    printf(".obj filenames have been dumped sucessfully\n");
 }
 
 int main() {
     printHeader();
-    std::string inputFile = "loader7.map"; // Default input file
+    std::string inputFile = "loader7.map";
     std::string outputLocation;
     bool useSlash;
 
@@ -95,8 +95,7 @@ int main() {
     printf("Enter the output file name: ");
     getline(std::cin, outputLocation);
 
-    dumpUniqueObjFiles(inputFile, outputLocation, useSlash);
-
+    extractObjFilenames(inputFile, outputLocation, useSlash);
     return 0;
 
-} // End of namespace fs 
+} // End of namespace fs
