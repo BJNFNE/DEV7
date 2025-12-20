@@ -40,7 +40,7 @@ void printHeader() {
     char versionNumber[6] = "1.2.0";
 
     printf("=========================\n");
-    std::cout << " DEV7Launcher ver. " << versionNumber << std::endl;
+    printf(" DEV7Launcher ver. %s\n", versionNumber);
     printf("=========================\n");
 }
 
@@ -77,7 +77,7 @@ void launchCommand(const std::string& command) {
 int modifyMDOIni() {
      // Check if mdo.ini exists
     if (!fs::exists("mdo.ini")) {
-        printf("Error: This directory does not seem to contain an configuration file in the directory.\n");
+        fprintf(stderr, "Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -93,7 +93,7 @@ int modifyMDOIni() {
 int showMSGDef() {
     // Check if mdo.ini exists
     if (!fs::exists("msg.def")) {
-        printf("Error: This directory does not seem to contain an debug configuration file in the directory.\n");
+        fprintf(stderr, "Error: This directory does not seem to contain an debug configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -106,10 +106,10 @@ int showMSGDef() {
 }
 
 int modifyMDODbg() {
-    std::string mdo_dbg = "MDO.DBG";
+    char mdo_dbg[8] = "MDO.DBG";
 
     if (!fileExists(mdo_dbg)) {
-        std::cout << "Error: " << mdo_dbg << " not found in the directory.\n" << std::endl;
+        fprintf(stderr, "Error: %s not found \n", mdo_dbg);
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -125,7 +125,7 @@ int modifyMDODbg() {
 int showTraceTXT() {
      // Check if Trace.txt exists
     if (!fs::exists("Trace.txt")) {
-        printf("Error: This directory does not contain an Debug log in the directory.\n");
+        fprintf(stderr, "Error: This directory does not contain an Debug log in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -141,7 +141,7 @@ int showTraceTXT() {
 int modifyAdibou3Ini() {
      // Check if Adibou3.ini exists
     if (!fs::exists("Adibou3.ini")) {
-        printf("Error: This directory does not seem to be an Adibou 3 game directory.\n");
+        fprintf(stderr, "Error: This directory does not seem to be an Adibou 3 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -165,7 +165,7 @@ int modifyAdibou3Ini() {
 int modifyAdi5Ini() {
      // Check if Data/ADI5.ini exists
     if (!fs::exists("Data/ADI5.ini")) {
-        printf("Error: This directory does not seem to be an Adi 5 game directory.\n");
+        fprintf(stderr, "Error: This directory does not seem to be an Adi 5 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -205,15 +205,15 @@ void openLicenceFile() {
 #endif
 
     } else {
-        printf("License or warranty file not found.\n");
+        fprintf(stderr, "License or warranty file not found.\n");
     }
 }
 
 void runUNINST() {
-    std::string uninst = "UNINST.EXE";
+    char uninst[11] = "UNINST.EXE";
 
     if (!fileExists(uninst)) {
-        std::cout << "Error: " << uninst << " not found in directory.\n" << std::endl;
+        fprintf(stderr ,"Error: %s not found in directory.\n", uninst);
         TaskExecution::pressEnterToExit();
         return;
     }
@@ -233,7 +233,7 @@ void Ed4Intro() {
 
      // Check if Ed4Intro.exe exists
     if (!fs::exists("Ed4Intro.exe")) {
-        printf("Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
+        fprintf(stderr, "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         TaskExecution::pressEnterToExit();
         return;
     }
@@ -339,7 +339,7 @@ int main(int argc, char* argv[]) {
         printf("11. Open Licence Agreement\n");
         printf("12. Open MSG.DEF\n");
     } else {
-        printf("Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated.\n");
+        fprintf(stderr, "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -403,7 +403,7 @@ switch(choice) {
         showMSGDef();
         return 0;
     default:
-        printf("Invalid choice. Launcher exits\n");
+        fprintf(stderr, "Invalid choice. Launcher exits\n");
         TaskExecution::pressEnterToExit();
 }
 
