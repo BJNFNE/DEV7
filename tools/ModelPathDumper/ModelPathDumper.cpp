@@ -16,9 +16,9 @@ namespace fs = std::filesystem;
 void printHeader() {
     char versionNumber[6] = "0.2.0";
 
-    printf("===========================");
-    std::cout << " ModelPathDumper ver. " << versionNumber << std::endl;
-    printf("===========================");
+    printf("===========================\n");
+    printf("ModelPathDumper ver. %s\n", versionNumber);
+    printf("===========================\n");
 }
 
 void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile, int& fileCount) {
