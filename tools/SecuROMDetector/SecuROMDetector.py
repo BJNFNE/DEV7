@@ -92,4 +92,4 @@ if exe_file.lower() in (valid_exe.lower() for valid_exe in valid_exes):
 else:
     print("Invalid EXE file. Please enter a valid executable name.")
 
-input("Press enter to close SecuROMDetector")
+input("Press enter to close SecuROMDetector")  # TODO: Add better handling for closing
