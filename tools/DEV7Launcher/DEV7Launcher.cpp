@@ -178,34 +178,33 @@ int modifyAdi5Ini() {
     #endif
 }
 
-void openLicenceFile() {
-    std::string licenseFile = "Lizenzvereinbarung.txt"; // German
-    std::string warrantyFile = "garantie.txt"; // English
-    std::string lisezMoiFile = "LISEZ MOI.txt"; // French
-    bool foundLicense = fs::exists(licenseFile);
-    bool foundWarranty = fs::exists(warrantyFile);
-    bool foundLisezMoi = fs::exists(lisezMoiFile);
+void loadLicenceFile() {
+    std::vector<std::string> txtFiles = {
+        "Lizenzvereinbarung.txt", // German
+        "garantie.txt",           // English
+        "LISEZ MOI.txt",          // French
+        "Техподдержка.txt"        // Russian
+    };
 
-    if (foundLicense || foundWarranty || foundLisezMoi) {
-        std::string filename;
-        if (foundLicense) {
-            filename = licenseFile;
-        } else if (foundWarranty) {
-            filename = warrantyFile;
-        } else {
-            filename = lisezMoiFile;
+    std::string filename;
+
+    for (const auto& file : txtFiles) {
+        if (fs::exists(file)) {
+            filename = file;
+            break;
         }
+    }
+
+    if (!filename.empty()) {
 
 #ifdef _WIN32
         int open = system(("notepad.exe " + filename).c_str());
-        printf("Please wait a few moments to open the Licence for you.\n");
 #else
         int open = system(("open " + filename).c_str());
-        printf("Please wait a few moments to open the Licence for you.\n");
 #endif
 
     } else {
-        fprintf(stderr, "License or warranty file not found.\n");
+        fprintf(stderr, "License file not found.\n");
     }
 }
 
@@ -397,7 +396,7 @@ switch(choice) {
         modifyAdi5Ini();
         return 0;
     case 11:
-        openLicenceFile();
+        loadLicenceFile();
         return 0;
     case 12:
         showMSGDef();
