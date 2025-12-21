@@ -265,7 +265,7 @@ void startGameExecutable() {
 
     for (const auto& exe : executables) {
         if (fileExists(exe.fileName)) {
-            std::cout << exe.fileName << " found. Starting " << exe.command << "..." << std::endl;
+            printf("%s found. Starting %s...\n", exe.fileName, exe.command);
             launchCommand(exe.command);
             return;
         }
