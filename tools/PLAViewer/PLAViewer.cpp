@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
         printf("Version %s", versionNumber);
         printf("Supported games:\n");
         printf("Land of Magic Stones\n");
-        std::cout << "<savegame.PLA>\n\t .PLA savegame to view\n" << std::endl;
+        printf("<savegame.PLA>\n\t .PLA savegame to view\n");
         return 1;
     }
 
