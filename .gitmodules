@@ -1,0 +1,3 @@
+[submodule "common-code"]
+	path = common-code
+	url = https://github.com/BJNFNE/common-code.git
