@@ -19,12 +19,9 @@
 #include <sys/file.h>
 #define SLEEP_COMMAND_UNIX "sleep 2"
 #define DEV7_MUTEX_LAUNCH_UNIX "/tmp/DEV7_INSTANCE_MUTEX"
+#define READ_WRITE_PERMISSION 0666
 #endif
 
-// Defines
-#define READ_WRITE_PERMISSION 0666
-
-// Namespaces
 namespace fs = std::filesystem;
 
 bool fileExists(const std::string& filename) {
@@ -75,7 +72,6 @@ void launchCommand(const std::string& command) {
 }
 
 int modifyMDOIni() {
-     // Check if mdo.ini exists
     if (!fileExists("mdo.ini")) {
         fprintf(stderr, "Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
@@ -91,7 +87,6 @@ int modifyMDOIni() {
 }
 
 int showMSGDef() {
-    // Check if mdo.ini exists
     if (!fileExists("msg.def")) {
         fprintf(stderr, "Error: This directory does not seem to contain an debug configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
@@ -123,7 +118,6 @@ int modifyMDODbg() {
 }
 
 int showTraceTXT() {
-     // Check if Trace.txt exists
     if (!fileExists("Trace.txt")) {
         fprintf(stderr, "Error: This directory does not contain an Debug log in the directory.\n");
         TaskExecution::pressEnterToExit();
@@ -139,7 +133,6 @@ int showTraceTXT() {
 }
 
 int modifyAdibou3Ini() {
-     // Check if Adibou3.ini exists
     if (!fileExists("Adibou3.ini")) {
         fprintf(stderr, "Error: This directory does not seem to be an Adibou 3 game directory.\n");
         TaskExecution::pressEnterToExit();
@@ -163,7 +156,6 @@ int modifyAdibou3Ini() {
 }
 
 int modifyAdi5Ini() {
-     // Check if Data/ADI5.ini exists
     if (!fileExists("Data/ADI5.ini")) {
         fprintf(stderr, "Error: This directory does not seem to be an Adi 5 game directory.\n");
         TaskExecution::pressEnterToExit();
@@ -229,8 +221,6 @@ void runUNINST() {
 
 void Ed4Intro() {
     std::string Ed4IntroEXE = "Ed4Intro.exe";
-
-     // Check if Ed4Intro.exe exists
     if (!fs::exists("Ed4Intro.exe")) {
         fprintf(stderr, "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         TaskExecution::pressEnterToExit();
@@ -276,10 +266,10 @@ void startGameExecutable() {
 
 
 int main(int argc, char* argv[]) {
-    auto start = std::chrono::steady_clock::now(); // Record the start time
+    auto start = std::chrono::steady_clock::now();
     
     int choice;
-    bool usedLoader7OrDev7VM = false; // Flag to track if Loader7.exe or Dev7VM.EXE was used
+    bool usedLoader7OrDev7VM = false;
 
     if (isDEV7Running()) {
         printf("A DEV7 client is already running, cannot handle more than one DEV7 client.\n");
@@ -406,10 +396,9 @@ switch(choice) {
         TaskExecution::pressEnterToExit();
 }
 
-auto end = std::chrono::steady_clock::now(); // Record the end time
-auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
+auto end = std::chrono::steady_clock::now();
+auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-// Convert seconds to hours, minutes, and seconds
 char hours = elapsed.count() / 3600;
 char minutes = (elapsed.count() % 3600) / 60;
 char seconds = elapsed.count() % 60;
@@ -432,8 +421,8 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
     #else
     system("rm /tmp/DEV7_INSTANCE_MUTEX") >= 0;
     #endif
-    ConsoleUtils::clearConsole(); // Clear the console before restarting
-    main(argc, argv);  // Restart the launcher by calling main again
+    ConsoleUtils::clearConsole();
+    main(argc, argv);
 }
 
 if (restartChoice == 'n' || restartChoice == 'N') {
