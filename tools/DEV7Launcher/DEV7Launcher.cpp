@@ -410,15 +410,15 @@ auto end = std::chrono::steady_clock::now(); // Record the end time
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start); // Calculate elapsed time in seconds
 
 // Convert seconds to hours, minutes, and seconds
-int hours = elapsed.count() / 3600; // 3600 seconds in an hour
-int minutes = (elapsed.count() % 3600) / 60; // Remaining minutes after extracting hours
-int seconds = elapsed.count() % 60; // Remaining seconds after extracting minutes
+char hours = elapsed.count() / 3600;
+char minutes = (elapsed.count() % 3600) / 60;
+char seconds = elapsed.count() % 60;
 
 if (usedLoader7OrDev7VM) {
     ConsoleUtils::clearConsole();
 }
 
-std::cout << "Total playtime: " << hours << " hours, " << minutes << " minutes and " << seconds << " seconds." << std::endl;
+printf("Total playtime: %d hours, %d minutes %d secounds.\n\n", hours, minutes, seconds);
 
 printf("Would you like to restart DEV7Launcher? (y/n): ");
 char restartChoice;
