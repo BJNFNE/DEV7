@@ -79,14 +79,14 @@ void BCD1FilenameList() {
     printf(" - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n");
     printf(" - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n");
     printf(" - Занимательная музыкальная машинка (Музыка, 4-7 лет) [bmu47A310.bcd1]\n");
-    printf(" - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n");
+    printf(" - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n\n");
 
 #ifdef _WIN32
     SetConsoleCP(437);
     SetConsoleOutputCP(437);
 #endif
 
-    printf("Nederlands:\n\n");
+    printf("Nederlands:\n");
     printf("Environment:\n");
     printf(" - Het Land van Adiboo [benxxa300.bcd1]\n");
     printf("Application:\n");
