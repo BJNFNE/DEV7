@@ -76,7 +76,7 @@ void launchCommand(const std::string& command) {
 
 int modifyMDOIni() {
      // Check if mdo.ini exists
-    if (!fs::exists("mdo.ini")) {
+    if (!fileExists("mdo.ini")) {
         fprintf(stderr, "Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
@@ -92,7 +92,7 @@ int modifyMDOIni() {
 
 int showMSGDef() {
     // Check if mdo.ini exists
-    if (!fs::exists("msg.def")) {
+    if (!fileExists("msg.def")) {
         fprintf(stderr, "Error: This directory does not seem to contain an debug configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
@@ -124,7 +124,7 @@ int modifyMDODbg() {
 
 int showTraceTXT() {
      // Check if Trace.txt exists
-    if (!fs::exists("Trace.txt")) {
+    if (!fileExists("Trace.txt")) {
         fprintf(stderr, "Error: This directory does not contain an Debug log in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
@@ -140,7 +140,7 @@ int showTraceTXT() {
 
 int modifyAdibou3Ini() {
      // Check if Adibou3.ini exists
-    if (!fs::exists("Adibou3.ini")) {
+    if (!fileExists("Adibou3.ini")) {
         fprintf(stderr, "Error: This directory does not seem to be an Adibou 3 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
@@ -149,12 +149,12 @@ int modifyAdibou3Ini() {
     // This an Workaround for this Function to load Adibou3.ini into the Editors
     // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
 #ifdef _WIN32
-  if (!fs::exists("Adibou3.ini")) {
+  if (!fileExists("Adibou3.ini")) {
     int moveAdibou3Ini = system("ren ADIBOU3.INI Adibou3.ini");
   }
    int editAdibou3Ini = system("notepad Adibou3.ini");
 #else
-  if (!fs::exists("Adibou3.ini")) {
+  if (!fileExists("Adibou3.ini")) {
      int moveAdibou3Ini = system("mv ADIBOU3.INI Adibou3.ini");
   }
    execlp("nano", "nano", "Adibou3.ini", NULL);
@@ -164,7 +164,7 @@ int modifyAdibou3Ini() {
 
 int modifyAdi5Ini() {
      // Check if Data/ADI5.ini exists
-    if (!fs::exists("Data/ADI5.ini")) {
+    if (!fileExists("Data/ADI5.ini")) {
         fprintf(stderr, "Error: This directory does not seem to be an Adi 5 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
@@ -189,7 +189,7 @@ void loadLicenceFile() {
     std::string filename;
 
     for (const auto& file : txtFiles) {
-        if (fs::exists(file)) {
+        if (fileExists(file)) {
             filename = file;
             break;
         }
