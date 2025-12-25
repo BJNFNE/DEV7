@@ -109,27 +109,6 @@ int main(int argc, char* argv[]) {
     OBCInput.close();
     outputScript.close();
 
-    // Create a separate file for Debug Infos
-    std::ofstream DebugInfoOutput(inputFile.stem().string() + "_debuginfo.txt");
-    if (!DebugInfoOutput) {
-        fprintf(stderr, "Error: Unable to create Debug Infos file.");
-        return 1;
-    }
-
-    // Write Debug Infos to the separate file
-    DebugInfoOutput << "Debug Infos:" << std::endl;
-    DebugInfoOutput << "Output of " << inputFile.stem().string() << ".obc" << " created at " << timedate << std::endl;
-    #ifdef __unix__
-    DebugInfoOutput << "Created by " << username << std::endl;
-    #elif __APPLE__
-    DebugInfoOutput << "Created by " << username << std::endl;
-    #endif
-    DebugInfoOutput << "Offset (hex): 0x" << std::hex << offset << " hex" << std::dec << std::endl;
-    DebugInfoOutput << "Offset (bytes): " << offset << " bytes" << std::dec << std::endl;
-    DebugInfoOutput.close();
-
-    printf("OBC Script (%s) is now readable\n", argv[1]);
-
     // Display the full path of the output file of the OBC Script
     ConsoleUtils::printNewLine();
     printf("Output created at: ""%s", fs::absolute(inputFile.stem().string() + ".txt").c_str());
