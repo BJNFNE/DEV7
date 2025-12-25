@@ -39,42 +39,42 @@ The last 3 numbers are for the version number.
 #endif
 
 void BCD1FilenameList() {
-    printf("Example BCD1 Filenames which were detected by Adibou 3\n");
+    printf("Example BCD1 Filenames which were detected by Adibou 3\n\n");
 
-    printf("Français:\b");
-    printf("Environment:\b");
+    printf("Français:\n\n");
+    printf("Environment:\n");
     printf(" - Le pays d'Adibou [benxxf300.bcd1]\n");
-    printf("Application:\b");
+    printf("Application:\n");
     printf(" - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n");
     printf(" - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n");
-    printf(" - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n");
+    printf(" - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n\n");
 
-    printf("Deutsch:\b");
-    printf("Environment:\b");
+    printf("Deutsch:\n");
+    printf("Environment:\n");
     printf(" - Das Zauberland von Adiboo [benxxd300.bcd1]\n");
-    printf("Application:\b");
+    printf("Application:\n");
     printf(" - Die Stadt Wiwawort (Wörter 5-6 Jahre) [BFR56D300.BCD1]\n");
     printf(" - Die Stadt Plusminus (Zahlen 5-6 Jahre) [BMA56D300.BCD1]\n");
     printf(" - Das Tal Wortwörtlich (Im Leseland 6-7 Jahre)[BFR67D300.BCD1]\n");
     printf(" - Das Tal Zählmal (Im Rechenland 6-7 Jahre) [BMA67D300.BCD1]\n");
     printf(" - Das Königreich Hocus Pocus (Englisch 4-7 Jahre) [blg47D310.bcd1]\n");
-    printf(" - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n");
+    printf(" - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n\n");
 
-    printf("English:\b");
-    printf("Environment:\b");
-    printf("Application:\b");
+    printf("English:\n");
+    printf("Environment:\n");
+    printf("Application:\n");
     printf(" - Word-by-Word City (Reading 5-6 years) [bfr56a300.bcd1]\n");
     printf(" - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n");
-    printf(" - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n");
+    printf(" - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n\n");
 
 #ifdef _WIN32
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
 #endif
 
-    printf("русский:\b");
-    printf("Environment:\b");
-    printf("Application:\b");
+    printf("русский:\n");
+    printf("Environment:\n");
+    printf("Application:\n");
     printf(" - Король Смирности (Чтение 5-6 лет) [bma56F300.bcd1]\n");
     printf(" - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n");
     printf(" - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n");
@@ -86,10 +86,10 @@ void BCD1FilenameList() {
     SetConsoleOutputCP(437);
 #endif
 
-    printf("Nederlands:\b");
-    printf("Environment:\b");
+    printf("Nederlands:\n\n");
+    printf("Environment:\n");
     printf(" - Het Land van Adiboo [benxxa300.bcd1]\n");
-    printf("Application:\b");
+    printf("Application:\n");
     printf(" - Rekenen 5-6 jaar [bma56a300.bcd1]\n");
     return;
 }
