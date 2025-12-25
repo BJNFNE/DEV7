@@ -26,6 +26,9 @@ jobs:
       - name: Install PyInstaller
         run: pip install pyinstaller
 
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
       - name: Run configure
         run: ./configure
 
