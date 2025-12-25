@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "common-code/ConsoleUtils.h"
+#include "common-code/TaskExecution.h"
 
 namespace fs = std::filesystem;
 
@@ -64,12 +65,7 @@ int main(int argc, char* argv[]) {
     ConsoleUtils::printNewLine();
     printf("Output file created at: %s\n", fs::absolute(inputSaveGame.stem().string() + ".txt").c_str());
 
-    // Exit message for PLAViewer
-    ConsoleUtils::printNewLine();
-    printf("Press Enter to exit PLAViewer.\n");
-    (void)getchar();
-    ConsoleUtils::clearConsole();
-
+    TaskExecution::pressEnterToExit();
     return 0;
 
 } // End of namespace fs
