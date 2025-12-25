@@ -15,7 +15,6 @@
 #else
 #include <unistd.h>
 #include <sys/stat.h>
-#include <sys/types.h>
 #include <sys/file.h>
 #define SLEEP_COMMAND_UNIX "sleep 2"
 #define DEV7_MUTEX_LAUNCH_UNIX "/tmp/DEV7_INSTANCE_MUTEX"
