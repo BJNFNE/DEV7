@@ -22,8 +22,6 @@
 #define READ_WRITE_PERMISSION 0666
 #endif
 
-namespace fs = std::filesystem;
-
 bool fileExists(const std::string& filename) {
 #ifdef _WIN32
     return _access(filename.c_str(), 0) == 0;
