@@ -101,16 +101,14 @@ int showMSGDef() {
 }
 
 int modifyMDODbg() {
-    char mdo_dbg[8] = "MDO.DBG";
-
-    if (!fileExists(mdo_dbg)) {
-        fprintf(stderr, "Error: %s not found \n", mdo_dbg);
+    if (!fileExists("MDO.DBG")) {
+        fprintf(stderr, "Error: MDO.DBG not found.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
     #ifdef _WIN32
-        int mdoDBG = system("notepad MDO.DBG");
+        system("notepad MDO.DBG") >= 0;
     #else
         execlp("nano", "nano", "MDO.DBG", NULL);
         return 1;
@@ -119,7 +117,7 @@ int modifyMDODbg() {
 
 int showTraceTXT() {
     if (!fileExists("Trace.txt")) {
-        fprintf(stderr, "Error: This directory does not contain an Debug log in the directory.\n");
+        fprintf(stderr, "Error: This directory does not contain an Trace.txt.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
@@ -145,7 +143,7 @@ int modifyAdibou3Ini() {
   if (!fileExists("Adibou3.ini")) {
     system("ren ADIBOU3.INI Adibou3.ini") >= 0;
   }
-   int editAdibou3Ini = system("notepad Adibou3.ini");
+    system("notepad Adibou3.ini") >= 0;
 #else
   if (!fileExists("Adibou3.ini")) {
     system("mv ADIBOU3.INI Adibou3.ini") >= 0;
@@ -201,10 +199,8 @@ void loadLicenceFile() {
 }
 
 void runUNINST() {
-    char uninst[11] = "UNINST.EXE";
-
-    if (!fileExists(uninst)) {
-        fprintf(stderr ,"Error: %s not found in directory.\n", uninst);
+    if (!fileExists("UNINST.EXE")) {
+        fprintf(stderr ,"Error: UNINST.EXE not found in directory.\n");
         TaskExecution::pressEnterToExit();
         return;
     }
@@ -406,7 +402,7 @@ if (usedLoader7OrDev7VM) {
     ConsoleUtils::clearConsole();
 }
 
-printf("Total playtime: %d hours, %d minutes %d secounds.\n\n", hours, minutes, seconds);
+printf("Total playtime: %d hours, %d minutes, %d secounds.\n\n", hours, minutes, seconds);
 
 printf("Would you like to restart DEV7Launcher? (y/n): ");
 char restartChoice;
