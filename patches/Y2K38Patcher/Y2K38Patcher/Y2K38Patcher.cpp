@@ -6,7 +6,7 @@
 #include <ctime>
 #include <string>
 
-#include "common-code/ConsoleUtils.h"
+#include "common-code/TaskExecution.h"
 
 // TODO:
 // Change the clock date back to the realtime value when the process (setup.exe) is being closed/terminated.
