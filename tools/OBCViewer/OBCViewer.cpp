@@ -24,7 +24,7 @@ void printHeader() {
 void printUsage() {
     printHeader();
     printf("Usage: ./OBCViewer <script.obc>\n");
-    printf("%s", versionNumber);
+    printf("Version: %s\n", versionNumber);
     printf("Supported games:\n");
     printf(" * Adi 5\n");
     printf(" * Adibou 3\n");
