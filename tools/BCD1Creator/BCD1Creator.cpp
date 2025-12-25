@@ -30,6 +30,7 @@ The last 3 numbers are for the version number.
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "common-code/ConsoleUtils.h"
 
@@ -107,11 +108,11 @@ int main(int argc, const char **argv) {
     BCD1FilenameList();
     printf("Enter the Filename of the Game which you wanna modify: ");
     std::string fileName;
-    std::getline(std::cin, fileName);
+    getline(std::cin, fileName);
 
     printf("Choose between [1] AppliInfo or [2] ENVIINFO: \n");
     std::string choice;
-    std::getline(std::cin, choice);
+    getline(std::cin, choice);
 
     // Ask the user for details based on the chosen section
     std::string Name, CDName, PictCD, MiniEnviVersion, Order, PictureNameR, PictureNameC, PictureNameN, IDFile, CDDetected;
@@ -119,28 +120,28 @@ int main(int argc, const char **argv) {
     if (choice == "1") {
         printf("Enter [AppliInfo] details:\n"); // (Applications only!)
         printf("Name: ");
-        std::getline(std::cin, Name);
+        getline(std::cin, Name);
         printf("CDName: ");
         std::getline(std::cin, CDName);
         printf("PictCD: ");
-        std::getline(std::cin, PictCD);
+        getline(std::cin, PictCD);
         printf("MiniEnviVersion: ");
-        std::getline(std::cin, MiniEnviVersion);
+        getline(std::cin, MiniEnviVersion);
         // printf("Order: ");
         // std::getline(std::cin, Order);
         printf("PictureNameR: ");
-        std::getline(std::cin, PictureNameR);
+        getline(std::cin, PictureNameR);
         printf("PictureNameC: ");
-        std::getline(std::cin, PictureNameC);
+        getline(std::cin, PictureNameC);
         printf("PictureNameN: ");
-        std::getline(std::cin, PictureNameN);
+        getline(std::cin, PictureNameN);
     }
     else if (choice == "2") {
         printf("Enter [ENVIINFO] details:\n");  // (Environment only!)
         printf("Name: ");
-        std::getline(std::cin, Name);
+        getline(std::cin, Name);
         printf("PictCD: ");
-        std::getline(std::cin, PictCD);
+        getline(std::cin, PictCD);
         // printf("Order: ");
         // std::getline(std::cin, Order);
         // printf("IDFile: ");
