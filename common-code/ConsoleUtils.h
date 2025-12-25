@@ -11,5 +11,8 @@ namespace ConsoleUtils {
     inline void printNewLine() {
       printf("\n");
     }
+    inline void printDoubleNewLine() {
+      printf("\n\n");
+    }
 }
 #endif

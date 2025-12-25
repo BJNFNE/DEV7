@@ -39,7 +39,8 @@ The last 3 numbers are for the version number.
 #endif
 
 void BCD1FilenameList() {
-    printf("Example BCD1 Filenames which were detected by Adibou 3\n\n");
+    printf("Example BCD1 Filenames which were detected by Adibou 3");
+    ConsoleUtils::printDoubleNewLine();
 
     printf("Français:\n\n");
     printf("Environment:\n");
@@ -47,7 +48,8 @@ void BCD1FilenameList() {
     printf("Application:\n");
     printf(" - Le Royaume des Murmures (Lecture 4-5) [BFR45F300.BCD1]\n");
     printf(" - Le Royaume Méli-Mélo (Calcul 4-5 ans) [BMA45F300.BCD1]\n");
-    printf(" - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]\n\n");
+    printf(" - L'île volante (Sciences 4-7 ans) [bsc47F310.bcd1]");
+    ConsoleUtils::printDoubleNewLine();
 
     printf("Deutsch:\n");
     printf("Environment:\n");
@@ -58,14 +60,16 @@ void BCD1FilenameList() {
     printf(" - Das Tal Wortwörtlich (Im Leseland 6-7 Jahre)[BFR67D300.BCD1]\n");
     printf(" - Das Tal Zählmal (Im Rechenland 6-7 Jahre) [BMA67D300.BCD1]\n");
     printf(" - Das Königreich Hocus Pocus (Englisch 4-7 Jahre) [blg47D310.bcd1]\n");
-    printf(" - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]\n\n");
+    printf(" - Das schwebende Land (Natur & Technik 4-7) [bsc47D310.bcd1]");
+    ConsoleUtils::printDoubleNewLine();
 
     printf("English:\n");
     printf("Environment:\n");
     printf("Application:\n");
     printf(" - Word-by-Word City (Reading 5-6 years) [bfr56a300.bcd1]\n");
     printf(" - More-or-Less City (Maths 5-6 years) [BMA56A300.BCD1]\n");
-    printf(" - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]\n\n");
+    printf(" - The Mysterious Music Machine 4-7 years [bmu47A310.bcd1]");
+    ConsoleUtils::printDoubleNewLine();
 
 #ifdef _WIN32
     SetConsoleCP(65001);
@@ -79,7 +83,8 @@ void BCD1FilenameList() {
     printf(" - Сказочная долина (Чтение 6-7 лет) [bma67F300.bcd1]\n");
     printf(" - Загадочная страна (Науки, 4-7 лет) [bsc47F310.bcd1]\n");
     printf(" - Занимательная музыкальная машинка (Музыка, 4-7 лет) [bmu47A310.bcd1]\n");
-    printf(" - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]\n\n");
+    printf(" - Королевство Фокус-Покус (Английский, 4-7 лет) [blg47F310.bcd1]");
+    ConsoleUtils::printDoubleNewLine();
 
 #ifdef _WIN32
     SetConsoleCP(437);
