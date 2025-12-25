@@ -24,6 +24,9 @@ jobs:
       - name: Install PyInstaller
         run: pip install pyinstaller
 
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
       - name: Compile C++ programs with MinGW
         run: |
           g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
