@@ -70,7 +70,7 @@ void launchCommand(const std::string& command) {
     #else
         std::string wineCommand = "wine " + command;
         int result = system(wineCommand.c_str());
-        int sleepCmdUnix = system(SLEEP_COMMAND_UNIX);
+        system(SLEEP_COMMAND_UNIX) >= 0;
     #endif
 }
 
@@ -83,7 +83,7 @@ int modifyMDOIni() {
     }
 
     #ifdef _WIN32
-        int mdoIni = system("notepad mdo.ini");
+        system("notepad mdo.ini") >= 0;
     #else
         execlp("nano", "nano", "mdo.ini", NULL);
         return 1;
@@ -98,7 +98,7 @@ int showMSGDef() {
         return 1;
     }
     #ifdef _WIN32
-        int showMsgDef = system("notepad msg.def");
+        system("notepad msg.def") >= 0;
     #else
         execlp("nano", "nano", "msg.def", NULL);
         return 1;
@@ -131,7 +131,7 @@ int showTraceTXT() {
     }
 
     #ifdef _WIN32
-        int traceTXT = system("notepad Trace.txt");
+        system("notepad Trace.txt") >= 0;
     #else
         execlp("nano", "nano", "Trace.txt", NULL);
         return 1;
@@ -150,12 +150,12 @@ int modifyAdibou3Ini() {
     // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
 #ifdef _WIN32
   if (!fileExists("Adibou3.ini")) {
-    int moveAdibou3Ini = system("ren ADIBOU3.INI Adibou3.ini");
+    system("ren ADIBOU3.INI Adibou3.ini") >= 0;
   }
    int editAdibou3Ini = system("notepad Adibou3.ini");
 #else
   if (!fileExists("Adibou3.ini")) {
-     int moveAdibou3Ini = system("mv ADIBOU3.INI Adibou3.ini");
+    system("mv ADIBOU3.INI Adibou3.ini") >= 0;
   }
    execlp("nano", "nano", "Adibou3.ini", NULL);
    return 1;
@@ -171,7 +171,7 @@ int modifyAdi5Ini() {
     }
 
     #ifdef _WIN32
-        int editAdi5Ini = system("notepad Data/ADI5.ini");
+        system("notepad Data/ADI5.ini") >= 0;
     #else
         execlp("nano", "nano", "Data/ADI5.ini", NULL);
         return 1;
@@ -237,7 +237,7 @@ void Ed4Intro() {
         return;
     }
 #ifdef _WIN32
-    int Ed4Intro = system("Ed4Intro.exe");
+    system("Ed4Intro.exe") >= 0;
 #else
     execlp("wine", "wine", "Ed4Intro.exe", NULL);
 #endif
@@ -428,9 +428,9 @@ std::cin >> restartChoice;
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     printf("Delete temp files of DEV7Launcher...");
     #ifdef _WIN32
-    int deleteMutexWin = system("del %temp%\\DEV7_INSTANCE_MUTEX");
+    system("del %temp%\\DEV7_INSTANCE_MUTEX") >= 0;
     #else
-    int deleteMutexUnix = system("rm /tmp/DEV7_INSTANCE_MUTEX");
+    system("rm /tmp/DEV7_INSTANCE_MUTEX") >= 0;
     #endif
     ConsoleUtils::clearConsole(); // Clear the console before restarting
     main(argc, argv);  // Restart the launcher by calling main again
