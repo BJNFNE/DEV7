@@ -6,8 +6,6 @@
 #include <ctime>
 #include <string>
 
-#include "common-code/TaskExecution.h"
-
 // TODO:
 // Change the clock date back to the realtime value when the process (setup.exe) is being closed/terminated.
 // Current Workaround, sync the Time between PC and Time Server over the Settings, to change it back to the current timedate
@@ -73,7 +71,6 @@ int main() {
 
     if (!success) {
         fprintf(stderr, "Failed to execute %s.", loaderExeName);
-        TaskExecution::pressEnterToExit();
         return 1;
     }
 
@@ -89,7 +86,6 @@ int main() {
 
     if (!success) {
         fprintf(stderr, "Failed to execute Dev7VM.EXE.");
-        TaskExecution::pressEnterToExit();
         return 1;
     }
 
@@ -101,7 +97,6 @@ int main() {
 
     // Close process and thread handles
     printf("When you done playing your DEV7 game, set the Date back to the one you currently have.\n");
-    TaskExecution::pressEnterToExit();
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 
