@@ -4,6 +4,7 @@
 #include <ctime>
 
 #include "common-code/ConsoleUtils.h"
+#include "common-code/TaskExecution.h"
 
 #ifdef __unix__
 #include <unistd.h>
@@ -134,11 +135,7 @@ int main(int argc, char* argv[]) {
     printf("Output created at: ""%s", fs::absolute(inputFile.stem().string() + ".txt").c_str());
     ConsoleUtils::printNewLine();
 
-    // Exit message for OBCViewer
-    ConsoleUtils::printNewLine();
-    printf("Press Enter to exit OBCViewer");
-    (void)getchar();
-    ConsoleUtils::clearConsole();
+    TaskExecution::pressEnterToExit();
     return 0;
 
 } // End of namespace fs

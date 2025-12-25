@@ -6,6 +6,7 @@
 #include <ctime>
 
 #include "common-code/ConsoleUtils.h"
+#include "common-code/TaskExecution.h"
 
 #ifdef __unix__
 #include <unistd.h>
@@ -62,11 +63,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "CTRK File (" << ctrkArgv[1] << ") is now displayable, and the output is saved to " << inputFile.stem().string() << ".txt" << std::endl;
 
-    // Exit message for CTRKViewer
-    ConsoleUtils::printNewLine();
-    printf("Press Enter to exit CTRKViewer\n");
-    (void)getchar();
-    ConsoleUtils::clearConsole(); 
+    TaskExecution::pressEnterToExit();
     return 0;
 
 } // End of namespace fs
