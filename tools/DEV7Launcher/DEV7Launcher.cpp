@@ -220,8 +220,7 @@ void runUNINST() {
 }
 
 void Ed4Intro() {
-    std::string Ed4IntroEXE = "Ed4Intro.exe";
-    if (!fs::exists("Ed4Intro.exe")) {
+    if (!fileExists("Ed4Intro.exe")) {
         fprintf(stderr, "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         TaskExecution::pressEnterToExit();
         return;
