@@ -59,8 +59,6 @@ int main(int argc, char* argv[]) {
     PLAInput.close();
     PLAOutput.close();
 
-    std::cout << "PLA Savegame (" << argv[1] << ") is now readable." << std::endl;
-
     // Display the full path of the output file of the PLA Savegame
     ConsoleUtils::printNewLine();
     printf("Output file created at: %s\n", fs::absolute(inputSaveGame.stem().string() + ".txt").c_str());
