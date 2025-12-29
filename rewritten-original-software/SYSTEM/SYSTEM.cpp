@@ -104,6 +104,10 @@ How does this works?
 - Adibou presente games checks when you want to enter the Game, if the Disc is valid over the SFLOATBOOBAR.OBC script with the BOOT() function with
 - the comment "Official CD found".
 
+-- Le pays des Pierres Magiques 2
+- Le pays des Pierres Magiques 2 checks at the startup of the Game, if the Disc is valid over the MAIN.OBC script with the ED5Players::OnCreate() (exported void function) in main function with
+- the comment "CD GOOD". If it is the wrong disc it says "CD NO GOOD" and wants you to insert it.
+
 Based on system.exe MD5: d956cf751400520075cd5910673f5a1f Date: Jun 10 2000 (24KB)
 Another system.exe is identical to this code, which is instead 280KB large in Filesize: MD5: 76c96b9be44359c9afba513db6c2c9b6 Date: 13. Jun 2000
 */
