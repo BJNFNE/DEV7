@@ -14,6 +14,7 @@ Supported Games:
 - Adibou3 (Fully supported)
 - Adiboud'chou (Fully supported)
 - Adibou présenté (Fully supported)
+- Le pays des Pierres Magiques 2 (Fully supported)
 
 Unsupported Games (currently):
 - English Fever (Here is it called SystemEx.exe instead of SYSTEM.EXE, it had also an own compiled Dev7VM.exe which the new SystemEx.exe reference)
