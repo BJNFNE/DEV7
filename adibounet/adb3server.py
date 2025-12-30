@@ -18,6 +18,36 @@
 # Currently can only be comunicated with the Server to the Client to bring up the Login screen and display Username and Password.
 # Non printable data will be also shown in the Console. (Maybe useful for further debugging)
 
+# Used Functions:
+# netOpenIPConnection() loaded from CkNet.dll
+
+# Requests:
+# When leaving AdibouNet and return to Adibou's Garden an Request will be sended after leaving called "Bye"
+
+# Callbacks:
+# CallbackConnection checks if the connection is working if so it prints OK and shows the Portal Server with IP
+
+# Christophe Delouche:
+# It seems to be loaded Unencrypted (0 --> 0)
+# netGetProviderList() checks which internet connection / provider could be used to connect.
+# ConnectionRetry retrys to connect to Portal Server and to the Connection Manager (9 times)
+
+# B3I_ModemLaunch:
+# Connect after choosing the provider to AdibouNet's Portal Server
+
+# B3I_PortalServer:
+# Send AccountIdentiftication (AccountCode also known as the Username you entered) and the password
+
+# B3I_Bulletin_Board:
+# If you go to the Applications/Adibou's Garden the messsage "return to adibou..." is shown.
+
+# AFK:
+# If you are do nothing in the main screen of AdibouNet Adibou asks you to connect to AdibouNet
+
+# Subscription:
+# Onclic : B3I_HP_SubscriptionButton is used for when you click on the paper were you can login.
+# Opens then the https://www.subscription.de.adibouland.com/index.asp?origin=2 URL (Stored in b3i_url.ini can be replaced)
+
 import socket
 import threading
 import datetime
