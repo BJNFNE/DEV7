@@ -31,6 +31,7 @@
 # It seems to be loaded Unencrypted (0 --> 0)
 # netGetProviderList() checks which internet connection / provider could be used to connect.
 # ConnectionRetry retrys to connect to Portal Server and to the Connection Manager (9 times)
+# If the Connection is abort the Portal Server is not found
 
 # B3I_ModemLaunch:
 # Connect after choosing the provider to AdibouNet's Portal Server
