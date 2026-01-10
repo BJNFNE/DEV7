@@ -11,6 +11,8 @@ EXO files are used by following Games:
 #include <fstream>
 #include <filesystem>
 
+#include "common-code/ConsoleUtils.h"
+
 namespace fs = std::filesystem;
 
 void printHeader() {
@@ -71,6 +73,7 @@ int main() {
     int exoCount = 0;
     searchAndDumpPaths(directory, outputFile, exoCount);
     printf("Search is completed. Found %d .exo files.", exoCount);
+    ConsoleUtils::printNewLine();
     return 0;
     
 } // End of namespace fs
