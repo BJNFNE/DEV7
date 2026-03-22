@@ -1,12 +1,9 @@
 ----------------------------------------
-           CREDITS
+           THANKS
 ----------------------------------------
 
 Special Thanks:
 ---------------
 - DerCodeDev (Thanks for helping and giving me Feedback about the Tools!)
 - rzil (BLooperZ) - Thanks for helping out!
-
-Testers:
---------
 - Indy4-Fan - Thanks for the help to improve the Tools via Feedback!
