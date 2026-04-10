@@ -1,4 +1,5 @@
 # SecuROMDetector is based on IMGIdentifier
+# Detect It Easy Reference: https://github.com/horsicq/Detect-It-Easy/blob/master/db/PE/protector_SecuROM.2.sg
 
 def identify_exe(exe_path, exe_check):
     try:

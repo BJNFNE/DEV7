@@ -1,3 +1,5 @@
+# Implemented into Detect It Easy: https://github.com/horsicq/Detect-It-Easy/blob/master/db/Binary/image_IMG.1.sg
+
 def identify_img(img_path, img_check):
     try:
         with open(img_path, 'rb') as file:

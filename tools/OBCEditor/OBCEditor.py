@@ -1,3 +1,5 @@
+# Detect It Easy Reference: https://github.com/horsicq/Detect-It-Easy/blob/master/db/Binary/format_OBC.1.sg
+
 import os
 import datetime
 import argparse

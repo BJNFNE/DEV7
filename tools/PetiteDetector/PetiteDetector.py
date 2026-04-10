@@ -1,4 +1,5 @@
 # PetiteDetector is based on SecuROMDetector
+# Detect It Easy Reference: https://github.com/horsicq/Detect-It-Easy/blob/master/db/PE/packer_Petite.2.sg
 
 def identify_exe(exe_path, exe_check):
     try:
