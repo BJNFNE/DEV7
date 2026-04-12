@@ -72,6 +72,7 @@ int modifyMDOIni() {
 
     #ifdef _WIN32
         _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "mdo.ini", NULL);
+        return 1;
     #else
         execlp("nano", "nano", "mdo.ini", NULL);
         return 1;
@@ -86,6 +87,7 @@ int showMSGDef() {
     }
     #ifdef _WIN32
         _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "msg.def", NULL);
+        return 1;
     #else
         execlp("nano", "nano", "msg.def", NULL);
         return 1;
@@ -100,7 +102,8 @@ int modifyMDODbg() {
     }
 
     #ifdef _WIN32
-    _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "MDO.DBG", NULL);
+        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "MDO.DBG", NULL);
+        return 1;
     #else
         execlp("nano", "nano", "MDO.DBG", NULL);
         return 1;
@@ -116,6 +119,7 @@ int showTraceTXT() {
 
     #ifdef _WIN32
         _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Trace.txt", NULL);
+        return 1;
     #else
         execlp("nano", "nano", "Trace.txt", NULL);
         return 1;
@@ -155,6 +159,7 @@ int modifyAdi5Ini() {
 
     #ifdef _WIN32
         _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Data/ADI5.ini", NULL);
+        return 1;
     #else
         execlp("nano", "nano", "Data/ADI5.ini", NULL);
         return 1;
@@ -182,8 +187,10 @@ void loadLicenceFile() {
 
 #ifdef _WIN32
         ShellExecuteA(NULL, "open", filename.c_str(), NULL, NULL, SW_SHOWNORMAL);
+        return;
 #else
         int open = system(("open " + filename).c_str());
+        return;
 #endif
 
     } else {
