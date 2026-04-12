@@ -34,7 +34,7 @@ void searchAndDumpPaths(const fs::path& directory, const std::string& outputFile
         if (entry.is_regular_file() && entry.path().extension() == ".exo") {
             std::ifstream file(entry.path());
             if (!file) {
-                fprintf(stderr, "Error: Unable to open %s", entry.path());
+                std::cerr << "Error: Unable to open %s" << entry.path() << std::endl;
                 continue;
             }
 
