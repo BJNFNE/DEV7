@@ -11,6 +11,7 @@
 #include <windows.h>
 #include <io.h>
 #include <shellapi.h>
+#include <process.h>
 #define SLEEP_COMMAND_WIN "ping -n 2 127.0.0.1 > nul"
 #define DEV7_MUTEX_LAUNCH_WIN "%temp%/DEV7_INSTANCE_MUTEX"
 #else
@@ -22,14 +23,7 @@
 #define READ_WRITE_PERMISSION 0666
 #endif
 
-bool fileExists(const std::string& filename) {
-#ifdef _WIN32
-    return _access(filename.c_str(), 0) == 0;
-#else
-    struct stat buffer;
-    return stat(filename.c_str(), &buffer) == 0;
-#endif
-}
+namespace fs = std::filesystem;
 
 void printHeader() {
     char versionNumber[6] = "1.2.0";
@@ -70,14 +64,14 @@ void launchCommand(const std::string& command) {
 }
 
 int modifyMDOIni() {
-    if (!fileExists("mdo.ini")) {
+    if (!fs::exists("mdo.ini")) {
         fprintf(stderr, "Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
     #ifdef _WIN32
-        system("notepad mdo.ini") >= 0;
+        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "mdo.ini", NULL);
     #else
         execlp("nano", "nano", "mdo.ini", NULL);
         return 1;
@@ -85,13 +79,13 @@ int modifyMDOIni() {
 }
 
 int showMSGDef() {
-    if (!fileExists("msg.def")) {
+    if (!fs::exists("msg.def")) {
         fprintf(stderr, "Error: This directory does not seem to contain an debug configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
     #ifdef _WIN32
-        system("notepad msg.def") >= 0;
+        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "msg.def", NULL);
     #else
         execlp("nano", "nano", "msg.def", NULL);
         return 1;
@@ -99,14 +93,14 @@ int showMSGDef() {
 }
 
 int modifyMDODbg() {
-    if (!fileExists("MDO.DBG")) {
+    if (!fs::exists("MDO.DBG")) {
         fprintf(stderr, "Error: MDO.DBG not found.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
     #ifdef _WIN32
-        system("notepad MDO.DBG") >= 0;
+    _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "MDO.DBG", NULL);
     #else
         execlp("nano", "nano", "MDO.DBG", NULL);
         return 1;
@@ -114,14 +108,14 @@ int modifyMDODbg() {
 }
 
 int showTraceTXT() {
-    if (!fileExists("Trace.txt")) {
+    if (!fs::exists("Trace.txt")) {
         fprintf(stderr, "Error: This directory does not contain an Trace.txt.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
     #ifdef _WIN32
-        system("notepad Trace.txt") >= 0;
+        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Trace.txt", NULL);
     #else
         execlp("nano", "nano", "Trace.txt", NULL);
         return 1;
@@ -129,37 +123,38 @@ int showTraceTXT() {
 }
 
 int modifyAdibou3Ini() {
-    if (!fileExists("Adibou3.ini")) {
+    bool smallIni = fs::exists("Adibou3.ini");
+    bool bigIni = fs::exists("ADIBOU3.INI");
+
+    if (!bigIni && !smallIni) {
         fprintf(stderr, "Error: This directory does not seem to be an Adibou 3 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
-    // This an Workaround for this Function to load Adibou3.ini into the Editors
-    // WORKAROUND: rename ADIBOU3.INI to Adibou3.ini so it will be read by the Editors as Adibou3.ini to avoid problems being loaded.
+    if (bigIni && !smallIni) {
+        std::error_code ec;
+        fs::rename("ADIBOU3.INI", "Adibou3.ini", ec);
+    }
+
 #ifdef _WIN32
-  if (!fileExists("Adibou3.ini")) {
-    system("ren ADIBOU3.INI Adibou3.ini") >= 0;
-  }
-    system("notepad Adibou3.ini") >= 0;
+    _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Adibou3.ini", NULL);
+    return 0;
 #else
-  if (!fileExists("Adibou3.ini")) {
-    system("mv ADIBOU3.INI Adibou3.ini") >= 0;
-  }
-   execlp("nano", "nano", "Adibou3.ini", NULL);
-   return 1;
+    execlp("nano", "nano", "Adibou3.ini", NULL);
+    return 0;
 #endif
 }
 
 int modifyAdi5Ini() {
-    if (!fileExists("Data/ADI5.ini")) {
+    if (!fs::exists("Data/ADI5.ini")) {
         fprintf(stderr, "Error: This directory does not seem to be an Adi 5 game directory.\n");
         TaskExecution::pressEnterToExit();
         return 1;
     }
 
     #ifdef _WIN32
-        system("notepad Data/ADI5.ini") >= 0;
+        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Data/ADI5.ini", NULL);
     #else
         execlp("nano", "nano", "Data/ADI5.ini", NULL);
         return 1;
@@ -177,7 +172,7 @@ void loadLicenceFile() {
     std::string filename;
 
     for (const auto& file : txtFiles) {
-        if (fileExists(file)) {
+        if (fs::exists(file)) {
             filename = file;
             break;
         }
@@ -197,7 +192,7 @@ void loadLicenceFile() {
 }
 
 void runUNINST() {
-    if (!fileExists("UNINST.EXE")) {
+    if (!fs::exists("UNINST.EXE")) {
         fprintf(stderr ,"Error: UNINST.EXE not found in directory.\n");
         TaskExecution::pressEnterToExit();
         return;
@@ -214,7 +209,7 @@ void runUNINST() {
 }
 
 void Ed4Intro() {
-    if (!fileExists("Ed4Intro.exe")) {
+    if (!fs::exists("Ed4Intro.exe")) {
         fprintf(stderr, "Error: This directory does not seem to be an Le Pays des pierres magiques game directory.\n");
         TaskExecution::pressEnterToExit();
         return;
@@ -247,7 +242,7 @@ void startGameExecutable() {
     };
 
     for (const auto& exe : executables) {
-        if (fileExists(exe.fileName)) {
+        if (fs::exists(exe.fileName)) {
             printf("%s found. Starting %s...\n", exe.fileName, exe.command);
             launchCommand(exe.command);
             return;
@@ -271,7 +266,7 @@ int main(int argc, char* argv[]) {
     }
 
     bool Loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good()) || std::ifstream("Loader7.exe").good();
-    bool Dev7VMExists = fileExists("Dev7VM.EXE");
+    bool Dev7VMExists = fs::exists("Dev7VM.EXE");
 
     // execute here the printHeader() to display the Header (Program name with versionNumber)
     printHeader();
@@ -392,9 +387,9 @@ switch(choice) {
 auto end = std::chrono::steady_clock::now();
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-char hours = elapsed.count() / 3600;
-char minutes = (elapsed.count() % 3600) / 60;
-char seconds = elapsed.count() % 60;
+int hours = elapsed.count() / 3600;
+int minutes = (elapsed.count() % 3600) / 60;
+int seconds = elapsed.count() % 60;
 
 if (usedLoader7OrDev7VM) {
     ConsoleUtils::clearConsole();
@@ -409,10 +404,14 @@ std::cin >> restartChoice;
 // y/Y english keyboard layout. j/J german kayboard layout. o/O french keyboard layout.
 if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || restartChoice == 'J' || restartChoice == 'o' | restartChoice == 'O') {
     printf("Delete temp files of DEV7Launcher...");
-    #ifdef _WIN32
-    system("del %temp%\\DEV7_INSTANCE_MUTEX") >= 0;
-    #else
-    system("rm /tmp/DEV7_INSTANCE_MUTEX") >= 0;
+#ifdef _WIN32
+    char* tmpPath = getenv("TEMP");
+    if (tmpPath != nullptr) {
+        fs::path mutexPath = fs::path(tmpPath) / "DEV7_INSTANCE_MUTEX";
+        fs::remove(mutexPath); 
+    }
+#else
+    std::remove("/tmp/DEV7_INSTANCE_MUTEX");
     #endif
     ConsoleUtils::clearConsole();
     main(argc, argv);
