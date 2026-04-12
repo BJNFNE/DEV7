@@ -5,7 +5,7 @@ This version is from 2000 that which one doesn't used SecuROM yet.
 SecuROM was started to being used in later versions in SYSTEM.EXE.
 
 Requirements:
--  Compile under MSVC 2022 or MinGW
+-  Compile under MSVC 2022+ or MinGW
 -  Compatible with Windows 7 to Windows 11
 -  Make sure to have Visual C++ Redistributable 2022 x64 installed.
 Compiling:

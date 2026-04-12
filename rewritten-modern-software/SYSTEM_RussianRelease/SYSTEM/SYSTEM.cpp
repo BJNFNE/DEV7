@@ -4,7 +4,7 @@ It was mainly re-developed for Антошка3 Applications.
 This version comes from the russian release and is slightly different from the original SYSTEM executable.
 
 Requirements:
--  Compile under MSVC 2022 or MinGW
+-  Compile under MSVC 2022+ or MinGW
 -  Compatible with Windows 7 to Windows 11
 -  Make sure to have Visual C++ Redistributable 2022 x64 installed.
 Compiling:
