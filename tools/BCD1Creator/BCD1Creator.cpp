@@ -194,7 +194,7 @@ int main(int argc, const char **argv) {
     // Close the file
     outputBCD1.close();
 
-    printf("BCD1 file was created sucessfully: %s", fileName);
+    std::cout << "BCD file was created sucessfully: %s" << fileName << std::endl;
 
     return 0;
 }
