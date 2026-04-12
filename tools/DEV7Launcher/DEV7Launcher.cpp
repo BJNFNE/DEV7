@@ -10,6 +10,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <io.h>
+#include <shellapi.h>
 #define SLEEP_COMMAND_WIN "ping -n 2 127.0.0.1 > nul"
 #define DEV7_MUTEX_LAUNCH_WIN "%temp%/DEV7_INSTANCE_MUTEX"
 #else
@@ -185,7 +186,7 @@ void loadLicenceFile() {
     if (!filename.empty()) {
 
 #ifdef _WIN32
-        int open = system(("notepad.exe " + filename).c_str());
+        ShellExecuteA(NULL, "open", filename.c_str(), NULL, NULL, SW_SHOWNORMAL);
 #else
         int open = system(("open " + filename).c_str());
 #endif
