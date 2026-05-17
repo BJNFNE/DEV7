@@ -4,3 +4,6 @@
 [submodule "common-tools"]
 	path = common-tools
 	url = https://github.com/BJNFNE/common-tools.git
+[submodule "analysis-tools"]
+	path = analysis-tools
+	url = https://github.com/BJNFNE/analysis-tools.git
