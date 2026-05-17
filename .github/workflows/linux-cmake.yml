@@ -2,8 +2,9 @@ name: Build and Release (Linux CMake)
 
 on:
   push:
-    branches:
+      branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build:
