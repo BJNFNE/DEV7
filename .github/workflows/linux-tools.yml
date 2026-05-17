@@ -22,6 +22,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage
+               
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
       - name: Run configure
         run: ./configure
