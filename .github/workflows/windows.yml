@@ -33,7 +33,7 @@ jobs:
           g++ -static -mwindows -o LoaderMDO.exe rewritten-modern-software/LoaderMDO/LoaderMDO/LoaderMDO.cpp
           g++ -I. -static -o BCD1Creator.exe tools/BCD1Creator/BCD1Creator.cpp
           g++ -I. -static -o DEV7Launcher.exe tools/DEV7Launcher/DEV7Launcher.cpp
-          g++ -static -o OBJDumper.exe tools/OBJDumper/OBJDumper.cpp
+          g++ -static -o OBJDumper.exe analysis-tools/OBJDumper/OBJDumper.cpp
           g++ -I. -static -o ModelPathDumper.exe tools/ModelPathDumper/ModelPathDumper.cpp
           g++ -static -mwindows -o SYSTEM.EXE rewritten-modern-software/SYSTEM/SYSTEM/SYSTEM.cpp
           g++ -static -mwindows -o SYSTEM_RussianRelease.EXE rewritten-modern-software/SYSTEM_RussianRelease/SYSTEM/SYSTEM.cpp
@@ -51,9 +51,9 @@ jobs:
           pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
           pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
           pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-          pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
-          pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
-          pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
           pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts

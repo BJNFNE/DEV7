@@ -22,6 +22,9 @@ jobs:
       - name: Install Brew deps
         run: |
           brew bundle install
+      
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
       - name: Run configure
         run: ./configure
@@ -36,9 +39,9 @@ jobs:
           pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
           pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
           pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-          pyinstaller --onefile --distpath . tools/PetiteDetector/PetiteDetector.py
-          pyinstaller --onefile --distpath . tools/PKLiteDetector/PKLiteDetector.py
-          pyinstaller --onefile --distpath . tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
           pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
