@@ -51,7 +51,7 @@ jobs:
           pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: compiled-linux-debug
           path: |

@@ -41,7 +41,7 @@ jobs:
           g++ -o create_zip common-tools/nowin/create_zip/create_zip.cpp
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: common-linux
           path: |
