@@ -14,7 +14,7 @@ add_subdirectory(tools/CTRKViewer)
 add_subdirectory(tools/DEV7Launcher)
 add_subdirectory(tools/OBCViewer)
 add_subdirectory(tools/PLAViewer)
-add_subdirectory(tools/OBJDumper)
+add_subdirectory(analysis-tools/OBJDumper)
 add_subdirectory(tools/ModelPathDumper)
 
 # Check if we are building on Linux
