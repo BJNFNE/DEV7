@@ -42,10 +42,8 @@ int main(int argc, char* argv[]) {
 
     std::string inputOBC = argv[1];
 
-    #ifdef __unix__
+    #if defined(__unix__) || defined(__APPLE__)
     // List here everything for the Debug Infos.
-    std::string username = getlogin();
-    #elif __APPLE__
     std::string username = getlogin();
     #endif
 
