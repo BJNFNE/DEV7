@@ -16,7 +16,6 @@
 #define DEV7_MUTEX_LAUNCH_WIN "%temp%/DEV7_INSTANCE_MUTEX"
 #else
 #include <unistd.h>
-#include <sys/stat.h>
 #include <sys/file.h>
 #define SLEEP_COMMAND_UNIX "sleep 2"
 #define DEV7_MUTEX_LAUNCH_UNIX "/tmp/DEV7_INSTANCE_MUTEX"
@@ -174,22 +173,22 @@ void loadLicenceFile() {
         "Техподдержка.txt"        // Russian
     };
 
-    std::string filename;
+    std::string licenseFile;
 
     for (const auto& file : txtFiles) {
         if (fs::exists(file)) {
-            filename = file;
+            licenseFile = file;
             break;
         }
     }
 
-    if (!filename.empty()) {
+    if (!licenseFile.empty()) {
 
 #ifdef _WIN32
-        ShellExecuteA(NULL, "open", filename.c_str(), NULL, NULL, SW_SHOWNORMAL);
+        ShellExecuteA(NULL, "open", licenseFile.c_str(), NULL, NULL, SW_SHOWNORMAL);
         return;
 #else
-        int open = system(("open " + filename).c_str());
+        system(("open " + licenseFile).c_str());
         return;
 #endif
 
@@ -258,7 +257,6 @@ void startGameExecutable() {
 
     printf("None of the executables found.\nPlease make sure you have the exe in the same directory as the launcher.\n");
 }
-
 
 int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now();
@@ -418,7 +416,7 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
         fs::remove(mutexPath); 
     }
 #else
-    std::remove("/tmp/DEV7_INSTANCE_MUTEX");
+    fs::remove("/tmp/DEV7_INSTANCE_MUTEX");
     #endif
     ConsoleUtils::clearConsole();
     main(argc, argv);
