@@ -6,10 +6,8 @@
 #include "common-code/ConsoleUtils.h"
 #include "common-code/TaskExecution.h"
 
-#ifdef __unix__
+#if defined(__unix__) || defined(__APPLE__)
 #include <unistd.h>
-#elif __APPLE__
-#include "../../../../../Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/unistd.h"
 #endif
 
 namespace fs = std::filesystem;
