@@ -42,7 +42,7 @@ jobs:
 
       - name: Compile all Python tools with Nuitka
         run: |
-          python -m nuitka --onefile --output-dir=. \
+          for script in \
             tools/IMGConverter/IMGConverter.py \
             tools/AdultCornerDecoder/decoder.py \
             tools/AdultCornerEncoder/encoder.py \
@@ -52,6 +52,9 @@ jobs:
             analysis-tools/PKLiteDetector/PKLiteDetector.py \
             analysis-tools/SecuROMDetector/SecuROMDetector.py \
             tools/copyDatas/copyDatas.py
+          do
+            python -m nuitka --onefile --output-dir=. "$script"
+          done
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -94,7 +97,7 @@ jobs:
         run: |
           brew bundle install
           pip install nuitka
-      
+
       - name: Checkout submodules
         run: git submodule update --init --recursive
 
@@ -106,7 +109,7 @@ jobs:
 
       - name: Compile all Python tools with Nuitka
         run: |
-          python -m nuitka --onefile --output-dir=. \
+          for script in \
             tools/IMGConverter/IMGConverter.py \
             tools/AdultCornerDecoder/decoder.py \
             tools/AdultCornerEncoder/encoder.py \
@@ -116,6 +119,9 @@ jobs:
             analysis-tools/PKLiteDetector/PKLiteDetector.py \
             analysis-tools/SecuROMDetector/SecuROMDetector.py \
             tools/copyDatas/copyDatas.py
+          do
+            python -m nuitka --onefile --output-dir=. "$script"
+          done
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -160,24 +166,29 @@ jobs:
       - name: Checkout submodules
         run: git submodule update --init --recursive
 
-      - name: Configure CMake
+      - name: Configure CMake (Static Build)
         run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
 
       - name: Build with CMake
         run: cmake --build build --config Release
 
       - name: Compile all Python tools with Nuitka
+        shell: pwsh
         run: |
-          python -m nuitka --onefile --assume-yes-for-downloads --output-dir=. \
-            tools/IMGConverter/IMGConverter.py \
-            tools/AdultCornerDecoder/decoder.py \
-            tools/AdultCornerEncoder/encoder.py \
-            tools/IMGIdentifier/IMGIdentifier.py \
-            tools/OBCEditor/OBCEditor.py \
-            analysis-tools/PetiteDetector/PetiteDetector.py \
-            analysis-tools/PKLiteDetector/PKLiteDetector.py \
-            analysis-tools/SecuROMDetector/SecuROMDetector.py \
-            tools/copyDatas/copyDatas.py
+          $scripts = @(
+            "tools/IMGConverter/IMGConverter.py",
+            "tools/AdultCornerDecoder/decoder.py",
+            "tools/AdultCornerEncoder/encoder.py",
+            "tools/IMGIdentifier/IMGIdentifier.py",
+            "tools/OBCEditor/OBCEditor.py",
+            "analysis-tools/PetiteDetector/PetiteDetector.py",
+            "analysis-tools/PKLiteDetector/PKLiteDetector.py",
+            "analysis-tools/SecuROMDetector/SecuROMDetector.py",
+            "tools/copyDatas/copyDatas.py"
+          )
+          foreach ($script in $scripts) {
+            python -m nuitka --onefile --assume-yes-for-downloads --output-dir=. $script
+          }
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
