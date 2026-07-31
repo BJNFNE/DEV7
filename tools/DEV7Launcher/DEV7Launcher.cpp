@@ -231,9 +231,9 @@ switch(choice) {
 auto end = std::chrono::steady_clock::now();
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-uint hours = elapsed.count() / 3600;
-uint minutes = (elapsed.count() % 3600) / 60;
-uint seconds = elapsed.count() % 60;
+int hours = elapsed.count() / 3600;
+int minutes = (elapsed.count() % 3600) / 60;
+int seconds = elapsed.count() % 60;
 
 if (isGameExecutable) {
     ConsoleUtils::clearConsole();
