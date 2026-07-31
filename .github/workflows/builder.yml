@@ -1,0 +1,205 @@
+name: Build DEV7 Tools
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install required libs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage python3-pip
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
+      - name: Run configure
+        run: ./configure
+
+      - name: Compile all C++ programs
+        run: make cmake
+
+      - name: Compile all Python tools
+        run: | 
+          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-linux
+          path: |
+            binaries/LoaderMDO
+            binaries/BCD1Creator
+            binaries/DEV7Launcher
+            binaries/ModelPathDumper
+            binaries/OBJDumper
+            binaries/OBCViewer
+            binaries/CTRKViewer
+            binaries/PLAViewer
+            IMGConverter
+            AdultCornerDecoder
+            AdultCornerEncoder
+            IMGIdentifier
+            OBCEditor
+            PetiteDetector
+            PKLiteDetector
+            SecuROMDetector
+            copyDatas
+
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Brew deps
+        run: brew bundle install
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+      
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
+      - name: Run configure
+        run: ./configure
+
+      - name: Compile all C++ programs
+        run: make cmake
+
+      - name: Compile all Python tools
+        run: | 
+          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-macos
+          path: |
+            binaries/LoaderMDO
+            binaries/BCD1Creator
+            binaries/DEV7Launcher
+            binaries/ModelPathDumper
+            binaries/OBJDumper
+            binaries/OBCViewer
+            binaries/CTRKViewer
+            binaries/PLAViewer
+            IMGConverter
+            AdultCornerDecoder
+            AdultCornerEncoder
+            IMGIdentifier
+            OBCEditor
+            PetiteDetector
+            PKLiteDetector
+            SecuROMDetector
+            copyDatas
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
+
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
+
+      - name: Build with CMake
+        run: cmake --build build --config Release
+
+      - name: Compile all Python tools
+        run: | 
+          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
+          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
+          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
+          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
+          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
+          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
+          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
+          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-windows-cmake
+          path: |
+            LoaderMDO.exe
+            SYSTEM.EXE
+            SYSTEM_RussianRelease.EXE
+            BCD1Creator.exe
+            DEV7Launcher.exe
+            OBJDumper.exe
+            ModelPathDumper.exe
+            IMGConverter.exe
+            decoder.exe
+            encoder.exe
+            IMGIdentifier.exe
+            OBCEditor.exe
+            PetiteDetector.exe
+            PKLiteDetector.exe
+            SecuROMDetector.exe
+            OBCViewer.exe
+            CTRKViewer.exe
+            PLAViewer.exe
+            SetupPatcher.exe
+            Y2K38Patcher.exe
+            copyDatas.exe
+            LOADER7VC.exe
