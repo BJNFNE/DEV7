@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 
     // Display the full path of the output file of the PLA Savegame
     ConsoleUtils::printNewLine();
-    printf("Output file created at: %s\n", fs::absolute(inputSaveGame.stem().string() + ".txt").c_str());
+    printf("Output file created at: %lls\n", fs::absolute(inputSaveGame.stem().string() + ".txt").c_str());
 
     TaskExecution::pressEnterToExit();
     return 0;
