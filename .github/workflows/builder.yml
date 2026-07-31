@@ -23,14 +23,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+          cache: 'pip'
 
-      - name: Install required libs
+      - name: Install required libs & Nuitka
         run: |
           sudo apt-get update
-          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage python3-pip
-
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+          sudo apt-get install -y g++ make build-essential cmake libarchive-dev python3 genisoimage
+          pip install nuitka
 
       - name: Checkout submodules
         run: git submodule update --init --recursive
@@ -41,17 +40,18 @@ jobs:
       - name: Compile all C++ programs
         run: make cmake
 
-      - name: Compile all Python tools
-        run: | 
-          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
-          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
-          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
-          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
-          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
-          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+      - name: Compile all Python tools with Nuitka
+        run: |
+          python -m nuitka --onefile --output-dir=. \
+            tools/IMGConverter/IMGConverter.py \
+            tools/AdultCornerDecoder/decoder.py \
+            tools/AdultCornerEncoder/encoder.py \
+            tools/IMGIdentifier/IMGIdentifier.py \
+            tools/OBCEditor/OBCEditor.py \
+            analysis-tools/PetiteDetector/PetiteDetector.py \
+            analysis-tools/PKLiteDetector/PKLiteDetector.py \
+            analysis-tools/SecuROMDetector/SecuROMDetector.py \
+            tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -67,8 +67,8 @@ jobs:
             binaries/CTRKViewer
             binaries/PLAViewer
             IMGConverter
-            AdultCornerDecoder
-            AdultCornerEncoder
+            decoder
+            encoder
             IMGIdentifier
             OBCEditor
             PetiteDetector
@@ -88,12 +88,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+          cache: 'pip'
 
-      - name: Install Brew deps
-        run: brew bundle install
-
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+      - name: Install Brew deps & Nuitka
+        run: |
+          brew bundle install
+          pip install nuitka
       
       - name: Checkout submodules
         run: git submodule update --init --recursive
@@ -104,17 +104,18 @@ jobs:
       - name: Compile all C++ programs
         run: make cmake
 
-      - name: Compile all Python tools
-        run: | 
-          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
-          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
-          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
-          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
-          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
-          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+      - name: Compile all Python tools with Nuitka
+        run: |
+          python -m nuitka --onefile --output-dir=. \
+            tools/IMGConverter/IMGConverter.py \
+            tools/AdultCornerDecoder/decoder.py \
+            tools/AdultCornerEncoder/encoder.py \
+            tools/IMGIdentifier/IMGIdentifier.py \
+            tools/OBCEditor/OBCEditor.py \
+            analysis-tools/PetiteDetector/PetiteDetector.py \
+            analysis-tools/PKLiteDetector/PKLiteDetector.py \
+            analysis-tools/SecuROMDetector/SecuROMDetector.py \
+            tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -130,8 +131,8 @@ jobs:
             binaries/CTRKViewer
             binaries/PLAViewer
             IMGConverter
-            AdultCornerDecoder
-            AdultCornerEncoder
+            decoder
+            encoder
             IMGIdentifier
             OBCEditor
             PetiteDetector
@@ -151,9 +152,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+          cache: 'pip'
 
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+      - name: Install Nuitka
+        run: pip install nuitka
 
       - name: Checkout submodules
         run: git submodule update --init --recursive
@@ -164,22 +166,23 @@ jobs:
       - name: Build with CMake
         run: cmake --build build --config Release
 
-      - name: Compile all Python tools
-        run: | 
-          pyinstaller --onefile --distpath . tools/IMGConverter/IMGConverter.py
-          pyinstaller --onefile --distpath . tools/AdultCornerDecoder/decoder.py
-          pyinstaller --onefile --distpath . tools/AdultCornerEncoder/encoder.py
-          pyinstaller --onefile --distpath . tools/IMGIdentifier/IMGIdentifier.py
-          pyinstaller --onefile --distpath . tools/OBCEditor/OBCEditor.py
-          pyinstaller --onefile --distpath . analysis-tools/PetiteDetector/PetiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/PKLiteDetector/PKLiteDetector.py
-          pyinstaller --onefile --distpath . analysis-tools/SecuROMDetector/SecuROMDetector.py
-          pyinstaller --onefile --distpath . tools/copyDatas/copyDatas.py
+      - name: Compile all Python tools with Nuitka
+        run: |
+          python -m nuitka --onefile --assume-yes-for-downloads --output-dir=. \
+            tools/IMGConverter/IMGConverter.py \
+            tools/AdultCornerDecoder/decoder.py \
+            tools/AdultCornerEncoder/encoder.py \
+            tools/IMGIdentifier/IMGIdentifier.py \
+            tools/OBCEditor/OBCEditor.py \
+            analysis-tools/PetiteDetector/PetiteDetector.py \
+            analysis-tools/PKLiteDetector/PKLiteDetector.py \
+            analysis-tools/SecuROMDetector/SecuROMDetector.py \
+            tools/copyDatas/copyDatas.py
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: compiled-windows-cmake
+          name: compiled-windows
           path: |
             LoaderMDO.exe
             SYSTEM.EXE
