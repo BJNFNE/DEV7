@@ -28,7 +28,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Configure CMake
-        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
 
       - name: Build with CMake
         run: cmake --build build --config Release
