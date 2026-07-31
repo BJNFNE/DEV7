@@ -52,82 +52,41 @@ bool isDEV7Running() {
     return false;
 }
 
-void launchCommand(const std::string& command) {
+bool launchCommand(const std::string& cmd) {
     #ifdef _WIN32
-        system(command.c_str());
+        system(cmd.c_str());
     #else
-        std::string wineCommand = "wine " + command;
-        int result = system(wineCommand.c_str());
+        std::string wineCmd = "wine " + cmd;
+        int result = system(wineCmd.c_str());
         system(SLEEP_COMMAND_UNIX) >= 0;
     #endif
+
+    return 0x0ff; // Avoid compiler warning (gcc)
 }
 
 int modifyMDOIni() {
     if (!fs::exists("mdo.ini")) {
         fprintf(stderr, "Error: This directory does not seem to contain an configuration file in the directory.\n");
         TaskExecution::pressEnterToExit();
-        return 1;
+        return 0;
     }
 
-    #ifdef _WIN32
-        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "mdo.ini", NULL);
-        return 1;
-    #else
-        execlp("nano", "nano", "mdo.ini", NULL);
-        return 1;
-    #endif
-}
-
-int showMSGDef() {
-    if (!fs::exists("msg.def")) {
-        fprintf(stderr, "Error: This directory does not seem to contain an debug configuration file in the directory.\n");
-        TaskExecution::pressEnterToExit();
-        return 1;
-    }
-    #ifdef _WIN32
-        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "msg.def", NULL);
-        return 1;
-    #else
-        execlp("nano", "nano", "msg.def", NULL);
-        return 1;
-    #endif
-}
-
-int modifyMDODbg() {
-    if (!fs::exists("MDO.DBG")) {
-        fprintf(stderr, "Error: MDO.DBG not found.\n");
-        TaskExecution::pressEnterToExit();
-        return 1;
-    }
-
-    #ifdef _WIN32
-        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "MDO.DBG", NULL);
-        return 1;
-    #else
-        execlp("nano", "nano", "MDO.DBG", NULL);
-        return 1;
-    #endif
+    launchCommand("mdo.ini");
 }
 
 int showTraceTXT() {
     if (!fs::exists("Trace.txt")) {
         fprintf(stderr, "Error: This directory does not contain an Trace.txt.\n");
         TaskExecution::pressEnterToExit();
-        return 1;
+        return 0;
     }
-
-    #ifdef _WIN32
-        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Trace.txt", NULL);
+        launchCommand("Trace.txt");
         return 1;
-    #else
-        execlp("nano", "nano", "Trace.txt", NULL);
-        return 1;
-    #endif
 }
 
 int modifyAdibou3Ini() {
-    bool smallIni = fs::exists("Adibou3.ini");
-    bool bigIni = fs::exists("ADIBOU3.INI");
+    int smallIni = fs::exists("Adibou3.ini");
+    int bigIni = fs::exists("ADIBOU3.INI");
 
     if (!bigIni && !smallIni) {
         fprintf(stderr, "Error: This directory does not seem to be an Adibou 3 game directory.\n");
@@ -135,18 +94,12 @@ int modifyAdibou3Ini() {
         return 1;
     }
 
-    if (bigIni && !smallIni) {
+    if (bigIni) {
         std::error_code ec;
         fs::rename("ADIBOU3.INI", "Adibou3.ini", ec);
     }
 
-#ifdef _WIN32
-    _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Adibou3.ini", NULL);
-    return 0;
-#else
-    execlp("nano", "nano", "Adibou3.ini", NULL);
-    return 0;
-#endif
+    launchCommand("Adibou3.ini");
 }
 
 int modifyAdi5Ini() {
@@ -155,63 +108,8 @@ int modifyAdi5Ini() {
         TaskExecution::pressEnterToExit();
         return 1;
     }
-
-    #ifdef _WIN32
-        _spawnlp(_P_WAIT, "notepad.exe", "notepad.exe", "Data/ADI5.ini", NULL);
+        launchCommand("Data/ADI5.ini");
         return 1;
-    #else
-        execlp("nano", "nano", "Data/ADI5.ini", NULL);
-        return 1;
-    #endif
-}
-
-void loadLicenceFile() {
-    std::vector<std::string> txtFiles = {
-        "Lizenzvereinbarung.txt", // German
-        "garantie.txt",           // English
-        "LISEZ MOI.txt",          // French
-        "Техподдержка.txt"        // Russian
-    };
-
-    std::string licenseFile;
-
-    for (const auto& file : txtFiles) {
-        if (fs::exists(file)) {
-            licenseFile = file;
-            break;
-        }
-    }
-
-    if (!licenseFile.empty()) {
-
-#ifdef _WIN32
-        ShellExecuteA(NULL, "open", licenseFile.c_str(), NULL, NULL, SW_SHOWNORMAL);
-        return;
-#else
-        system(("open " + licenseFile).c_str());
-        return;
-#endif
-
-    } else {
-        fprintf(stderr, "License file not found.\n");
-    }
-}
-
-void runUNINST() {
-    if (!fs::exists("UNINST.EXE")) {
-        fprintf(stderr ,"Error: UNINST.EXE not found in directory.\n");
-        TaskExecution::pressEnterToExit();
-        return;
-    }
-#ifdef _WIN32
-    if (system("UNINST.EXE") != 0) {
-    printf("Uninstaller has been started, Follow the Instructions to process the uninstallation.\n");
-    }
-#else
-    if (system("wine UNINST.EXE") != 0) {
-    printf("Uninstaller has been started over wine, Follow the Instructions to process the uninstallation.\n");
-    }
-#endif
 }
 
 void Ed4Intro() {
@@ -220,11 +118,8 @@ void Ed4Intro() {
         TaskExecution::pressEnterToExit();
         return;
     }
-#ifdef _WIN32
-    system("Ed4Intro.exe") >= 0;
-#else
-    execlp("wine", "wine", "Ed4Intro.exe", NULL);
-#endif
+
+    launchCommand("Ed4Intro.exe");
 }
 
 void startGameExecutable() {
@@ -235,7 +130,7 @@ void startGameExecutable() {
     };
 
     std::vector<ExecutableOption> executables = {
-        {"LoaderMDO.exe", "LoaderMDO.exe", false},
+        {"LoaderMDO.exe", "LoaderMDO.exe", false}, 
         {"LoaderMDO.exe", "wine LoaderMDO.exe", true},
         {"Adibou3.EXE", "Adibou3.EXE", false},
         {"Adibou3.exe", "wine Adibou3.exe", true},
@@ -255,14 +150,14 @@ void startGameExecutable() {
         }
     }
 
-    printf("None of the executables found.\nPlease make sure you have the exe in the same directory as the launcher.\n");
+    printf("None of the executables found.\nPlease make sure you have the exe in the same directory as the Launcher.\n");
 }
 
 int main(int argc, char* argv[]) {
     auto start = std::chrono::steady_clock::now();
     
     int choice;
-    bool usedLoader7OrDev7VM = false;
+    bool isGameExecutable = false;
 
     if (isDEV7Running()) {
         printf("A DEV7 client is already running, cannot handle more than one DEV7 client.\n");
@@ -270,56 +165,22 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    bool Loader7Exists = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good()) || std::ifstream("Loader7.exe").good();
-    bool Dev7VMExists = fs::exists("Dev7VM.EXE");
+    // Start with searching first for "loader7.exe" which were offically shipped by Coktel Vision
+    bool isDEV7Executable = (std::ifstream("loader7.exe").good() || std::ifstream("LOADER7.EXE").good()) || std::ifstream("Loader7.exe").good() || std::ifstream("Dev7VM.EXE").good();
 
     // execute here the printHeader() to display the Header (Program name with versionNumber)
     printHeader();
 
-    if (Loader7Exists && Dev7VMExists) {
+    if (isDEV7Executable) {
         printf("Choose an option:\n");
-        printf("1. Start Dev7VM with Debug Menu/Windowed mode\n");
-        printf("2. Start Dev7VM in Fullscreen mode\n");
-        printf("3. Start loader7 with Debug Menu/Windowed mode\n");
-        printf("4. Start loader7 in Fullscreen mode\n");
-        printf("5. Modify mdo.ini\n");
-        printf("7. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
-        printf("8. Modify mdo.dbg\n");
-        printf("9. Launch Parentsection (Adibou 3 only)\n");
-        printf("10. Modify Adibou3.ini (Adibou 3 only)\n");
-        printf("11. Run Uninstaller (UNINST.EXE)\n");
-        printf("12. Start Le pays des Pierres magiques Intro\n");
-        printf("13. Modify Adi5.ini (Adi 5 only)\n");
-        printf("14. Open Licence Agreement\n");
-        printf("15. Open MSG.DEF\n");
-    } else if (Loader7Exists) {
-        printf("Choose an option:\n");
-        printf("1. Start loader7 with Debug Menu/Windowed mode\n");
-        printf("2. Start loader7 in Fullscreen mode\n");
+        printf("1. Start Game with Debug Menu/Windowed mode\n");
+        printf("2. Start Game in Fullscreen mode\n");
         printf("3. Modify mdo.ini\n");
         printf("4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
-        printf("5. Modify mdo.dbg\n");
-        printf("6. Launch Parentsection (Adibou 3 only)\n");
-        printf("7. Modify Adibou3.ini (Adibou 3 only)\n");
-        printf("8. Run Uninstaller\n");
-        printf("9. Start Le pays des Pierres magiques Intro\n");
-        printf("10. Modify Adi5.ini (Adi 5 only)\n");
-        printf("11. Open Licence Agreement\n");
-        printf("12. Open MSG.DEF\n");
-    } else if (Dev7VMExists) {
-        printf("Choose an option:\n");
-        printf("1. Start Dev7VM with Debug Menu/Windowed mode\n");
-        printf("2. Start Dev7VM in Fullscreen mode\n");
-        printf("3. Modify mdo.ini\n");
-        printf("4. Show Trace.txt (contains the output of Trace window from Debug Menu)\n");
-        printf("5. Modify mdo.dbg\n");
-        printf("6. Launch Parentsection (Adibou 3 only)\n");
-        printf("7. Modify Adibou3.ini (Adibou 3 only)\n");
-        printf("8. Run Uninstaller (UNINST.EXE)\n");
-        printf("9. Start Le pays des Pierres magiques Intro\n");
-        printf("10. Modify Adi5.ini (Adi 5 only)\n");
-        printf("11. Open Licence Agreement\n");
-        printf("12. Open MSG.DEF\n");
+        printf("5. Launch Parentsection (Adibou 3 only)\n");
+        printf("6. Modify Adibou3.ini (Adibou 3 only)\n");
+        printf("7. Start Le pays des Pierres magiques Intro\n");
+        printf("8. Modify Adi5.ini (Adi 5 only)\n");
     } else {
         fprintf(stderr, "Error: Dev7VM.EXE or Loader7.exe is not found in the Game directory. Launcher terminated.\n");
         TaskExecution::pressEnterToExit();
@@ -331,21 +192,15 @@ int main(int argc, char* argv[]) {
 
 switch(choice) {
     case 1:
-        if (Loader7Exists) {
+        if (isDEV7Executable) {
             launchCommand("Loader7.exe -break");
-            usedLoader7OrDev7VM = true;
-        } else if (Dev7VMExists) {
-            launchCommand("Dev7VM.exe -break");
-            usedLoader7OrDev7VM = true;
+            isGameExecutable = true;
         }
         break;
     case 2:
-        if (Loader7Exists) {
+        if (isDEV7Executable) {
             startGameExecutable();
-            usedLoader7OrDev7VM = true;
-        } else if (Dev7VMExists) {
-            launchCommand("Dev7VM.exe");
-            usedLoader7OrDev7VM = true;
+            isGameExecutable = true;
         }
         break;
     case 3:
@@ -355,34 +210,18 @@ switch(choice) {
         showTraceTXT();
         return 0;
     case 5:
-        modifyMDODbg();
-        return 0;
-    case 6:
-        if (Loader7Exists) {
+        if (isDEV7Executable) { // TODO: add check for Adibou3.ini to verify its Adibou3 and not any other Coktel game!
             launchCommand("Loader7.exe -obc='B3_ParentLaunch'");
-            usedLoader7OrDev7VM = true;
-        } else if (Dev7VMExists) {
-            launchCommand("Dev7VM.EXE -obc='B3_ParentLaunch'");
-            usedLoader7OrDev7VM = true;
-        }
+            isGameExecutable = true;
         break;
-    case 7:
+    case 6:
         modifyAdibou3Ini();
         return 0;
-    case 8:
-        runUNINST();
-        return 0;
-    case 9:
+    case 7:
         Ed4Intro();
         return 0;
-    case 10:
+    case 8:
         modifyAdi5Ini();
-        return 0;
-    case 11:
-        loadLicenceFile();
-        return 0;
-    case 12:
-        showMSGDef();
         return 0;
     default:
         fprintf(stderr, "Invalid choice. Launcher exits\n");
@@ -392,11 +231,11 @@ switch(choice) {
 auto end = std::chrono::steady_clock::now();
 auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-int hours = elapsed.count() / 3600;
-int minutes = (elapsed.count() % 3600) / 60;
-int seconds = elapsed.count() % 60;
+uint hours = elapsed.count() / 3600;
+uint minutes = (elapsed.count() % 3600) / 60;
+uint seconds = elapsed.count() % 60;
 
-if (usedLoader7OrDev7VM) {
+if (isGameExecutable) {
     ConsoleUtils::clearConsole();
 }
 
@@ -423,12 +262,11 @@ if (restartChoice == 'y' || restartChoice == 'Y' || restartChoice == 'j' || rest
 }
 
 if (restartChoice == 'n' || restartChoice == 'N') {
-
     ConsoleUtils::clearConsole();
     return 1;
-
 }
 
 return 0;
 
 } // End of namespace fs
+}
