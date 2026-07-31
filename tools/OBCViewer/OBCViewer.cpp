@@ -107,7 +107,7 @@ int main(int argc, char* argv[]) {
 
     // Display the full path of the output file of the OBC Script
     ConsoleUtils::printNewLine();
-    printf("Output created at: ""%s", fs::absolute(inputFile.stem().string() + ".txt").c_str());
+    printf("Output created at: ""%lls", fs::absolute(inputFile.stem().string() + ".txt").c_str());
     ConsoleUtils::printNewLine();
 
     TaskExecution::pressEnterToExit();
