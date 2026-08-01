@@ -213,6 +213,7 @@ switch(choice) {
         if (isDEV7Executable) { // TODO: add check for Adibou3.ini to verify its Adibou3 and not any other Coktel game!
             launchCommand("Loader7.exe -obc='B3_ParentLaunch'");
             isGameExecutable = true;
+        }
         break;
     case 6:
         modifyAdibou3Ini();
@@ -269,4 +270,3 @@ if (restartChoice == 'n' || restartChoice == 'N') {
 return 0;
 
 } // End of namespace fs
-}
